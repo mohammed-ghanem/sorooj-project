@@ -1,8 +1,15 @@
-import React from 'react'
+import FirstNav from "./FirstNav"
+import LastNav from "./LastNav"
+import LogoNav from "./LogoNav"
+
 
 const Header = () => {
   return (
-    <div>Header</div>
+    <header>
+      <FirstNav />
+      <LogoNav />
+      <LastNav />
+    </header>
   )
 }
 
