@@ -1,0 +1,75 @@
+
+
+interface Hijri {
+    day: string;
+    weekday: { ar: string };
+    month: { ar: string };
+    year: string;
+}
+
+interface Gregorian {
+    day: string;
+    month: { en: string };
+    year: string;
+}
+
+interface DataResponse {
+    data: {
+        hijri: Hijri;
+        gregorian?: Gregorian;
+    };
+}
+export async function getTimeDate(): Promise<DataResponse | null> {
+    try {
+        const res = await fetch('http://api.aladhan.com/v1/gToH');
+        if (!res.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data: DataResponse = await res.json();
+
+        // Check if the data structure is valid
+        if (!data || !data.data || !data.data.hijri ) {
+            return null; // Return null if the expected structure is not present
+        }
+
+        return data;
+    } catch (error) {
+        // Handle fetch errors
+        console.error('Fetch error:', error);
+        return null; // Return null on error
+    }
+}
+// import { notFound } from "next/navigation"
+
+
+// export async function getTimeDate() {
+
+
+//     try {
+//         const res = await fetch('http://api.aladhan.com/v1/gToHss');
+//         if (!res.ok) {
+//             throw new Error('Network response was not ok');
+//         }
+//         const data = await res.json();
+
+//         // Handle if data is empty or not valid
+//         if (!data) {
+//             return { notFound: true };
+//         }
+
+//         return data
+
+//     } catch (error) {
+//         // Handle fetch errors
+//         return { notFound: true };
+//     }
+
+
+//     // const res = await fetch('http://api.aladhan.com/v1/gToH55')
+//     // if (!res.ok) {
+//     //     {
+//     //   notFound()
+//     // }
+//     // }
+//     // return res.json()
+// }
