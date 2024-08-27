@@ -49,7 +49,7 @@ const FirstNav = async () => {
     return (
         <div className="bkBox py-3">
             <div className="container mx-auto justify-center row grid md:grid-cols-2 gap-2 sm:grid-cols-1">
-                <div className="text-center">
+                <div className="text-center font-bold text-sm">
                     <span>{formattedHijriDate}</span>
                     <span> الموافق </span>
                     <span>{formattedGregorianDate}</span>
