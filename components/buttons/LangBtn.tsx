@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 const LangBtn = () => {
   return (
     <div>
-      <FontAwesomeIcon icon={faGlobe} />
+      <FontAwesomeIcon icon={faGlobe} className=" ml-8 cursor-pointer primaryColor text-2xl		"/>
     </div>
   )
 }

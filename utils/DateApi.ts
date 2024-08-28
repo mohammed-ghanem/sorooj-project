@@ -21,7 +21,9 @@ interface DataResponse {
 }
 export async function getTimeDate(): Promise<DataResponse | null> {
     try {
-        const res = await fetch('http://api.aladhan.com/v1/gToH');
+        const res = await fetch('http://api.aladhan.com/v1/gToH', {
+            next: { revalidate: 0 } // Disable caching
+        });
         if (!res.ok) {
             throw new Error('Network response was not ok');
         }
