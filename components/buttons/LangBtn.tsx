@@ -1,8 +1,12 @@
-import React from 'react'
+import { faGlobe } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
 
 const LangBtn = () => {
   return (
-    <div>LangBtn</div>
+    <div>
+      <FontAwesomeIcon icon={faGlobe} />
+    </div>
   )
 }
 

@@ -6,6 +6,7 @@ import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
 
 
+
 import { Cairo } from '@next/font/google';
 
 export const cairo = Cairo({
