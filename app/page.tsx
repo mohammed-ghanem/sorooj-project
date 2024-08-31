@@ -1,8 +1,10 @@
+import Slider from "@/components/slider/Slider";
+
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 mainColor">
-      home page 
+    <main className="w-full">
+      <Slider />
     </main>
   );
 }

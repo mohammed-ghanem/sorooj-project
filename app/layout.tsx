@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import '../utils/fontAwesome'; // Import the Font Awesome configuration
+import { AntdRegistry } from '@ant-design/nextjs-registry';
+
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
 
@@ -32,7 +34,7 @@ export default function RootLayout({
 
       <body className={cairo.className}>
         <Header />
-        {children}
+        <AntdRegistry>{children}</AntdRegistry>
         <Footer />
       </body>
     </html>
