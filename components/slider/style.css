@@ -1,0 +1,9 @@
+.slick-arrow {
+    background: #fff!important;
+    opacity: 1!important;
+   
+    border-radius: 30px!important;
+}
+.slick-next , .slick-prev {
+    color: #00000045 !important;
+}
