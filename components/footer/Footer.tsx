@@ -1,8 +1,10 @@
-import React from 'react'
+import FirstFooter from './FirstFooter'
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <div className='bkMainColor'>
+      <FirstFooter/>
+    </div>
   )
 }
 

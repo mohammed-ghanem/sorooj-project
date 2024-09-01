@@ -24,7 +24,7 @@ const LastNav: React.FC = () => {
             <div className="container mx-auto flex justify-between items-center">
                 <div className="hidden md:flex m-auto">
                     {navLinks.map((link, index) => (
-                        <Link key={index} href={link.href} className="text-white ml-3 font-bold">
+                        <Link key={index} href={link.href} className="text-white ml-3  ">
                             {link.name}
                         </Link>
                     ))}
@@ -37,7 +37,7 @@ const LastNav: React.FC = () => {
             </div>
             <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} mt-4`}>
                 {navLinks.map((link, index) => (
-                    <Link key={index} href={link.href} className="block text-white py-2 font-bold">
+                    <Link key={index} href={link.href} className="block text-white py-2 ">
                         {link.name}
                     </Link>
                 ))}
