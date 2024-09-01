@@ -17,25 +17,35 @@ const LastNav: React.FC = () => {
         { name: 'عن المركز', href: '#' },
         { name: 'الدروس', href: '#' },
         { name: 'المحاضرات', href: '#' },
+        { name: 'الخطب', href: '#' },
+        { name: 'المقالات', href: '#' },
+        { name: 'كتب وابحاث', href: '#' },
+        { name: 'احكام وفتاوى', href: '#' },
+        { name: 'مطويات', href: '#' },
+        { name: 'تصميمات دعوية', href: '#' },
+        { name: 'المكتبة', href: '#' },
+        { name: 'البث المباشر', href: '#' },
+        { name: 'اتصل بنا', href: '#' },
+        { name: 'المنصة التعليمية', href: '#' },
     ];
 
     return (
         <nav className="bkPrimaryColor p-4 ">
             <div className="container mx-auto flex justify-between items-center">
-                <div className="hidden md:flex m-auto">
+                <div className="hidden lg:flex m-auto">
                     {navLinks.map((link, index) => (
-                        <Link key={index} href={link.href} className="text-white ml-3  ">
+                        <Link key={index} href={link.href} className="text-white ml-2 text-[15px] leading-5 ">
                             {link.name}
                         </Link>
                     ))}
                 </div>
-                <div className="md:hidden">
+                <div className="lg:hidden">
                     <button onClick={toggleMenu}>
                         <FontAwesomeIcon icon={isOpen ? faTimes : faBars} className="text-white" />
                     </button>
                 </div>
             </div>
-            <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} mt-4`}>
+            <div className={`lg:hidden ${isOpen ? 'block' : 'hidden'} mt-4`}>
                 {navLinks.map((link, index) => (
                     <Link key={index} href={link.href} className="block text-white py-2 ">
                         {link.name}

@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const login = () => {
     return (
-        <div className='m-auto flex items-center mt-5 md:mt-auto'>
+        <div className='m-auto flex items-center mt-5 mb-3 md:mb-auto md:mt-auto'>
             <LangBtn />
             <Link href={"/"} className='text-white bkMainColor px-[26px] py-[10px] rounded-lg'>
                 <FontAwesomeIcon icon={faUser} className='ml-1' />

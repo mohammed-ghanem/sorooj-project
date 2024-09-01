@@ -12,7 +12,7 @@ const socialMediaLinks = [
 
 const SocialMedia = () => {
   return (
-    <div>
+    <div className='mr-3 lg:mr-0'>
       {socialMediaLinks.map((social, index) => (
         <Link
           key={index}

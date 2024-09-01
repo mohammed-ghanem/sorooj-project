@@ -32,7 +32,7 @@ const SubscribeForm = () => {
 
     return (
         <div className="max-w-md mx-auto mt-10">
-            <p className="text-white">اضف بريدك الالكترونى ليصلك كل جديد : </p>
+            <h4 className="text-white mr-3 lg:mr-0">اضف بريدك الالكترونى ليصلك كل جديد : </h4>
             <form onSubmit={handleSubmit} className="mt-5 relative">
                 <div className="mb-4">
                     <input
@@ -47,7 +47,7 @@ const SubscribeForm = () => {
                 </div>
                 <button
                     type="submit"
-                    className=" absolute bkPrimaryColor text-white rounded-md focus:outline-none top-[0] left-[0] px-[20px] py-[10px] rounded-tl-[30px] rounded-br-none rounded-tr-none rounded-bl-[30px]"
+                    className=" absolute bkPrimaryColor text-white rounded-md focus:outline-none top-[0] left-[0] px-[20px] py-[12px] md:py-[10px] rounded-tl-[30px] rounded-br-none rounded-tr-none rounded-bl-[30px]"
                 >
                     ارسال
                 </button>
