@@ -17,11 +17,12 @@ const SocialMedia = () => {
         <Link
           key={index}
           href={social.href}
-          className='ml-2'
+          className='ml-3 '
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FontAwesomeIcon className='primaryColor text-xl' icon={social.icon} />
+          <FontAwesomeIcon className='text-white text-xl border-[1px] border-[solid] border-[#fff] rounded-[30px] p-[7px] w-[22px] 
+' icon={social.icon} />
         </Link>
       ))}
     </div>

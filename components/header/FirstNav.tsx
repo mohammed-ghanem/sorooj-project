@@ -8,7 +8,7 @@ const FirstNav = async () => {
     // Check if data is null or undefined
     if (!data || !data.data) {
         return (
-            <div className="bkBox py-3">
+            <div className="py-3">
                 <div className="container mx-auto justify-center row grid md:grid-cols-2 gap-2 sm:grid-cols-1">
                     <div className="text-center">
                         <span>Error fetching date information</span>
@@ -47,9 +47,9 @@ const FirstNav = async () => {
     const formattedGregorianDate = `${fallbackGregorian.day} ${arabicMonths[fallbackGregorian.month.en]} ${fallbackGregorian.year} مـ`;
 
     return (
-        <div className="bkBox py-3">
-            <div className="container mx-auto justify-center row grid md:grid-cols-2 gap-2 sm:grid-cols-1">
-                <div className="text-center font-bold text-sm">
+        <div className="bkMainColor py-3">
+            <div className="container mx-auto justify-center row items-center grid md:grid-cols-2 gap-2 sm:grid-cols-1">
+                <div className="text-center  text-sm text-white">
                     <span>{formattedHijriDate}</span>
                     <span> الموافق </span>
                     <span>{formattedGregorianDate}</span>

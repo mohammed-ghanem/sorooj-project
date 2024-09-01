@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Cairo, Almarai } from "next/font/google";
+import { Inter, Cairo, Almarai , Changa } from "next/font/google";
 import "./globals.css";
 import '../utils/fontAwesome'; // Import the Font Awesome configuration
 import { AntdRegistry } from '@ant-design/nextjs-registry';
@@ -16,7 +16,7 @@ import Header from "@/components/header/Header";
 //   weight: ['400', '700'], // Adjust the weights as needed
 // });
 
-export const almarai = Almarai({
+export const changa = Changa({
   subsets: [],
   weight: ['400'], // Adjust the weights as needed
 });
@@ -38,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
 
-      <body className={almarai.className}>
+      <body className={changa.className}>
         <Header />
         <AntdRegistry>{children}</AntdRegistry>
         <Footer />

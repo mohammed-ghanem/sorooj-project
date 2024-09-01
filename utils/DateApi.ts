@@ -41,37 +41,3 @@ export async function getTimeDate(): Promise<DataResponse | null> {
         return null; // Return null on error
     }
 }
-// import { notFound } from "next/navigation"
-
-
-// export async function getTimeDate() {
-
-
-//     try {
-//         const res = await fetch('http://api.aladhan.com/v1/gToHss');
-//         if (!res.ok) {
-//             throw new Error('Network response was not ok');
-//         }
-//         const data = await res.json();
-
-//         // Handle if data is empty or not valid
-//         if (!data) {
-//             return { notFound: true };
-//         }
-
-//         return data
-
-//     } catch (error) {
-//         // Handle fetch errors
-//         return { notFound: true };
-//     }
-
-
-//     // const res = await fetch('http://api.aladhan.com/v1/gToH55')
-//     // if (!res.ok) {
-//     //     {
-//     //   notFound()
-//     // }
-//     // }
-//     // return res.json()
-// }
