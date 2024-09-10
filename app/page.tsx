@@ -11,7 +11,7 @@ export default function Home() {
       <main className="w-full">
         {/* <Slider />
         <VideoTabs/> */}
-        <ProgressBar />
+        {/* <ProgressBar /> */}
       </main>
     </div>
   );

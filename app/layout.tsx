@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Cairo, Almarai, Changa  } from "next/font/google";
+import { Inter, Cairo, Almarai, Changa } from "next/font/google";
 import "./globals.css";
 import '../utils/fontAwesome'; // Import the Font Awesome configuration
 import { AntdRegistry } from '@ant-design/nextjs-registry';
@@ -27,9 +27,10 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body className={changa.className}>
-        <Header />
-        <AntdRegistry>{children}</AntdRegistry>
-        <Footer />
+        
+          <Header />
+          <AntdRegistry>{children}</AntdRegistry>
+          <Footer />
       </body>
     </html>
   );
