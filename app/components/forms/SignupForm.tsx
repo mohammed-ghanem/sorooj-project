@@ -77,15 +77,3 @@ const SignupForm = () => {
 }
 
 export default SignupForm
-
-
-
-{/* <form className='' onSubmit={handleSubmit}>
-                <label>name</label>
-                <input type="text" name="name" value={form.name} onChange={handleChange} required />
-                <label>email</label>
-                <input type="email" name="email" value={form.email} onChange={handleChange} required />
-                <label>password</label>
-                <input type="password" name="password" value={form.password} onChange={handleChange} required />
-                <button type="submit">Submit</button>
-            </form> */}
