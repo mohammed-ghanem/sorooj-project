@@ -1,14 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  // basePath: process.env.BASE_PATH ? process.env.BASE_PATH : "",
-  // assetPrefix: process.env.URL ? process.env.URL : undefined,
-  // trailingSlash : true,
   images: {
     unoptimized: true,
-    domains: [''],
+    domains: [
+      'images.unsplash.com',
+      'links.papareact.com',
+      'links.papareact.com',
+    ],
   },
-
+  experimental: {
+    appDir: true,  // Ensure app directory routing is enabled
+  },
 }
 
-export default nextConfig
+export default nextConfig;
