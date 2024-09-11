@@ -3,9 +3,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
     domains: [
-      'images.unsplash.com',
-      'links.papareact.com',
-      'links.papareact.com',
     ],
   },
   // experimental: {
