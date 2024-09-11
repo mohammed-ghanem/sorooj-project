@@ -1,11 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-
   output: 'export',
-  // experimental: {
-  //   appDir: true, // Ensure the App Router feature is enabled
-  // },
-  // trailingSlash: true, // Important for static hosting
+  // basePath: process.env.BASE_PATH ? process.env.BASE_PATH : "",
+  // assetPrefix: process.env.URL ? process.env.URL : undefined,
+  // trailingSlash : true,
   images: {
     unoptimized: true,
     domains: [''],

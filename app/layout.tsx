@@ -4,8 +4,8 @@ import "./globals.css";
 import '../utils/fontAwesome'; // Import the Font Awesome configuration
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 
-import Footer from "@/components/footer/Footer";
-import Header from "@/components/header/Header";
+import Footer from "@/app/components/footer/Footer";
+import Header from "@/app/components/header/Header";
 
 // Import Google fonts
 const inter = Inter({ subsets: ["latin"] });
@@ -27,9 +27,9 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body className={changa.className}>
-          <Header />
-          <AntdRegistry>{children}</AntdRegistry>
-          <Footer />
+        <Header />
+        <AntdRegistry>{children}</AntdRegistry>
+        <Footer />
       </body>
     </html>
   );

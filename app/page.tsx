@@ -1,7 +1,7 @@
-import ProgressBar from "@/components/progressBar/ProgressBar";
-import Slider from "@/components/slider/Slider";
-import VideoLibTabs from "@/components/videoLibTabs/VideoLibTabs";
-import VideoTabs from "@/components/videoLibTabs/VideoTabs";
+import ProgressBar from "@/app/components/progressBar/ProgressBar";
+import Slider from "@/app/components/slider/Slider";
+import VideoLibTabs from "@/app/components/videoLibTabs/VideoLibTabs";
+import VideoTabs from "@/app/components/videoLibTabs/VideoTabs";
 export const dynamic = 'force-static';
 
 
