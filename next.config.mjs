@@ -8,9 +8,9 @@ const nextConfig = {
       'links.papareact.com',
     ],
   },
-  experimental: {
-    appDir: true,  // Ensure app directory routing is enabled
-  },
+  // experimental: {
+  //   appDir: true,  // Ensure app directory routing is enabled
+  // },
 }
 
 export default nextConfig;
