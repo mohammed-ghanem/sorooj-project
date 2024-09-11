@@ -1,5 +1,5 @@
 import Image from "next/image"
-import footerLogo from '@/assets/images/logofooter.png'
+import footerLogo from '../../assets/images/logofooter.png'
 import SocialMedia from "../socialMedia/SocialMedia"
 import SubscribeForm from "../subscribers/SubscribeForm"
 

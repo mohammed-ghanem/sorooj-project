@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Cairo, Almarai, Changa } from "next/font/google";
 import "./globals.css";
-import '../utils/fontAwesome'; // Import the Font Awesome configuration
+import './utils/fontAwesome'; // Import the Font Awesome configuration
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 
 import Footer from "@/app/components/footer/Footer";

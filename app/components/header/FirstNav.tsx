@@ -1,5 +1,5 @@
 // components/FirstNav.tsx
-import { getTimeDate } from "@/utils/DateApi";
+import { getTimeDate } from "@/app/utils/DateApi";
 import SocialMedia from "../socialMedia/SocialMedia";
 
 const FirstNav = async () => {
