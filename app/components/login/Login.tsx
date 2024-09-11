@@ -8,7 +8,7 @@ const login = () => {
     return (
         <div className='m-auto flex items-center mt-5 mb-3 md:mb-auto md:mt-auto'>
             <LangBtn />
-            <Link href={"/"} className='text-white bkMainColor px-[26px] py-[10px] rounded-lg'>
+            <Link href={"/signin"} className='text-white bkMainColor px-[26px] py-[10px] rounded-lg'>
                 <FontAwesomeIcon icon={faUser} className='ml-1' />
                 تسجيل الدخول
             </Link>
