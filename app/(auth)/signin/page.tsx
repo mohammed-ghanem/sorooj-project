@@ -1,3 +1,5 @@
+import SignInForm from "@/app/components/forms/SigninForm";
+
 export default function SignInRoute() {
-    return <div>Sing In Route</div>;
+    return <div><SignInForm /></div>;
 }
