@@ -44,7 +44,7 @@ const SignInForm = () => {
         try {
 
             // Step 1: Make a request to get the CSRF token from the backend
-            await axios.get('http://saramh.test/sanctum/csrf-cookie', {
+            await axios.get('https://backend-sorooj.wecandev.online/sanctum/csrf-cookie', {
                 withCredentials: true, // Ensure credentials (cookies) are sent
             });
 
@@ -53,7 +53,7 @@ const SignInForm = () => {
 
 
             // Step 2: Make the signup request after CSRF token is set
-            const response = await axios.post("http://saramh.test/client-api/v1/auth/login", form, {
+            const response = await axios.post("https://backend-sorooj.wecandev.online/client-api/v1/auth/login", form, {
                 headers: {
                     'X-XSRF-TOKEN': csrfToken,
                 },
