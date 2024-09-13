@@ -59,10 +59,11 @@ const SignInForm = () => {
                 },
                 withCredentials: true, // Make sure to include cookies in the request
             });
-            const { accessToken } = response.data; // Assuming the backend returns the token in this field
+            // Correct token destructuring
+            const accessToken = response.data.data.access_token; // Assuming the backend returns the token here
 
-            // Store the token securely, e.g., in localStorage or sessionStorage
-            localStorage.setItem('accessToken', accessToken);
+            // Store the token securely in localStorage
+            localStorage.setItem('access_token', accessToken);
 
             Swal.fire({
                 title: 'Login Successful!',

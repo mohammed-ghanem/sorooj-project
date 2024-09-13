@@ -110,7 +110,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Login = () => {
     // This will only run on the client side
-    const token = typeof window !== 'undefined' ? localStorage.getItem('accessToken') : null
+    const token = typeof window !== 'undefined' ? localStorage.getItem('access_token') : null
     const isLoggedIn = !!token
 
     return (
