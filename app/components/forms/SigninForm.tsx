@@ -1,24 +1,12 @@
 'use client'
-
 import { useState, ChangeEvent, FormEvent } from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-//import { useRouter } from 'next/navigation'  // For redirection with Next.js
+import { axiosDefaultConfig, axiroWithCredentials } from '@/app/utils/axiosConfig'
 
 
-
-axios.defaults.withCredentials = true;
-
-axios.interceptors.request.use((config) => {
-    const token = document.cookie.split('; ').find(row => row.startsWith('XSRF-TOKEN='))
-        ?.split('=')[1];
-
-    if (token) {
-        config.headers['X-XSRF-TOKEN'] = token;
-    }
-    return config;
-});
-
+axiroWithCredentials;
+axiosDefaultConfig;
 
 interface LoginFormData {
     email: string
@@ -44,7 +32,7 @@ const SignInForm = () => {
         try {
 
             // Step 1: Make a request to get the CSRF token from the backend
-            await axios.get('https://backend-sorooj.wecandev.online/sanctum/csrf-cookie', {
+            await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/sanctum/csrf-cookie`, {
                 withCredentials: true, // Ensure credentials (cookies) are sent
             });
 
@@ -53,7 +41,7 @@ const SignInForm = () => {
 
 
             // Step 2: Make the signup request after CSRF token is set
-            const response = await axios.post("https://backend-sorooj.wecandev.online/client-api/v1/auth/login", form, {
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/auth/login`, form, {
                 headers: {
                     'X-XSRF-TOKEN': csrfToken,
                 },
