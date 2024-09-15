@@ -1,27 +1,25 @@
 "use client"
 import { useState } from "react"
 import axios from "axios"
+import Swal from "sweetalert2"
 import { axiroWithCredentials, axiosDefaultConfig } from "@/app/utils/axiosConfig";
 
 axiroWithCredentials;
 axiosDefaultConfig;
 
-
 const ChangePassword = () => {
-  const [currentPassword, setCurrentPassword] = useState("")
-  const [newPassword, setNewPassword] = useState("")
-  const [confirmPassword, setConfirmPassword] = useState("")
+  const [old_password, setOld_password] = useState("")
+  const [password, setPassword] = useState("")
+  const [password_confirmation, setPassword_confirmation] = useState("")
   const [error, setError] = useState<string | null>(null)
-  const [success, setSuccess] = useState<string | null>(null)
 
   const handleChangePassword = async (e: React.FormEvent) => {
     e.preventDefault()
 
     // Clear any previous messages
     setError(null)
-    setSuccess(null)
 
-    if (newPassword !== confirmPassword) {
+    if (password !== password_confirmation) {
       setError("New passwords do not match")
       return
     }
@@ -35,21 +33,29 @@ const ChangePassword = () => {
 
     try {
       const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/auth/change-password`, {
-        current_password: currentPassword,
-        new_password: newPassword,
-        confirm_password: confirmPassword
+        old_password: old_password,
+        password: password,
+        password_confirmation: password_confirmation
       }, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       })
 
-      setSuccess("Password changed successfully")
-      // Optionally, redirect user after successful password change
-      window.location.href = "/auth/profile"
+      // Show success message using SweetAlert2
+      Swal.fire({
+        icon: 'success',
+        title: 'Password Changed!',
+        text: 'Your password has been updated successfully. You will now be redirected to the sign-in page.',
+        confirmButtonText: 'OK'
+      }).then(() => {
+        // After closing the SweetAlert, remove the token and redirect to the sign-in page
+        localStorage.removeItem('access_token')
+        window.location.href = "/auth/signin"
+      })
 
     } catch (error: any) {
-      setError(error.response?.data?.message || "An error occurred while changing password")
+      setError(error.response?.data?.message || "An error occurred while changing the password")
     }
   }
 
@@ -64,8 +70,8 @@ const ChangePassword = () => {
           <input
             type="password"
             id="current-password"
-            value={currentPassword}
-            onChange={(e) => setCurrentPassword(e.target.value)}
+            value={old_password}
+            onChange={(e) => setOld_password(e.target.value)}
             className="w-full p-2 border rounded"
             required
           />
@@ -77,8 +83,8 @@ const ChangePassword = () => {
           <input
             type="password"
             id="new-password"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className="w-full p-2 border rounded"
             required
           />
@@ -90,15 +96,14 @@ const ChangePassword = () => {
           <input
             type="password"
             id="confirm-password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            value={password_confirmation}
+            onChange={(e) => setPassword_confirmation(e.target.value)}
             className="w-full p-2 border rounded"
             required
           />
         </div>
 
         {error && <p className="text-red-500">{error}</p>}
-        {success && <p className="text-green-500">{success}</p>}
 
         <button
           type="submit"
@@ -112,3 +117,6 @@ const ChangePassword = () => {
 }
 
 export default ChangePassword
+
+
+
