@@ -49,12 +49,12 @@ const Login = () => {
         <div className='m-auto flex items-center mt-5 mb-3 md:mb-auto md:mt-auto'>
             <LangBtn />
             {userName ? (
-                <Link href={'/profile'} className='text-white bkMainColor px-[26px] py-[10px] rounded-lg' >
+                <Link href={'/auth/profile'} className='text-white bkMainColor px-[26px] py-[10px] rounded-lg' >
                     Welcome, {userName}
 
                 </Link>
             ) : (
-                <Link href={"/signin"} className='text-white bkMainColor px-[26px] py-[10px] rounded-lg'>
+                <Link href={"/auth/signin"} className='text-white bkMainColor px-[26px] py-[10px] rounded-lg'>
                     <FontAwesomeIcon icon={faUser} className='ml-1' />
                     Login
                 </Link>
