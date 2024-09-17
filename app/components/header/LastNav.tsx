@@ -13,7 +13,7 @@ const LastNav: React.FC = () => {
     };
 
     const navLinks = [
-        { name: 'الرئيسية', href: '#' },
+        { name: 'الرئيسية', href: '/' },
         { name: 'عن المركز', href: '#' },
         { name: 'الدروس', href: '/lesson' },
         { name: 'المحاضرات', href: '#' },
