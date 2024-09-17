@@ -4,6 +4,8 @@ import axios from 'axios'
 import Swal from 'sweetalert2'
 import { axiosDefaultConfig, axiroWithCredentials } from '@/app/utils/axiosConfig'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+
 
 axiroWithCredentials;
 axiosDefaultConfig;
@@ -12,6 +14,7 @@ interface LoginFormData {
     email: string
     password: string
 }
+
 
 const SignInForm = () => {
     const [form, setForm] = useState<LoginFormData>({
@@ -24,7 +27,7 @@ const SignInForm = () => {
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setForm({ ...form, [e.target.name]: e.target.value })
     }
-
+    const router = useRouter() // Use Next.js router for navigation
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
     
@@ -75,7 +78,7 @@ const SignInForm = () => {
     
         } catch (error) {
             if (axios.isAxiosError(error)) {
-                if (error.response?.status === 401) {
+                if (error.response?.status === 422) {
                     setErrors('Invalid email or password');
                     Swal.fire({
                         title: 'Login Failed',
@@ -83,14 +86,35 @@ const SignInForm = () => {
                         icon: 'error',
                         confirmButtonText: 'OK'
                     });
-                } else if (error.response?.status === 403) {
-                    Swal.fire({
-                        title:'Account Not Verified',
-                        text: `Please verify your account before logging in.`,
-                        icon: 'warning',
-                        confirmButtonText: 'OK'
-                    });
-                } else if (error.code === 'ERR_NETWORK') {
+                } else if (error.response?.status === 401) {
+                    // Resend verification code
+                    try {
+                       // await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/auth/send-otp`);
+                
+                        // Show success message with SweetAlert2
+                        Swal.fire({
+                            title: 'Account Not Verified',
+                            text: 'A new verification code has been sent to your email. Please verify your account.',
+                            icon: 'warning',
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            // Redirect to the verify code page with email query parameter
+                            //localStorage.setItem('source', 'signin');
+                            // Redirect to the verify code page
+                            
+                            router.push(`/auth/resend-otp`);
+                        });
+                    } catch (resendError) {
+                        console.error("Error resending verification code", resendError);
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'Failed to resend verification code. Please try again later.',
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                }
+                else if (error.code === 'ERR_NETWORK') {
                     Swal.fire({
                         title: 'Network Error',
                         text: 'Please check your network connection and try again.',

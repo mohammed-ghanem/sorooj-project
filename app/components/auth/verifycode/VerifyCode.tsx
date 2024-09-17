@@ -76,6 +76,10 @@ const VerifyCode = () => {
           localStorage.removeItem('source');
           // Redirect to reset password page if coming from forgot password
           router.push(`/auth/reset-password?email=${email}`);
+        } else if (source === "resend-otp") {
+          // Clear the source from localStorage
+          localStorage.removeItem('source');
+          window.location.href = "/"
         } else {
           // Default redirect if source is missing
           router.push("/");
