@@ -81,17 +81,21 @@ const SignupForm = () => {
                 const accessToken = response.data.data.access_token;
                 localStorage.setItem("access_token", accessToken);
                 
-
+                console.log(response)
                 // SweetAlert2 for success message
+                // After signup success
                 Swal.fire({
                     title: 'Registration Successful!',
-                    text: 'You will be redirected to the verify page. Please check your email.',
+                    text: 'You will be redirected to the verify page to check your email.',
                     icon: 'success',
                     confirmButtonText: 'OK'
                 }).then(() => {
-                    // Redirect to verify-code page with the email in query params
+                    // Store the source in localStorage
+                    localStorage.setItem('source', 'signup');
+                    // Redirect to the verify code page
                     router.push(`/auth/verify-code?email=${form.email}`);
                 });
+  
 
             } catch (axiosError) {
                 if (axios.isAxiosError(axiosError)) {

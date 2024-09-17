@@ -7,46 +7,44 @@ import Swal from "sweetalert2"
 const VerifyCode = () => {
   const [verificationCode, setVerificationCode] = useState<string>("")
   const [email, setEmail] = useState<string | null>(null)
-  const [source, setSource] = useState<string | null>(null) // Add state for source
+  const [source, setSource] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
   const router = useRouter()
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    // Retrieve email and source from query params
+    // Get the email from query string
     const emailParam = searchParams.get("email");
-    const sourceParam = searchParams.get("source");
-  
-    console.log("source:", sourceParam);  // Debugging: Check if source is being passed
-    console.log("email:", emailParam);    // Debugging: Check if email is being passed
-  
+    const sourceParam = searchParams.get("source") || localStorage.getItem('source'); // Check localStorage for source
+
     if (emailParam) {
       setEmail(emailParam);
     } else {
       // Redirect to forgot password if no email is found
       router.push("/auth/forgot-password");
     }
-  
+
     if (sourceParam) {
       setSource(sourceParam);
     } else {
-      console.error("No source parameter found in URL");
+      console.error("No source found in URL or localStorage");
+      // Optionally redirect to home or an error page
+      router.push("/");
     }
   }, [searchParams, router]);
-  
 
   const handleVerifyCode = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
     // Clear previous errors
-    setError(null)
+    setError(null);
 
     // Get the access token from localStorage
-    const token = localStorage.getItem('access_token')
+    const token = localStorage.getItem('access_token');
 
     if (!token) {
-      setError("User is not authenticated")
-      return
+      setError("User is not authenticated");
+      return;
     }
 
     try {
@@ -57,7 +55,7 @@ const VerifyCode = () => {
         headers: {
           Authorization: `Bearer ${token}` // Add the access token in the Authorization header
         }
-      })
+      });
 
       // Show success message with SweetAlert2
       Swal.fire({
@@ -66,23 +64,27 @@ const VerifyCode = () => {
         text: 'Your account has been verified.',
         confirmButtonText: 'OK'
       }).then(() => {
-        // Determine the redirection based on the source
+        // Redirect based on the source
         if (source === "signup") {
+          // Clear the source from localStorage
+          localStorage.removeItem('source');
+          localStorage.removeItem('access_token');
           // Redirect to sign-in page if coming from signup
-          router.push("/auth/sign-in");
+          router.push("/auth/signin");
         } else if (source === "forgot-password") {
+          // Clear the source from localStorage
+          localStorage.removeItem('source');
           // Redirect to reset password page if coming from forgot password
           router.push(`/auth/reset-password?email=${email}`);
         } else {
           // Default redirect if source is missing
           router.push("/");
         }
-        
-      })
+      });
 
     } catch (error: any) {
       // Handle and show error
-      setError(error.response?.data?.message || "Invalid code. Please try again.")
+      setError(error.response?.data?.message || "Invalid code. Please try again.");
     }
   }
 
@@ -114,10 +116,10 @@ const VerifyCode = () => {
         </button>
       </form>
     </div>
-  )
+  );
 }
 
-export default VerifyCode
+export default VerifyCode;
 
 
 

@@ -20,23 +20,24 @@ const ForgotPassword = () => {
         email: email
       })
         const { access_token } = response.data.data; // Extract access_token from response
-        
+        console.log(response)
       // Save access_token in localStorage
       localStorage.setItem('access_token', access_token)
 
       // Show success message with SweetAlert2
+      // After forgot password success
       Swal.fire({
         icon: 'success',
         title: 'Verification Link Sent!',
         text: 'Please check your email for the verification link.',
         confirmButtonText: 'OK'
       }).then(() => {
-        // Clear the form
-        setEmail("")
+        // Store the source in localStorage
+        localStorage.setItem('source', 'forgot-password');
+        // Redirect to the verify code page
+        router.push(`/auth/verify-code?email=${email}`);
+      });
 
-        // Redirect to the verify code page with email
-        router.push(`/auth/verify-code?email=${email}`)
-      })
 
     } catch (error: any) {
       // Handle and show error
