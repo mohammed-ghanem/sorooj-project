@@ -49,13 +49,15 @@ const UserProfile = () => {
                             <h2>Welcome, {userName}</h2>
                                 <p>Email: {userEmail}</p>
                                 <Link href={"/auth/change-password"} >
+                                    change password
                                 </Link>    
                             <button
                                 onClick={handleLogout}
                                 className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700"
                             >
                                 Logout
-                            </button>
+                                </button>
+                            <Link href={"/auth/update-profile"}>update my profile</Link>
                         </div>
                     ) : (
                         <p>No user data available</p>

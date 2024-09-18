@@ -47,7 +47,7 @@ const SignInForm = () => {
                 },
                 withCredentials: true,
             });
-    
+    console.log(response)
             // Extract necessary fields from the response
             const accessToken = response.data.data.access_token;
             const isVerified = response.data.data.is_verified;
