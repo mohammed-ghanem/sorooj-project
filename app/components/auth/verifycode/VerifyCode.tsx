@@ -130,7 +130,7 @@ const SuspenseWrapper = () => (
   </Suspense>
 );
 
-export default VerifyCode;
+export default SuspenseWrapper;
 
 
 
