@@ -93,7 +93,7 @@ const VerifyCode = () => {
   }
 
   return (
-    <Suspense fallback={<div>loading ...</div>}>
+    
       <div>
         <h2>Verify Your Code</h2>
         <form onSubmit={handleVerifyCode} className="space-y-4">
@@ -120,11 +120,15 @@ const VerifyCode = () => {
             Verify Code
           </button>
         </form>
-      </div>
-    </Suspense>
-
+    </div>
   );
 }
+
+const SuspenseWrapper = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <VerifyCode />
+  </Suspense>
+);
 
 export default VerifyCode;
 
