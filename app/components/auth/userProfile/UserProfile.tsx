@@ -2,6 +2,7 @@
 import axios from "axios"
 import Link from "next/link"
 import { useState, useEffect } from "react"
+import Swal from "sweetalert2"
 
 const UserProfile = () => {
     const [userName, setUserName] = useState<string | null>(null)
@@ -31,12 +32,55 @@ const UserProfile = () => {
     }, [])
 
     // Logout handler
-    const handleLogout = () => {
-        localStorage.removeItem('access_token')  // Remove the token from localStorage
-        setUserName(null)  // Clear user info
-        setUserEmail(null)
-        window.location.href = "/"
-    }
+    const handleLogout = async () => {
+        try {
+            // Show SweetAlert2 confirmation dialog
+            const result = await Swal.fire({
+              title: 'Are you sure?',
+              text: "You will be logged out from your account!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonText: 'Yes, logout!',
+              cancelButtonText: 'Cancel',
+            });
+        
+            // If user confirms logout
+            if (result.isConfirmed) {
+              // Make a POST request to the logout API endpoint
+              const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/auth/logout`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${localStorage.getItem('access_token')}`, // Add token for authorization
+                },
+              });
+        
+              if (!response.ok) {
+                throw new Error('Failed to logout');
+              }
+        
+              // If logout is successful, remove the token and clear user info
+              localStorage.removeItem('access_token');
+              setUserName(null);  // Clear user info
+              setUserEmail(null);
+        
+              // Show SweetAlert2 success alert
+              await Swal.fire({
+                icon: 'success',
+                title: 'Logged out!',
+                text: 'You have been successfully logged out.',
+                confirmButtonText: 'OK',
+              });
+        
+              // Redirect to the home page
+              window.location.href = '/';
+            }
+          } catch (error) {
+            console.error('Logout error:', error);
+            // Handle any errors (optional)
+          }
+      };
+      
 
     return (
         <div>
@@ -60,7 +104,7 @@ const UserProfile = () => {
                             <Link href={"/auth/update-profile"}>update my profile</Link>
                         </div>
                     ) : (
-                        <p>No user data available</p>
+                        <p>loading...</p>
                     )}
                 </>
             )}

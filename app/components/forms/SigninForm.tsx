@@ -50,7 +50,7 @@ const SignInForm = () => {
     console.log(response)
             // Extract necessary fields from the response
             const accessToken = response.data.data.access_token;
-            const isVerified = response.data.data.is_verified;
+            const isVerified = response.data.data.user.is_verified;
     
             // Step 3: Check if the user is verified
             if (!isVerified) {
@@ -88,9 +88,7 @@ const SignInForm = () => {
                     });
                 } else if (error.response?.status === 401) {
                     // Resend verification code
-                    try {
-                       // await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/auth/send-otp`);
-                
+                    try {                
                         // Show success message with SweetAlert2
                         Swal.fire({
                             title: 'Account Not Verified',
@@ -98,9 +96,9 @@ const SignInForm = () => {
                             icon: 'warning',
                             confirmButtonText: 'OK'
                         }).then(() => {
-                            // Redirect to the verify code page with email query parameter
+                            //Redirect to the verify code page with email query parameter
                             //localStorage.setItem('source', 'signin');
-                            // Redirect to the verify code page
+                            //Redirect to the verify code page
                             
                             router.push(`/auth/resend-otp`);
                         });
