@@ -8,6 +8,7 @@ import { z, ZodError } from 'zod'
 import Swal from 'sweetalert2'
 import { axiosDefaultConfig, axiroWithCredentials } from '@/app/utils/axiosConfig'
 import { useRouter } from 'next/navigation'
+import Cookies from 'js-cookie' // Import the cookies library
 
 axiroWithCredentials;
 axiosDefaultConfig;
@@ -77,11 +78,18 @@ const SignupForm = () => {
                     withCredentials: true, // Make sure to include cookies in the request
                 });
 
-                // Step 3: Store the access_token in localStorage
+                // Step 3: Store the access_token in a secure, HttpOnly cookie
                 const accessToken = response.data.data.access_token;
-                localStorage.setItem("access_token", accessToken);
                 
-                console.log(response)
+                // Set the cookie using Cookies library (js-cookie)
+                Cookies.set('access_token', accessToken, {
+                    expires: 7, // Token expires in 7 days, adjust as needed
+                    secure: false, // Use 'true' for HTTPS, false for localhost
+                    sameSite: 'Strict',
+                });
+
+                console.log(response);
+
                 // SweetAlert2 for success message
                 // After signup success
                 Swal.fire({
@@ -90,12 +98,11 @@ const SignupForm = () => {
                     icon: 'success',
                     confirmButtonText: 'OK'
                 }).then(() => {
-                    // Store the source in localStorage
-                    localStorage.setItem('source', 'signup');
+                    // Store the source in a cookie (or you can store it elsewhere)
+                    Cookies.set('source', 'signup');
                     // Redirect to the verify code page
                     router.push(`/auth/verify-code?email=${form.email}`);
                 });
-  
 
             } catch (axiosError) {
                 if (axios.isAxiosError(axiosError)) {
@@ -219,6 +226,7 @@ export default SignupForm
 // import { z, ZodError } from 'zod'
 // import Swal from 'sweetalert2'
 // import { axiosDefaultConfig, axiroWithCredentials } from '@/app/utils/axiosConfig'
+// import { useRouter } from 'next/navigation'
 
 // axiroWithCredentials;
 // axiosDefaultConfig;
@@ -253,6 +261,7 @@ export default SignupForm
 //     })
 
 //     const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({})
+//     const router = useRouter() // Use Next.js router for navigation
 
 //     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 //         setForm({ ...form, [e.target.name]: e.target.value })
@@ -264,7 +273,7 @@ export default SignupForm
 
 //     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 //         e.preventDefault();
-        
+
 //         // Zod validation
 //         try {
 //             SignupSchema.parse(form); // Will throw an error if validation fails
@@ -278,6 +287,7 @@ export default SignupForm
 
 //                 const csrfToken = document.cookie.split('; ').find(row => row.startsWith('XSRF-TOKEN='))
 //                 ?.split('=')[1];
+                
 //                 // Step 2: Make the signup request after CSRF token is set
 //                 const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/auth/register`, form, {
 //                     headers: {
@@ -286,17 +296,25 @@ export default SignupForm
 //                     withCredentials: true, // Make sure to include cookies in the request
 //                 });
 
-//                 // console.log("Success", response.data);
-
+//                 // Step 3: Store the access_token in localStorage
+//                 const accessToken = response.data.data.access_token;
+//                 localStorage.setItem("access_token", accessToken);
+                
+//                 console.log(response)
 //                 // SweetAlert2 for success message
+//                 // After signup success
 //                 Swal.fire({
 //                     title: 'Registration Successful!',
-//                     text: 'You will be redirected to the verify page check your email',
+//                     text: 'You will be redirected to the verify page to check your email.',
 //                     icon: 'success',
 //                     confirmButtonText: 'OK'
 //                 }).then(() => {
-//                     window.location.href = "/"
+//                     // Store the source in localStorage
+//                     localStorage.setItem('source', 'signup');
+//                     // Redirect to the verify code page
+//                     router.push(`/auth/verify-code?email=${form.email}`);
 //                 });
+  
 
 //             } catch (axiosError) {
 //                 if (axios.isAxiosError(axiosError)) {
@@ -334,6 +352,7 @@ export default SignupForm
 //     return (
 //         <div className='w-1/2 mx-auto my-10' style={{"direction" : "ltr"}}>
 //             <form className="bg-slate-400 p-4" onSubmit={handleSubmit}>
+//                 {/* Form Fields */}
 //                 <div className="mb-4">
 //                     <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">Full name</label>
 //                     <input
@@ -408,5 +427,4 @@ export default SignupForm
 // }
 
 // export default SignupForm
-
 

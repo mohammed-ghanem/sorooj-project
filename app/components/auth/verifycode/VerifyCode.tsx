@@ -3,6 +3,7 @@ import { useState, useEffect, Suspense } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import axios from "axios"
 import Swal from "sweetalert2"
+import Cookies from 'js-cookie' // Import js-cookie to handle cookies
 
 const VerifyCode = () => {
   const [verificationCode, setVerificationCode] = useState<string>("")
@@ -14,37 +15,37 @@ const VerifyCode = () => {
 
   useEffect(() => {
     // Get the email from query string
-    const emailParam = searchParams.get("email");
-    const sourceParam = searchParams.get("source") || localStorage.getItem('source'); // Check localStorage for source
+    const emailParam = searchParams.get("email")
+    const sourceParam = searchParams.get("source") || Cookies.get('source') // Use cookies for source
 
     if (emailParam) {
-      setEmail(emailParam);
+      setEmail(emailParam)
     } else {
       // Redirect to forgot password if no email is found
-      router.push("/auth/forgot-password");
+      router.push("/auth/forgot-password")
     }
 
     if (sourceParam) {
-      setSource(sourceParam);
+      setSource(sourceParam)
     } else {
-      console.error("No source found in URL or localStorage");
+      console.error("No source found in URL or cookies")
       // Optionally redirect to home or an error page
-      router.push("/");
+      router.push("/")
     }
-  }, [searchParams, router]);
+  }, [searchParams, router])
 
   const handleVerifyCode = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
 
     // Clear previous errors
-    setError(null);
+    setError(null)
 
-    // Get the access token from localStorage
-    const token = localStorage.getItem('access_token');
+    // Get the access token from cookies
+    const token = Cookies.get('access_token')
 
     if (!token) {
-      setError("User is not authenticated");
-      return;
+      setError("User is not authenticated")
+      return
     }
 
     try {
@@ -55,7 +56,7 @@ const VerifyCode = () => {
         headers: {
           Authorization: `Bearer ${token}` // Add the access token in the Authorization header
         }
-      });
+      })
 
       // Show success message with SweetAlert2
       Swal.fire({
@@ -64,78 +65,76 @@ const VerifyCode = () => {
         text: 'Your account has been verified.',
         confirmButtonText: 'OK'
       }).then(() => {
-        // Redirect based on the source
+        // Handle source-based redirects
         if (source === "signup") {
-          // Clear the source from localStorage
-          localStorage.removeItem('source');
-          localStorage.removeItem('access_token');
+          // Clear the source from cookies
+          Cookies.remove('source')
+          Cookies.remove('access_token')
           // Redirect to sign-in page if coming from signup
-          router.push("/auth/signin");
+          router.push("/auth/signin")
         } else if (source === "forgot-password") {
-          // Clear the source from localStorage
-          localStorage.removeItem('source');
+          // Clear the source from cookies
+          Cookies.remove('source')
           // Redirect to reset password page if coming from forgot password
-          router.push(`/auth/reset-password?email=${email}`);
+          router.push(`/auth/reset-password?email=${email}`)
         } else if (source === "resend-otp") {
-          // Clear the source from localStorage
-          localStorage.removeItem('source');
+          // Clear the source from cookies
+          Cookies.remove('source')
           window.location.href = "/"
         } else {
           // Default redirect if source is missing
-          router.push("/");
+          router.push("/")
         }
-      });
+      })
 
     } catch (error: any) {
       // Handle and show error
-      setError(error.response?.data?.message || "Invalid code. Please try again.");
+      setError(error.response?.data?.message || "Invalid code. Please try again.")
     }
   }
 
   return (
-    
-      <div>
-        <h2>Verify Your Code</h2>
-        <form onSubmit={handleVerifyCode} className="space-y-4">
-          <div>
-            <label htmlFor="verification-code" className="block text-sm font-medium">
-              Enter the verification code sent to {email}
-            </label>
-            <input
-              type="text"
-              id="verification-code"
-              value={verificationCode}
-              onChange={(e) => setVerificationCode(e.target.value)}
-              className="w-full p-2 border rounded"
-              required
-            />
-          </div>
+    <div>
+      <h2>Verify Your Code</h2>
+      <form onSubmit={handleVerifyCode} className="space-y-4">
+        <div>
+          <label htmlFor="verification-code" className="block text-sm font-medium">
+            Enter the verification code sent to {email}
+          </label>
+          <input
+            type="text"
+            id="verification-code"
+            value={verificationCode}
+            onChange={(e) => setVerificationCode(e.target.value)}
+            className="w-full p-2 border rounded"
+            required
+          />
+        </div>
 
-          {error && <p className="text-red-500">{error}</p>}
+        {error && <p className="text-red-500">{error}</p>}
 
-          <button
-            type="submit"
-            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-          >
-            Verify Code
-          </button>
-        </form>
+        <button
+          type="submit"
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+        >
+          Verify Code
+        </button>
+      </form>
     </div>
-  );
+  )
 }
 
 const SuspenseWrapper = () => (
   <Suspense fallback={<div>Loading...</div>}>
     <VerifyCode />
   </Suspense>
-);
+)
 
-export default SuspenseWrapper;
-
+export default SuspenseWrapper
 
 
 // "use client"
-// import { useState, useEffect } from "react"
+// import { useState, useEffect, Suspense } from "react"
 // import { useSearchParams, useRouter } from "next/navigation"
 // import axios from "axios"
 // import Swal from "sweetalert2"
@@ -143,33 +142,44 @@ export default SuspenseWrapper;
 // const VerifyCode = () => {
 //   const [verificationCode, setVerificationCode] = useState<string>("")
 //   const [email, setEmail] = useState<string | null>(null)
+//   const [source, setSource] = useState<string | null>(null)
 //   const [error, setError] = useState<string | null>(null)
 //   const router = useRouter()
 //   const searchParams = useSearchParams()
 
 //   useEffect(() => {
 //     // Get the email from query string
-//     const emailParam = searchParams.get("email")
+//     const emailParam = searchParams.get("email");
+//     const sourceParam = searchParams.get("source") || localStorage.getItem('source'); // Check localStorage for source
+
 //     if (emailParam) {
-//       setEmail(emailParam)
+//       setEmail(emailParam);
 //     } else {
 //       // Redirect to forgot password if no email is found
-//       router.push("/auth/forgot-password")
+//       router.push("/auth/forgot-password");
 //     }
-//   }, [searchParams, router])
+
+//     if (sourceParam) {
+//       setSource(sourceParam);
+//     } else {
+//       console.error("No source found in URL or localStorage");
+//       // Optionally redirect to home or an error page
+//       router.push("/");
+//     }
+//   }, [searchParams, router]);
 
 //   const handleVerifyCode = async (e: React.FormEvent) => {
-//     e.preventDefault()
+//     e.preventDefault();
 
 //     // Clear previous errors
-//     setError(null)
+//     setError(null);
 
 //     // Get the access token from localStorage
-//     const token = localStorage.getItem('access_token')
+//     const token = localStorage.getItem('access_token');
 
 //     if (!token) {
-//       setError("User is not authenticated")
-//       return
+//       setError("User is not authenticated");
+//       return;
 //     }
 
 //     try {
@@ -180,54 +190,80 @@ export default SuspenseWrapper;
 //         headers: {
 //           Authorization: `Bearer ${token}` // Add the access token in the Authorization header
 //         }
-//       })
+//       });
 
 //       // Show success message with SweetAlert2
 //       Swal.fire({
 //         icon: 'success',
 //         title: 'Verification Successful!',
-//         text: 'Your account has been verified. Please reset your password.',
+//         text: 'Your account has been verified.',
 //         confirmButtonText: 'OK'
 //       }).then(() => {
-//         // Redirect to reset password page after verification
-//         router.push(`/auth/reset-password?email=${email}`)
-//       })
+//         // Redirect based on the source
+//         if (source === "signup") {
+//           // Clear the source from localStorage
+//           localStorage.removeItem('source');
+//           localStorage.removeItem('access_token');
+//           // Redirect to sign-in page if coming from signup
+//           router.push("/auth/signin");
+//         } else if (source === "forgot-password") {
+//           // Clear the source from localStorage
+//           localStorage.removeItem('source');
+//           // Redirect to reset password page if coming from forgot password
+//           router.push(`/auth/reset-password?email=${email}`);
+//         } else if (source === "resend-otp") {
+//           // Clear the source from localStorage
+//           localStorage.removeItem('source');
+//           window.location.href = "/"
+//         } else {
+//           // Default redirect if source is missing
+//           router.push("/");
+//         }
+//       });
 
 //     } catch (error: any) {
 //       // Handle and show error
-//       setError(error.response?.data?.message || "Invalid code. Please try again.")
+//       setError(error.response?.data?.message || "Invalid code. Please try again.");
 //     }
 //   }
 
 //   return (
-//     <div>
-//       <h2>Verify Your Code</h2>
-//       <form onSubmit={handleVerifyCode} className="space-y-4">
-//         <div>
-//           <label htmlFor="verification-code" className="block text-sm font-medium">
-//             Enter the verification code sent to {email}
-//           </label>
-//           <input
-//             type="text"
-//             id="verification-code"
-//             value={verificationCode}
-//             onChange={(e) => setVerificationCode(e.target.value)}
-//             className="w-full p-2 border rounded"
-//             required
-//           />
-//         </div>
+    
+//       <div>
+//         <h2>Verify Your Code</h2>
+//         <form onSubmit={handleVerifyCode} className="space-y-4">
+//           <div>
+//             <label htmlFor="verification-code" className="block text-sm font-medium">
+//               Enter the verification code sent to {email}
+//             </label>
+//             <input
+//               type="text"
+//               id="verification-code"
+//               value={verificationCode}
+//               onChange={(e) => setVerificationCode(e.target.value)}
+//               className="w-full p-2 border rounded"
+//               required
+//             />
+//           </div>
 
-//         {error && <p className="text-red-500">{error}</p>}
+//           {error && <p className="text-red-500">{error}</p>}
 
-//         <button
-//           type="submit"
-//           className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-//         >
-//           Verify Code
-//         </button>
-//       </form>
+//           <button
+//             type="submit"
+//             className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+//           >
+//             Verify Code
+//           </button>
+//         </form>
 //     </div>
-//   )
+//   );
 // }
 
-// export default VerifyCode
+// const SuspenseWrapper = () => (
+//   <Suspense fallback={<div>Loading...</div>}>
+//     <VerifyCode />
+//   </Suspense>
+// );
+
+// export default SuspenseWrapper;
+

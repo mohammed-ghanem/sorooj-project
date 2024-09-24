@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 import { axiosDefaultConfig, axiroWithCredentials } from '@/app/utils/axiosConfig'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-
+import Cookies from 'js-cookie'; // Import js-cookie to handle cookies
 
 axiroWithCredentials;
 axiosDefaultConfig;
@@ -15,31 +15,31 @@ interface LoginFormData {
     password: string
 }
 
-
 const SignInForm = () => {
     const [form, setForm] = useState<LoginFormData>({
         email: '',
         password: ''
-    })
+    });
 
-    const [errors, setErrors] = useState<string | null>(null)
+    const [errors, setErrors] = useState<string | null>(null);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setForm({ ...form, [e.target.name]: e.target.value })
-    }
-    const router = useRouter() // Use Next.js router for navigation
+        setForm({ ...form, [e.target.name]: e.target.value });
+    };
+    const router = useRouter(); // Use Next.js router for navigation
+
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-    
+
         try {
             // Step 1: Get the CSRF token from the backend
             await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/sanctum/csrf-cookie`, {
                 withCredentials: true,
             });
-    
+
             const csrfToken = document.cookie.split('; ').find(row => row.startsWith('XSRF-TOKEN='))
                 ?.split('=')[1];
-    
+
             // Step 2: Make the login request
             const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/auth/login`, form, {
                 headers: {
@@ -47,11 +47,11 @@ const SignInForm = () => {
                 },
                 withCredentials: true,
             });
-    console.log(response)
+
             // Extract necessary fields from the response
             const accessToken = response.data.data.access_token;
             const isVerified = response.data.data.user.is_verified;
-    
+
             // Step 3: Check if the user is verified
             if (!isVerified) {
                 Swal.fire({
@@ -62,10 +62,10 @@ const SignInForm = () => {
                 });
                 return;
             }
-    
-            // Store the access token securely in localStorage
-            localStorage.setItem('access_token', accessToken);
-    
+
+            // Store the access token securely in cookies instead of localStorage
+            Cookies.set('access_token', accessToken, { expires: 7 }); // Expires in 7 days (optional)
+
             // Show success message and redirect
             Swal.fire({
                 title: 'Login Successful!',
@@ -73,9 +73,10 @@ const SignInForm = () => {
                 icon: 'success',
                 confirmButtonText: 'OK'
             }).then(() => {
-                window.location.href = "/"
+               window.location.href = "/"
+                // router.push("/"); // Redirect to the homepage after login
             });
-    
+
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 if (error.response?.status === 422) {
@@ -88,7 +89,7 @@ const SignInForm = () => {
                     });
                 } else if (error.response?.status === 401) {
                     // Resend verification code
-                    try {                
+                    try {
                         // Show success message with SweetAlert2
                         Swal.fire({
                             title: 'Account Not Verified',
@@ -96,10 +97,7 @@ const SignInForm = () => {
                             icon: 'warning',
                             confirmButtonText: 'OK'
                         }).then(() => {
-                            //Redirect to the verify code page with email query parameter
-                            //localStorage.setItem('source', 'signin');
                             //Redirect to the verify code page
-                            
                             router.push(`/auth/resend-otp`);
                         });
                     } catch (resendError) {
@@ -111,8 +109,7 @@ const SignInForm = () => {
                             confirmButtonText: 'OK'
                         });
                     }
-                }
-                else if (error.code === 'ERR_NETWORK') {
+                } else if (error.code === 'ERR_NETWORK') {
                     Swal.fire({
                         title: 'Network Error',
                         text: 'Please check your network connection and try again.',
@@ -132,10 +129,9 @@ const SignInForm = () => {
             }
         }
     };
-    
 
     return (
-        <div className='w-1/2 mx-auto my-10' style={{ "direction": "ltr" }}>
+        <div className='w-1/2 mx-auto my-10' style={{ direction: "ltr" }}>
             <form className="bg-slate-400 p-4" onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">Email address</label>
@@ -167,13 +163,13 @@ const SignInForm = () => {
                     </button>
                 </div>
             </form>
-            <Link href={'/auth/forget-password'}>forget password</Link>
-            <Link href={'/auth/signup'}>create new account</Link>
+            <Link href={'/auth/forget-password'}>Forget password</Link>
+            <Link href={'/auth/signup'}>Create new account</Link>
         </div>
-    )
+    );
 }
 
-export default SignInForm
+export default SignInForm;
 
 
 // 'use client'
@@ -182,6 +178,7 @@ export default SignInForm
 // import Swal from 'sweetalert2'
 // import { axiosDefaultConfig, axiroWithCredentials } from '@/app/utils/axiosConfig'
 // import Link from 'next/link'
+// import { useRouter } from 'next/navigation'
 
 
 // axiroWithCredentials;
@@ -192,6 +189,7 @@ export default SignInForm
 //     password: string
 // }
 
+
 // const SignInForm = () => {
 //     const [form, setForm] = useState<LoginFormData>({
 //         email: '',
@@ -199,39 +197,50 @@ export default SignInForm
 //     })
 
 //     const [errors, setErrors] = useState<string | null>(null)
-//     //const router = useRouter(); // Next.js navigation hook for redirection
 
 //     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 //         setForm({ ...form, [e.target.name]: e.target.value })
 //     }
-
+//     const router = useRouter() // Use Next.js router for navigation
 //     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 //         e.preventDefault();
-
+    
 //         try {
-
-//             // Step 1: Make a request to get the CSRF token from the backend
+//             // Step 1: Get the CSRF token from the backend
 //             await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/sanctum/csrf-cookie`, {
-//                 withCredentials: true, // Ensure credentials (cookies) are sent
+//                 withCredentials: true,
 //             });
-
+    
 //             const csrfToken = document.cookie.split('; ').find(row => row.startsWith('XSRF-TOKEN='))
 //                 ?.split('=')[1];
-
-
-//             // Step 2: Make the signup request after CSRF token is set
+    
+//             // Step 2: Make the login request
 //             const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/auth/login`, form, {
 //                 headers: {
 //                     'X-XSRF-TOKEN': csrfToken,
 //                 },
-//                 withCredentials: true, // Make sure to include cookies in the request
+//                 withCredentials: true,
 //             });
-//             // Correct token destructuring
-//             const accessToken = response.data.data.access_token; // Assuming the backend returns the token here
-// console.log(response)
-//             // Store the token securely in localStorage
+//     console.log(response)
+//             // Extract necessary fields from the response
+//             const accessToken = response.data.data.access_token;
+//             const isVerified = response.data.data.user.is_verified;
+    
+//             // Step 3: Check if the user is verified
+//             if (!isVerified) {
+//                 Swal.fire({
+//                     title: 'Account Not Verified',
+//                     text: 'Please verify your account before logging in.',
+//                     icon: 'warning',
+//                     confirmButtonText: 'OK'
+//                 });
+//                 return;
+//             }
+    
+//             // Store the access token securely in localStorage
 //             localStorage.setItem('access_token', accessToken);
-
+    
+//             // Show success message and redirect
 //             Swal.fire({
 //                 title: 'Login Successful!',
 //                 text: 'You will be redirected to the home page.',
@@ -239,24 +248,65 @@ export default SignInForm
 //                 confirmButtonText: 'OK'
 //             }).then(() => {
 //                 window.location.href = "/"
-//                 // router.push('/'); // Redirect to home page after alert confirmation
 //             });
-
+    
 //         } catch (error) {
-//             if (axios.isAxiosError(error) && error.response?.status === 401) {
-//                 setErrors('Invalid email or password');
-//                 Swal.fire({
-//                     title: 'Login Failed',
-//                     text: 'Invalid email or password. Please try again.',
-//                     icon: 'error',
-//                     confirmButtonText: 'OK'
-//                 });
-//             }
-//             else {
+//             if (axios.isAxiosError(error)) {
+//                 if (error.response?.status === 422) {
+//                     setErrors('Invalid email or password');
+//                     Swal.fire({
+//                         title: 'Login Failed',
+//                         text: 'Invalid email or password. Please try again.',
+//                         icon: 'error',
+//                         confirmButtonText: 'OK'
+//                     });
+//                 } else if (error.response?.status === 401) {
+//                     // Resend verification code
+//                     try {                
+//                         // Show success message with SweetAlert2
+//                         Swal.fire({
+//                             title: 'Account Not Verified',
+//                             text: 'A new verification code has been sent to your email. Please verify your account.',
+//                             icon: 'warning',
+//                             confirmButtonText: 'OK'
+//                         }).then(() => {
+//                             //Redirect to the verify code page with email query parameter
+//                             //localStorage.setItem('source', 'signin');
+//                             //Redirect to the verify code page
+                            
+//                             router.push(`/auth/resend-otp`);
+//                         });
+//                     } catch (resendError) {
+//                         console.error("Error resending verification code", resendError);
+//                         Swal.fire({
+//                             title: 'Error',
+//                             text: 'Failed to resend verification code. Please try again later.',
+//                             icon: 'error',
+//                             confirmButtonText: 'OK'
+//                         });
+//                     }
+//                 }
+//                 else if (error.code === 'ERR_NETWORK') {
+//                     Swal.fire({
+//                         title: 'Network Error',
+//                         text: 'Please check your network connection and try again.',
+//                         icon: 'error',
+//                         confirmButtonText: 'OK'
+//                     });
+//                 } else {
+//                     Swal.fire({
+//                         title: 'Error',
+//                         text: 'Something went wrong. Please try again later.',
+//                         icon: 'error',
+//                         confirmButtonText: 'OK'
+//                     });
+//                 }
+//             } else {
 //                 console.error("Error", error);
 //             }
 //         }
-//     }
+//     };
+    
 
 //     return (
 //         <div className='w-1/2 mx-auto my-10' style={{ "direction": "ltr" }}>

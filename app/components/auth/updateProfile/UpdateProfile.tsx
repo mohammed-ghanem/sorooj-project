@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
+import Cookies from 'js-cookie';  // Import the js-cookie library
 
 const UpdateProfile = () => {
   const [name, setName] = useState('');
@@ -14,9 +15,10 @@ const UpdateProfile = () => {
     const fetchProfile = async () => {
       try {
         setLoading(true);
+        const token = Cookies.get('access_token');  // Retrieve token from cookies
         const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/auth/profile`, {
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
+            'Authorization': `Bearer ${token}`,
           },
         });
         const data = await response.json();
@@ -38,11 +40,12 @@ const UpdateProfile = () => {
     setLoading(true);
 
     try {
+      const token = Cookies.get('access_token');  // Retrieve token from cookies
       const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/auth/update-profile`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
+          'Authorization': `Bearer ${token}`,  // Use token from cookies
         },
         body: JSON.stringify({ name, email }),
       });
@@ -75,10 +78,8 @@ const UpdateProfile = () => {
     <div>
       <h1>Update Profile</h1>
 
-      {/*       
       {error && <p className="text-red-500">{error}</p>}
       {success && <p className="text-green-500">Profile updated successfully!</p>}
-      */}
 
       <form onSubmit={handleSubmit}>
         <div>
@@ -114,7 +115,9 @@ export default UpdateProfile;
 
 
 // "use client"
+
 // import { useState, useEffect } from 'react';
+// import Swal from 'sweetalert2';
 
 // const UpdateProfile = () => {
 //   const [name, setName] = useState('');
@@ -133,7 +136,6 @@ export default UpdateProfile;
 //           },
 //         });
 //         const data = await response.json();
-//         console.log(data.data)
 //         setName(data.data.user.name);
 //         setEmail(data.data.user.email);
 //         setLoading(false);
@@ -161,15 +163,25 @@ export default UpdateProfile;
 //         body: JSON.stringify({ name, email }),
 //       });
 //       const result = await response.json();
-      
+
 //       if (!response.ok) {
 //         throw new Error(result.message || 'Failed to update profile');
 //       }
 
+//       // SweetAlert2 notification
+//       Swal.fire({
+//         icon: 'success',
+//         title: 'Profile Updated',
+//         text: 'Your profile has been updated successfully!',
+//         confirmButtonText: 'OK',
+//       }).then(() => {
+//         window.location.href = "/" // Redirect to home page after successful update
+//       });
+
 //       setSuccess(true);
 //       setLoading(false);
 //     } catch (err: any) {
-//       console.error('Error:', err); // Log the error in detail
+//       console.error('Error:', err);
 //       setError(err.message);
 //       setLoading(false);
 //     }
@@ -178,8 +190,12 @@ export default UpdateProfile;
 //   return (
 //     <div>
 //       <h1>Update Profile</h1>
+
+//       {/*       
 //       {error && <p className="text-red-500">{error}</p>}
 //       {success && <p className="text-green-500">Profile updated successfully!</p>}
+//       */}
+
 //       <form onSubmit={handleSubmit}>
 //         <div>
 //           <label htmlFor="name">Name</label>
@@ -211,3 +227,5 @@ export default UpdateProfile;
 // };
 
 // export default UpdateProfile;
+
+
