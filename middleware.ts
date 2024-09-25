@@ -8,7 +8,7 @@ export function middleware(request: NextRequest) {
     const token = request.cookies.get('access_token');
 
     // Define public paths that can be accessed without authentication
-    const publicPaths = ['/auth/signin','/auth/signup','/auth/forgot-password'];
+    const publicPaths = ['/auth/signin', '/auth/signup', '/auth/forgot-password'];
 
     // Check if the user is accessing a protected route without a token
     if (!token) {

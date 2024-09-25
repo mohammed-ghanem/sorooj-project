@@ -1,13 +1,17 @@
+import createNextIntlPlugin from 'next-intl/plugin'
+
+const withNextIntl = createNextIntlPlugin();
+
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
     unoptimized: true,
-    domains: [
-    ],
+    domains: [],
   },
   // experimental: {
   //   appDir: true,  // Ensure app directory routing is enabled
   // },
 }
 
-export default nextConfig;
+export default withNextIntl(nextConfig)
