@@ -14,6 +14,8 @@ const UserProfile = () => {
         // Get the token from cookies instead of localStorage
         const token = Cookies.get('access_token');
 
+        console.log("")
+
         if (token) {
             axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/auth/profile`, {
                 headers: { Authorization: `Bearer ${token}` }
