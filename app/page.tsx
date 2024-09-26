@@ -1,20 +1,19 @@
-import ProgressBar from "@/app/components/progressBar/ProgressBar";
-import Slider from "@/app/components/slider/Slider";
-import VideoLibTabs from "@/app/components/videoLibTabs/VideoLibTabs";
-import VideoTabs from "@/app/components/videoLibTabs/VideoTabs";
+import ProgressBar from "@/components/progressBar/ProgressBar";
+import Slider from "@/components/slider/Slider";
+import VideoLibTabs from "@/components/videoLibTabs/VideoLibTabs";
+import VideoTabs from "@/components/videoLibTabs/VideoTabs";
 
-import {useTranslations} from 'next-intl';
+
 
 export const dynamic = 'force-static';
 
 
 export default function Home() {
 
-  const t = useTranslations('HomePage');
   return (
     <div>
       <main className="w-full">
-        <h1>{t('title')}</h1>
+        <div>home page content</div>
         {/* <Slider />
         <VideoTabs/> */}
         {/* <ProgressBar /> */}

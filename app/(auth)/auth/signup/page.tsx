@@ -1,4 +1,4 @@
-import SignupForm from "@/app/components/forms/SignupForm";
+import SignupForm from "@/components/forms/SignupForm";
 
 export default function SingUpRoute() {
     return <div>
