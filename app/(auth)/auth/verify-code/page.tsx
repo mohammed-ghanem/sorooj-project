@@ -1,4 +1,4 @@
-import VerifyCode from "@/app/components/auth/verifycode/VerifyCode";
+import VerifyCode from "@/components/auth/verifycode/VerifyCode";
 
 export default function forgetPassword() {
     return <div>

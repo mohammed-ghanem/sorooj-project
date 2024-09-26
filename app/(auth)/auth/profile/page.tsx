@@ -1,4 +1,4 @@
-import UserProfile from "@/app/components/auth/userProfile/UserProfile";
+import UserProfile from "@/components/auth/userProfile/UserProfile";
 
 
 export default function useProfile() {
