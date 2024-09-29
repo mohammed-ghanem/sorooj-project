@@ -6,7 +6,7 @@ import 'react-phone-input-2/lib/style.css'
 import PhoneInput from 'react-phone-input-2'
 import { z, ZodError } from 'zod'
 import Swal from 'sweetalert2'
-import { axiosDefaultConfig, axiroWithCredentials } from '@/src/app/utils/axiosConfig'
+import { axiosDefaultConfig, axiroWithCredentials } from '@/src/utils/axiosConfig'
 import { useRouter } from 'next/navigation'
 import Cookies from 'js-cookie' // Import the cookies library
 

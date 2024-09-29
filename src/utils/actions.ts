@@ -1,5 +1,19 @@
 // 'use server';
 
+// import { cookies } from 'next/headers';
+
+// export default async function setLanguageValue(value: string) {
+//     cookies().set('language', value);  // Set the language in cookies
+
+//     console.log(value)
+//     return value
+// }
+
+
+
+// 'use server';
+
+
 // import {cookies} from 'next/headers';
 // import {Locale, defaultLocale} from '@/i18n/config';
 

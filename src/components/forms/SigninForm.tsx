@@ -2,7 +2,7 @@
 import { useState, ChangeEvent, FormEvent } from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import { axiosDefaultConfig, axiroWithCredentials } from '@/src/app/utils/axiosConfig'
+import { axiosDefaultConfig, axiroWithCredentials } from '@/src/utils/axiosConfig'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import Cookies from 'js-cookie'; // Import js-cookie to handle cookies
