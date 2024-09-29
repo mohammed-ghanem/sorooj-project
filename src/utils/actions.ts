@@ -1,13 +1,13 @@
-// 'use server';
+'use server';
 
-// import { cookies } from 'next/headers';
+import { cookies } from 'next/headers';
 
-// export default async function setLanguageValue(value: string) {
-//     cookies().set('language', value);  // Set the language in cookies
+export default async function setLanguageValue(value: string) {
+    cookies().set('language', value);  // Set the language in cookies
 
-//     console.log(value)
-//     return value
-// }
+    console.log(value)
+    return value
+}
 
 
 

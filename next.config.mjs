@@ -1,4 +1,19 @@
+// /** @type {import('next').NextConfig} */
+// // next.config.mjs
+// const nextConfig = {
+//   images: {
+//     unoptimized: true,
+//     domains: [],
+//   },
+// };
 
+// export default nextConfig;
+
+
+
+
+import createNextIntlPlugin from 'next-intl/plugin';
+const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -10,23 +25,6 @@ const nextConfig = {
   // },
 }
 
-export default nextConfig
-
-
-
-// import createNextIntlPlugin from 'next-intl/plugin';
-// const withNextIntl = createNextIntlPlugin();
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//   images: {
-//     unoptimized: true,
-//     domains: [],
-//   },
-//   // experimental: {
-//   //   appDir: true,  // Ensure app directory routing is enabled
-//   // },
-// }
-
-// export default withNextIntl(nextConfig);
+export default withNextIntl(nextConfig);
 
 

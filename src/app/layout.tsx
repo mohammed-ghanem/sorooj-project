@@ -12,7 +12,7 @@ import Footer from "@/src/components/footer/Footer";
 //for translation
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
-import { cookies } from 'next/headers';
+
 
 
 
@@ -47,20 +47,20 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  // const locale = await getLocale();
-
-  // // Providing all messages to the client
-  // // side is the easiest way to get started
-  // const messages = await getMessages();
+  const locale = await getLocale();
+ 
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
 
   return (
-    <html lang='ar' dir="rtl">
+    <html lang={locale} dir="rtl">
       <body className={changa.className}>
         <Header />
         <AntdRegistry>
-         
-            {children}
-         
+        <NextIntlClientProvider messages={messages}>
+          {children}
+        </NextIntlClientProvider>
         </AntdRegistry>
         <Footer />
       </body>
