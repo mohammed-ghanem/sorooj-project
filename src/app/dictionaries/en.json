@@ -1,3 +1,14 @@
 {
-    "title": "welcome "
+    "navigation" : {
+        "home": "home",
+        "lesson": "lesson"
+    },
+    "pages" : {
+        "homePage" : {
+            "title" : "welcome in home page"
+        },
+        "lesson" : {
+            "title" : "welcome in lesson"
+        }
+    }
 }

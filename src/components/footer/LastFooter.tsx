@@ -2,7 +2,8 @@ import React from 'react'
 import FastLinksFooter from './FastLinksFooter'
 import ContactUsFooter from './ContactUsFooter'
 
-const LastFooter = () => {
+const LastFooter = ({ language }: any) => {
+    const footerNavLang = language
     return (
         <div className='mt-8 relative z-10 pb-8'>
             <div className=" container mx-auto row grid grid-cols-1 lg:grid-cols-3">
@@ -13,7 +14,7 @@ const LastFooter = () => {
                     </p>
                 </div>
                 <div className='text-white mr-2 md:mr-9'>
-                    <FastLinksFooter />
+                    <FastLinksFooter language={ footerNavLang} />
                 </div>
                 <div className='text-white mr-2 md:mr-9'>
                     <ContactUsFooter />

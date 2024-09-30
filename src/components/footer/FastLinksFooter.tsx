@@ -1,13 +1,16 @@
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
+import { getDictionary } from "@/src/app/[lang]/dictionaries";
 
-const FastLinksFooter = () => {
+const FastLinksFooter =async ({ language }: any) => {
+    const dict = await getDictionary(language);
+    
     // Array of links
     const links = [
-        { href: '/', text: 'الرئيسية' },
+        { href: `/${language}`, text: `${dict.navigation.home}` },
         { href: '/', text: 'عن المركز' },
-        { href: '/', text: 'الدروس' }, 
+        { href: `${language}/lesson`, text: `${dict.navigation.lesson}` }, 
         { href: '/', text: ' المحاضرات' },
         { href: '/', text: ' احكام وفتاوى' },
         { href: '/', text: '  المكتبة المرئية' },

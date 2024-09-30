@@ -4,12 +4,13 @@ import LogoNav from "./LogoNav"
 
 
 
-const Header = () => {
+const Header = ({ language }: any) => {
+  const headerNavLink = language
   return (
     <header >
       <FirstNav />
       <LogoNav />
-      <LastNav />
+      <LastNav language={headerNavLink } />
     </header>
   )
 }
