@@ -1,4 +1,4 @@
-// import { useTranslations } from 'next-intl';
+
 
 const Page = () => {
 
