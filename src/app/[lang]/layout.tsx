@@ -1,25 +1,25 @@
 import type { Metadata } from "next";
-import { Inter, Cairo, Almarai, Changa } from "next/font/google";
+// import { Inter, Cairo, Almarai, Changa } from "next/font/google";
 import "./globals.css";
 import '@/src/utils/fontAwesome'; // Import the Font Awesome configuration
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 
 import Header from "@/src/components/header/Header";
 import Footer from "@/src/components/footer/Footer";
+import { Cairo } from 'next/font/google';
 
-// import MainLayout from "./components/main-layout";
-
-export const cairo = Cairo({
+// Import Google Font
+const cairo = Cairo({
   subsets: ['latin'],
-  weight: ['400', '700'], // Adjust the weights as needed
+  variable: '--font-cairo', // optional if you're using CSS variables
 });
 
 // Import Google fonts
-const inter = Inter({ subsets: ["latin"] });
-export const changa = Changa({
-  subsets: [],
-  weight: ['400'], // Adjust the weights as needed
-});
+// const inter = Inter({ subsets: ["latin"] });
+// export const changa = Changa({
+//   subsets: [],
+//   weight: ['400'], // Adjust the weights as needed
+// });
 
 // export const metadata: Metadata = {
 //   title: "مركز سرج للدرسات وبالابحاث ",
@@ -43,8 +43,8 @@ export default async function RootLayout({
   
 
   return (
-    <html lang={params.lang} dir={params.lang === "ar" ? "rtl" : 'ltr'}>
-      <body className={cairo.className}>
+    <html lang={params.lang} dir={params.lang === "ar" ? "rtl" : 'ltr'} className={cairo.className}>
+      <body>
         <Header/>
         <AntdRegistry>
           {children}
