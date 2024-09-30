@@ -1,30 +1,21 @@
-
-// import Cookies from 'js-cookie';
-
+// import { useTranslation } from 'react-i18next';
 
 // const LangBtn = () => {
-  
-  
-//   const changeLocale = (locale: string) => {
-//     // Set the locale in cookies
-//     Cookies.set('language', locale, { expires: 7 });
+//     const { i18n } = useTranslation();
 
-//     // Reload the page to apply the change
-//     window.location.reload()
-//   };
+//     const changeLanguage = (lng: string) => {
+//         i18n.changeLanguage(lng);
+//     };
 
-//   return (
-//     <div>
-//       <button onClick={() => changeLocale('en')}>English</button>
-//       <button onClick={() => changeLocale('ar')}>ar</button>
-//     </div>
-//   );
+//     return (
+//         <div>
+//             <button onClick={() => changeLanguage('en')}>English</button>
+//             <button onClick={() => changeLanguage('ar')}>Arabic</button>
+//         </div>
+//     );
 // };
 
 // export default LangBtn;
-
-
-import setLanguageValue from '@/src/utils/actions'
 
 
 const LangBtn = () => {
@@ -32,11 +23,8 @@ const LangBtn = () => {
   
   return (
     <div>
-      <select onChange={(e) => setLanguageValue(e.target.value)}>
-        <option value="en">English</option>
-        <option value="ar">arabic</option>
-        <option value="en">English</option>
-      </select>
+      <button>En</button>
+       <button>ar</button>
     </div>
   )
 }

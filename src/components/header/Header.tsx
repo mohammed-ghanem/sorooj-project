@@ -6,7 +6,7 @@ import LogoNav from "./LogoNav"
 
 const Header = () => {
   return (
-    <header>
+    <header >
       <FirstNav />
       <LogoNav />
       <LastNav />
