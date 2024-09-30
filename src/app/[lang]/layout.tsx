@@ -7,14 +7,12 @@ import { AntdRegistry } from '@ant-design/nextjs-registry';
 import Header from "@/src/components/header/Header";
 import Footer from "@/src/components/footer/Footer";
 
-
-import { getDictionary } from "./dictionaries";
 // import MainLayout from "./components/main-layout";
 
-// export const cairo = Cairo({
-//   subsets: ['latin'],
-//   weight: ['400', '700'], // Adjust the weights as needed
-// });
+export const cairo = Cairo({
+  subsets: ['latin'],
+  weight: ['400', '700'], // Adjust the weights as needed
+});
 
 // Import Google fonts
 const inter = Inter({ subsets: ["latin"] });
@@ -46,7 +44,7 @@ export default async function RootLayout({
 
   return (
     <html lang={params.lang} dir={params.lang === "ar" ? "rtl" : 'ltr'}>
-      <body className={changa.className}>
+      <body className={cairo.className}>
         <Header/>
         <AntdRegistry>
           {children}
