@@ -8,7 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 import Cookies from 'js-cookie'; // Import js-cookie library
 
-const Login = () => {
+const Login = ({ language }: any) => {
+   
     const [userName, setUserName] = useState<string | null>(null)
     const [loading, setLoading] = useState<boolean>(true)
 
@@ -57,11 +58,11 @@ const Login = () => {
         <div className='m-auto flex items-center mt-5 mb-3 md:mb-auto md:mt-auto'>
             <LangBtn />
             {userName ? (
-                <Link href={'/auth/profile'} className='text-white bkMainColor px-[26px] py-[10px] rounded-lg'>
+                <Link href={`${language}/auth/profile`} className='text-white bkMainColor px-[26px] py-[10px] rounded-lg'>
                     Welcome, {userName}
                 </Link>
             ) : (
-                <Link href={"/auth/signin"} className='text-white bkMainColor px-[26px] py-[10px] rounded-lg'>
+                <Link href={`/auth/signin`} className='text-white bkMainColor px-[26px] py-[10px] rounded-lg'>
                     <FontAwesomeIcon icon={faUser} className='ml-1' />
                     Login
                 </Link>

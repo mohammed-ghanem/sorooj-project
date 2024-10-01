@@ -20,7 +20,6 @@ const SignInForm = () => {
         email: '',
         password: ''
     });
-
     const [errors, setErrors] = useState<string | null>(null);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -163,8 +162,8 @@ const SignInForm = () => {
                     </button>
                 </div>
             </form>
-            <Link href={'/auth/forget-password'}>Forget password</Link>
-            <Link href={'/auth/signup'}>Create new account</Link>
+            <Link href={`/auth/forget-password`}>Forget password</Link>
+            <Link href={`/auth/signup`}>Create new account</Link>
         </div>
     );
 }
