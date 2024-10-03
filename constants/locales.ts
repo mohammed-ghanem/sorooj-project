@@ -1,4 +1,4 @@
-const locales = [{ locale: "en" }, { locale: "ar" }]
+const locales = [{ locale: "ar" }, { locale: "en" }]
 
 const defaultLocale = "ar"
 

@@ -1,11 +1,12 @@
 'use client'
-import { useState, ChangeEvent, FormEvent } from 'react'
+import { useState, ChangeEvent, FormEvent, useEffect } from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import { axiosDefaultConfig, axiroWithCredentials } from '@/utils/axiosConfig'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter , useParams } from 'next/navigation'
 import Cookies from 'js-cookie'; // Import js-cookie to handle cookies
+
 
 axiroWithCredentials;
 axiosDefaultConfig;
@@ -16,6 +17,10 @@ interface LoginFormData {
 }
 
 const SignInForm = () => {
+
+    const { lang }: { lang?: string } = useParams(); // Access dynamic [lang] parameter
+    const [mounted, setMounted] = useState<boolean>(false);
+
     const [form, setForm] = useState<LoginFormData>({
         email: '',
         password: ''
@@ -72,7 +77,7 @@ const SignInForm = () => {
                 icon: 'success',
                 confirmButtonText: 'OK'
             }).then(() => {
-               window.location.href = "/"
+               window.location.href = `/${lang}/`
                 // router.push("/"); // Redirect to the homepage after login
             });
 
@@ -97,7 +102,7 @@ const SignInForm = () => {
                             confirmButtonText: 'OK'
                         }).then(() => {
                             //Redirect to the verify code page
-                            router.push(`/auth/resend-otp`);
+                            router.push(`/${lang}/auth/resend-otp`);
                         });
                     } catch (resendError) {
                         console.error("Error resending verification code", resendError);
@@ -128,6 +133,11 @@ const SignInForm = () => {
             }
         }
     };
+    useEffect(() => {
+        setMounted(true); // Ensure the component is mounted before accessing params
+    }, []);
+
+    if (!mounted) return null; // Avoid rendering before the component is mounted
 
     return (
         <div className='w-1/2 mx-auto my-10' style={{ direction: "ltr" }}>
@@ -162,8 +172,8 @@ const SignInForm = () => {
                     </button>
                 </div>
             </form>
-            <Link href={`/auth/forget-password`}>Forget password</Link>
-            <Link href={`/auth/signup`}>Create new account</Link>
+            <Link href={`/${lang}/auth/forget-password`}>Forget password</Link>
+            <Link href={`/${lang}/auth/signup`}>Create new account</Link>
         </div>
     );
 }

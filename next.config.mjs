@@ -4,9 +4,9 @@ const nextConfig = {
     unoptimized: true,
     domains: [],
   },
-  experimental: {
-    appDir: true, // Ensure the app directory is enabled for Next.js 14
-  },
+  // experimental: {
+  //   appDir: true, // Ensure the app directory is enabled for Next.js 14
+  // },
 }
 
 export default nextConfig
