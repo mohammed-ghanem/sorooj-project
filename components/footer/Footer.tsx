@@ -4,13 +4,13 @@ import LastFooter from './LastFooter'
 import footerVectorImage from '@/assets/images/footervector.png'
 
 
-const Footer = ({ language }: any) => {
+const Footer = () => {
   return (
     <div className="bkMainColor relative ">
       <Image src={footerVectorImage} className=' object-cover absolute ' alt='footerVector' />
       <FirstFooter />
       <hr className=' opacity-30' />
-      <LastFooter language={language} />
+      <LastFooter />
       {/* copyRight */}
       <hr className=' opacity-30' />
       <div className='text-center primaryColor text-sm font-bold font-sans' >

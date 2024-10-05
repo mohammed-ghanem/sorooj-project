@@ -12,7 +12,7 @@
         }
     },
     "authLinks" :{
-        "login" : "LogIn",
+        "login" : "Log In",
         "register" : "Register"
     },
     "welcome" : {

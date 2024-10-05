@@ -3,7 +3,7 @@ import FastLinksFooter from './FastLinksFooter'
 import ContactUsFooter from './ContactUsFooter'
 
 
-const LastFooter = async ({ language }: any) => {
+const LastFooter = () => {
     return (
         <div className='mt-8 relative z-10 pb-8'>
             <div className=" container mx-auto row grid grid-cols-1 lg:grid-cols-3">
@@ -14,7 +14,7 @@ const LastFooter = async ({ language }: any) => {
                     </p>
                 </div>
                 <div className='text-white mr-2 md:mr-9'>
-                    <FastLinksFooter language={language} />
+                    <FastLinksFooter/>
                 </div>
                 <div className='text-white mr-2 md:mr-9'>
                     <ContactUsFooter />

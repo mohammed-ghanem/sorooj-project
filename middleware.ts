@@ -13,43 +13,31 @@ export function middleware(request: NextRequest) {
     pathname.startsWith(`/${locale}`)
   );
 
-  // Handle case when no locale is in the URL (i.e., undefined localeInPath)
-  if (!localeInPath && pathname === '/') {
-    // Redirect or rewrite to the default locale (e.g., /ar) if the URL is just "/"
-    return NextResponse.redirect(
-      new URL(
-        `/${defaultLocale}${pathname}${searchParams ? `?${searchParams}` : ""}`,
-        request.url
-      )
-    );
+  // Handle case when no locale is in the URL
+  if (!localeInPath) {
+    if (pathname === '/') {
+      // Rewrite to /ar internally without showing it in the URL
+      return NextResponse.rewrite(
+        new URL(`/${defaultLocale}${pathname}${searchParams ? `?${searchParams}` : ""}`, request.url)
+      );
+    } else {
+      // If the path is not root, rewrite to default locale path
+      return NextResponse.rewrite(
+        new URL(
+          `/${defaultLocale}${pathname}${searchParams ? `?${searchParams}` : ""}`,
+          request.url
+        )
+      );
+    }
   }
-
-  // If the URL contains the default locale (e.g., /ar), allow it to pass without rewriting or redirecting
-  // if (localeInPath === defaultLocale) {
-  //   return NextResponse.next(); // Allow the request to continue
-  // }
 
   // 2. Authentication handling middleware logic
 
-  // Define public paths that can be accessed without authentication
-  // const publicPaths = [
-  //   `/${localeInPath || defaultLocale}/auth/signin`, 
-  //   `/${localeInPath || defaultLocale}/auth/signup`, 
-  //   `/${localeInPath || defaultLocale}/auth/forget-password`,
-  //   `/en`
-  // ];
-
   // Check if the user is accessing a protected route without a token
   if (!token) {
-    // If the user tries to access /auth/profile or /auth/update-profile without a token, return a 404 response
     if (pathname.endsWith('/auth/profile') || pathname.endsWith('/auth/update-profile')) {
       return NextResponse.redirect(new URL(`/${localeInPath}/auth/signin`, request.url));
     }
-
-    // Redirect to sign-in page for other protected routes
-    // if (!publicPaths.includes(pathname)) {
-    //   return NextResponse.redirect(new URL(`/${localeInPath || defaultLocale}/auth/signin`, request.url));
-    // }
   }
 
   // Check if the user is already signed in and trying to access the sign-in or sign-up page
@@ -62,12 +50,147 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Apply middleware to all paths except API and static assets
     "/((?!api|_next/static|_next/image|favicon.ico).*)",
-    // Protect all routes under /auth for each locale
     "/[lang]/auth/:path*"
   ],
 };
+
+
+
+
+//********************************************************** */
+
+// import { NextResponse, type NextRequest } from "next/server";
+// import { defaultLocale } from "./constants/locales";
+// import { i18n } from "./i18n-config";
+
+// export function middleware(request: NextRequest) {
+//   const { pathname, searchParams } = request.nextUrl;
+//   const token = request.cookies.get('access_token');
+
+//   // 1. Language handling middleware logic
+
+//   // Check if the pathname starts with any of the locales in the config
+//   const localeInPath = i18n.locales.find((locale) =>
+//     pathname.startsWith(`/${locale}`)
+//   );
+
+//   // Handle case when no locale is in the URL (i.e., undefined localeInPath)
+//   if (!localeInPath && pathname === '/') {
+//     // Redirect or rewrite to the default locale (e.g., /ar) if the URL is just "/"
+//     return NextResponse.redirect(
+//       new URL(
+//         `/${defaultLocale}${pathname}${searchParams ? `?${searchParams}` : ""}`,
+//         request.url
+//       )
+//     );
+//   }
+//   // 2. Authentication handling middleware logic
+
+//   // Check if the user is accessing a protected route without a token
+//   if (!token) {
+//     // If the user tries to access /auth/profile or /auth/update-profile without a token, return a 404 response
+//     if (pathname.endsWith('/auth/profile') || pathname.endsWith('/auth/update-profile')) {
+//       return NextResponse.redirect(new URL(`/${localeInPath}/auth/signin`, request.url));
+//     }
+
+//   }
+
+//   // Check if the user is already signed in and trying to access the sign-in or sign-up page
+//   if (token && (pathname.endsWith('/auth/signin') || pathname.endsWith('/auth/signup'))) {
+//     return NextResponse.redirect(new URL(`/${localeInPath}/auth/profile`, request.url));
+//   }
+
+//   return NextResponse.next(); // Allow the request to continue
+// }
+
+// export const config = {
+//   matcher: [
+//     // Apply middleware to all paths except API and static assets
+//     "/((?!api|_next/static|_next/image|favicon.ico).*)",
+//     // Protect all routes under /auth for each locale
+//     "/[lang]/auth/:path*"
+//   ],
+// };
+
+
+
+
+
+//*************************************************************** */
+
+
+
+// import { NextResponse, type NextRequest } from "next/server";
+// import { defaultLocale } from "./constants/locales";
+// import { i18n } from "./i18n-config";
+
+// export function middleware(request: NextRequest) {
+//   const { pathname, searchParams } = request.nextUrl;
+//   const token = request.cookies.get('access_token');
+
+//   // 1. Language handling middleware logic
+
+//   // Check if the pathname starts with any of the locales in the config
+//   const localeInPath = i18n.locales.find((locale) =>
+//     pathname.startsWith(`/${locale}`)
+//   );
+
+//   // Handle case when no locale is in the URL (i.e., undefined localeInPath)
+//   if (!localeInPath && pathname === '/') {
+//     // Redirect or rewrite to the default locale (e.g., /ar) if the URL is just "/"
+//     return NextResponse.redirect(
+//       new URL(
+//         `/${defaultLocale}${pathname}${searchParams ? `?${searchParams}` : ""}`,
+//         request.url
+//       )
+//     );
+//   }
+
+//   // If the URL contains the default locale (e.g., /ar), allow it to pass without rewriting or redirecting
+//   // if (localeInPath === defaultLocale) {
+//   //   return NextResponse.next(); // Allow the request to continue
+//   // }
+
+//   // 2. Authentication handling middleware logic
+
+//   // Define public paths that can be accessed without authentication
+//   // const publicPaths = [
+//   //   `/${localeInPath || defaultLocale}/auth/signin`, 
+//   //   `/${localeInPath || defaultLocale}/auth/signup`, 
+//   //   `/${localeInPath || defaultLocale}/auth/forget-password`,
+//   //   `/en`
+//   // ];
+
+//   // Check if the user is accessing a protected route without a token
+//   if (!token) {
+//     // If the user tries to access /auth/profile or /auth/update-profile without a token, return a 404 response
+//     if (pathname.endsWith('/auth/profile') || pathname.endsWith('/auth/update-profile')) {
+//       return NextResponse.redirect(new URL(`/${localeInPath}/auth/signin`, request.url));
+//     }
+
+//     // Redirect to sign-in page for other protected routes
+//     // if (!publicPaths.includes(pathname)) {
+//     //   return NextResponse.redirect(new URL(`/${localeInPath || defaultLocale}/auth/signin`, request.url));
+//     // }
+//   }
+
+//   // Check if the user is already signed in and trying to access the sign-in or sign-up page
+//   if (token && (pathname.endsWith('/auth/signin') || pathname.endsWith('/auth/signup'))) {
+//     return NextResponse.redirect(new URL(`/${localeInPath}/auth/profile`, request.url));
+//   }
+
+//   return NextResponse.next(); // Allow the request to continue
+// }
+
+// export const config = {
+//   matcher: [
+//     // Apply middleware to all paths except API and static assets
+//     "/((?!api|_next/static|_next/image|favicon.ico).*)",
+//     // Protect all routes under /auth for each locale
+//     "/[lang]/auth/:path*"
+//   ],
+// };
 
 
 

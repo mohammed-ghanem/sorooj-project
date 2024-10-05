@@ -8,11 +8,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 import Cookies from 'js-cookie'; // Import js-cookie library
 import { useParams } from 'next/navigation'
-
 import en from '@/app/dictionaries/en.json';  // Import English dictionary
 import ar from '@/app/dictionaries/ar.json';  // Import Arabic dictionary
 
-const Login = ({ language }: any) => {
+const Login = () => {
     // Access dynamic [lang] parameter
     const { lang }: { lang?: string } = useParams();
     const [dictionary, setDictionary] = useState<any>(null);
@@ -90,7 +89,7 @@ const Login = ({ language }: any) => {
             ) : (
                 <Link href={`/${lang}/auth/signin`} className='text-white bkMainColor px-[26px] py-[10px] rounded-lg'>
                     <FontAwesomeIcon icon={faUser} className='ml-1' />
-                    Login
+                    <span className='mx-1'>{dictionary ? dictionary.authLinks.login : "Loading..."}</span>
                 </Link>
             )}
         </div>
