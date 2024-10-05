@@ -3,6 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 import { getDictionary } from "@/app/[lang]/dictionaries";
 
+
+
+
 const FastLinksFooter =async ({ language }: any) => {
     const dict = await getDictionary(language);
     

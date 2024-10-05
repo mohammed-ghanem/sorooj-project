@@ -7,17 +7,29 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 import Cookies from 'js-cookie'; // Import js-cookie library
-import {useParams } from 'next/navigation'
+import { useParams } from 'next/navigation'
+
+import en from '@/app/dictionaries/en.json';  // Import English dictionary
+import ar from '@/app/dictionaries/ar.json';  // Import Arabic dictionary
 
 const Login = ({ language }: any) => {
     // Access dynamic [lang] parameter
-    const { lang }: { lang?: string } = useParams(); 
+    const { lang }: { lang?: string } = useParams();
+    const [dictionary, setDictionary] = useState<any>(null);
     const [mounted, setMounted] = useState<boolean>(false);
-
-   
 
     const [userName, setUserName] = useState<string | null>(null)
     const [loading, setLoading] = useState<boolean>(true)
+
+
+    useEffect(() => {
+        // Dynamically set the dictionary based on the current language
+        if (lang === 'en') {
+            setDictionary(en);
+        } else if (lang === 'ar') {
+            setDictionary(ar);
+        }
+    }, [lang]);
 
     useEffect(() => {
         // This code will run only on the client side
@@ -66,13 +78,14 @@ const Login = ({ language }: any) => {
             </div>
         )
     }
-    
+
     return (
         <div className='m-auto flex items-center mt-5 mb-3 md:mb-auto md:mt-auto'>
             <LangBtn />
             {userName ? (
-                <Link href={`/${lang}/auth/profile`} className='text-white bkMainColor px-[26px] py-[10px] rounded-lg'>
-                    Welcome, {userName}
+                <Link href={`/${lang}/auth/profile`} className='flex text-white bkMainColor px-[26px] py-[10px] rounded-lg'>
+                    <h1 className=' mx-1'> {dictionary ? dictionary.welcome.welcome : "Loading..."} </h1>
+                    {userName}
                 </Link>
             ) : (
                 <Link href={`/${lang}/auth/signin`} className='text-white bkMainColor px-[26px] py-[10px] rounded-lg'>
@@ -85,6 +98,73 @@ const Login = ({ language }: any) => {
 }
 
 export default Login
+
+
+
+// 'use client';
+
+// import React, { useEffect, useState } from 'react';
+// import LangBtn from '../buttons/LangBtn'
+// import { useParams } from 'next/navigation';
+// import en from '@/app/dictionaries/en.json';  // Import English dictionary
+// import ar from '@/app/dictionaries/ar.json';  // Import Arabic dictionary
+
+// const Login = () => {
+//     const { lang } = useParams<{ lang: string }>(); // Get language from URL
+//     const [dictionary, setDictionary] = useState<any>(null);
+
+//     useEffect(() => {
+//         // Dynamically set the dictionary based on the current language
+//         if (lang === 'en') {
+//             setDictionary(en);
+//         } else if (lang === 'ar') {
+//             setDictionary(ar);
+//         }
+//     }, [lang]);
+
+//     return (
+//         <div>
+//             <LangBtn />
+//             <h1>{dictionary ? dictionary.welcome.welcome : "Loading..."}</h1>
+//             <button>{dictionary ? dictionary.login : "Loading..."}</button>
+//         </div>
+//     );
+// };
+
+// export default Login;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -5,13 +5,12 @@ import footerVectorImage from '@/assets/images/footervector.png'
 
 
 const Footer = ({ language }: any) => {
-  const footerNavLang = language
   return (
     <div className="bkMainColor relative ">
       <Image src={footerVectorImage} className=' object-cover absolute ' alt='footerVector' />
-      <FirstFooter  />
+      <FirstFooter />
       <hr className=' opacity-30' />
-      <LastFooter language={ footerNavLang}/>
+      <LastFooter language={language} />
       {/* copyRight */}
       <hr className=' opacity-30' />
       <div className='text-center primaryColor text-sm font-bold font-sans' >

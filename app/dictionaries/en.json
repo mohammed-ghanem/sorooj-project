@@ -10,5 +10,12 @@
         "lesson" : {
             "title" : "welcome in lesson"
         }
+    },
+    "authLinks" :{
+        "login" : "LogIn",
+        "register" : "Register"
+    },
+    "welcome" : {
+        "welcome" : "welcome"
     }
 }

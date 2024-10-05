@@ -24,7 +24,8 @@
     ],
     "paths": {
       "@/constants/*" : ["./src/constants/*"],
-     // "@/components/*" : ["./src/app/[lang]/components/*"],
+      "@/utils/*" : ["./src/utils/*"],
+     //"@/components/*" : ["./app/[lang]/components/*"],
       "@/*": ["./*"]
     }
   },
