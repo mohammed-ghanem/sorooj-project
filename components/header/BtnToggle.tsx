@@ -17,7 +17,7 @@ const BtnToggle = ({navLinks}:any) => {
           <div className="container mx-auto flex justify-between items-center">
                 <div className="hidden lg:flex m-auto">
                     {navLinkMap.map(({href , name, index} : any) => (
-                        <Link key={index} href={href} className="text-white ml-2 text-[15px] leading-5 ">
+                        <Link key={index} href={href} className="text-white ml-2 text-[18px] leading-5 ">
                             {name}
                         </Link>
                     ))}

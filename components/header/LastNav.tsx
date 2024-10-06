@@ -8,18 +8,18 @@ const LastNav = async ({ language }: any) => {
     const navLinks = [
         {index : 1 , name: `${dict.navigation.home}`,href:`/${language}`},
         {index : 2 , name: 'عن المركز', href: '#' },
-        {index : 3 , name: `${dict.navigation.lesson}`,href:`${language}/lesson`},
-        {index : 4 , name: 'المحاضرات', href: '#' },
-        {index : 5 , name: 'الخطب', href: '#' },
-        {index : 6 , name: 'المقالات', href: '#' },
+        // {index : 3 , name: `${dict.navigation.lesson}`,href:`${language}/lesson`},
+        {index : 4 , name: 'الدورات المجانية', href: '#' },
+        // {index : 5 , name: 'الخطب', href: '#' },
+        // {index : 6 , name: 'المقالات', href: '#' },
         {index : 7 , name: 'كتب وابحاث', href: '#' },
-        {index : 8 , name: 'احكام وفتاوى', href: '#' },
-        {index : 9 , name: 'مطويات', href: '#' },
-        {index : 10 , name: 'تصميمات دعوية', href: '#' },
+        {index : 8 , name: 'سؤال وجواب', href: '#' },
+        // {index : 9 , name: 'مطويات', href: '#' },
+        {index : 10 , name: 'اخبار', href: '#' },
         {index : 11 , name: 'المكتبة', href: '#' },
         {index : 12 , name: 'البث المباشر', href: '#' },
         {index : 13 , name: 'اتصل بنا', href: '#' },
-        {index : 14 , name: 'المنصة التعليمية', href: '#' },
+        {index : 14 , name: 'أكاديمية سرج', href: '#' },
     ];
 
     return (

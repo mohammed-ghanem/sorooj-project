@@ -11,7 +11,7 @@ const LogoNav = ({ language }: any) => {
         <div className="container mx-auto row items-center grid grid-cols-1 md:grid-cols-3">
             <Logo />
             <SerachInput />
-            <Login language={pathLang}/>
+            <Login />
         </div>
     )
 }

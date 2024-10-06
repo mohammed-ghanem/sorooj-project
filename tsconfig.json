@@ -23,8 +23,8 @@
       }
     ],
     "paths": {
-      "@/constants/*" : ["./src/constants/*"],
-      "@/utils/*" : ["./src/utils/*"],
+      "@/constants/*" : ["./constants/*"],
+      "@/utils/*" : ["./utils/*"],
      //"@/components/*" : ["./app/[lang]/components/*"],
       "@/*": ["./*"]
     }
