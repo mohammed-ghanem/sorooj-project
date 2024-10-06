@@ -50,7 +50,7 @@ export default async function RootLayout({
         <AntdRegistry>
           {children}
         </AntdRegistry>
-        <Footer language={params.lang }/>
+        <Footer/>
       </body>
     </html>
   );
