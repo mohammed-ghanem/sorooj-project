@@ -9,8 +9,8 @@ const Header = ({ language }: any) => {
   return (
     <header >
       <FirstNav />
-      <LogoNav language={headerNavLink }/>
-      <LastNav language={headerNavLink } />
+      <LogoNav />
+      <LastNav />
     </header>
   )
 }
