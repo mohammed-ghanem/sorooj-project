@@ -6,7 +6,6 @@ import SerachInput from "../searchBar/SerachInput"
 
 
 const LogoNav = () => {
-    const 
     return (
         <div className="container bg-white mx-auto row items-center grid grid-cols-1 md:grid-cols-3">
             <Logo />
