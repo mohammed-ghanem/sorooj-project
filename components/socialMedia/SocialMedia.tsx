@@ -21,8 +21,10 @@ const SocialMedia = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FontAwesomeIcon className='text-white text-xl border-[1px] border-[solid] border-[#fff] rounded-[30px] p-[7px] w-[22px] 
-' icon={social.icon} />
+          <FontAwesomeIcon className='text-[#9F854E] text-xl
+          border-[1px] border-[solid] border-[#9F854E] rounded-[30px] p-[5px] w-[22px]
+           hover:border-[#424C61] hover:bg-[#424C61] hover:text-[#fff] hover:ease-in duration-300'
+            icon={social.icon} />
         </Link>
       ))}
     </div>

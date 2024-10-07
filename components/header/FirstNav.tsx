@@ -48,9 +48,9 @@ const FirstNav = async () => {
     const formattedGregorianDate = `${fallbackGregorian.day} ${arabicMonths[fallbackGregorian.month.en]} ${fallbackGregorian.year} مـ`;
 
     return (
-        <div className="bkMainColor py-3">
+        <div className="bkColor py-1">
             <div className="container mx-auto justify-center row items-center grid md:grid-cols-2 gap-2 sm:grid-cols-1">
-                <div className="text-center  text-sm text-white">
+                <div className="text-center  text-sm primaryColor">
                     <span>{formattedHijriDate}</span>
                     <span> الموافق </span>
                     <span>{formattedGregorianDate}</span>

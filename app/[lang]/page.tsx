@@ -21,10 +21,9 @@ export default async function Home({ params }: Props) {
     <div>
       <main className="w-full">
            <h1>{dict.pages.homePage.title}</h1>
-        <div>home page content</div>
 
-        {/* <Slider />
-        <VideoTabs/> */}
+         {/* <Slider /> */}
+        {/* <VideoTabs/>  */}
         {/* <ProgressBar /> */}
       </main>
     </div>

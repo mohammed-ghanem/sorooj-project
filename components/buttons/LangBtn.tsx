@@ -38,8 +38,8 @@ const LangBtn = () => {
     router.push(newPath);
   };
 
-  const arabicIcon = <div> <span>Ar</span> <FontAwesomeIcon icon={faGlobe} /></div>
-  const englishIcon = <div> <span>En</span> <FontAwesomeIcon icon={faGlobe} /></div>
+  const arabicIcon = <div className='flex items-center border-[1px] border-[#9F854E] rounded-[15px] px-[6px] py-[3px] mx-[4px] my-[0]'><span className=' font-bold mx-[3px] my-[0] text-[#424C61]'>AR</span><FontAwesomeIcon className='primaryColor text-xl	' icon={faGlobe} /></div>
+  const englishIcon = <div className='flex items-center border-[1px] border-[#9F854E] rounded-[15px] px-[6px] py-[3px] mx-[4px] my-[0]'><span className=' font-bold mx-[3px] my-[0] text-[#424C61]'>EN</span><FontAwesomeIcon className='primaryColor text-xl	' icon={faGlobe} /></div>
 
   return (
 
