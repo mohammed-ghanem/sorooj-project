@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+
+
 .slick-arrow {
     background: #fff!important;
     opacity: 1!important;
@@ -6,4 +10,7 @@
 }
 .slick-next , .slick-prev {
     color: #00000045 !important;
+}
+.styleTitle { 
+    font-family: 'Cairo', sans-serif;
 }

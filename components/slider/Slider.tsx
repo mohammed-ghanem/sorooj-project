@@ -1,9 +1,9 @@
-'use client';
 
 import { Carousel, ConfigProvider } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
 import "./style.css";
+
 import defImage from "@/assets/images/default.png"; // Default image
 import slider1 from "@/assets/images/1.png";
 import slider2 from "@/assets/images/2.png";
@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleChevronRight } from '@fortawesome/free-solid-svg-icons/faCircleChevronRight';
 import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons/faCircleChevronLeft';
 
+
 const DefaultImage = {
   src: defImage,
   alt: 'default image',
@@ -19,8 +20,8 @@ const DefaultImage = {
 
 const images: string | any[] = [
   { src: slider1, alt: 'slider 1', title: 'مركز سرج للدراسات والابحاث', link: '/link1' },
-  { src: slider2, alt: 'slider 2', title: 'Title 2', link: '/link2' },
-  { src: slider3, alt: 'slider 3', title: 'Title 3', link: '/link3' },
+  // { src: slider2, alt: 'slider 2', title: 'Title 2', link: '/link2' },
+  // { src: slider3, alt: 'slider 3', title: 'Title 3', link: '/link3' },
 ];
 
 const Slider: React.FC = () => {
@@ -57,7 +58,7 @@ const Slider: React.FC = () => {
             {image.title && (
               <div className="absolute inset-0 flex justify-center items-end mb-4">
                 <Link href={image.link}>
-                  <span className="mainColor font-bold font-cairo bg-white bg-opacity-25 px-2 py-1 rounded">
+                  <span className="styleTitle font-bold mainColor  bg-white bg-opacity-25 px-2 py-1 rounded">
                     {image.title}
                   </span>
                 </Link>
