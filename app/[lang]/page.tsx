@@ -20,7 +20,7 @@ export default async function Home({ params }: Props) {
   return (
     <div>
       <main className="w-full">
-           <h1>{dict.pages.homePage.title}</h1>
+           <h1 className=" hidden">{dict.pages.homePage.title}</h1>
 
         <Slider />
         <Statistics/>
