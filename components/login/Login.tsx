@@ -73,7 +73,7 @@ const Login = () => {
         return (
             <div className='m-auto flex items-center mt-5 mb-3 md:mb-auto md:mt-auto'>
                 <LangBtn />
-                <p className='text-white bkMainColor px-[26px] py-[10px] rounded-lg'>Loading...</p>
+                <p className='text-white bkMainColor px-[26px] py-[10px] rounded-lg'>Loading.....</p>
             </div>
         )
     }
