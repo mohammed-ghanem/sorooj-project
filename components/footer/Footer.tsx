@@ -6,18 +6,18 @@ import footerVectorImage from '@/assets/images/footervector.png'
 
 const Footer = () => {
   return (
-    <div className="bkMainColor relative ">
+    <div className=" bkColor relative pt-[40px] pb-[10px]">
       <Image src={footerVectorImage} className=' object-cover absolute ' alt='footerVector' />
       <FirstFooter />
-      <hr className=' opacity-30' />
+      <hr className='h-[2px] bkPrimaryColor my-5 opacity-65' />
       <LastFooter />
       {/* copyRight */}
-      <hr className=' opacity-30' />
-      <div className='text-center primaryColor text-sm font-bold font-sans' >
+      <hr className='h-[2px] bkPrimaryColor my-5 opacity-65' />
+      <div className='text-center mainColor font-bold text-sm' >
         <p>
-          All rights reserved for <span className='text-white'>Sorooj</span>  &copy; {new Date().getFullYear()}
+          All rights reserved for <span className='primaryColor'>Sorooj</span>  &copy; 2024 - {new Date().getFullYear()}
         </p>
-        <p className='text-white'>WeCan For Development</p>
+        <p className='mainColor text-xm'>WeCan For Development</p>
       </div>
     </div>
   )

@@ -16,20 +16,21 @@ const ContactUsFooter = () => {
 
     return (
         <div>
-            <h4 className='text-2xl mt-2 lg:mt-0'>تواصل معنا</h4>
+            <h4 className='text-2xl mt-2 lg:mt-0 primaryColor'>تواصل معنا</h4>
             <div className='mt-4 mr-4'>
                 {fakeData.map((contact, index) => (
                     <div key={index} className='mb-2 flex items-center'>
 
-                        <FontAwesomeIcon icon={faWhatsapp} className='ml-2 text-2xl' />
-                        <span>
+                        <FontAwesomeIcon icon={faWhatsapp} className='ml-2 text-2xl primaryColor' />
+                        <span className='mainColor font-semibold'>
                             {contact.title} :
-                            <span className='ml-2 mr-2'>
+                            <span className='ml-2 mr-2 '>
                                 <Link
                                     href={`https://api.whatsapp.com/send?phone=${contact.phone}`}
                                     target='_blank'
                                     title={`تواصل مع ${contact.title}`}
                                     rel='nofollow'
+                                    className='mainColor'
                                 >
                                     {contact.phone}
                                 </Link>
@@ -39,8 +40,8 @@ const ContactUsFooter = () => {
                 ))}
 
                 <div className='flex items-center'>
-                    <FontAwesomeIcon icon={faEnvelope} className='ml-2 text-2xl' />
-                    <Link href={`mailto:${websiteEmail.email}`} title="" >
+                    <FontAwesomeIcon icon={faEnvelope} className='ml-2 text-2xl primaryColor' />
+                    <Link href={`mailto:${websiteEmail.email}`} className='mainColor font-semibold' title="" >
                         {websiteEmail.email}
                     </Link>
                 </div>
