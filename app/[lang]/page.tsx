@@ -1,3 +1,4 @@
+//
 import Slider from "@/components/slider/Slider";
 import ProgressBar from "@/components/progressBar/ProgressBar";
 import VideoLibTabs from "@/components/videoLibTabs/VideoLibTabs";
@@ -5,6 +6,7 @@ import VideoTabs from "@/components/videoLibTabs/VideoTabs";
 import { getDictionary } from "./dictionaries";
 import Statistics from "@/components/statistics/Statistics";
 import NewCourseHome from "@/components/newCoursesHome/NewCourseHome";
+
 
 
 export const dynamic = 'force-static';
