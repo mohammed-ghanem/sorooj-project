@@ -1,10 +1,20 @@
+'use client'
 import { faYoutube } from "@fortawesome/free-brands-svg-icons"
 import { faBook, faBookOpen, faCircleQuestion, faUserGroup } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { Statistic } from "antd"
+import { FC } from "react";
+
+import CountUp from "react-countup";
+
+interface CountUpProps {
+  start?: number;
+  end?: number;
+  duration?: number;
+  decimals?: number;
+}
 
 
-const Statistics = () => {
+const Statistics: FC<CountUpProps> = ({ start = 0, end, duration = 8, decimals = 0 }) => {
   return (
     <div className='bkColor mt-8 mb-8'>
       <div className="container mx-auto py-6">
@@ -13,37 +23,41 @@ const Statistics = () => {
           <div className="statisticsCard flex items-center justify-center">
             <div><FontAwesomeIcon icon={faBookOpen} className="primaryColor text-[40px] ml-[20px]" /></div>
             <div>
-              <p className="primaryColor font-bold text-[35px]">28</p>
-              <Statistic value={544}/>
+              <CountUp className="primaryColor font-bold text-[35px]"
+                start={start} end={28} duration={duration} decimals={decimals} />
               <p className="mainColor font-bold opacity-50">الدورات المجانية</p>
             </div>
           </div>
           {/* ***************  for test remove this after life publish*/}
           <div className="statisticsCard flex items-center justify-center">
-            <div><FontAwesomeIcon icon={faBook}  className="primaryColor text-[40px] ml-[20px]" /></div>
+            <div><FontAwesomeIcon icon={faBook} className="primaryColor text-[40px] ml-[20px]" /></div>
             <div>
-              <p className="primaryColor font-bold text-[35px]">41</p>
+              <CountUp className="primaryColor font-bold text-[35px]"
+                start={start} end={47} duration={duration} decimals={decimals} />
               <p className="mainColor font-bold opacity-50">الكتب والابحاث</p>
             </div>
           </div>
           <div className="statisticsCard flex items-center justify-center">
-            <div><FontAwesomeIcon icon={faYoutube}  className="primaryColor text-[40px] ml-[20px]" /></div>
+            <div><FontAwesomeIcon icon={faYoutube} className="primaryColor text-[40px] ml-[20px]" /></div>
             <div>
-              <p className="primaryColor font-bold text-[35px]">184</p>
+              <CountUp className="primaryColor font-bold text-[35px]"
+                start={start} end={247} duration={duration} decimals={decimals} />
               <p className="mainColor font-bold opacity-50">المكتبة المرئية</p>
             </div>
           </div>
           <div className="statisticsCard flex items-center justify-center">
             <div><FontAwesomeIcon icon={faCircleQuestion} className="primaryColor text-[40px] ml-[20px]" /></div>
             <div>
-              <p className="primaryColor font-bold text-[35px]">98</p>
+              <CountUp className="primaryColor font-bold text-[35px]"
+                start={start} end={124} duration={duration} decimals={decimals} />
               <p className="mainColor font-bold opacity-50">سؤال وجواب</p>
             </div>
           </div>
           <div className="statisticsCard flex items-center justify-center">
-            <div><FontAwesomeIcon icon={faUserGroup}  className="primaryColor text-[40px] ml-[20px]" /></div>
+            <div><FontAwesomeIcon icon={faUserGroup} className="primaryColor text-[40px] ml-[20px]" /></div>
             <div>
-              <p className="primaryColor font-bold text-[35px]">478</p>
+              <CountUp className="primaryColor font-bold text-[35px]"
+                start={start} end={560} duration={duration} decimals={decimals} />
               <p className="mainColor font-bold opacity-50">المشتركين</p>
             </div>
           </div>

@@ -4,6 +4,7 @@ import VideoLibTabs from "@/components/videoLibTabs/VideoLibTabs";
 import VideoTabs from "@/components/videoLibTabs/VideoTabs";
 import { getDictionary } from "./dictionaries";
 import Statistics from "@/components/statistics/Statistics";
+import NewCourseHome from "@/components/newCoursesHome/NewCourseHome";
 
 
 export const dynamic = 'force-static';
@@ -23,8 +24,9 @@ export default async function Home({ params }: Props) {
            <h1 className=" hidden">{dict.pages.homePage.title}</h1>
 
         <Slider />
-        <Statistics/>
-        {/* <VideoTabs/>  */}
+        <Statistics />
+        <NewCourseHome/>
+        <VideoTabs/> 
         {/* <ProgressBar /> */}
       </main>
     </div>
