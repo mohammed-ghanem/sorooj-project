@@ -1,11 +1,6 @@
 import type { Metadata } from "next";
 // import { Inter, Cairo, Almarai, Changa } from "next/font/google";
 import "./globals.css";
-
-import 'swiper/swiper-bundle.min.css';
-
-
-
 import '@/utils/fontAwesome'; // Import the Font Awesome configuration
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 
