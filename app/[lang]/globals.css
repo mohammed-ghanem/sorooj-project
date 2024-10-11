@@ -3,7 +3,9 @@
 @tailwind utilities;
 /* styles/globals.css */
 
-
+body {
+    position: relative;
+}
 
 .bkBox {
     background: #F5F3ED;

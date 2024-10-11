@@ -1,0 +1,26 @@
+
+  
+/* Custom styles for Swiper's Previous and Next buttons */
+.swiper-button-prev, .swiper-button-next {
+    position: absolute;
+    width: 50px; /* Change button width */
+    height: 50px; /* Change button height */
+    background-color: #424C61; /* Add a semi-transparent black background */
+    border-radius: 50%; /* Make the buttons circular */
+    color: white; /* Change arrow color to white */
+    font-weight: bold;
+  }
+  
+  .swiper-button-prev:hover, .swiper-button-next:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Darken background on hover */
+  }
+  
+  .swiper-button-prev::after, .swiper-button-next::after {
+    font-size: 20px; 
+  }
+  .swiper-button-next::after {
+    padding-right: 2px!important;
+  }
+  .swiper-button-prev::after {
+    padding-left: 2px!important;
+  }

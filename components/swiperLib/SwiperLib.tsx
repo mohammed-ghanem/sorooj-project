@@ -1,12 +1,13 @@
-'use client'
+'use client';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import React, { ReactElement } from 'react';
-import 'node_modules/swiper/swiper-bundle.min.css';
-import 'node_modules/swiper/modules/pagination.min.css';
-import 'node_modules/swiper/modules/navigation.min.css';
+import { Navigation, Autoplay } from 'swiper/modules';
+import React, { ReactElement, useRef } from 'react';
+import 'swiper/swiper-bundle.css';
+import './style.css'; // Get all CSS from swiper/swiper-bundle.css
 
+// Import the SwiperRef type from swiper/react
+import type { Swiper as SwiperInstance, SwiperRef } from 'swiper/react'; 
 
 // Define the type for each course item
 interface allItem {
@@ -14,51 +15,160 @@ interface allItem {
     name: string;
     [key: string]: any;
 }
+
 // Define props for the component
 interface SwiperLibProps {
     children: ReactElement;
     items: allItem[];
     navigation: boolean;
     pagination: boolean;
-    slidesPerView: any;
-    breakpoints: any
+    slidesPerView: number; // Changed to number for clarity
+    breakpoints: any;
 }
 
+const SwiperLib: React.FC<SwiperLibProps> = ({
+    children,
+    items,
+    navigation,
+    pagination,
+    slidesPerView,
+    breakpoints,
+}) => {
+    // Use the SwiperRef type for the ref
+    const swiperRef = useRef<SwiperRef | null>(null); 
 
-
-const SwiperLib: React.FC<SwiperLibProps> = ({ children, items , navigation , pagination ,slidesPerView , breakpoints }) => {
     const cloneElements = items.map((item) => (
         <SwiperSlide key={item.id}>
             {React.cloneElement(children, { key: item.id, item })}
         </SwiperSlide>
     ));
 
-    return (
-        <Swiper
-            className="container mx-auto h-36"
-            modules={[Navigation, Pagination, Autoplay]}
-            navigation={navigation ? navigation : false}
-            pagination={pagination ? pagination : false}
-            slidesPerView ={slidesPerView ? slidesPerView : 2}
-            spaceBetween={50}
-            autoplay={{
-                delay: 3000,
-                disableOnInteraction: false,
-            }}
-            breakpoints = {breakpoints ? breakpoints : breakpoints}
-           
-            //********************************* */ 
-            
+    // Custom navigation handlers
+    const handleNext = () => {
+        swiperRef.current?.swiper.slideNext(); // Access the slideNext directly from Swiper instance
+    };
 
-            // onSlideChange={() => console.log('slide change')}
-            // onSwiper={(swiper) => console.log(swiper)}
-        >
-            {cloneElements}
-        </Swiper>
+    const handlePrev = () => {
+        swiperRef.current?.swiper.slidePrev(); // Access the slidePrev directly from Swiper instance
+    };
+
+    return (
+        <div className='parentDiv'>
+            {navigation && (
+                <div className="swiper-button-container">
+                    <button className="swiper-button-prev" onClick={handlePrev}>
+                        Prev
+                    </button>
+                    <button className="swiper-button-next" onClick={handleNext}>
+                        Next
+                    </button>
+                </div>
+            )}
+
+            <Swiper
+                ref={swiperRef} // Attach the ref to the Swiper
+                className="mx-auto h-36 container w-[80%]"
+                modules={[Navigation, Autoplay]}
+                slidesPerView={slidesPerView || 2}
+                spaceBetween={5}
+                autoplay={{
+                    delay: 30000,
+                    disableOnInteraction: false,
+                }}
+                breakpoints={breakpoints || breakpoints}
+            >
+                {cloneElements}
+            </Swiper>
+
+            {/* {pagination && (
+                <div className="swiper-pagination-container">
+                    <div className="pagination">
+                        {items.map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => swiperRef.current?.swiper.slideTo(index)} // Access the slideTo directly from Swiper instance
+                            >
+                                {index + 1}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            )} */}
+        </div>
     );
 };
 
 export default SwiperLib;
+export type { SwiperRef }; // Export SwiperRef type
+
+
+
+
+
+
+
+
+// 'use client'
+// // Import Swiper React components
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+// import React, { ReactElement } from 'react';
+// import 'swiper/swiper-bundle.css';
+// import './style.css'  // i get all css swiper/swiper-bundle.css here
+
+
+// // Define the type for each course item
+// interface allItem {
+//     id: number; // Use a specific type for id
+//     name: string;
+//     [key: string]: any;
+// }
+// // Define props for the component
+// interface SwiperLibProps {
+//     children: ReactElement;
+//     items: allItem[];
+//     navigation: boolean;
+//     pagination: boolean;
+//     slidesPerView: any;
+//     breakpoints: any
+// }
+
+
+
+// const SwiperLib: React.FC<SwiperLibProps> = ({
+//     children, items, navigation, pagination, slidesPerView, breakpoints }) => {
+//     const cloneElements = items.map((item) => (
+//         <SwiperSlide key={item.id}>
+//             {React.cloneElement(children, { key: item.id, item })}
+//         </SwiperSlide>
+        
+//     ));
+
+//     return (
+//         <div className='parentDiv'>
+//             <Swiper
+//                 className="mx-auto h-36 container w-[80%]"
+//                 modules={[Navigation, Pagination, Autoplay]}
+//                 navigation={navigation ? navigation : false}
+//                 pagination={pagination ? pagination : false}
+//                 slidesPerView={slidesPerView ? slidesPerView : 2}
+//                 spaceBetween={5}
+
+//                 autoplay={{
+//                     delay: 30000,
+//                     disableOnInteraction: false,
+//                 }}
+//                 breakpoints={breakpoints ? breakpoints : breakpoints}
+
+//             >
+//                 {cloneElements}
+//             </Swiper>
+            
+//         </div>
+//     );
+// };
+
+// export default SwiperLib;
 
 
 

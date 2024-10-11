@@ -1,4 +1,4 @@
-//
+
 import Slider from "@/components/slider/Slider";
 import ProgressBar from "@/components/progressBar/ProgressBar";
 import VideoLibTabs from "@/components/videoLibTabs/VideoLibTabs";
@@ -37,7 +37,7 @@ export default async function Home({ params }: Props) {
             items={coursesApi}
             navigation={true}
             pagination={true}
-          slidesPerView={4}
+          slidesPerView={3}
           breakpoints={{
             320: {   // Mobile
                 slidesPerView: 1,
