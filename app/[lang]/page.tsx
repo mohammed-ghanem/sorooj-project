@@ -10,9 +10,12 @@ import SwiperLib from "@/components/swiperLib/SwiperLib";
 import { coursesApi } from "@/utils/coursesApi";
 import { bookApi } from "@/utils/bookApi";
 import NewBookHome from "@/components/newBookHome/NewBookHome";
+import CoursesTitle from "@/components/homeTitles/CoursesTitle";
+import VideoTitle from "@/components/homeTitles/VideoTitle";
 
 coursesApi;
 bookApi;
+
 
 
 export const dynamic = 'force-static';
@@ -33,60 +36,67 @@ export default async function Home({ params }: Props) {
 
         <Slider />
         <Statistics />
+        <CoursesTitle />
         <SwiperLib
-            items={coursesApi}
-            navigation={true}
-            pagination={true}
+          items={coursesApi}
+          navigation={true}
+          pagination={true}
           slidesPerView={3}
           breakpoints={{
             320: {   // Mobile
-                slidesPerView: 1,
-                spaceBetween: 10,
+              slidesPerView: 1,
+              spaceBetween: 10,
             },
             640: {   // Small screens
-                slidesPerView: 2,
-                spaceBetween: 10,
+              slidesPerView: 2,
+              spaceBetween: 10,
             },
             768: {   // Medium screens (tablets)
-                slidesPerView: 3,
-                spaceBetween: 10,
+              slidesPerView: 3,
+              spaceBetween: 10,
             },
             1024: {  // Larger screens (desktops)
-                slidesPerView: 4,
-                spaceBetween: 30,
+              slidesPerView: 4,
+              spaceBetween: 10,
             },
             1440: {  // Larger screens (desktops)
               slidesPerView: 4,
-              spaceBetween: 20,
-          },
-        }}
-        >  
+              spaceBetween: 10,
+            },
+          }}
+        >
           <NewCourseHome />
         </SwiperLib>
+        
+        <VideoTitle />
         <VideoTabs />
         <SwiperLib
-            items={bookApi}
-            navigation={true}
-            pagination={false}
-          slidesPerView={1}
+          items={bookApi}
+          navigation={true}
+          pagination={true}
+          slidesPerView={3}
           breakpoints={{
             320: {   // Mobile
-                slidesPerView: 1,
-                spaceBetween: 10,
+              slidesPerView: 1,
+              spaceBetween: 10,
             },
             640: {   // Small screens
-                slidesPerView: 1,
-                spaceBetween: 20,
+              slidesPerView: 2,
+              spaceBetween: 10,
             },
             768: {   // Medium screens (tablets)
-                slidesPerView: 1,
-                spaceBetween: 30,
+              slidesPerView: 3,
+              spaceBetween: 10,
             },
             1024: {  // Larger screens (desktops)
-                slidesPerView: 1,
-                spaceBetween: 40,
+              slidesPerView: 3,
+              spaceBetween: 30,
             },
-        }}
+            1440: {  // Larger screens (desktops)
+              slidesPerView: 3,
+              spaceBetween: 30,
+            },
+          }}
         >
           <NewBookHome />
         </SwiperLib>

@@ -20,8 +20,8 @@ const DefaultImage = {
 
 const images: string | any[] = [
   { src: slider1, alt: 'slider 1', title: 'مركز سرج للدراسات والابحاث', link: '/link1' },
-  // { src: slider2, alt: 'slider 2', title: 'Title 2', link: '/link2' },
-  // { src: slider3, alt: 'slider 3', title: 'Title 3', link: '/link3' },
+  { src: slider2, alt: 'slider 2', title: 'Title 2', link: '/link2' },
+  { src: slider3, alt: 'slider 3', title: 'Title 3', link: '/link3' },
 ];
 
 const Slider: React.FC = () => {

@@ -3,7 +3,7 @@
 
 const NewBookHome = ({item} : any) => {
   return (
-    <div className="bg-red-400 mx-20">{ item.name}</div>
+    <div className="bg-red-400 h-[400px]">{ item.name}</div>
   )
 }
 

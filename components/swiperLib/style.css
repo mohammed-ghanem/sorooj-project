@@ -11,6 +11,12 @@
     font-weight: bold;
   }
   
+  .swiper-rtl .swiper-button-next {
+    left : 50px!important
+  }
+  .swiper-rtl .swiper-button-prev {
+    right : 50px!important
+  }
   .swiper-button-prev:hover, .swiper-button-next:hover {
     background-color: rgba(0, 0, 0, 0.8); /* Darken background on hover */
   }
