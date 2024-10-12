@@ -45,16 +45,20 @@ export default async function Home({ params }: Props) {
             },
             640: {   // Small screens
                 slidesPerView: 2,
-                spaceBetween: 20,
+                spaceBetween: 10,
             },
             768: {   // Medium screens (tablets)
                 slidesPerView: 3,
-                spaceBetween: 30,
+                spaceBetween: 10,
             },
             1024: {  // Larger screens (desktops)
                 slidesPerView: 4,
-                spaceBetween: 40,
+                spaceBetween: 30,
             },
+            1440: {  // Larger screens (desktops)
+              slidesPerView: 4,
+              spaceBetween: 20,
+          },
         }}
         >  
           <NewCourseHome />

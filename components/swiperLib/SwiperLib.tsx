@@ -33,14 +33,15 @@ const SwiperLib: React.FC<SwiperLibProps> = ({
     return (
         <div className='parentDiv relative'>
             <Swiper
-                className="mx-auto h-36 container w-[80%]"
+                className="mx-auto container"
+                style={{width : "85%"}}
                 modules={[Navigation, Pagination, Autoplay]}
                 navigation={navigation ? navigation : false}
                 pagination={pagination ? pagination : false}
                 slidesPerView={slidesPerView ? slidesPerView : 2}
                 spaceBetween={5}
                 autoplay={{
-                    delay: 5000,
+                    delay: 500000,
                     disableOnInteraction: false,
                 }}
                 breakpoints={breakpoints ? breakpoints : breakpoints}>

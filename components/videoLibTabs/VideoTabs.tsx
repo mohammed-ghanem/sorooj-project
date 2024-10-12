@@ -45,7 +45,7 @@ const VideoTabs: React.FC = () => {
   ];
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 mt-20">
       <h2 className="text-2xl font-bold mb-4 primaryColor">المكتبة المرئية</h2>
       <CustomTabs tabs={tabs} />
     </div>
