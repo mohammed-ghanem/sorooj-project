@@ -24,3 +24,7 @@
   .swiper-button-prev::after {
     padding-left: 2px!important;
   }
+
+  .swiper { 
+    position: unset!important;
+  }

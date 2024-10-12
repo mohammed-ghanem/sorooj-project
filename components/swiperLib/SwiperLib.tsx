@@ -1,13 +1,11 @@
-'use client';
+'use client'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper/modules';
-import React, { ReactElement, useRef } from 'react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import React, { ReactElement } from 'react';
 import 'swiper/swiper-bundle.css';
-import './style.css'; // Get all CSS from swiper/swiper-bundle.css
+import './style.css'  // i get all css swiper/swiper-bundle.css here
 
-// Import the SwiperRef type from swiper/react
-import type { Swiper as SwiperInstance, SwiperRef } from 'swiper/react'; 
 
 // Define the type for each course item
 interface allItem {
@@ -15,91 +13,45 @@ interface allItem {
     name: string;
     [key: string]: any;
 }
-
 // Define props for the component
 interface SwiperLibProps {
     children: ReactElement;
     items: allItem[];
     navigation: boolean;
     pagination: boolean;
-    slidesPerView: number; // Changed to number for clarity
-    breakpoints: any;
+    slidesPerView: any;
+    breakpoints: any
 }
-
 const SwiperLib: React.FC<SwiperLibProps> = ({
-    children,
-    items,
-    navigation,
-    pagination,
-    slidesPerView,
-    breakpoints,
-}) => {
-    // Use the SwiperRef type for the ref
-    const swiperRef = useRef<SwiperRef | null>(null); 
-
+    children, items, navigation, pagination, slidesPerView, breakpoints }) => {
     const cloneElements = items.map((item) => (
         <SwiperSlide key={item.id}>
             {React.cloneElement(children, { key: item.id, item })}
         </SwiperSlide>
+
     ));
-
-    // Custom navigation handlers
-    const handleNext = () => {
-        swiperRef.current?.swiper.slideNext(); // Access the slideNext directly from Swiper instance
-    };
-
-    const handlePrev = () => {
-        swiperRef.current?.swiper.slidePrev(); // Access the slidePrev directly from Swiper instance
-    };
-
     return (
-        <div className='parentDiv'>
-            {navigation && (
-                <div className="swiper-button-container">
-                    <button className="swiper-button-prev" onClick={handlePrev}>
-                        Prev
-                    </button>
-                    <button className="swiper-button-next" onClick={handleNext}>
-                        Next
-                    </button>
-                </div>
-            )}
-
+        <div className='parentDiv relative'>
             <Swiper
-                ref={swiperRef} // Attach the ref to the Swiper
                 className="mx-auto h-36 container w-[80%]"
-                modules={[Navigation, Autoplay]}
-                slidesPerView={slidesPerView || 2}
+                modules={[Navigation, Pagination, Autoplay]}
+                navigation={navigation ? navigation : false}
+                pagination={pagination ? pagination : false}
+                slidesPerView={slidesPerView ? slidesPerView : 2}
                 spaceBetween={5}
                 autoplay={{
-                    delay: 30000,
+                    delay: 5000,
                     disableOnInteraction: false,
                 }}
-                breakpoints={breakpoints || breakpoints}
-            >
+                breakpoints={breakpoints ? breakpoints : breakpoints}>
                 {cloneElements}
             </Swiper>
 
-            {/* {pagination && (
-                <div className="swiper-pagination-container">
-                    <div className="pagination">
-                        {items.map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => swiperRef.current?.swiper.slideTo(index)} // Access the slideTo directly from Swiper instance
-                            >
-                                {index + 1}
-                            </button>
-                        ))}
-                    </div>
-                </div>
-            )} */}
         </div>
     );
 };
 
 export default SwiperLib;
-export type { SwiperRef }; // Export SwiperRef type
 
 
 
@@ -108,14 +60,30 @@ export type { SwiperRef }; // Export SwiperRef type
 
 
 
-// 'use client'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 'use client';
 // // Import Swiper React components
 // import { Swiper, SwiperSlide } from 'swiper/react';
-// import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-// import React, { ReactElement } from 'react';
+// import { Navigation, Autoplay } from 'swiper/modules';
+// import React, { ReactElement, useRef } from 'react';
 // import 'swiper/swiper-bundle.css';
-// import './style.css'  // i get all css swiper/swiper-bundle.css here
+// import './style.css'; // Get all CSS from swiper/swiper-bundle.css
 
+// // Import the SwiperRef type from swiper/react
+// import type { Swiper as SwiperInstance, SwiperRef } from 'swiper/react'; 
 
 // // Define the type for each course item
 // interface allItem {
@@ -123,55 +91,93 @@ export type { SwiperRef }; // Export SwiperRef type
 //     name: string;
 //     [key: string]: any;
 // }
+
 // // Define props for the component
 // interface SwiperLibProps {
 //     children: ReactElement;
 //     items: allItem[];
 //     navigation: boolean;
 //     pagination: boolean;
-//     slidesPerView: any;
-//     breakpoints: any
+//     slidesPerView: number; // Changed to number for clarity
+//     breakpoints: any;
 // }
 
-
-
 // const SwiperLib: React.FC<SwiperLibProps> = ({
-//     children, items, navigation, pagination, slidesPerView, breakpoints }) => {
+//     children,
+//     items,
+//     navigation,
+//     pagination,
+//     slidesPerView,
+//     breakpoints,
+// }) => {
+//     // Use the SwiperRef type for the ref
+//     const swiperRef = useRef<SwiperRef | null>(null); 
+//     // Custom navigation handlers
+//     const handleNext = () => {
+//         swiperRef.current?.swiper.slideNext(); // Access the slideNext directly from Swiper instance
+//     };
+//     const handlePrev = () => {
+//         swiperRef.current?.swiper.slidePrev(); // Access the slidePrev directly from Swiper instance
+//     };
+
+
+
 //     const cloneElements = items.map((item) => (
-//         <SwiperSlide key={item.id}>
+//         <div key={item.id}>
+//             <SwiperSlide >
 //             {React.cloneElement(children, { key: item.id, item })}
 //         </SwiperSlide>
-        
+//          {navigation && (
+//             <div className="swiper-button-container">
+//                 <button className="swiper-button-prev" onClick={handlePrev}>
+//                     Prev
+//                 </button>
+//                 <button className="swiper-button-next" onClick={handleNext}>
+//                     Next
+//                 </button>
+//             </div>
+//         )}
+//         </div>
 //     ));
+
 
 //     return (
 //         <div className='parentDiv'>
 //             <Swiper
+//                 ref={swiperRef} // Attach the ref to the Swiper
 //                 className="mx-auto h-36 container w-[80%]"
-//                 modules={[Navigation, Pagination, Autoplay]}
-//                 navigation={navigation ? navigation : false}
-//                 pagination={pagination ? pagination : false}
-//                 slidesPerView={slidesPerView ? slidesPerView : 2}
+//                 modules={[Navigation, Autoplay]}
+//                 slidesPerView={slidesPerView || 2}
 //                 spaceBetween={5}
-
 //                 autoplay={{
 //                     delay: 30000,
 //                     disableOnInteraction: false,
 //                 }}
-//                 breakpoints={breakpoints ? breakpoints : breakpoints}
-
+//                 breakpoints={breakpoints || breakpoints}
 //             >
 //                 {cloneElements}
 //             </Swiper>
-            
+
+//             {/* {pagination && (
+//                 <div className="swiper-pagination-container">
+//                     <div className="pagination">
+//                         {items.map((_, index) => (
+//                             <button
+//                                 key={index}
+//                                 onClick={() => swiperRef.current?.swiper.slideTo(index)} // Access the slideTo directly from Swiper instance
+//                             >
+//                                 {index + 1}
+//                             </button>
+//                         ))}
+//                     </div>
+//                 </div>
+//             )} */}
 //         </div>
 //     );
 // };
 
 // export default SwiperLib;
-
-
-
+// export type { SwiperRef }; // Export SwiperRef type
 
 
 
