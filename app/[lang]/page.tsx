@@ -1,7 +1,5 @@
 
 import Slider from "@/components/slider/Slider";
-import ProgressBar from "@/components/progressBar/ProgressBar";
-import VideoLibTabs from "@/components/videoLibTabs/VideoLibTabs";
 import VideoTabs from "@/components/videoLibTabs/VideoTabs";
 import { getDictionary } from "./dictionaries";
 import Statistics from "@/components/statistics/Statistics";
@@ -12,6 +10,7 @@ import { bookApi } from "@/utils/bookApi";
 import NewBookHome from "@/components/newBookHome/NewBookHome";
 import CoursesTitle from "@/components/homeTitles/CoursesTitle";
 import VideoTitle from "@/components/homeTitles/VideoTitle";
+import BooksTitle from "@/components/homeTitles/BooksTitle";
 
 coursesApi;
 bookApi;
@@ -70,6 +69,7 @@ export default async function Home({ params }: Props) {
         
         <VideoTitle />
         <VideoTabs />
+        <BooksTitle/>
         <SwiperLib
           items={bookApi}
           navigation={true}
@@ -90,17 +90,18 @@ export default async function Home({ params }: Props) {
             },
             1024: {  // Larger screens (desktops)
               slidesPerView: 3,
-              spaceBetween: 30,
+              spaceBetween: 20,
             },
             1440: {  // Larger screens (desktops)
               slidesPerView: 3,
-              spaceBetween: 30,
+              spaceBetween: 20,
             },
           }}
         >
           <NewBookHome />
         </SwiperLib>
-        {/* <ProgressBar /> */}
+
+       <div className="mt-20">test</div>
       </main>
     </div>
   );

@@ -65,7 +65,7 @@ const SwiperLib: React.FC<SwiperLibProps> = ({
                 slidesPerView={slidesPerView ? slidesPerView : 2}
                 spaceBetween={5}
                 autoplay={{
-                    delay: 5000,
+                    delay: 500000,
                     disableOnInteraction: false,
                 }}
                 breakpoints={breakpoints ? breakpoints : breakpoints}
