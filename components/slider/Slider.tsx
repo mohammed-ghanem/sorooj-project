@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import "./style.css";
 
-import defImage from "@/assets/images/default.png"; // Default image
+import defImage from "@/assets/images/default.webp"; // Default image
 import slider1 from "@/assets/images/1.png";
 import slider2 from "@/assets/images/2.png";
 import slider3 from "@/assets/images/3.png";
@@ -66,9 +66,10 @@ const Slider: React.FC = () => {
             )}
             {/* Add a span for the default image */}
             {image.src === DefaultImage.src && (
-              
-              <div className="absolute top-2/4 left-2/4 -translate-x-1/2 -translate-y-1/2 w-1/2 text-center text-white px-3 py-2">
-               <h1 className='font-cairo'> مركز سرج لدراسة المذاهب الفكرية المعاصرة</h1>
+
+              <div className="absolute top-2/4 left-2/4 -translate-x-1/2 -translate-y-1/2 text-center text-white px-3 py-2 w-[70%]">
+                <h1 className='font-cairo font-bold text-base md:text-4xl mb-0 md:mb-7'> مركز سُرُجْ لدراسة المذاهب الفكرية المعاصرة</h1>
+                <p className='font-cairo font-bold text-base leading-[2.0] hidden md:block'>مركز سُرُجْ - منارة للبحث العلمى والتعليم المتخصص فى استكشاف وفهم المذاهب الفكرية المعاصرة , بما فى ذلك الدينية والفلسفية والسياسية من اجل تمكين المتعلمين فى اتخاذ قرارات مستنيرة فى ظل التنوع الفكرى المتزايد </p>
               </div>
             )}
           </div>

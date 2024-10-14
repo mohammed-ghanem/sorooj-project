@@ -17,6 +17,12 @@
   .swiper-rtl .swiper-button-prev {
     right : 50px!important
   }
+  @media(max-width  : 425px){.swiper-rtl .swiper-button-next {
+    left : 2px!important
+  }}
+  @media(max-width  : 425px){.swiper-rtl .swiper-button-prev {
+    right : 2px!important
+  }}
   .swiper-button-prev:hover, .swiper-button-next:hover {
     background-color: rgba(0, 0, 0, 0.8); /* Darken background on hover */
   }
@@ -30,6 +36,7 @@
   .swiper-button-prev::after {
     padding-left: 2px!important;
   }
+ 
 
   .swiper { 
     position: unset!important;
