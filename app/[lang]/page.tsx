@@ -11,6 +11,7 @@ import NewBookHome from "@/components/newBookHome/NewBookHome";
 import CoursesTitle from "@/components/homeTitles/CoursesTitle";
 import VideoTitle from "@/components/homeTitles/VideoTitle";
 import BooksTitle from "@/components/homeTitles/BooksTitle";
+import HomeEvents from "@/components/homeEvents/HomeEvents";
 
 coursesApi;
 bookApi;
@@ -66,10 +67,10 @@ export default async function Home({ params }: Props) {
         >
           <NewCourseHome />
         </SwiperLib>
-        
+        <HomeEvents />
         <VideoTitle />
         <VideoTabs />
-        <BooksTitle/>
+        <BooksTitle />
         <SwiperLib
           items={bookApi}
           navigation={true}
@@ -101,7 +102,7 @@ export default async function Home({ params }: Props) {
           <NewBookHome />
         </SwiperLib>
 
-       <div className="mt-20">test</div>
+        <div className="mt-20">test</div>
       </main>
     </div>
   );
