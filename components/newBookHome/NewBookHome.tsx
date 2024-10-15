@@ -23,7 +23,7 @@ const NewBookHome = ({ item }: any) => {
       <div className="flex-auto w-full md:w-64 px-[10px] py-[5px] my-[10px] md:my-auto">
         <h2 className="text-sm font-bold">
           <FontAwesomeIcon icon={faBookOpenReader} className="ml-1 primaryColor" />
-          <span className="mainColor">تساؤلات وشبهات متعلقة ... </span>
+          <span className="mainColor">تساؤلات وشبهات متعلقة .... </span>
         </h2>
         <div className="cardDetails grid grid-cols-2 gap-2 mt-2 font-bold">
           <p className="text-[10px] mainColor opacity-[0.8] flex items-center">
