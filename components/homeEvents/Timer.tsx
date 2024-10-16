@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect } from "react";
+import "./style.css";
 
 interface TimerProps {
   targetDate: string; // ISO date string for target date
@@ -38,9 +39,12 @@ const Timer: React.FC<TimerProps> = ({ targetDate }) => {
 
   return (
     <div>
-      <h2>Time Remaining:</h2>
-      <div>
-        {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+
+      <div className=" mt-4 counterTime font-cairo text-white">
+        <span> ثانية : <span> {timeLeft.seconds} </span></span>
+        <span> دقيقة : <span> {timeLeft.minutes} </span></span>
+        <span> ساعة  : <span> {timeLeft.hours} </span></span>
+        <span> يوم  : <span> {timeLeft.days} </span></span>
       </div>
     </div>
   );
