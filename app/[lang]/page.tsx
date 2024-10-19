@@ -12,6 +12,7 @@ import CoursesTitle from "@/components/homeTitles/CoursesTitle";
 import VideoTitle from "@/components/homeTitles/VideoTitle";
 import BooksTitle from "@/components/homeTitles/BooksTitle";
 import HomeEvents from "@/components/homeEvents/HomeEvents";
+import TwitterSection from "@/components/twitterSection/TwitterSection";
 
 coursesApi;
 bookApi;
@@ -102,7 +103,8 @@ export default async function Home({ params }: Props) {
           <NewBookHome />
         </SwiperLib>
 
-        <div className="mt-20">test</div>
+        <div>more watching</div>
+        <TwitterSection />
       </main>
     </div>
   );

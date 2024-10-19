@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleChevronRight } from '@fortawesome/free-solid-svg-icons/faCircleChevronRight';
 import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons/faCircleChevronLeft';
 import Timer from './Timer';
+import './style.css'
 
 import slider1 from "@/assets/images/1.png";
 import slider2 from "@/assets/images/2.png";
@@ -19,7 +20,7 @@ const DefaultImage = {
 const images: string | any[] = [
     // Intentionally left empty to test default image
     { src: "", alt: 'event 1', title: `انطلاق البرنامج التدريبى  ..  محطات فى العقيدة`, link: '/link1', time: "2024-12-31T23:59:59Z" },
-    // { src: slider2, alt: 'event 2', title: `انطلاق البرنامج التدريبى  ..  محطات فى الفقة`, link: '/link1', time: "2024-10-31T23:59:59Z" },
+    //{ src: slider2, alt: 'event 2', title: `انطلاق البرنامج التدريبى  ..  محطات فى الفقة`, link: '/link1', time: "2024-10-31T23:59:59Z" },
 ];
 
 const HomeEvents: React.FC = () => {
@@ -65,7 +66,7 @@ const HomeEvents: React.FC = () => {
                         {event.title && (
 
 
-                            <div className="absolute inset-0 flex justify-center items-center mb-4">
+                            <div className="absolute  inset-0 flex justify-center items-center mb-4">
                                 <div className='text-center'>
                                     <h1 className='font-cairo font-bold text-base md:text-5xl mb-0 md:mb-7 text-white'>احداث قدامة</h1>
                                     <Link href={event.link || '#'}>
@@ -73,7 +74,7 @@ const HomeEvents: React.FC = () => {
                                             {event.title}
                                         </span>
                                     </Link>
-                                    <p className='w-[60%] font-cairo text-white mx-auto my-5'>
+                                    <p className='w-[60%] font-cairo text-white mx-auto my-5 '>
                                         هذا النص هو بديل لنص يمكن ان يستبدل في نفس المساحه , هذا النص هو بديل لنص يمكن ان يستبدل في نفس المساحه هذا النص هو بديل لنص يمكن ان يستبدل في نفس المساحه , هذا النص هو بديل لنص يمكن ان يستبدل في نفس المساحه
                                     </p>
                                     <div className='eventTime'>
@@ -82,6 +83,7 @@ const HomeEvents: React.FC = () => {
 
                                 </div>
                             </div>
+
                         )}
 
 
