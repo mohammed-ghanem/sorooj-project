@@ -1,12 +1,16 @@
 import Link from 'next/link'
 import React from 'react'
+import Answers from './Answers'
 
 const TwitterSection = () => {
     return (
         <div className='container mx-auto grid grid-cols-2 gap-4 mt-10'>
-            <div className='answ&Ques'>answer and question</div>
+            <div className='answ&Ques'>
+                <Answers />
+            </div>
 
             <div className='twitterPosts'>
+                twitter posts
                 {/* <iframe
                     loading="lazy"
                     id="twitter-widget-0"
