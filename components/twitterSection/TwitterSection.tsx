@@ -4,12 +4,12 @@ import Answers from './Answers'
 
 const TwitterSection = () => {
     return (
-        <div className='container mx-auto grid grid-cols-2 gap-4 mt-10'>
-            <div className='answ&Ques'>
+        <div className='container mx-auto grid grid-rows-3 grid-flow-col gap-4'>
+            <div className='answ&Ques row-span-2'>
                 <Answers />
             </div>
 
-            <div className='twitterPosts'>
+            <div className='twitterPosts row-span-3'>
                 twitter posts
                 {/* <iframe
                     loading="lazy"
