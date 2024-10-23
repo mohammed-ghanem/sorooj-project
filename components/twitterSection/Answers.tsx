@@ -19,6 +19,16 @@ const items = [
         label: 'Panel 3',
         children: <p>Content for panel 3</p>,
     },
+    {
+        key: '4',
+        label: 'Panel 4',
+        children: <p>Content for panel 4</p>,
+    },
+    {
+        key: '5',
+        label: 'Panel 5',
+        children: <p>Content for panel 5</p>,
+    },
 ];
 
 const Answers = () => {
