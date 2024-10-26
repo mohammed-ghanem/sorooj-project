@@ -40,17 +40,17 @@ export default async function RootLayout({
   children,
   params,
 }: Readonly<Props>) {
-  
+
 
   return (
     <html lang={params.lang} dir={params.lang === "ar" ? "rtl" : 'ltr'}
       className={cairo.className}>
       <body>
-        <Header/>
+        <Header />
         <AntdRegistry>
           {children}
         </AntdRegistry>
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );

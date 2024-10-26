@@ -13,6 +13,10 @@ import VideoTitle from "@/components/homeTitles/VideoTitle";
 import BooksTitle from "@/components/homeTitles/BooksTitle";
 import HomeEvents from "@/components/homeEvents/HomeEvents";
 import TwitterSection from "@/components/twitterSection/TwitterSection";
+import MoreWatching from "@/components/moreWatching/MoreWatching";
+import MoreWatchTitle from "@/components/homeTitles/MoreWatchTitle";
+import AnswerTitle from "@/components/homeTitles/AnswerTitle";
+import FatwaForm from "@/components/fatwaForm/FatwaForm";
 
 coursesApi;
 bookApi;
@@ -102,9 +106,11 @@ export default async function Home({ params }: Props) {
         >
           <NewBookHome />
         </SwiperLib>
-
-        <div>more watching</div>
+        <MoreWatchTitle />
+        <MoreWatching />
+        <AnswerTitle />
         <TwitterSection />
+        <FatwaForm />
       </main>
     </div>
   );

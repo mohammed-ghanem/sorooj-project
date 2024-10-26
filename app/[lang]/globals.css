@@ -5,6 +5,7 @@
 
 body {
     position: relative;
+    font-family: cairo;
 }
 
 .bkBox {
@@ -25,3 +26,6 @@ body {
 .bkColor{
     background : #F5F3ED;
 } 
+.bkNone{
+    background : none
+}
