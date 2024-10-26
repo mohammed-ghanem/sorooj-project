@@ -16,7 +16,7 @@ interface Gregorian {
 interface DataResponse {
     data: {
         hijri: Hijri;
-        gregorian?: Gregorian;
+        gregorian?: Gregorian; 
     };
 }
 export async function getTimeDate(): Promise<DataResponse | null> {
@@ -38,6 +38,7 @@ export async function getTimeDate(): Promise<DataResponse | null> {
     } catch (error) {
         // Handle fetch errors
         console.error('Fetch error:', error);
-        return null; // Return null on error
+        return null; 
+        // Return null on error
     }
 }
