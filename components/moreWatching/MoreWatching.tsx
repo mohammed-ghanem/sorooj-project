@@ -9,8 +9,8 @@ import Link from 'next/link'
 
 const MoreWatching = () => {
     return (
-        <section className=' container mx-auto w-[80%] grid grid-cols-4 gap-4'>
-            <div className=" bkColor rounded-[15px] overflow-hidden relative">
+        <section className=' container mx-auto w-[80%] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 md:gap-4'>
+            <div className=" bkColor rounded-[15px] overflow-hidden relative mb-4">
                 <div className="newCourses h-full">
                     <Image className="w-full" src={test} alt="test" height={100} />
                     <div className="px-3">

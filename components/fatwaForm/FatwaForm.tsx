@@ -7,8 +7,8 @@ import fatwaFlower from '@/assets/images/fatwa.svg'
 
 const FatwaForm = () => {
   return (
-    <div className='my-14 relative container mx-auto w-[80%] grid grid-cols-3 gap-2 items-center bkPrimaryColor rounded-[10px] overflow-hidden'>
-      <div className=" py-10 relative z-50 col-span-2 w-[80%] mx-auto">
+    <section className='my-14 relative container mx-auto sm:w-[95%] md:w-[80%] grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-2 items-center bkPrimaryColor rounded-[10px] overflow-hidden'>
+      <div className=" py-10 relative z-50 col-span-2 w-[95%] md:w-[80%] mx-auto">
         <div className="mb-5 text-white font-bold">
           <h5>هل تريد طلب فتوى !  </h5>
           <p className="my-4">نحن فى انتظارك , يسعدنا مساعدتك , قم بتسجيل الدخول اولا</p>
@@ -57,7 +57,7 @@ const FatwaForm = () => {
       <div className="absolute right-0 bottom-0">
         <Image src={fatwaFlower} alt="flower" />
       </div>
-    </div>
+    </section>
   )
 }
 
