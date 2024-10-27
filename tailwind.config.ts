@@ -12,7 +12,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'regal-blue': '#424C61'
+        'regal-blue': '#424C61',
+      },
+      width: {
+        '95%': '95%',
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

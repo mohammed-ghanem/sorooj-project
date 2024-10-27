@@ -57,7 +57,7 @@ export default async function Home({ params }: Props) {
               spaceBetween: 10,
             },
             768: {   // Medium screens (tablets)
-              slidesPerView: 3,
+              slidesPerView: 2,
               spaceBetween: 10,
             },
             1024: {  // Larger screens (desktops)

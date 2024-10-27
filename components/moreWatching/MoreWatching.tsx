@@ -47,7 +47,7 @@ const MoreWatching = () => {
                 </span>
             </div>
             {/*  */}
-            <div className=" bkColor rounded-[15px] overflow-hidden relative">
+            <div className=" bkColor rounded-[15px] overflow-hidden relative mb-4">
                 <div className="newCourses h-full">
                     <Image className="w-full" src={test} alt="test" height={100} />
                     <div className="px-3">
@@ -83,7 +83,7 @@ const MoreWatching = () => {
                     كتب وابحاث
                 </span>
             </div>
-            <div className=" bkColor rounded-[15px] overflow-hidden relative">
+            <div className=" bkColor rounded-[15px] overflow-hidden relative mb-4">
                 <div className="newCourses h-full">
                     <Image className="w-full" src={test} alt="test" height={100} />
                     <div className="px-3">
@@ -119,7 +119,7 @@ const MoreWatching = () => {
                     كتب وابحاث
                 </span>
             </div>
-            <div className=" bkColor rounded-[15px] overflow-hidden relative">
+            <div className=" bkColor rounded-[15px] overflow-hidden relative mb-4">
                 <div className="newCourses h-full">
                     <Image className="w-full" src={test} alt="test" height={100} />
                     <div className="px-3">

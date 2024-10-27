@@ -7,14 +7,14 @@ import fatwaFlower from '@/assets/images/fatwa.svg'
 
 const FatwaForm = () => {
   return (
-    <section className='my-14 relative container mx-auto sm:w-[95%] md:w-[80%] grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-2 items-center bkPrimaryColor rounded-[10px] overflow-hidden'>
+    <section className='my-14 relative container mx-auto sm:w-[95%] md:w-[80%] flex flex-wrap-reverse lg:grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-2 items-center bkPrimaryColor rounded-[10px] overflow-hidden'>
       <div className=" py-10 relative z-50 col-span-2 w-[95%] md:w-[80%] mx-auto">
         <div className="mb-5 text-white font-bold">
           <h5>هل تريد طلب فتوى !  </h5>
           <p className="my-4">نحن فى انتظارك , يسعدنا مساعدتك , قم بتسجيل الدخول اولا</p>
         </div>
         <form>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
             <input
               type="text"
               name="name"
@@ -51,8 +51,8 @@ const FatwaForm = () => {
 
         </form>
       </div>
-      <div className='relative h-full bkColor rounded-tl-none rounded-br-[200px] rounded-tr-[200px] rounded-bl-none w-full mr-auto'>
-        <Image fill className="m-auto" src={fatwaIcon} alt="fatwaIcon" />
+      <div className='relative h-full bkColor rounded-tl-none rounded-br-[200px] rounded-tr-none md:rounded-tr-[200px] rounded-bl-[200px] md:rounded-bl-none w-full mr-auto'>
+        <Image className="m-auto text-transparent relative md:absolute h-full w-full max-w-[75%] md:max-w-[100%]" src={fatwaIcon} alt="fatwaIcon" />
       </div>
       <div className="absolute right-0 bottom-0">
         <Image src={fatwaFlower} alt="flower" />

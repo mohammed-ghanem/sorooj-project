@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SerachInput = () => {
     return (
-        <div className=''>
+        <div className='w-[95%] mx-auto'>
             <div className=' md:w-full relative flex items-center border-2 rounded-md border-regal-blue p-2 text-sm '>
                 <input className='block w-full text-gray-900 bg-transparent dark:placeholder-gray-400 dark:text-whit outline-0 p-1'
                     type="text" placeholder="البحث" />

@@ -20,7 +20,7 @@ const DefaultImage = {
 const images: string | any[] = [
     // Intentionally left empty to test default image
     { src: "", alt: 'event 1', title: `انطلاق البرنامج التدريبى  ..  محطات فى العقيدة`, link: '/link1', time: "2024-12-31T23:59:59Z" },
-    //{ src: slider2, alt: 'event 2', title: `انطلاق البرنامج التدريبى  ..  محطات فى الفقة`, link: '/link1', time: "2024-10-31T23:59:59Z" },
+   // { src: slider2, alt: 'event 2', title: `انطلاق البرنامج التدريبى  ..  محطات فى الفقة`, link: '/link1', time: "2024-10-31T23:59:59Z" },
 ];
 
 const HomeEvents: React.FC = () => {
@@ -53,13 +53,13 @@ const HomeEvents: React.FC = () => {
                 autoplay={showArrows}
                 autoplaySpeed={5000}
                 fade
-                dots={true}
-                className='container mx-auto w-[80%] mt-24'
+                dots={false}
+                className='container mx-auto w-[95%] md:w-[80%] mt-24 mb-64 lg:mb-auto h-[220px] lg:h-auto'
             >
                 {imageList.map((event, index) => (
                     <div key={index} className='relative outline-none'>
                         <Image
-                            className='w-[100%] lg:w-[1600px] h-auto lg:h-[400px]'
+                            className='w-[100%] lg:w-[1600px] h-[400px]'
                             src={event.src}
                             alt={event.alt}
                         />
@@ -68,13 +68,13 @@ const HomeEvents: React.FC = () => {
 
                             <div className="absolute  inset-0 flex justify-center items-center mb-4">
                                 <div className='text-center'>
-                                    <h1 className='font-cairo font-bold text-base md:text-5xl mb-0 md:mb-7 text-white'>احداث قدامة</h1>
+                                    <h1 className='font-cairo font-bold text-xl lg:text-5xl mb-3 md:mb-7 text-white bg-[#424c6133] w-fit block mx-auto'>احداث قدامة</h1>
                                     <Link href={event.link || '#'}>
-                                        <span className="styleTitle font-bold text-white bg-white bg-opacity-25 px-2 py-1 rounded">
+                                        <span className="styleTitle font-bold text-white bg-opacity-25 px-2 py-1 rounded bg-[#424c6133] w-fit block mx-auto">
                                             {event.title}
                                         </span>
                                     </Link>
-                                    <p className='w-[60%] font-cairo text-white mx-auto my-5 '>
+                                    <p className='w-[80%] md:w-[60%] font-cairo text-white my-5 bg-[#424c6133] block mx-auto'>
                                         هذا النص هو بديل لنص يمكن ان يستبدل في نفس المساحه , هذا النص هو بديل لنص يمكن ان يستبدل في نفس المساحه هذا النص هو بديل لنص يمكن ان يستبدل في نفس المساحه , هذا النص هو بديل لنص يمكن ان يستبدل في نفس المساحه
                                     </p>
                                     <div className='eventTime'>
