@@ -6,7 +6,7 @@ import SocialMedia from "../socialMedia/SocialMedia";
 
 const FirstNav = async () => {
     const data = await getTimeDate();
-
+ 
     // Check if data is null or undefined
     if (!data || !data.data) {
         return (

@@ -1,18 +1,17 @@
 import type { Metadata } from "next";
-// import { Inter, Cairo, Almarai, Changa } from "next/font/google";
 import "./globals.css";
 import '@/utils/fontAwesome'; // Import the Font Awesome configuration
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
-import { Cairo } from 'next/font/google';
+//import { Cairo } from 'next/font/google';
 
 // Import Google Font
-const cairo = Cairo({
-  subsets: ['latin'],
-  variable: '--font-cairo', // optional if you're using CSS variables
-});
+// const cairo = Cairo({
+//   subsets: ['latin'],
+//   variable: '--font-cairo', // optional if you're using CSS variables
+// });
 
 // Import Google fonts
 // const inter = Inter({ subsets: ["latin"] });
@@ -43,8 +42,7 @@ export default async function RootLayout({
 
 
   return (
-    <html lang={params.lang} dir={params.lang === "ar" ? "rtl" : 'ltr'}
-      className={cairo.className}>
+    <html lang={params.lang} dir={params.lang === "ar" ? "rtl" : 'ltr'}>
       <body>
         <Header />
         <AntdRegistry>

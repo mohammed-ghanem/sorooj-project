@@ -9,6 +9,9 @@
         },
         "lesson" : {
             "title" : "welcome in lesson"
+        },
+        "signin" : {
+            "loginTitle" :"Log In"
         }
     },
     "authLinks" :{

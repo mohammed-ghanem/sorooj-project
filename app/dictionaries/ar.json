@@ -9,6 +9,9 @@
         },
         "lesson" : {
             "title" : "اهلا وسهلا بكم فى الدروس "
+        },
+        "signin" : {
+            "loginTitle" :"تسجيل الدخول "
         }
     },
     "authLinks" :{
@@ -18,4 +21,4 @@
     "welcome" : {
         "welcome" : " اهلا بك"
     }
-}
+} 
