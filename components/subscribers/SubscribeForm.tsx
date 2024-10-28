@@ -47,7 +47,7 @@ const SubscribeForm = () => {
                 </div>
                 <button
                     type="submit"
-                    className=" absolute bkPrimaryColor text-white focus:outline-none top-[0] left-[0] px-[40px] py-[10px] md:py-[10px]  rounded-[30px]"
+                    className=" absolute bkPrimaryColor text-white focus:outline-none top-[0] left-[0] px-[40px] py-[12px] md:py-[10px]  rounded-[30px]"
                 >
                     ارسال
                 </button>
