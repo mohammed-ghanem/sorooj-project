@@ -11,7 +11,25 @@
             "title" : "welcome in lesson"
         },
         "signin" : {
-            "loginTitle" :"Log In"
+            "loginTitle" :"Log In",
+            "email" : "Email Address",
+            "passwordName" : "Password",
+            "forgetPassword" : "Forget Password ?",
+            "loginButton" : "Log In",
+            "dontHaveUser" : "Dont Have Account ?",
+            "createAccount": "create account",
+            "LoginSuccessful" : "Login Successful!",
+            "redirectHome" : "You will be redirected to the home page !",
+            "ok":"OK",
+            "NotVerified" : "Account Not Verified !",
+            "newVerifyCode" : "A new verification code has been sent to your email. Please verify your account.",
+            "Error" : "Error",
+            "failedResendCode" : "Failed to resend verification code. Please try again later.",
+            "verifyBeforeLogin" : "Please verify your account before logging in.",
+            "InvalidEmailOrPassword" : "Invalid email or password",
+            "InvalidEmailOrPasswordSwal" : "'Login Failed', 'Invalid email or password. Please try again.', 'error'",
+            "NetworkError": "Network Error', 'Please check your network connection and try again.', 'error'" ,
+            "SomethingWentWrong" : "'Error', 'Something went wrong. Please try again later.', 'error'"
         }
     },
     "authLinks" :{
