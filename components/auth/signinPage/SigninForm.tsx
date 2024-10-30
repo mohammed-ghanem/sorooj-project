@@ -9,8 +9,8 @@ import Image from 'next/image';
 import whiteAuthBk from '@/assets/images/Vector.svg';
 import loginauth from '@/assets/images/loginauth.svg';
 import flower from '@/assets/images/flower.svg';
-import SocialLogin from '../socialLogin/SocialLogin';
-import TranslateHook from '../translate/TranslateHook';
+import SocialLogin from '../../socialLogin/SocialLogin';
+import TranslateHook from '../../translate/TranslateHook';
 
 interface LoginFormData {
     email: string;
@@ -103,7 +103,9 @@ const SignInForm = () => {
                     </h1>
                     <form className="p-4 w-[95%] md:w-[80%] mx-auto z-50 relative" onSubmit={handleSubmit}>
                         <div className="mb-4">
-                            <label className="block text-end text-sm font-bold leading-6 mainColor">
+                            <label className={`block text-sm font-bold leading-6 mainColor
+                                                ${lang === "en" ? 'text-start' : 'text-end'}`
+                                            }>
                                 {translate ? translate.pages.signin.email : ""}
                             </label>
                             <input
@@ -117,7 +119,11 @@ const SignInForm = () => {
                             {errors && <p className="text-red-500">{errors}</p>}
                         </div>
                         <div className="mb-4">
-                            <label className="block text-end text-sm font-bold leading-6 mainColor">
+                            <label className={`block text-sm font-bold leading-6 mainColor
+                                                ${lang === "en" ? 'text-start' : 'text-end'}`
+                                            }
+                            >
+                    
                             {translate ? translate.pages.signin.passwordName : ""}
                             </label>
                             <input

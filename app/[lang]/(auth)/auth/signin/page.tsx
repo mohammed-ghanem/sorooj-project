@@ -1,6 +1,6 @@
-import SignInForm from "@/components/forms/SigninForm";
+import SignInForm from "@/components/auth/signinPage/SigninForm";
 
 
-export default  function SignInRoute() {
-    return <div><SignInForm/></div>;
+export default function SignInRoute() {
+    return <div><SignInForm /></div>;
 }
