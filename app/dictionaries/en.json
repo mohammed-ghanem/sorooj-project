@@ -30,6 +30,34 @@
             "InvalidEmailOrPasswordSwal" : "'Login Failed', 'Invalid email or password. Please try again.', 'error'",
             "NetworkError": "Network Error', 'Please check your network connection and try again.', 'error'" ,
             "SomethingWentWrong" : "'Error', 'Something went wrong. Please try again later.', 'error'"
+        },
+        "forgotPassword" : {
+            "title" : "Forgot Password ?",
+            "titleDescription" : "Enter your email to recover your password !",
+            "sendVerifyCode" : "Send",
+            "VerificationLinkSent" : " Verification Link Sent !",
+            "checkEmail" : "Please check your email for the verification link !"
+        },
+        "restPassword" : {
+            "title" : "Reset password",
+            "titleDescription" : "Reset your password !",
+            "password" : "Password",
+            "confirmPassword" : "confirm Password",
+            "sendRestPassword" : "Send",
+            "resetSuccessful" : "Password Reset Successful!",
+            "textReLogin" : "You can now login with your new password ."
+        },
+        "changePassword" : {
+            "title" : "Change Password",
+            "titleDescription" : "Change your Old Password !",
+            "oldPassword" : "Current Password",
+            "newPassword" : "New Password",
+            "confirmNewPassword" : "confirm Password",
+            "sendNewPassword" : "send",
+            "titleSwal" : "Password Changed !",
+            "textSwal" : "Your password has been updated successfully, Now login with your new password .",
+            "ok" : "OK"
+
         }
     },
     "authLinks" :{
@@ -38,5 +66,10 @@
     },
     "welcome" : {
         "welcome" : "welcome"
+    },
+    "socialLogin": {
+        "google": "LogIn With Google",
+        "facebook": "LogIn With Facebook",
+        "or": "OR" 
     }
 }
