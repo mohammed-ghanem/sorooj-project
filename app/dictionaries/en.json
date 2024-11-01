@@ -76,7 +76,24 @@
             "notAuthenticated" : "User is not authenticated",
             "newOptSent" : "A new verify code has been sent to your email , success !!",
             "faildOtp" : "Error ,Unable to resend verify code. Please try again later."
-        }
+        },
+        "EmailForOtp": {
+            "title" : "To Verify Your Account",
+            "titleDescription" : "Send your Email , to get the verify code",
+            "email" :"Email Address",
+            "send" : "send",
+            "otpSenttitle" : "OTP Sent",
+            "otpSenttext" : "OTP has been sent to your email , success !!",
+            "ok" : "ok",
+            "InvalidEmail" : "Invalid Email",
+            "faildOtp" : "Please enter a valid email address.",
+            "UnauthorizedTitle" : "Unauthorized",
+            "UnauthorizedText" : "Please check your email or contact support.",
+            "error" : "Something went wrong. Please try again later."
+
+
+
+         }
     },
     "authLinks" :{
         "login" : "Log In",

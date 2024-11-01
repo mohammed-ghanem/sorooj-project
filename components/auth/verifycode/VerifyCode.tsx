@@ -35,7 +35,6 @@ const VerifyCode = () => {
     if (sourceParam) {
       setSource(sourceParam)
     } else {
-      console.error("No source found in URL or cookies")
       router.push(`/${lang}`)
     }
   }, [searchParams, router , lang])
@@ -140,7 +139,7 @@ const VerifyCode = () => {
         setIsButtonDisabled(false) // Re-enable the button if there's an issue
         return
     }
-
+ 
     try {
         await axios.post(
             `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/auth/resend-otp`,
@@ -172,7 +171,8 @@ const VerifyCode = () => {
               {translate ? translate.pages.verifyCode.titleDescription : ""}
             </p>
           </div>
-          <form onSubmit={handleVerifyCode} className="p-4 w-[95%] md:w-[80%] mx-auto z-50 relative my-6">
+          <form onSubmit={handleVerifyCode}
+                className="p-4 w-[95%] md:w-[80%] mx-auto z-50 relative my-6">
             <div className="flex justify-center gap-2">
               {otp.map((digit, index) => (
                 <input
