@@ -56,8 +56,26 @@
             "sendNewPassword" : "send",
             "titleSwal" : "Password Changed !",
             "textSwal" : "Your password has been updated successfully, Now login with your new password .",
-            "ok" : "OK"
+            "ok" : "OK",
+            "loadingTitle" : "Please Wait ..."
 
+        },
+        "verifyCode" :  {
+            "title" : "Verify Code",
+            "titleDescription" : "Enter the verification code sent to your email!",
+            "verifyCode" : "Enter Verification Code",
+            "verifyButton" : "Verify",
+            "titleSwal" : "Account Verified successfully!",
+            "textSwal" : "Your account has been verified successfully",
+            "ok" : "OK",
+            "loadingTitle" : "Please Wait ...",
+            "resendNewOtp" : "Resend new verification code",
+            "in" : "in",
+            "didntGetOtp" : "didnt receive verification code ?",
+            "resendOtptitleSwal" : "Resending verification code ...",
+            "notAuthenticated" : "User is not authenticated",
+            "newOptSent" : "A new verify code has been sent to your email , success !!",
+            "faildOtp" : "Error ,Unable to resend verify code. Please try again later."
         }
     },
     "authLinks" :{

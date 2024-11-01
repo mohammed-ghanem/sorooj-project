@@ -60,7 +60,7 @@ const RestPassword = () => {
         setNewPassword("")
         setPasswordConfirmation("")
         Cookies.remove("access_token") // Optionally clear token after password reset
-        router.push("/auth/signin")
+        router.push(`/${lang}/auth/signin`)
       })
 
     } catch (error: any) {
