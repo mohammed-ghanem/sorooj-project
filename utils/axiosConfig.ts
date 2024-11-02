@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const axiosWithCredentials = axios.defaults.withCredentials = true;
+export const axiroWithCredentials = axios.defaults.withCredentials = true;
 
 export const csrfToken = document.cookie.split('; ').find(row => row.startsWith('XSRF-TOKEN='))
 ?.split('=')[1];

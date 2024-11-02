@@ -7,7 +7,7 @@ import './style.css'
 import PhoneInput from 'react-phone-input-2'
 import { z, ZodError } from 'zod'
 import Swal from 'sweetalert2'
-import { axiosDefaultConfig, axiosWithCredentials } from '@/utils/axiosConfig'
+import { axiosDefaultConfig, axiroWithCredentials } from '@/utils/axiosConfig'
 import { useParams, useRouter } from 'next/navigation'
 import Cookies from 'js-cookie' // Import the cookies library
 import Image from 'next/image'
@@ -17,7 +17,7 @@ import flower from '@/assets/images/flower.svg'
 import SocialLogin from '@/components/socialLogin/SocialLogin'
 import TranslateHook from '../../translate/TranslateHook';
 
-axiosWithCredentials;
+axiroWithCredentials;
 axiosDefaultConfig;
 
 // Zod schema for validation
