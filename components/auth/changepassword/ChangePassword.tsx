@@ -175,8 +175,8 @@ const ChangePassword = () => {
           <Image src={loginauth} fill className="max-w-[70%] max-h-[50%] m-auto" alt="loginauth" />
         </div>
       </div>
-      <div className="absolute w-[424px] h-[300px] -top-[18px] -right-[76px]">
-        <Image src={flower} fill alt="flowersvg" />
+      <div className=' absolute w-[320px] md:w-[424px] h-[300px] -top-[18px] -right-[76px]'>
+        <Image src={flower} fill alt='flowersvg' />
       </div>
     </div>
   )
