@@ -47,9 +47,9 @@ const SignInForm = () => {
 
         try {
             // Step 1: Get the CSRF token from the backend
-            await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/sanctum/csrf-cookie, {
+            await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/sanctum/csrf-cookie`, {
                 withCredentials: true,
-            }`);
+            });
 
             const csrfToken = document.cookie.split('; ').find(row => row.startsWith('XSRF-TOKEN='))
                 ?.split('=')[1];
@@ -111,7 +111,7 @@ const SignInForm = () => {
                             confirmButtonText: 'OK'
                         }).then(() => {
                             //Redirect to the verify code page
-                            router.push(`/auth/resend-otp`);
+                            router.push(`/${lang}/auth/resend-otp`);
                         });
                     } catch (resendError) {
                         console.error("Error resending verification code", resendError);
@@ -147,14 +147,14 @@ const SignInForm = () => {
             <div className=' container mx-auto grid grid-cols-1  lg:grid-cols-2 gap-4 items-center'>
                 <div className='my-10' style={{ direction: "ltr" }}>
                     <h1 className="text-center font-bold text-4xl mainColor">
-                        {/* {translate ? translate.pages.signin.loginTitle : ""} */}
+                        {translate ? translate.pages.signin.loginTitle : ""}
                     </h1>
                     <form className="p-4 w-[95%] md:w-[80%] mx-auto z-50 relative" onSubmit={handleSubmit}>
                         <div className="mb-4">
                             <label className={`block text-sm font-bold leading-6 mainColor
                                                 ${lang === "en" ? 'text-start' : 'text-end'}`
                             }>
-                                {/* {translate ? translate.pages.signin.email : ""} */}
+                                {translate ? translate.pages.signin.email : ""}
                             </label>
                             <input
                                 type="email"
@@ -167,13 +167,13 @@ const SignInForm = () => {
                             {errors && <p className="text-red-500">{errors}</p>}
                         </div>
                         <div className="mb-4">
-                            {/* <label className={`block text-sm font-bold leading-6 mainColor
+                            <label className={`block text-sm font-bold leading-6 mainColor
                                                 ${lang === "en" ? 'text-start' : 'text-end'}`
                             }
                             >
 
                                 {translate ? translate.pages.signin.passwordName : ""}
-                            </label> */}
+                            </label>
                             <input
                                 type="password"
                                 name="password"
@@ -184,22 +184,22 @@ const SignInForm = () => {
                             />
                             {errors && <p className="text-red-500">{errors}</p>}
                         </div>
-                        {/* <Link href={`/${lang}/auth/forget-password`} className="border-b border-regal-blue">
+                        <Link href={`/${lang}/auth/forget-password`} className="border-b border-regal-blue">
                             {translate ? translate.pages.signin.forgetPassword : ""}
-                        </Link> */}
+                        </Link>
                         <div>
                             <button type="submit"
                                 className="w-full bkPrimaryColor text-white font-light py-3 px-4 mt-5 rounded-lg">
-                                {/* {translate ? translate.pages.signin.loginButton : ""} */}
+                                {translate ? translate.pages.signin.loginButton : ""}
                             </button>
                         </div>
-                        {/* <div className="mt-2 text-center">
+                        <div className="mt-2 text-center">
                             <span> {translate ? translate.pages.signin.dontHaveUser : ""} </span>
                             <Link href={`/${lang}/auth/signup`}
                                 className="border-b border-regal-blue">
                                 {translate ? translate.pages.signin.createAccount : ""}
                             </Link>
-                        </div> */}
+                        </div>
                     </form>
                     <SocialLogin />
 
