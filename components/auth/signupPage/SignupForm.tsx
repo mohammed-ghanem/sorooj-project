@@ -1,3 +1,13 @@
+import React from 'react'
+
+const SignupForm = () => {
+  return (
+    <div>SignupForm</div>
+  )
+}
+
+export default SignupForm
+
 // 'use client'
 
 // import { useState, ChangeEvent, FormEvent } from 'react'
