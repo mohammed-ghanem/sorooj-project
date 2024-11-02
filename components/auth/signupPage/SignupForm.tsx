@@ -133,7 +133,7 @@ const SignupForm = () => {
                     // Store the source in a cookie (or you can store it elsewhere)
                     Cookies.set('source', 'signup');
                     // Redirect to the verify code page
-                    router.push(`/${lang}/auth/verify-code?email=${form.email}`);
+                    router.push(`/auth/verify-code?email=${form.email}`);
                 });
 
             } catch (axiosError) {
