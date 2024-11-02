@@ -7,7 +7,7 @@ import './style.css'
 import PhoneInput from 'react-phone-input-2'
 import { z, ZodError } from 'zod'
 import Swal from 'sweetalert2'
-import { axiosDefaultConfig, axiosWithCredentials, csrfToken } from '@/utils/axiosConfig'
+import { axiosDefaultConfig, axiosWithCredentials } from '@/utils/axiosConfig'
 import { useParams, useRouter } from 'next/navigation'
 import Cookies from 'js-cookie' // Import the cookies library
 import Image from 'next/image'
@@ -19,7 +19,6 @@ import TranslateHook from '../../translate/TranslateHook';
 
 axiosWithCredentials;
 axiosDefaultConfig;
-csrfToken;
 
 // Zod schema for validation
 const errorMessage = "Password must be at least 8 characters contain uppercase & lowercase letter & at least 1 number /[0-9]/ with at least 1 special character /[@$!%*?&]/ "
@@ -93,6 +92,9 @@ const SignupForm = () => {
                 await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/sanctum/csrf-cookie`, {
                     withCredentials: true, // Ensure credentials (cookies) are sent
                 });
+
+                const csrfToken = document.cookie.split('; ').find(row => row.startsWith('XSRF-TOKEN='))
+                ?.split('=')[1];
                 // Step 2: Make the signup request after CSRF token is set
                 const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/auth/register`, form, {
                     headers: {
