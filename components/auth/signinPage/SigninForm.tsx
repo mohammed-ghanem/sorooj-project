@@ -86,7 +86,7 @@ const SignInForm = () => {
                 icon: 'success',
                 confirmButtonText: `${translate ? translate.pages.signin.ok : "ok"}`
             }).then(() => {
-                window.location.href = `/${lang}`
+                window.location.href = `/${lang}/`
             });
 
         } catch (error) {
@@ -110,7 +110,7 @@ const SignInForm = () => {
                             confirmButtonText: `${translate ? translate.pages.signin.ok : "ok"}`
                         }).then(() => {
                             //Redirect to the verify code page
-                            router.push(`/auth/resend-otp`);
+                            router.push(`/${lang}/auth/resend-otp`);
                         });
                     } catch (resendError) {
                         console.error("Error resending verification code", resendError);
