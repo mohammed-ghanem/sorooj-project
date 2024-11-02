@@ -1,7 +1,15 @@
 {
     "navigation" : {
         "home": "الرئيسية",
-        "lesson": "الدروس "
+        "about": "عن المركز",
+        "courses" : "الدورات المجانية",
+        "books" : "الكتب والابحاث",
+        "questions" : "سؤال وجواب" , 
+        "contact" : "اتصل بنا",
+        "libirary" : "المكتبة",
+        "blog" : "المدونة",
+        "liveair" : "البث المباشر",
+        "academy" : "اكاديمية سرج" 
     },
     "pages" : {
         "homePage" : {

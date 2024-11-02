@@ -1,58 +1,38 @@
 "use client";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import { useParams } from 'next/navigation'
-import en from '@/app/dictionaries/en.json';  // Import English dictionary
-import ar from '@/app/dictionaries/ar.json';  // Import Arabic dictionary
+import TranslateHook from '../translate/TranslateHook';
 
-const LastNav: React.FC = () => {
-     // Access dynamic [lang] parameter
-     const { lang }: { lang?: string } = useParams();
-     const [dictionary, setDictionary] = useState<any>(null);
-     const [mounted, setMounted] = useState<boolean>(false);
-    
-    
-    
+const LastNav = () => {
+    // lang
+    const { lang }: { lang?: string } = useParams();
+    const translate = TranslateHook();
+
+    // toggle nav
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
 
-    useEffect(() => {
-        // Dynamically set the dictionary based on the current language
-        if (lang === 'en') {
-            setDictionary(en);
-        } else if (lang === 'ar') {
-            setDictionary(ar);
-        }
-    }, [lang]);
-
-    useEffect(() => {
-        setMounted(true); // Ensure the component is mounted before accessing params
-    }, []);
-
-    if (!mounted) return null; // Avoid rendering before the component is mounted
-
-
-
     const navLinks = [
-        { name: `${dictionary.navigation.home}`, href: `/${lang}` },
-        { name: 'عن المركز', href: '#' },
-        { name: 'الدورات المجانية', href: '#' },
-        { name: 'الكتب والابحاث', href: '#' },
-        { name: 'سؤال وجواب', href: '#' },
-        { name: 'المكتبة', href: '#' },
-        { name: 'البث المباشر', href: '#' },
-        { name: 'المدونة', href: '#' },
-        { name: 'اتصل بنا', href: '#' },
-        { name: 'اكاديمية سرج', href: '#' },
+        { name: `${translate ? translate.navigation.home : "الرئيسية"}`, href: `/${lang}` },
+        { name: `${translate ? translate.navigation.about : "عن المركز"}`, href: `/${lang}/about` },
+        { name: `${translate ? translate.navigation.courses : "الدورات المجانية "}`, href: `/${lang}/courses` },
+        { name: `${translate ? translate.navigation.books : " الكتب والابحاث"}`, href: `/${lang}/books` },
+        { name: `${translate ? translate.navigation.questions : " سؤال وجواب"}`, href: `/${lang}/questions` },
+        { name: `${translate ? translate.navigation.libirary : " المكتبة"}`, href: `/${lang}/libirary` },
+        { name: `${translate ? translate.navigation.liveair : "البث المباشر"}`, href: `/${lang}/liveair` },
+        { name: `${translate ? translate.navigation.blog : "المدونة"}`, href: `/${lang}/blog` },
+        { name: `${translate ? translate.navigation.contact : " اتصل بنا"}`, href: `/${lang}/contact-us` },
+        { name: `${translate ? translate.navigation.academy : "اكاديمية سرج"}`, href: `/${lang}/sorooj-academy` },
     ];
 
     return (
-        <nav className="bkPrimaryColor p-4 ">
+        <nav className="bkPrimaryColor p-4 font-medium">
             <div className="container mx-auto flex justify-between items-center">
                 <div className="hidden lg:flex m-auto">
                     {navLinks.map((link, index) => (
@@ -79,37 +59,3 @@ const LastNav: React.FC = () => {
 };
 
 export default LastNav;
-
-
-
-
-
-
-
-// import { getDictionary } from '@/app/[lang]/dictionaries';
-// import BtnToggle from './BtnToggle';
-
-// const LastNav = async ({ language }: any) => {
-//     const dict = await getDictionary(language);
-   
-//     const navLinks = [
-//         {index : 1 , name: `${dict.navigation.home}`,href:`/${language}`},
-//         {index : 2 , name: 'عن المركز', href: '#' },
-//         {index : 4 , name: 'الدورات المجانية', href: '#' },
-//         {index : 7 , name: 'كتب وابحاث', href: '#' },
-//         {index : 8 , name: 'سؤال وجواب', href: '#' },
-//         {index : 10 , name: 'اخبار', href: '#' },
-//         {index : 11 , name: 'المكتبة', href: '#' },
-//         {index : 12 , name: 'البث المباشر', href: '#' },
-//         {index : 13 , name: 'اتصل بنا', href: '#' },
-//         {index : 14 , name: 'أكاديمية سرج', href: '#' },
-//     ];
-
-//     return (
-//         <nav className="bkPrimaryColor p-4 ">
-//             <BtnToggle navLinks={navLinks } />
-//         </nav>
-//     );
-// };
-
-// export default LastNav;

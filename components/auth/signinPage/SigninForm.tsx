@@ -2,7 +2,7 @@
 import { useState, ChangeEvent, FormEvent, useEffect } from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import { axiosDefaultConfig, axiroWithCredentials } from '@/utils/axiosConfig'
+import { axiosDefaultConfig, axiosWithCredentials } from '@/utils/axiosConfig'
 import Link from 'next/link'
 import { useRouter, useParams } from 'next/navigation'
 import Cookies from 'js-cookie'; // Import js-cookie to handle cookies
@@ -14,7 +14,7 @@ import SocialLogin from '@/components/socialLogin/SocialLogin'
 import TranslateHook from '../../translate/TranslateHook';
 
 
-axiroWithCredentials;
+axiosWithCredentials;
 axiosDefaultConfig;
 
 

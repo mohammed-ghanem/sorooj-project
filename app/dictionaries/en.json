@@ -1,7 +1,16 @@
 {
     "navigation" : {
-        "home": "home",
-        "lesson": "lesson"
+        "home": "Home",
+        "about": "About-US",
+        "courses" : "Free Courses",
+        "books" : "Books",
+        "questions" : "Answer & Questions" , 
+        "contact" : "Contact-Us",
+        "libirary" : "Libirary",
+        "blog" : "Blog",
+        "liveair" : "Live-Air",
+        "academy" : "Sorooj Academy"
+
     },
     "pages" : {
         "homePage" : {
