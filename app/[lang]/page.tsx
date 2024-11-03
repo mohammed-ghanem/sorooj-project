@@ -38,7 +38,7 @@ export default async function Home({ params }: Props) {
     <div>
       <main className="w-full">
         <h1 className=" hidden">{dict.pages.homePage.title}</h1>
-
+ 
         <Slider />
         <Statistics />
         <CoursesTitle />
@@ -46,7 +46,7 @@ export default async function Home({ params }: Props) {
           items={coursesApi}
           navigation={true}
           pagination={true}
-          slidesPerView={3}
+          slidesPerView={4}
           breakpoints={{
             320: {   // Mobile
               slidesPerView: 1,
@@ -72,6 +72,7 @@ export default async function Home({ params }: Props) {
         >
           <NewCourseHome />
         </SwiperLib>
+        
         <HomeEvents />
         <VideoTitle />
         <VideoTabs />
