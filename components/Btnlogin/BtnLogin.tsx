@@ -42,7 +42,7 @@ const BtnLogin = () => {
             })
                 .then(response => {
                     const user = response.data.data.user; // Destructure user and verification status
-                    setUserName(user.name);
+                    setUserName(user.first_name);
                 })
                 .catch(error => {
                     console.error("Error fetching user data", error);

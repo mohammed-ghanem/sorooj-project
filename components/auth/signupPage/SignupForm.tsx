@@ -24,8 +24,10 @@ axiosDefaultConfig;
 const errorMessage = "Password must be at least 8 characters contain uppercase & lowercase letter & at least 1 number /[0-9]/ with at least 1 special character /[@$!%*?&]/ "
 
 const SignupSchema = z.object({
-    name: z.string().min(1, "Name is required"),
+    first_name: z.string().min(1, "First Name is required"),
+    last_name: z.string().min(1, "Last Name is required"),
     email: z.string().email("Invalid email format"),
+    gender: z.string().min(1, "Gender is required"),
     password: z
         .string()
         .min(8, errorMessage)
@@ -35,26 +37,31 @@ const SignupSchema = z.object({
         .regex(/[@$!%*?&]/, errorMessage),
     password_confirmation: z.string(),
     mobile: z.string().min(5, "Phone number is required"),
+
 }).refine((data) => data.password === data.password_confirmation, {
     path: ["password_confirmation"],
     message: "Passwords don't match",
 });
 
 interface FormData {
-    name: string
+    first_name: string
+    last_name: string
     email: string
     password: string
     password_confirmation: string
     mobile: string
+    gender: string
 }
 
 const SignupForm = () => {
     const [form, setForm] = useState<FormData>({
-        name: '',
+        first_name: '',
+        last_name: '',
         email: '',
         password: '',
         password_confirmation: '',
-        mobile: ''
+        mobile: '',
+        gender: ''
     })
 
     const { lang }: { lang?: string } = useParams();
@@ -62,13 +69,20 @@ const SignupForm = () => {
     const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({})
     const router = useRouter() // Use Next.js router for navigation
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setForm({ ...form, [e.target.name]: e.target.value })
-    }
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        setForm({ ...form, [name]: value });
+    };
+
+    // const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    //     setForm({ ...form, [e.target.name]: e.target.value })
+    // }
 
     const handlePhoneChange = (value: string) => {
         setForm({ ...form, mobile: value })
     }
+
+
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -188,17 +202,56 @@ const SignupForm = () => {
                                                 ${lang === "en" ? 'text-start' : 'text-end'}`
                             }
                             >
+                               اختار النوع {/* {translate ? translate.pages.signup.fristName : ""} */}
+                            </label>
+                            <select
+                                name="gender"
+                                value={form.gender}
+                                onChange={handleChange}
+                                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm outline-none"
+                                required>
+                                <option value="" disabled>اختر النوع</option>
+                                <option value="male">ذكر</option>
+                                <option value="female">أنثى</option>
+                            </select>
+                            {errors.gender && <p className="text-red-500">{errors.gender}</p>}
+                           
+                        </div>
+
+                         
+                        <div className="mb-4">
+                            <label className={`block text-sm font-bold leading-6 mainColor
+                                                ${lang === "en" ? 'text-start' : 'text-end'}`
+                            }
+                            >
                                 {translate ? translate.pages.signup.fristName : ""}
                             </label>
                             <input
                                 type="text"
-                                name="name"
-                                value={form.name}
+                                name="first_name"
+                                value={form.first_name}
                                 onChange={handleChange}
                                 required
                                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm outline-none"
                             />
-                            {errors.name && <p className="text-red-500">{errors.name}</p>}
+                            {errors.first_name && <p className="text-red-500">{errors.first_name}</p>}
+                        </div>
+                        <div className="mb-4">
+                            <label className={`block text-sm font-bold leading-6 mainColor
+                                                ${lang === "en" ? 'text-start' : 'text-end'}`
+                            }
+                            >
+                                {translate ? translate.pages.signup.lastName : ""}
+                            </label>
+                            <input
+                                type="text"
+                                name="last_name"
+                                value={form.last_name}
+                                onChange={handleChange}
+                                required
+                                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm outline-none"
+                            />
+                            {errors.last_name && <p className="text-red-500">{errors.last_name}</p>}
                         </div>
                         <div className="mb-4">
                             <label className={`block text-sm font-bold leading-6 mainColor

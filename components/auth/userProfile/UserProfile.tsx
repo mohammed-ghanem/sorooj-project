@@ -19,13 +19,17 @@ const UserProfile = () => {
         // Get the token from cookies instead of localStorage
         const token = Cookies.get('access_token');
         const isVerified = Cookies.get('is_verified') === 'true';
+
+        // console.log(token , isVerified)
        
         if (token && isVerified) {
+
+            console.log(token , isVerified)
             axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/auth/profile`, {
                 headers: { Authorization: `Bearer ${token}` }
             })
                 .then(response => {
-                    setUserName(response.data.data.user.name)
+                    setUserName(response.data.data.user.first_name)
                     setUserEmail(response.data.data.user.email)
                 })
                 .catch(error => {
@@ -100,7 +104,7 @@ const UserProfile = () => {
     return (
         <div>
              {loading ? (
-                <p>Loading...</p>
+                <p>Loading.... for test before handle icon loading</p>
             ) : (
                 <>
                     {userName ? (
