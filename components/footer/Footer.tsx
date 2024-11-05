@@ -2,6 +2,7 @@ import Image from 'next/image'
 import FirstFooter from './FirstFooter'
 import LastFooter from './LastFooter'
 import footerVectorImage from '@/assets/images/footervector.png'
+import ScrollToTop from '../ScrollToTop/ScrollToTop'
 
 
 const Footer = () => {
@@ -19,6 +20,8 @@ const Footer = () => {
         </p>
         <p className='mainColor text-xm'>WeCan For Development</p>
       </div>
+
+      <ScrollToTop/>
     </div>
   )
 }

@@ -14,7 +14,13 @@
     },
     "pages" : {
         "homePage" : {
-            "title" : "welcome in home page"
+            "statistics" : {
+                "FreeCourses": "Free Courses",
+                "Books" : "Books",
+                "VideoLibirary" : "Video Libirary",
+                "AnswerQuestion"  : "Answer & Question",
+                "Subscribers"  : "Subscribers"
+            }
         },
         "lesson" : {
             "title" : "welcome in lesson"

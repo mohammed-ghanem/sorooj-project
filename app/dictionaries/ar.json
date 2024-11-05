@@ -13,7 +13,13 @@
     },
     "pages" : {
         "homePage" : {
-            "title" : "اهلا وسهلا بكم فى الصفحة الرئيسية "
+            "statistics" : {
+                "FreeCourses": "الدورات المجانية",
+                "Books" : "الكتب والابحاث",
+                "VideoLibirary" : "المكتبة المرئية",
+                "AnswerQuestion"  : "سؤال وجواب",
+                "Subscribers"  : "المشتركين"
+            }
         },
         "lesson" : {
             "title" : "اهلا وسهلا بكم فى الدروس "

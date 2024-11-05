@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { FC } from "react";
 
 import CountUp from "react-countup";
+import TranslateHook from "../translate/TranslateHook";
 
 interface CountUpProps {
   start?: number;
@@ -15,6 +16,9 @@ interface CountUpProps {
 
 
 const Statistics: FC<CountUpProps> = ({ start = 0, end, duration = 8, decimals = 0 }) => {
+  // lang
+  const translate = TranslateHook();
+
   return (
     <div className='bkColor mt-8 mb-8'>
       <div className="container mx-auto py-6">
@@ -25,7 +29,9 @@ const Statistics: FC<CountUpProps> = ({ start = 0, end, duration = 8, decimals =
             <div className="flex items-center md:block">
               <CountUp className="primaryColor font-bold text-[35px] mx-3 "
                 start={start} end={28} duration={duration} decimals={decimals} />
-              <p className="mainColor font-bold opacity-50">الدورات المجانية</p>
+              <p className="mainColor font-bold opacity-50">
+                {translate ? translate.pages.homePage.statistics.FreeCourses : "الدورات المجانية"}
+              </p>
             </div>
           </div>
           {/* ***************  for test remove this after life publish*/}
@@ -34,7 +40,9 @@ const Statistics: FC<CountUpProps> = ({ start = 0, end, duration = 8, decimals =
             <div className="flex items-center md:block">
               <CountUp className="primaryColor font-bold text-[35px] mx-3"
                 start={start} end={47} duration={duration} decimals={decimals} />
-              <p className="mainColor font-bold opacity-50">الكتب والابحاث</p>
+              <p className="mainColor font-bold opacity-50">
+                {translate ? translate.pages.homePage.statistics.Books : "الكتب والابحاث"}
+              </p>
             </div>
           </div>
           <div className="statisticsCard flex items-center justify-start md:justify-center mr-5">
@@ -42,7 +50,9 @@ const Statistics: FC<CountUpProps> = ({ start = 0, end, duration = 8, decimals =
             <div className="flex items-center md:block">
               <CountUp className="primaryColor font-bold text-[35px] mx-3"
                 start={start} end={247} duration={duration} decimals={decimals} />
-              <p className="mainColor font-bold opacity-50">المكتبة المرئية</p>
+              <p className="mainColor font-bold opacity-50">
+                {translate ? translate.pages.homePage.statistics.VideoLibirary : "المكتبة المرئية"}
+              </p>
             </div>
           </div>
           <div className="statisticsCard flex items-center justify-start md:justify-center mr-5">
@@ -50,7 +60,9 @@ const Statistics: FC<CountUpProps> = ({ start = 0, end, duration = 8, decimals =
             <div className="flex items-center md:block">
               <CountUp className="primaryColor font-bold text-[35px] mx-3"
                 start={start} end={124} duration={duration} decimals={decimals} />
-              <p className="mainColor font-bold opacity-50">سؤال وجواب</p>
+              <p className="mainColor font-bold opacity-50">
+                {translate ? translate.pages.homePage.statistics.AnswerQuestion : "سؤال وجواب"}
+              </p>
             </div>
           </div>
           <div className="statisticsCard flex items-center justify-start md:justify-center mr-5">
@@ -58,7 +70,9 @@ const Statistics: FC<CountUpProps> = ({ start = 0, end, duration = 8, decimals =
             <div className="flex items-center md:block">
               <CountUp className="primaryColor font-bold text-[35px] mx-3"
                 start={start} end={560} duration={duration} decimals={decimals} />
-              <p className="mainColor font-bold opacity-50">المشتركين</p>
+              <p className="mainColor font-bold opacity-50">
+                {translate ? translate.pages.homePage.statistics.Subscribers : "المشتركين"}
+              </p>
             </div>
           </div>
           {/* *************** */}
