@@ -1,5 +1,4 @@
 import Image from "next/image"
-
 import { faEye, faCalendar, faBookOpenReader, faUser, faBookOpen } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
@@ -12,10 +11,11 @@ interface CoursesCardProps {
     doctorName: string;
     descriptionCourse: string;
     likeBtn?: any;
+    pathLinkToContent : any;
 
 }
 
-const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePublish, courseTitle, doctorName, descriptionCourse, likeBtn }) => {
+const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePublish, courseTitle, doctorName, descriptionCourse, likeBtn , pathLinkToContent }) => {
     return (
         // courses card
         <div className=" bkColor rounded-[15px] overflow-hidden relative">
@@ -54,7 +54,7 @@ const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePubl
 
 
                 </div>
-                <Link href={`/`}
+                <Link href={pathLinkToContent}
                     className="block text-center bkPrimaryColor py-3 mt-[16px] text-white font-bold">
                     بدء
                 </Link>

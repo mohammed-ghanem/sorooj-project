@@ -1,10 +1,19 @@
+"use client"
+
 import Banners from "@/components/banners/Banners"
 import CoursesCard from "@/components/coursesCard/CoursesCard"
 import test from '@/assets/images/test.png'
 import defImage from "@/assets/images/default.webp"; // Default image
 import CategoriesBox from "@/components/categoryBox/CategoriesBox";
+import { useParams } from "next/navigation";
+
 
 const page = () => {
+
+  // lang
+  const { lang }: { lang?: string } = useParams();
+  // test id remove it when i get real data response
+  const coursesId = 1
   return (
     <div>
       <div>
@@ -24,6 +33,7 @@ const page = () => {
               doctorName={"الدكتور حمد بن محمد الهاجرى"}
               descriptionCourse={"برنامج محطات فى العقيدة المحور الثانى"}
               likeBtn={"like"}
+              pathLinkToContent={`/${lang}/courses/${coursesId}`}
             />
             <CoursesCard
               imgSrc={test}
@@ -33,6 +43,7 @@ const page = () => {
               doctorName={"الدكتور حمد بن محمد الهاجرى"}
               descriptionCourse={"برنامج محطات فى العقيدة المحور الثانى"}
               likeBtn={"like"}
+              pathLinkToContent={`/${lang}/courses/${coursesId}`}
             />
             <CoursesCard
               imgSrc={test}
@@ -42,6 +53,7 @@ const page = () => {
               doctorName={"الدكتور حمد بن محمد الهاجرى"}
               descriptionCourse={"برنامج محطات فى العقيدة المحور الثانى"}
               likeBtn={"like"}
+              pathLinkToContent={`/${lang}/courses/${coursesId}`}
             />
             <CoursesCard
               imgSrc={test}
@@ -51,6 +63,17 @@ const page = () => {
               doctorName={"الدكتور حمد بن محمد الهاجرى"}
               descriptionCourse={"برنامج محطات فى العقيدة المحور الثانى"}
               likeBtn={"like"}
+              pathLinkToContent={`/${lang}/courses/${coursesId}`}
+            />
+            <CoursesCard
+              imgSrc={test}
+              watchNumber={"120 مشاهدة"}
+              datePublish={"24 اغسطس 2024"}
+              courseTitle={"شرح الفقة الوسطى"}
+              doctorName={"الدكتور حمد بن محمد الهاجرى"}
+              descriptionCourse={"برنامج محطات فى العقيدة المحور الثانى"}
+              likeBtn={"like"}
+              pathLinkToContent={`/${lang}/courses/${coursesId}`}
             />
           </div>
         </div>
