@@ -5,15 +5,15 @@ import CoursesCard from "@/components/coursesCard/CoursesCard"
 import test from '@/assets/images/test.png'
 import defImage from "@/assets/images/default.webp"; // Default image
 import CategoriesBox from "@/components/categoryBox/CategoriesBox";
-import { useParams } from "next/navigation";
+import LangUseParams from "@/components/translate/LangUseParams"
+
 
 
 const page = () => {
-
-  // lang
-  const { lang }: { lang?: string } = useParams();
+  // lang param (ar Or en)
+  const lang = LangUseParams()
   // test id remove it when i get real data response
-  const coursesId = 1
+  const coursesId: number = 1
   return (
     <div>
       <div>
