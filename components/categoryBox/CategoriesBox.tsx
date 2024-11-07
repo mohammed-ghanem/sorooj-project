@@ -1,6 +1,6 @@
 "use client";
 
-import { faChevronUp, faChevronDown, faFilter } from "@fortawesome/free-solid-svg-icons";
+import { faChevronUp, faChevronDown, faFilter, faBookOpen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useState } from "react";
@@ -65,26 +65,31 @@ const CategoryItem = ({
 
   // Define color classes based on the level
   const colorClass = level === 0
-    ? "bkMainColor text-white"   // Top-level categories
+    ? "bkMainColor text-white pr-2"   // Top-level categories
     : level === 1
-      ? "mainColor"  // Subcategories
-      : "primaryColor"; // Sub-subcategories
+      ? "mainColor "  // Subcategories
+      : "primaryColor "; // Sub-subcategories
 
   return (
     <div className="my-2">
-      <div
-        className={`flex items-center justify-between cursor-pointer px-2 py-2 rounded-md ${colorClass}`}
 
+      <div
+        className=
+        {`flex items-center justify-between cursor-pointer pl-2 py-2 rounded-md ${colorClass}`}
       >
-        <span className="font-semibold">{category.name}</span>
+        <span className="font-semibold">
+          
+          {category.name}
+        </span>
         {hasSubcategories && (
           <span onClick={() => setIsExpanded(!isExpanded)}>
             {isExpanded ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}
           </span>
         )}
+
       </div>
       {isExpanded && hasSubcategories && (
-        <div className="mr-4">
+        <div className="mr-3">
           {category.subcategories!.map((subcat) => (
             <CategoryItem key={subcat.id} category={subcat} level={level + 1} />
           ))}
@@ -99,13 +104,18 @@ const CategoriesBox = () => {
     <div className="max-w-lg mx-auto p-2 bg-white shadow-md rounded-lg">
       <h2 className="text-2xl font-bold mb-4 mainColor">
         <FontAwesomeIcon className="ml-3 primaryColor" icon={faFilter} />
-          تصنيف
+        تصنيف
       </h2>
-      <div className="mb-4 bkPrimaryColor w-full px-2 py-2 rounded-md text-white font-bold"><Link href={"#"}>الكل</Link></div>
-
+      <div className="mb-4 bkPrimaryColor w-full px-2 py-2 rounded-md text-white font-bold">
+        <Link href={"#"}>الكل</Link>
+      </div>
       <div>
         {staticCategories.map((category) => (
-          <CategoryItem key={category.id} category={category} isInitiallyExpanded={true} level={0} />
+          <CategoryItem
+            key={category.id}
+            category={category}
+            isInitiallyExpanded={true}
+            level={0} />
         ))}
       </div>
     </div>

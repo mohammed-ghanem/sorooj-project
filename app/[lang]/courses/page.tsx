@@ -25,6 +25,33 @@ const page = () => {
               descriptionCourse={"برنامج محطات فى العقيدة المحور الثانى"}
               likeBtn={"like"}
             />
+            <CoursesCard
+              imgSrc={test}
+              watchNumber={"120 مشاهدة"}
+              datePublish={"24 اغسطس 2024"}
+              courseTitle={"شرح الفقة الوسطى"}
+              doctorName={"الدكتور حمد بن محمد الهاجرى"}
+              descriptionCourse={"برنامج محطات فى العقيدة المحور الثانى"}
+              likeBtn={"like"}
+            />
+            <CoursesCard
+              imgSrc={test}
+              watchNumber={"120 مشاهدة"}
+              datePublish={"24 اغسطس 2024"}
+              courseTitle={"شرح الفقة الوسطى"}
+              doctorName={"الدكتور حمد بن محمد الهاجرى"}
+              descriptionCourse={"برنامج محطات فى العقيدة المحور الثانى"}
+              likeBtn={"like"}
+            />
+            <CoursesCard
+              imgSrc={test}
+              watchNumber={"120 مشاهدة"}
+              datePublish={"24 اغسطس 2024"}
+              courseTitle={"شرح الفقة الوسطى"}
+              doctorName={"الدكتور حمد بن محمد الهاجرى"}
+              descriptionCourse={"برنامج محطات فى العقيدة المحور الثانى"}
+              likeBtn={"like"}
+            />
           </div>
         </div>
       </div>
