@@ -2,7 +2,7 @@ import Image from "next/image";
 
 interface BannersProps {
     src: any;
-    textPath: string
+    textPath?: string
 }
 
 const Banners: React.FC<BannersProps> = ({ src, textPath }) => {
