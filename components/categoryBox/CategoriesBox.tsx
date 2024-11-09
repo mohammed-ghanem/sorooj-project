@@ -1,55 +1,15 @@
 "use client";
 
-import { faChevronUp, faChevronDown, faFilter, faBookOpen } from "@fortawesome/free-solid-svg-icons";
+import { faChevronUp, faChevronDown, faFilter } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type Category = {
   id: number;
   name: string;
   subcategories?: Category[];
 };
-
-const staticCategories: Category[] = [
-  {
-    id: 1,
-    name: "العقيدة",
-    subcategories: [
-      {
-        id: 2,
-        name: "دروس فى العقيدة",
-        subcategories: [
-          { id: 3, name: "درس 1" },
-          { id: 4, name: "درس 2" },
-        ],
-      },
-      {
-        id: 5,
-        name: "محاضرات فى العقيدة",
-        subcategories: [],
-      },
-    ],
-  },
-  {
-    id: 6,
-    name: "الفقة",
-    subcategories: [
-      {
-        id: 7,
-        name: "الفقة subcat",
-        subcategories: [
-          { id: 8, name: "الفقة sub sub" },
-        ],
-      },
-      {
-        id: 9,
-        name: "الفقة2 subcat",
-        subcategories: [],
-      },
-    ],
-  },
-];
 
 const CategoryItem = ({
   category,
@@ -65,28 +25,27 @@ const CategoryItem = ({
 
   // Define color classes based on the level
   const colorClass = level === 0
-    ? "bkMainColor text-white pr-2"   // Top-level categories
+    ? "bkMainColor text-white pr-2"
     : level === 1
-      ? "mainColor "  // Subcategories
-      : "primaryColor "; // Sub-subcategories
+      ? "mainColor"
+      : "primaryColor";
 
   return (
     <div className="my-2">
-
       <div
-        className=
-        {`flex items-center justify-between cursor-pointer pl-2 py-2 rounded-md ${colorClass}`}
+        className={`flex items-center justify-between cursor-pointer pl-2 py-2 rounded-md ${colorClass}`}
+        onClick={() => setIsExpanded(!isExpanded)}
       >
-        <span className="font-semibold">
-          
-          {category.name}
-        </span>
+        <span className="font-semibold">{category.name}</span>
         {hasSubcategories && (
-          <span onClick={() => setIsExpanded(!isExpanded)}>
-            {isExpanded ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}
+          <span>
+            {isExpanded ? (
+              <FontAwesomeIcon icon={faChevronUp} />
+            ) : (
+              <FontAwesomeIcon icon={faChevronDown} />
+            )}
           </span>
         )}
-
       </div>
       {isExpanded && hasSubcategories && (
         <div className="mr-3">
@@ -100,6 +59,30 @@ const CategoryItem = ({
 };
 
 const CategoriesBox = () => {
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/categories`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch categories");
+        }
+        const data = await response.json();
+        setCategories(data.data);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  if (loading) return <p>Loading categories...</p>;
+
   return (
     <div className="max-w-lg mx-auto p-2 bg-white shadow-md rounded-lg">
       <h2 className="text-2xl font-bold mb-4 mainColor">
@@ -110,12 +93,8 @@ const CategoriesBox = () => {
         <Link href={"#"}>الكل</Link>
       </div>
       <div>
-        {staticCategories.map((category) => (
-          <CategoryItem
-            key={category.id}
-            category={category}
-            isInitiallyExpanded={true}
-            level={0} />
+        {categories.map((category) => (
+          <CategoryItem key={category.id} category={category} isInitiallyExpanded={true} level={0} />
         ))}
       </div>
     </div>
@@ -129,20 +108,14 @@ export default CategoriesBox;
 
 
 
-
-
-
-
-
-
-
-
+// select with api dont delete this
 
 // "use client";
 
-// import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+// import { faChevronUp, faChevronDown, faFilter } from "@fortawesome/free-solid-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { useState } from "react";
+// import Link from "next/link";
+// import { useState, useEffect } from "react";
 
 // type Category = {
 //   id: number;
@@ -150,72 +123,55 @@ export default CategoriesBox;
 //   subcategories?: Category[];
 // };
 
-// const staticCategories: Category[] = [
-//   {
-//     id: 1,
-//     name: "العقيدة",
-//     subcategories: [
-//       {
-//         id: 2,
-//         name: "دروس فى العقيدة",
-//         subcategories: [
-//           { id: 3, name: "درس 1" },
-//           { id: 4, name: "درس 2" },
-//         ],
-//       },
-//       {
-//         id: 5,
-//         name: "محاضرات فى العقيدة",
-//         subcategories: [],
-//       },
-//     ],
-//   },
-//   {
-//     id: 6,
-//     name: "الفقة",
-//     subcategories: [
-//       {
-//         id: 7,
-//         name: "الفقة subcat",
-//         subcategories: [
-//           { id: 8, name: "الفقة sub sub" },
-//         ],
-//       },
-//       {
-//         id: 7,
-//         name: "الفقة2 subcat",
-//         subcategories: [],
-//       },
-//     ],
-//   },
-// ];
-
-// const CategoryItem = ({ category, isInitiallyExpanded }: { category: Category; isInitiallyExpanded?: boolean }) => {
-//   const [isExpanded, setIsExpanded] = useState(isInitiallyExpanded || false);
-
+// const CategoryItem = ({
+//   category,
+//   onSelectCategory,
+//   isInitiallyExpanded = true,
+//   level = 0,
+// }: {
+//   category: Category;
+//   onSelectCategory: (categoryId: number) => void;
+//   isInitiallyExpanded?: boolean;
+//   level?: number;
+// }) => {
+//   const [isExpanded, setIsExpanded] = useState(isInitiallyExpanded);
 //   const hasSubcategories = category.subcategories && category.subcategories.length > 0;
 
+//   const colorClass = level === 0
+//     ? "bkMainColor text-white pr-2"
+//     : level === 1
+//       ? "mainColor"
+//       : "primaryColor";
+
 //   return (
-//     <div className="my-2 test">
+//     <div className="my-2">
 //       <div
-//         className="flex items-center justify-between cursor-pointer bg-gray-100 px-4 py-2 rounded-md hover:bg-gray-200"
-//         onClick={() => setIsExpanded(!isExpanded)}
+//         className={`flex items-center justify-between cursor-pointer pl-2 py-2 rounded-md ${colorClass}`}
+//         onClick={() => {
+//           setIsExpanded(!isExpanded);
+//           onSelectCategory(category.id); // Select category when clicked
+//         }}
 //       >
 //         <span className="font-semibold">{category.name}</span>
 //         {hasSubcategories && (
-//                   <span className="">
-//                       {isExpanded
-//                           ?
-//                           <FontAwesomeIcon icon={faChevronUp} />
-//                           :
-//                           <FontAwesomeIcon icon={faChevronDown} />}
-//                   </span>
+//           <span>
+//             {isExpanded ? (
+//               <FontAwesomeIcon icon={faChevronUp} />
+//             ) : (
+//               <FontAwesomeIcon icon={faChevronDown} />
+//             )}
+//           </span>
 //         )}
 //       </div>
 //       {isExpanded && hasSubcategories && (
-//         <div className="mb-10">
+//         <div className="mr-3">
 //           {category.subcategories!.map((subcat) => (
-//             <CategoryItem key={subcat.id} category={subcat} />
+//             <CategoryItem
+//               key={subcat.id}
+//               category={subcat}
+//               onSelectCategory={onSelectCategory}
+//               level={level + 1}
+//             />
 //           ))}
 //         </div>
 //       )}
@@ -223,13 +179,49 @@ export default CategoriesBox;
 //   );
 // };
 
-// const CategoriesBox = () => {
+// const CategoriesBox = ({ onCategorySelect }: { onCategorySelect: (categoryId: number) => void }) => {
+//   const [categories, setCategories] = useState<Category[]>([]);
+//   const [loading, setLoading] = useState(true);
+
+//   useEffect(() => {
+//     const fetchCategories = async () => {
+//       try {
+//         const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/categories`);
+//         if (!response.ok) {
+//           throw new Error("Failed to fetch categories");
+//         }
+//         const data = await response.json();
+//         setCategories(data.data);
+//       } catch (error) {
+//         console.error("Error fetching categories:", error);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchCategories();
+//   }, []);
+
+//   if (loading) return <p>Loading categories...</p>;
+
 //   return (
-//     <div className="max-w-lg mx-auto p-4 bg-white shadow-md rounded-lg">
-//       <h2 className="text-2xl font-bold mb-4">Categories</h2>
-//       <div className="parent">
-//         {staticCategories.map((category, index) => (
-//           <CategoryItem key={category.id} category={category} isInitiallyExpanded={index === 0} />
+//     <div className="max-w-lg mx-auto p-2 bg-white shadow-md rounded-lg">
+//       <h2 className="text-2xl font-bold mb-4 mainColor">
+//         <FontAwesomeIcon className="ml-3 primaryColor" icon={faFilter} />
+//         تصنيف
+//       </h2>
+//       <div className="mb-4 bkPrimaryColor w-full px-2 py-2 rounded-md text-white font-bold">
+//         <Link href={"#"}>الكل</Link>
+//       </div>
+//       <div>
+//         {categories.map((category) => (
+//           <CategoryItem
+//             key={category.id}
+//             category={category}
+//             onSelectCategory={onCategorySelect}
+//             isInitiallyExpanded={true}
+//             level={0}
+//           />
 //         ))}
 //       </div>
 //     </div>
@@ -237,6 +229,26 @@ export default CategoriesBox;
 // };
 
 // export default CategoriesBox;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

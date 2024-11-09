@@ -2,19 +2,21 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie'; // Import js-cookie library
 import Image from 'next/image'
 import whiteAuthBk from '@/assets/images/Vector.svg'
 import fogetPass from '@/assets/images/forget.svg';
-import flower from '@/assets/images/flower.svg'
 import TranslateHook from '../../translate/TranslateHook'
+import LangUseParams from "@/components/translate/LangUseParams"
+import FlowerImg from '@/components/flowerImg/FlowerImg';
 const ResendOtp = () => {
     const [email, setEmail] = useState<string>(''); // State to hold the email input
     const [errors, setErrors] = useState<string | null>(null);
     const router = useRouter();
-    const { lang }: { lang?: string } = useParams()
-    const translate = TranslateHook()
+    // lang param (ar Or en)
+    const lang = LangUseParams() // Access dynamic [lang] parameter
+    const translate = TranslateHook();
 
     // Handle email input change
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -122,9 +124,7 @@ const ResendOtp = () => {
                     <Image src={fogetPass} fill className="max-w-[70%] max-h-[50%] m-auto" alt="loginauth" />
                 </div>
             </div>
-            <div className=' absolute w-[320px] md:w-[424px] h-[300px] -top-[18px] -right-[76px]'>
-                <Image src={flower} fill alt='flowersvg' />
-            </div>
+            <FlowerImg />
         </div>
 
     );

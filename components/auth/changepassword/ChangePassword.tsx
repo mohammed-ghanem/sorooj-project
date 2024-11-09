@@ -6,10 +6,10 @@ import Cookies from 'js-cookie'; // Import js-cookie library
 import Image from 'next/image';
 import whiteAuthBk from '@/assets/images/Vector.svg';
 import loginauth from '@/assets/images/loginauth.svg';
-import flower from '@/assets/images/flower.svg';
 import TranslateHook from '../../translate/TranslateHook';
-import { useParams } from "next/navigation";
+import LangUseParams from "@/components/translate/LangUseParams"
 import { z } from "zod";
+import FlowerImg from "@/components/flowerImg/FlowerImg";
 
 // Define the Zod schema for strong password validation
 
@@ -36,7 +36,8 @@ const ChangePassword = () => {
   const [password, setPassword] = useState("")
   const [password_confirmation, setPassword_confirmation] = useState("")
   const [error, setError] = useState<string | null>(null)
-  const { lang }: { lang?: string } = useParams();
+  // lang param (ar Or en)
+  const lang = LangUseParams() // Access dynamic [lang] parameter
   const translate = TranslateHook();
 
   const handleChangePassword = async (e: React.FormEvent) => {
@@ -88,9 +89,9 @@ const ChangePassword = () => {
       // Show success message using SweetAlert2
       Swal.fire({
         icon: 'success',
-        title: `${translate ? translate.pages.changePassword.titleSwal : "Password Changed!"}`,
-        text: `${translate ? translate.pages.changePassword.textSwal : "Your password has been updated successfully, Now login with your new password"}`,
-        confirmButtonText: `${translate ? translate.pages.changePassword.ok : "Ok!"}`
+        title: `${translate ? translate.pages.changePassword.titleSwal : ""}`,
+        text: `${translate ? translate.pages.changePassword.textSwal : ""}`,
+        confirmButtonText: `${translate ? translate.pages.changePassword.ok : ""}`
       }).then(() => {
         // After closing the SweetAlert, remove the token and redirect to the sign-in page
         Cookies.remove('access_token');
@@ -175,9 +176,7 @@ const ChangePassword = () => {
           <Image src={loginauth} fill className="max-w-[70%] max-h-[50%] m-auto" alt="loginauth" />
         </div>
       </div>
-      <div className=' absolute w-[320px] md:w-[424px] h-[300px] -top-[18px] -right-[76px]'>
-        <Image src={flower} fill alt='flowersvg' />
-      </div>
+      <FlowerImg />
     </div>
   )
 }

@@ -8,14 +8,15 @@ import PhoneInput from 'react-phone-input-2'
 import { z, ZodError } from 'zod'
 import Swal from 'sweetalert2'
 import { axiosDefaultConfig, axiosWithCredentials } from '@/utils/axiosConfig'
-import { useParams, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import Cookies from 'js-cookie' // Import the cookies library
 import Image from 'next/image'
 import whiteAuthBk from '@/assets/images/Vector.svg'
 import loginauth from '@/assets/images/loginauth.svg'
-import flower from '@/assets/images/flower.svg'
 import SocialLogin from '@/components/socialLogin/SocialLogin'
 import TranslateHook from '../../translate/TranslateHook';
+import LangUseParams from "@/components/translate/LangUseParams"
+import FlowerImg from '@/components/flowerImg/FlowerImg'
 
 axiosWithCredentials;
 axiosDefaultConfig;
@@ -64,7 +65,8 @@ const SignupForm = () => {
         gender: ''
     })
 
-    const { lang }: { lang?: string } = useParams();
+    // lang param (ar Or en)
+    const lang = LangUseParams() // Access dynamic [lang] parameter
     const translate = TranslateHook();
     const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({})
     const router = useRouter() // Use Next.js router for navigation
@@ -104,7 +106,7 @@ const SignupForm = () => {
                 });
 
                 const csrfToken = document.cookie.split('; ').find(row => row.startsWith('XSRF-TOKEN='))
-                ?.split('=')[1];
+                    ?.split('=')[1];
                 // Step 2: Make the signup request after CSRF token is set
                 const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/auth/register`, form, {
                     headers: {
@@ -227,7 +229,7 @@ const SignupForm = () => {
                             />
                             {errors.last_name && <p className="text-red-500">{errors.last_name}</p>}
                         </div>
-                        
+
                         <div className="mb-4">
                             <label className={`block text-sm font-bold leading-6 mainColor
                                                 ${lang === "en" ? 'text-start' : 'text-end'}`
@@ -251,7 +253,7 @@ const SignupForm = () => {
                                                 ${lang === "en" ? 'text-start' : 'text-end'}`
                             }
                             >
-                               اختار النوع {/* {translate ? translate.pages.signup.fristName : ""} */}
+                                اختار النوع {/* {translate ? translate.pages.signup.fristName : ""} */}
                             </label>
                             <select
                                 name="gender"
@@ -264,7 +266,7 @@ const SignupForm = () => {
                                 <option value="female">أنثى</option>
                             </select>
                             {errors.gender && <p className="text-red-500">{errors.gender}</p>}
-                           
+
                         </div>
 
 
@@ -334,9 +336,9 @@ const SignupForm = () => {
                     <Image src={loginauth} fill className='max-w-[70%] max-h-[50%] m-auto' alt='loginauth' />
                 </div>
             </div>
-            <div className=' absolute w-[320px] md:w-[424px] h-[300px] -top-[18px] -right-[76px]'>
-                <Image src={flower} fill alt='flowersvg' />
-            </div>
+            {/* flower img */}
+            <FlowerImg />
+            {/* flower img */}
         </div>
     )
 }

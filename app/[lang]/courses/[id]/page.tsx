@@ -5,8 +5,8 @@ import defImage from "@/assets/images/default.webp"; // Default image
 const page = () => {
     return (
         <section>
-            <div>
-                <Banners src={defImage} />
+            <div> 
+                {/* <Banners src={defImage} /> */}
             </div>
             <div className=" container mx-auto">
                 <h1>Courses content Page</h1>

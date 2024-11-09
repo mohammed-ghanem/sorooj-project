@@ -4,14 +4,15 @@ import axios from 'axios'
 import Swal from 'sweetalert2'
 import { axiosDefaultConfig, axiosWithCredentials } from '@/utils/axiosConfig'
 import Link from 'next/link'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import Cookies from 'js-cookie'; // Import js-cookie to handle cookies
 import Image from 'next/image'
 import whiteAuthBk from '@/assets/images/Vector.svg'
 import loginauth from '@/assets/images/loginauth.svg'
-import flower from '@/assets/images/flower.svg'
 import SocialLogin from '@/components/socialLogin/SocialLogin'
 import TranslateHook from '../../translate/TranslateHook';
+import LangUseParams from "@/components/translate/LangUseParams"
+import FlowerImg from '@/components/flowerImg/FlowerImg'
 
 
 axiosWithCredentials;
@@ -25,10 +26,9 @@ interface LoginFormData {
 }
 
 const SignInForm = () => {
-
-    const { lang }: { lang?: string } = useParams();
+    // lang param (ar Or en)
+    const lang = LangUseParams() // Access dynamic [lang] parameter
     const translate = TranslateHook();
-
 
     const [form, setForm] = useState<LoginFormData>({
         email: '',
@@ -214,9 +214,9 @@ const SignInForm = () => {
                 </div>
             </div>
 
-            <div className=' absolute w-[320px] md:w-[424px] h-[300px] -top-[18px] -right-[76px]'>
-                <Image src={flower} fill alt='flowersvg' />
-            </div>
+            {/* flower img */}
+            <FlowerImg />
+            {/* flower img */}
 
         </div>
     );

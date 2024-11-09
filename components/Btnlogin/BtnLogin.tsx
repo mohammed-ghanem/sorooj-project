@@ -14,7 +14,7 @@ const BtnLogin = () => {
     // Access dynamic [lang] parameter
     const { lang }: { lang?: string } = useParams();
     const [dictionary, setDictionary] = useState<any>(null);
-    const [mounted, setMounted] = useState<boolean>(false);
+   // const [mounted, setMounted] = useState<boolean>(false);
 
     const [userName, setUserName] = useState<string | null>(null)
     const [loading, setLoading] = useState<boolean>(true)
@@ -57,11 +57,11 @@ const BtnLogin = () => {
         }
     }, [])
 
-    useEffect(() => {
-        setMounted(true); // Ensure the component is mounted before accessing params
-    }, []);
+    // useEffect(() => {
+    //     setMounted(true); // Ensure the component is mounted before accessing params
+    // }, []);
 
-    if (!mounted) return null; // Avoid rendering before the component is mounted
+    // if (!mounted) return null; // Avoid rendering before the component is mounted
 
 
     if (loading) {

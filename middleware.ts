@@ -35,7 +35,7 @@ export function middleware(request: NextRequest) {
 
   // Check if the user is accessing a protected route without a token
   if (!token) {
-    if (pathname.endsWith('/auth/profile') || pathname.endsWith('/auth/update-profile')) {
+    if (pathname.endsWith('/auth/profile') || pathname.endsWith('/auth/update-profile') || pathname.endsWith('/auth/my-courses')) {
       return NextResponse.redirect(new URL(`/${localeInPath}/auth/signin`, request.url));
     }
   }

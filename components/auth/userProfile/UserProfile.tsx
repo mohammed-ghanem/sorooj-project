@@ -4,12 +4,12 @@ import Link from "next/link"
 import { useState, useEffect } from "react"
 import Cookies from "js-cookie" // Import the js-cookie library
 import { useRouter } from 'next/navigation'; // Use useParams for dynamic [lang] segment
-import Image from 'next/image';
-import flower from '@/assets/images/flower.svg';
 import Banners from "@/components/banners/Banners"
 import banner from "@/assets/images/books.png"
 import ProfileBoxCategories from "../profileBoxCategories/ProfileBoxCategories"
+import TranslateHook from '../../translate/TranslateHook';
 import LangUseParams from "@/components/translate/LangUseParams"
+import FlowerImg from "@/components/flowerImg/FlowerImg"
 
 
 const UserProfile = () => {
@@ -19,10 +19,9 @@ const UserProfile = () => {
     const [userMobile, setUserMobile] = useState<number | null>(null)
     const [loading, setLoading] = useState<boolean>(true)
     const router = useRouter(); // Use Next.js router for navigation
-
     // lang param (ar Or en)
     const lang = LangUseParams() // Access dynamic [lang] parameter
-
+    const translate = TranslateHook();
 
     useEffect(() => {
         // Get the token from cookies instead of localStorage
@@ -48,7 +47,7 @@ const UserProfile = () => {
                     setLoading(false)  // Stop loading once done
                 })
         } else {
-            // setLoading(false)  // Stop loading if no token
+             setLoading(false)  // Stop loading if no token
             // Redirect unverified users or those without a token to the sign-in page
             Cookies.remove('access_token');
             Cookies.remove('is_verified');
@@ -60,69 +59,56 @@ const UserProfile = () => {
     return (
         <section>
             <div>
-                <Banners src={banner} textPath="حسابى" />
+                <Banners src={banner} textPath={translate ? translate.pages.userProfile.title : ""} />
             </div>
             {loading ? (
                 <p>Loading...</p>
             ) : (
                 <div className=" relative">
                     {/* flower img */}
-                    <div className=' absolute w-[320px] md:w-[424px] h-[300px] -top-[99px] -right-[76px]'>
-                        <Image src={flower} fill alt='flowersvg' />
-                    </div>
-                    <div className=' absolute w-[320px] md:w-[424px] h-[300px] -bottom-[99px] left-[5px]'>
-                        <Image src={flower} fill alt='flowersvg' />
-                    </div>
+                    <FlowerImg />
                     {/* flower img */}
                     {userName ? (
                         <div className="container mx-auto w-full md:w-[80%] my-20 grid grid-cols-1 lg:grid-cols-3 gap-2 relative z-50">
                             <div>
-                                <ProfileBoxCategories setUserName={setUserName} />
-                            </div> 
+                                <ProfileBoxCategories  />
+                            </div>
                             <div className="col-span-2">
-                                {/* <h2 className="w-[fit-content] p-[10px] rounded-[6px] bkMainColor text-white font-bold">
-                                    اهلا بك {userName} {userLastName}
-                                </h2> */} 
-   
                                 <div className="userBoxDetails w-[95%] mx-auto rounded-[6px] mt-4 p-4 bkBox">
                                     <div className="grid grid-cols-2 gap-2">
                                         <div>
-                                            <label className="mainColor">الاسم الاول : </label>
+                                            <label className="mainColor">
+                                                {translate ? translate.pages.userProfile.firstName : ""} 
+                                            </label>
                                             <p className="bg-[#fff] p-[10px] rounded-[4px]  mt-2">{userName}</p>
                                         </div>
                                         <div>
-                                            <label className="mainColor">الاسم الاخير : </label>
+                                            <label className="mainColor">
+                                                {translate ? translate.pages.userProfile.lastName : ""}
+                                            </label>
                                             <p className="bg-[#fff] p-[10px] rounded-[4px]  mt-2">{userLastName}</p>
                                         </div>
-                                    </div> 
+                                    </div>
                                     <div className="mt-2">
-                                        <label className="mainColor"> البريد الالكترونى : </label>
+                                        <label className="mainColor">
+                                            {translate ? translate.pages.userProfile.email : ""}
+                                        </label>
                                         <p className="bg-[#fff] p-[10px]  rounded-[4px] mt-2">{userEmail}</p>
                                     </div>
                                     <div className="mt-2">
-                                        <label className="mainColor">  رقم الهاتف : </label>
+                                        <label className="mainColor">
+                                            {translate ? translate.pages.userProfile.phoneNumber : ""}
+                                        </label>
                                         <p className="bg-[#fff] p-[10px]  rounded-[4px] mt-2">{userMobile}</p>
                                     </div>
 
                                     {/* change password */}
                                     <div className="grid grid-cols-2 gap-2 mt-5">
                                         <Link className="text-white bkMainColor w-[fit-content] px-[20px] py-[10px] rounded-[6px]" href={`/${lang}/auth/update-profile`}>
-                                            تعديل البيانات
+                                            {translate ? translate.pages.userProfile.editProfile : ""}
                                         </Link>
-                                        {/* <Link className="text-white bkMainColor w-[fit-content] px-[20px] py-[10px] rounded-[6px]" href={`/${lang}/auth/change-password`} >
-                                            تغيير كلمة المرور
-                                        </Link> */}
                                     </div>
                                 </div>
-
-
-                                {/* <button
-                                    onClick={handleLogout}
-                                    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700"
-                                >
-                                    Logout
-                                </button> */}
-
                             </div>
                         </div>
                     ) : (

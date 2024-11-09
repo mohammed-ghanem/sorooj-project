@@ -1,14 +1,15 @@
 "use client"
 import { useState, useEffect, Suspense } from "react"
-import { useSearchParams, useRouter, useParams } from "next/navigation"
+import { useSearchParams, useRouter} from "next/navigation"
 import axios from "axios"
 import Swal from "sweetalert2"
 import Cookies from 'js-cookie'
 import Image from 'next/image'
 import whiteAuthBk from '@/assets/images/Vector.svg'
 import optImage from '@/assets/images/otp.svg'
-import flower from '@/assets/images/flower.svg'
 import TranslateHook from '../../translate/TranslateHook'
+import LangUseParams from "@/components/translate/LangUseParams"
+import FlowerImg from "@/components/flowerImg/FlowerImg"
 
 const VerifyCode = () => {
   const [otp, setOtp] = useState<string[]>(Array(4).fill("")) // Array of 4 empty strings
@@ -19,8 +20,9 @@ const VerifyCode = () => {
   const [timeLeft, setTimeLeft] = useState<number>(120) // 2 minutes in seconds
   const router = useRouter()
   const searchParams = useSearchParams()
-  const { lang }: { lang?: string } = useParams()
-  const translate = TranslateHook()
+  // lang param (ar Or en)
+  const lang = LangUseParams() // Access dynamic [lang] parameter
+  const translate = TranslateHook();
 
   useEffect(() => {
     const emailParam = searchParams.get("email")
@@ -217,9 +219,7 @@ const VerifyCode = () => {
           <Image src={optImage} fill className="max-w-[70%] max-h-[50%] m-auto" alt="loginauth" />
         </div>
       </div>
-      <div className=' absolute w-[320px] md:w-[424px] h-[300px] -top-[18px] -right-[76px]'>
-                <Image src={flower} fill alt='flowersvg' />
-            </div>
+     <FlowerImg/>
     </div>
   )
 }

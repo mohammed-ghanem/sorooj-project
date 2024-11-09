@@ -1,4 +1,5 @@
-import { useParams } from 'next/navigation'
+"use client"
+import LangUseParams from "@/components/translate/LangUseParams"
 import en from '@/app/dictionaries/en.json';  // Import English dictionary
 import ar from '@/app/dictionaries/ar.json';  // Import Arabic dictionary
 import { useEffect, useState } from 'react';
@@ -7,7 +8,7 @@ import { useEffect, useState } from 'react';
 
 const TranslateHook = () => {
 
-    const { lang }: { lang?: string } = useParams();
+    const lang = LangUseParams() // Access dynamic [lang] parameter
     const [dictionary, setDictionary] = useState<any>(null);
 
     useEffect(() => {

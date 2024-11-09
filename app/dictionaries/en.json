@@ -121,9 +121,35 @@
             "UnauthorizedTitle" : "Unauthorized",
             "UnauthorizedText" : "Please check your email or contact support.",
             "error" : "Something went wrong. Please try again later."
-
-
-
+         },
+         "userProfile" : {
+            "title" : "My Account",
+            "editProfile" : "Edit Profile",
+            "save" : "Save",
+            "firstName" : "First Name",
+            "lastName" : "Last Name",
+            "email" :"Email Address",
+            "phoneNumber" : "Phone Number",
+            "editSuccess" : "Profile Updated Successfully",
+            "editFailed" : "Failed to Update Profile",
+            "ok" : "OK",
+            "edit" : "Update" ,
+            "editProfileTitle" : "Edit Profile"
+            
+         },
+         "profileCategory" : {
+              "logoutTitle" : "Are you sure ?",
+              "logoutDescription" : "You will be logged out from your account !",
+              "logout" : "Logout",
+              "ok" : "OK",
+              "cancel" : "Cancel",
+              "logoutSuccess" : "You have been successfully logged out .",
+              "personalInfo" : "Personal Information",
+              "myCourses" : "My Courses",
+              "favoriteSubjects" : "Favorite Subjects",
+              "myQuestions" : "My Questions",
+              "comments" : "My Comments",
+              "changePassword" : "Change Password"
          }
     },
     "authLinks" :{

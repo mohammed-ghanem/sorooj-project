@@ -1,21 +1,23 @@
 "use client"
 import { useState } from "react"
 import axios from "axios"
-import { useParams, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import Swal from "sweetalert2"
 import Cookies from "js-cookie" // Import js-cookie library
 import Image from 'next/image';
 import whiteAuthBk from '@/assets/images/Vector.svg';
 import restpass from '@/assets/images/restpass.svg';
-import flower from '@/assets/images/flower.svg';
 import TranslateHook from '../../translate/TranslateHook';
+import LangUseParams from "@/components/translate/LangUseParams"
+import FlowerImg from "@/components/flowerImg/FlowerImg"
 
 const RestPassword = () => {
   const [newPassword, setNewPassword] = useState<string>("")
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>("")
   const [error, setError] = useState<string | null>(null)
   const router = useRouter()
-  const { lang }: { lang?: string } = useParams();
+  // lang param (ar Or en)
+  const lang = LangUseParams() // Access dynamic [lang] parameter
   const translate = TranslateHook();
 
   const handleResetPassword = async (e: React.FormEvent) => {
@@ -130,9 +132,7 @@ const RestPassword = () => {
           <Image src={restpass} fill className="max-w-[70%] max-h-[50%] m-auto" alt="loginauth" />
         </div>
       </div>
-      <div className=' absolute w-[320px] md:w-[424px] h-[300px] -top-[18px] -right-[76px]'>
-                <Image src={flower} fill alt='flowersvg' />
-            </div>
+      <FlowerImg/>
     </div>
   )
 }

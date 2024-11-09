@@ -1,5 +1,5 @@
 import ResendOtp from "@/components/auth/resendOtp/ResendOtp";
 
-export default function SignInRoute() {
+export default function RestOptUser() {
     return <div><ResendOtp/></div>;
 }

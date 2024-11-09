@@ -119,7 +119,35 @@
             "UnauthorizedTitle" : "غير مصرح بالدخول",
             "UnauthorizedText" : "برجاء التاكد من بريدك الالكترونى والتواصل مع الدعم الفنى",
             "error" : "حدث خطا برجاء اعادة المحاولة فى وقت لاحق  والتاكد من عنوان بريدك الالكترونى"
-        }
+        },
+        "userProfile" : {
+           "title" : "حسابى",
+           "editProfile" : "تعديل البيانات",
+           "save" : "حفظ",
+           "firstName" : "الاسم الاول",
+           "lastName" : "الاسم الاخير",
+           "email" :"البريد الالكترونى",
+           "phoneNumber" : "رقم الهاتف",
+           "editSuccess" : "تم التعديل بنجاح",
+           "editFailed" : "فشل تعديل البيانات",
+           "ok" : "تم",
+           "edit" : "تعديل",
+           "editProfileTitle" : "تعديل البيانات"
+        },
+        "profileCategory" : {
+              "logoutTitle" : "هل انت متاكد ؟",
+              "logoutDescription" : "سوف يتم تسجيل الخروج من حسابك",
+              "logout" : "تسجيل الخروج",
+              "ok" : "تم",
+              "cancel" : "الغاء",
+              "logoutSuccess" : "تم تسجيل الخروج بنجاح",
+              "personalInfo" : "البيانات الشخصية",
+              "myCourses" : "دوراتى",
+              "favoriteSubjects" : "المواضيع المفضلة",
+              "myQuestions" : "اسئلتى",
+              "comments" : "تعليقاتى",
+              "changePassword" : "تغيير كلمة المرور"
+         }
     },
     "authLinks" :{
         "login" : "تسجيل الدخول ",
