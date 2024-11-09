@@ -1,0 +1,7 @@
+.profileList li{
+    padding: 20px 16px;
+    margin-bottom: 2px;
+}
+.profileList li:last-child {
+    margin-bottom: 0;
+}

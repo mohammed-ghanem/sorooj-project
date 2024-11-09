@@ -74,10 +74,6 @@ const SignupForm = () => {
         setForm({ ...form, [name]: value });
     };
 
-    // const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    //     setForm({ ...form, [e.target.name]: e.target.value })
-    // }
-
     const handlePhoneChange = (value: string) => {
         setForm({ ...form, mobile: value })
     }
@@ -202,28 +198,6 @@ const SignupForm = () => {
                                                 ${lang === "en" ? 'text-start' : 'text-end'}`
                             }
                             >
-                               اختار النوع {/* {translate ? translate.pages.signup.fristName : ""} */}
-                            </label>
-                            <select
-                                name="gender"
-                                value={form.gender}
-                                onChange={handleChange}
-                                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm outline-none"
-                                required>
-                                <option value="" disabled>اختر النوع</option>
-                                <option value="male">ذكر</option>
-                                <option value="female">أنثى</option>
-                            </select>
-                            {errors.gender && <p className="text-red-500">{errors.gender}</p>}
-                           
-                        </div>
-
-                         
-                        <div className="mb-4">
-                            <label className={`block text-sm font-bold leading-6 mainColor
-                                                ${lang === "en" ? 'text-start' : 'text-end'}`
-                            }
-                            >
                                 {translate ? translate.pages.signup.fristName : ""}
                             </label>
                             <input
@@ -253,6 +227,7 @@ const SignupForm = () => {
                             />
                             {errors.last_name && <p className="text-red-500">{errors.last_name}</p>}
                         </div>
+                        
                         <div className="mb-4">
                             <label className={`block text-sm font-bold leading-6 mainColor
                                                 ${lang === "en" ? 'text-start' : 'text-end'}`
