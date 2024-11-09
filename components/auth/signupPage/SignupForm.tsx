@@ -244,6 +244,30 @@ const SignupForm = () => {
                             />
                             {errors.email && <p className="text-red-500">{errors.email}</p>}
                         </div>
+
+
+                        <div className="mb-4">
+                            <label className={`block text-sm font-bold leading-6 mainColor
+                                                ${lang === "en" ? 'text-start' : 'text-end'}`
+                            }
+                            >
+                               اختار النوع {/* {translate ? translate.pages.signup.fristName : ""} */}
+                            </label>
+                            <select
+                                name="gender"
+                                value={form.gender}
+                                onChange={handleChange}
+                                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm outline-none"
+                                required>
+                                <option value="" disabled>اختر النوع</option>
+                                <option value="male">ذكر</option>
+                                <option value="female">أنثى</option>
+                            </select>
+                            {errors.gender && <p className="text-red-500">{errors.gender}</p>}
+                           
+                        </div>
+
+
                         <div className="mb-4">
                             <label className={`block text-sm font-bold leading-6 mainColor
                                                 ${lang === "en" ? 'text-start' : 'text-end'}`
