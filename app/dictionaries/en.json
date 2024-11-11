@@ -150,6 +150,9 @@
               "myQuestions" : "My Questions",
               "comments" : "My Comments",
               "changePassword" : "Change Password"
+         },
+         "coursesContentPage" :{
+             "bannerPathText"  : "course content"
          }
     },
     "authLinks" :{

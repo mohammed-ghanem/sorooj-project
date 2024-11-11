@@ -5,8 +5,8 @@ import LogoNav from "./LogoNav"
 
 
 
-const Header = ({ language }: any) => {
-  const headerNavLink = language
+const Header = () => {
+  
   return (
     <header >
       <FirstNav />

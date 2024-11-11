@@ -147,6 +147,9 @@
               "myQuestions" : "اسئلتى",
               "comments" : "تعليقاتى",
               "changePassword" : "تغيير كلمة المرور"
+         },
+         "coursesContentPage" :{
+             "bannerPathText"  : "تفاصيل الدورة"
          }
     },
     "authLinks" :{
