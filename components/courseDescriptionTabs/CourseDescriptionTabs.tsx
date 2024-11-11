@@ -2,11 +2,12 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import './style.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilePdf, faStar, faUserGraduate } from '@fortawesome/free-solid-svg-icons';
+import CourseBtnComment from '../courseBtnComment/CourseBtnComment';
 
 const CourseDescriptionTabs = () => (
 
   <Tabs>
-    <TabList className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-8 rounded-[6px] overflow-hidden text-center [box-shadow:1px_1px_10px_#ddd]">
+    <TabList className="grid grid-cols-1 md:grid-cols-3 gap-2 lg:gap-10 mb-8 rounded-[6px] overflow-hidden text-center [box-shadow:1px_1px_10px_#ddd]">
       <Tab>وصف الدورة</Tab>
       <Tab>الملفات المرفقة</Tab>
       <Tab>التعليقات</Tab>
@@ -131,7 +132,10 @@ const CourseDescriptionTabs = () => (
       </div>
 
       {/* btn add comment */}
-      <button className='bkMainColor text-white px-[20px] py-[10px] rounded-[6px] mt-5'>اضف تعليق</button>
+      <div>
+        <CourseBtnComment />
+      </div>
+      {/* <button className='bkMainColor text-white px-[20px] py-[10px] rounded-[6px] mt-5'>اضف تعليق</button> */}
     </TabPanel>
   </Tabs>
 );

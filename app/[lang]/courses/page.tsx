@@ -18,7 +18,7 @@ const page = () => {
     <div>
       <div>
         <div>
-          <Banners src={defImage} />
+          <Banners src={defImage} textPath="الدورات المجانية"/>
         </div>
         <div className="coursesContainer container mx-auto my-20 grid grid-cols-4 gap-10 w-[80%]">
           <div className="">

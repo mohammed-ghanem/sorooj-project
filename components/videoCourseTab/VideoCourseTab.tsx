@@ -14,7 +14,7 @@ interface TabProps {
 interface TabsProps {
   courseVideoTabs: TabProps[];
 }
-
+ 
 const VideoCourseTabs: React.FC<TabsProps> = ({ courseVideoTabs }) => {
   const [activeTab, setActiveTab] = useState(courseVideoTabs[0].id);
 

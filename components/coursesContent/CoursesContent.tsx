@@ -11,6 +11,9 @@ import Image from 'next/image';
 import coueseImg from "@/assets/images/courseImg.jpg"
 import VideoTabsCourse from '../videoCourseTab/VideoTabsCourse';
 import CourseDescriptionTabs from '../courseDescriptionTabs/CourseDescriptionTabs';
+
+import test from '@/assets/images/test.png'
+import CoursesCard from '../coursesCard/CoursesCard';
 const CoursesContent = () => {
   // lang param (ar Or en)
   const translate = TranslateHook();
@@ -112,11 +115,43 @@ const CoursesContent = () => {
         {/* end all videos course */}
         <hr className='h-1' />
         {/* start description course with suggest courses */}
-        <div className='descriptionCourse w-[95%] md:w-[80%] mx-auto mt-2 mb-24 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-8'>
+        <div className='descriptionCourse w-[95%] md:w-[80%] mx-auto mt-2 mb-24 md:mt-8 grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-8'>
           <div className='col-span-2'>
             <CourseDescriptionTabs />
           </div>
-          <div>الدورات المقترحة</div>
+          {/* course suggestion */}
+          <div className='mt-[24px] border-t-2 lg:border-t-0'>
+            <h3 className='mt-[10px] mr-[10px] mb-[30px] ml-[0] font-bold '>الدورات المقترحة</h3>
+            <div className='w-[95%] md:w-[80%] grid grid-cols-1 mx-auto gap-8'>
+              <CoursesCard
+                imgSrc={test}
+                watchNumber={"120 مشاهدة"}
+                datePublish={"24 اغسطس 2024"}
+                courseTitle={"شرح الفقة الوسطى"}
+                doctorName={"الدكتور حمد بن محمد الهاجرى"}
+                descriptionCourse={"برنامج محطات فى العقيدة المحور الثانى"}
+                pathLinkToContent={`بدء`}
+              />
+              <CoursesCard
+                imgSrc={test}
+                watchNumber={"120 مشاهدة"}
+                datePublish={"24 اغسطس 2024"}
+                courseTitle={"شرح الفقة الوسطى"}
+                doctorName={"الدكتور حمد بن محمد الهاجرى"}
+                descriptionCourse={"برنامج محطات فى العقيدة المحور الثانى"}
+                pathLinkToContent={`بدء`}
+              />
+              <CoursesCard
+                imgSrc={test}
+                watchNumber={"120 مشاهدة"}
+                datePublish={"24 اغسطس 2024"}
+                courseTitle={"شرح الفقة الوسطى"}
+                doctorName={"الدكتور حمد بن محمد الهاجرى"}
+                descriptionCourse={"برنامج محطات فى العقيدة المحور الثانى"}
+                pathLinkToContent={`بدء`}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -15,13 +15,13 @@ interface TabsProps {
   homeTabs: TabProps[];
 }
 
-const VideoLibTabs: React.FC<TabsProps> = ({ homeTabs  }) => {
+const VideoLibTabs: React.FC<TabsProps> = ({ homeTabs }) => {
   const [activeTab, setActiveTab] = useState(homeTabs[0].id);
 
   return (
     <div className="flex flex-col lg:flex-row items-center bg-black rounded-[15px] overflow-hidden w-full lg:w-3/4 mx-auto">
       {/* Tabs on the left for large screens, top for small/medium screens */}
-      <div className="flex lg:flex-col border-b lg:border-b-0 md:border-r w-full lg:w-1/3">
+      <div className="flex lg:flex-col border-b lg:border-b-0 md:border-r w-full lg:w-1/3 overflow-x-scroll lg:overflow-x-auto">
         <div className='bkPrimaryColor p-[12px] w-full hidden lg:block'>
           <h4 className='text-white text-right  '>الفيديوهات</h4>
         </div>
@@ -29,9 +29,8 @@ const VideoLibTabs: React.FC<TabsProps> = ({ homeTabs  }) => {
           <div className='bg-white w-full' key={homeTabs.id}>
             <button
               data-tab-id={homeTabs.id}
-              className={`w-full px-1 md:px-4 py-2 text-left focus:outline-none ${
-                activeTab === homeTabs.id ? 'md:border-r-2 [border-color:#9F854E] primaryColor font-bold' : 'mainColor'
-              }`}
+              className={` w-48 lg:w-full px-1 md:px-4 py-2 text-left focus:outline-none ${activeTab === homeTabs.id ? 'md:border-r-2 [border-color:#9F854E] primaryColor font-bold' : 'mainColor'
+                }`}
               onClick={() => setActiveTab(homeTabs.id)}
             >
               <div className='flex items-center justify-center xl:justify-start'>
@@ -47,7 +46,7 @@ const VideoLibTabs: React.FC<TabsProps> = ({ homeTabs  }) => {
                 </div>
               </div>
             </button>
-            <hr className='bg-black'/>
+            <hr className='bg-black' />
           </div>
         ))}
       </div>

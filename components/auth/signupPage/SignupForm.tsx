@@ -20,7 +20,7 @@ import FlowerImg from '@/components/flowerImg/FlowerImg'
 
 axiosWithCredentials;
 axiosDefaultConfig;
- 
+
 // Zod schema for validation
 const errorMessage = "Password must be at least 8 characters contain uppercase & lowercase letter & at least 1 number /[0-9]/ with at least 1 special character /[@$!%*?&]/ "
 
@@ -253,15 +253,17 @@ const SignupForm = () => {
                                                 ${lang === "en" ? 'text-start' : 'text-end'}`
                             }
                             >
-                                اختار النوع {/* {translate ? translate.pages.signup.fristName : ""} */}
+                                {translate ? translate.pages.signup.gender : "النوع"}
                             </label>
                             <select
                                 name="gender"
                                 value={form.gender}
                                 onChange={handleChange}
-                                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm outline-none"
+                                className="mt-1 block w-full p-2 px-4 border border-gray-300 rounded-md shadow-sm outline-none"
                                 required>
-                                <option value="" disabled>اختر النوع</option>
+                                <option value="" disabled>
+                                    {translate ? translate.pages.signup.gender : "النوع"}
+                                </option>
                                 <option value="male">ذكر</option>
                                 <option value="female">أنثى</option>
                             </select>
