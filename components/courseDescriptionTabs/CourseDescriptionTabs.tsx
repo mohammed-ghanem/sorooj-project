@@ -115,7 +115,7 @@ const CourseDescriptionTabs = () => (
         <span><FontAwesomeIcon className='text-3xl primaryColor mx-4' icon={faUserGraduate} /></span>
         <div className='w-full'>
           <div className='flex justify-between'>
-            <h4 className='mainColor font-bold'>بلال السيد</h4>
+            <h4 className='mainColor font-bold'>بلال محمد</h4>
             <p className='text-yellow-400'>
               <FontAwesomeIcon icon={faStar} />
               <FontAwesomeIcon icon={faStar} />
