@@ -20,7 +20,7 @@ import FlowerImg from '@/components/flowerImg/FlowerImg'
 
 axiosWithCredentials;
 axiosDefaultConfig;
-
+ 
 // Zod schema for validation
 const errorMessage = "Password must be at least 8 characters contain uppercase & lowercase letter & at least 1 number /[0-9]/ with at least 1 special character /[@$!%*?&]/ "
 

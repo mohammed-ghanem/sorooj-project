@@ -1,9 +1,14 @@
 "use client";
 
+import { axiosDefaultConfig, axiosWithCredentials } from "@/utils/axiosConfig";
 import { faChevronUp, faChevronDown, faFilter } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+
+axiosWithCredentials;
+axiosDefaultConfig;
 
 type Category = {
   id: number;
@@ -65,21 +70,47 @@ const CategoriesBox = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/categories`);
+        // Step 1: Make a request to get the CSRF token from the backend
+        await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/sanctum/csrf-cookie`, {
+          withCredentials: true, // Ensure credentials (cookies) are sent
+        });
+  
+        const csrfToken = document.cookie
+          .split("; ")
+          .find((row) => row.startsWith("XSRF-TOKEN="))
+          ?.split("=")[1];
+  
+        // Create headers object and add X-XSRF-TOKEN if csrfToken exists
+        const headers: HeadersInit = {
+          ...(csrfToken && { "X-XSRF-TOKEN": csrfToken })
+        };
+  
+        // Step 2: Make the categories request after CSRF token is set
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/categories`,
+          {
+            headers,
+            credentials: "include", // Make sure to include cookies in the request
+          }
+        );
+  
         if (!response.ok) {
           throw new Error("Failed to fetch categories");
         }
+  
         const data = await response.json();
         setCategories(data.data);
+  
       } catch (error) {
         console.error("Error fetching categories:", error);
       } finally {
         setLoading(false);
       }
     };
-
+  
     fetchCategories();
   }, []);
+  
 
   if (loading) return <p>Loading categories...</p>;
 
