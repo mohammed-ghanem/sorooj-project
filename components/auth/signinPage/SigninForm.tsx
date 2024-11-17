@@ -62,23 +62,32 @@ const SignInForm = () => {
             });
 
             // Extract necessary fields from the response
+            const dataResponse = response
             const accessToken = response.data.data.access_token;
             const isVerified = response.data.data.user.is_verified;
 
+
+
             // Step 3: Check if the user is verified
             if (!isVerified) {
+
+
+
                 Swal.fire({
                     title: `${translate ? translate.pages.signin.NotVerified : "Account Not Verified !"}`,
                     text: `${translate ? translate.pages.signin.newVerifyCode : "Please verify your account !"}`,
                     icon: 'warning',
                     confirmButtonText: `${translate ? translate.pages.signin.ok : "ok"}`
                 });
+
                 return;
             }
 
             // Store the access token securely in cookies instead of localStorage
             Cookies.set('access_token', accessToken, { expires: 7 }); // Expires in 7 days (optional)
             Cookies.set('is_verified', isVerified, { expires: 7 });
+
+
             // Show success message and redirect
             Swal.fire({
                 title: `${translate ? translate.pages.signin.LoginSuccessful : "Login Successful!"}`,
@@ -100,9 +109,10 @@ const SignInForm = () => {
                     });
                 } else if (error.response?.status === 401) {
                     // Resend verification code
+                    const storeTokenToVerify = error.response?.data.data.access_token
+                    Cookies.set('access_token', storeTokenToVerify, { expires: 7 }); // Expires in 7 days (optional)
                     try {
                         // Show success message with SweetAlert2
-
                         Swal.fire({
                             title: `${translate ? translate.pages.signin.NotVerified : "Not Verified"}`,
                             text: `${translate ? translate.pages.signin.newVerifyCode : " Please verify your account"}`,
@@ -110,7 +120,8 @@ const SignInForm = () => {
                             confirmButtonText: `${translate ? translate.pages.signin.ok : "ok"}`
                         }).then(() => {
                             //Redirect to the verify code page
-                            router.push(`/${lang}/auth/resend-otp`);
+                            // router.push(`/${lang}/auth/verify-code`);
+                            window.location.href = `/${lang}/auth/verify-code`
                         });
                     } catch (resendError) {
                         console.error("Error resending verification code", resendError);

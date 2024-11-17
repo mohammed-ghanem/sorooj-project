@@ -25,20 +25,21 @@ const VerifyCode = () => {
   const translate = TranslateHook();
 
   useEffect(() => {
-    const emailParam = searchParams.get("email")
+    //const emailParam = searchParams.get("email")
     const sourceParam = searchParams.get("source") || Cookies.get('source')
 
-    if (emailParam) {
-      setEmail(emailParam)
-    } else {
-      router.push(`${lang}/auth/forgot-password`)
-    }
+    // if (emailParam) {
+    //   setEmail(emailParam)
+    // } else {
+    //   router.push(`${lang}/auth/forgot-password`)
+    // }
 
     if (sourceParam) {
       setSource(sourceParam)
-    } else {
-      router.push(`/${lang}`)
     }
+    // else {
+    //   router.push(`/${lang}`)
+    // }
   }, [searchParams, router , lang])
 
   // Timer for resend OTP button
@@ -112,7 +113,7 @@ const VerifyCode = () => {
           router.push(`/${lang}/auth/signin`)
         } else if (source === "forgot-password") {
           Cookies.remove('source')
-          router.push(`/${lang}/auth/reset-password?email=${email}`)
+          router.push(`/${lang}/auth/reset-password`)
         } else {
           Cookies.remove('source')
           router.push(`/${lang}`)
