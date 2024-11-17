@@ -21,7 +21,6 @@ const BtnLogin = () => {
 
         if (accessToken && isVerified) {
             setIsAuthenticated(true);
-            router.push(`/${lang}/auth/profile`);
         }
         setIsLoading(false); // Set loading to false after checking
     }, [lang, router]);
@@ -30,7 +29,7 @@ const BtnLogin = () => {
         <div className='m-auto flex items-center mt-5 mb-3 md:mb-auto md:mt-auto'>
             <LangBtn />
             <a
-                href={`/${lang}/auth/signin`}
+                href={(isAuthenticated ? `/${lang}/auth/profile` : `/${lang}/auth/signin`)}
                 className="text-white bkMainColor px-[26px] py-[10px] rounded-lg"
             >
                 <FontAwesomeIcon icon={faUser} className="ml-1" />
