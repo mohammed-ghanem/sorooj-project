@@ -26,7 +26,7 @@ const BtnLogin = () => {
                     setDictionary(enDict.default);
                 }
             } catch (error) {
-                console.error('Error loading dictionary:', error);
+                console.error('Error loading .. dictionary:', error);
             }
         };
 
@@ -88,8 +88,6 @@ const BtnLogin = () => {
 };
 
 export default BtnLogin;
-
-
 
 
 
