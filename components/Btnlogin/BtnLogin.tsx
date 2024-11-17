@@ -1,93 +1,151 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import LangBtn from '../buttons/LangBtn';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faSpinner, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
-import { useParams } from 'next/navigation';
+import LangUseParams from '../translate/LangUseParams';
+import LangBtn from '../buttons/LangBtn';
 
 const BtnLogin = () => {
-    const { lang }: { lang?: string } = useParams();
-    const [dictionary, setDictionary] = useState<any>(null);
-    const [userName, setUserName] = useState<string | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
-
-    // Dynamically import the dictionaries based on language
-    useEffect(() => {
-        const loadDictionary = async () => {
-            try {
-                if (lang === 'ar') {
-                    const arDict = await import('@/app/dictionaries/ar.json');
-                    setDictionary(arDict.default);
-                } else {
-                    const enDict = await import('@/app/dictionaries/en.json');
-                    setDictionary(enDict.default);
-                }
-            } catch (error) {
-                console.error('Error loading .. dictionary:', error);
-            }
-        };
-
-        loadDictionary();
-    }, [lang]);
+    const lang = LangUseParams()
+    const router = useRouter();
+    const [isAuthenticated, setIsAuthenticated] = useState(false); // Tracks authentication status
+    const [isLoading, setIsLoading] = useState(true); // Tracks loading state
 
     useEffect(() => {
-        const fetchUserData = async () => {
-            const token = Cookies.get('access_token');
-            const isVerified = Cookies.get('is_verified') === 'true';
+        // Check cookies and update authentication status
+        const accessToken = Cookies.get('access_token');
+        const isVerified = Cookies.get('is_verified');
 
-            if (token && isVerified) {
-                try {
-                    const response = await axios.get(
-                        `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/auth/profile`,
-                        {
-                            headers: { Authorization: `Bearer ${token}` },
-                        }
-                    );
-                    const user = response.data.data.user;
-                    setUserName(user.first_name);
-                } catch (error) {
-                    console.error('Error fetching user data', error);
-                    setUserName(null);
-                } finally {
-                    setLoading(false);
-                }
-            } else {
-                setLoading(false);
-            }
-        };
-
-        fetchUserData();
-    }, []);
-
+        if (accessToken && isVerified) {
+            setIsAuthenticated(true);
+            router.push(`/${lang}/auth/profile`);
+        }
+        setIsLoading(false); // Set loading to false after checking
+    }, [lang, router]);
 
     return (
-        <div className="m-auto flex items-center mt-5 mb-3 md:mb-auto md:mt-auto">
+        <div className='m-auto flex items-center mt-5 mb-3 md:mb-auto md:mt-auto'>
             <LangBtn />
-            {userName ? (
-                <a
-                    href={`/${lang}/auth/profile`}
-                    className="flex text-white bkMainColor px-[26px] py-[10px] rounded-lg"
-                >
-                    <h1 className="mx-1">{dictionary.welcome.welcome}</h1>
-                    {userName}
-                </a>
-            ) : (
-                <a
-                    href={`/${lang}/auth/signin`}
-                    className="text-white bkMainColor px-[26px] py-[10px] rounded-lg"
-                >
-                    <FontAwesomeIcon icon={faUser} className="ml-1" />
-                    <span className='mx-1'>{dictionary ? dictionary.authLinks.login : "Loading..."}</span>
-                </a>
-            )}
+            <a
+                href={`/${lang}/auth/signin`}
+                className="text-white bkMainColor px-[26px] py-[10px] rounded-lg"
+            >
+                <FontAwesomeIcon icon={faUser} className="ml-1" />
+                <span className="mx-1">
+                    {isLoading ? (
+                        <FontAwesomeIcon icon={faSpinner} spin className="ml-1" />
+                    ) : isAuthenticated ? (
+                        'حسابى'
+                    ) : (
+                        'تسجيل الدخول'
+                    )}
+                </span>
+
+            </a>
         </div>
     );
 };
 
 export default BtnLogin;
+
+
+
+
+
+
+
+
+// 'use client';
+
+// import React, { useEffect, useState } from 'react';
+// import { faUser } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import axios from 'axios';
+// import Cookies from 'js-cookie';
+// import { useParams } from 'next/navigation';
+
+// const BtnLogin = () => {
+//     const { lang }: { lang?: string } = useParams();
+//     const [dictionary, setDictionary] = useState<any>(null);
+//     const [userName, setUserName] = useState<string | null>(null);
+//     const [loading, setLoading] = useState<boolean>(true);
+
+//     // Dynamically import the dictionaries based on language
+//     useEffect(() => {
+//         const loadDictionary = async () => {
+//             try {
+//                 if (lang === 'ar') {
+//                     const arDict = await import('@/app/dictionaries/ar.json');
+//                     setDictionary(arDict.default);
+//                 } else {
+//                     const enDict = await import('@/app/dictionaries/en.json');
+//                     setDictionary(enDict.default);
+//                 }
+//             } catch (error) {
+//                 console.error('Error loading .. dictionary:', error);
+//             }
+//         };
+
+//         loadDictionary();
+//     }, [lang]);
+
+//     useEffect(() => {
+//         const fetchUserData = async () => {
+//             const token = Cookies.get('access_token');
+//             const isVerified = Cookies.get('is_verified') === 'true';
+
+//             if (token && isVerified) {
+//                 try {
+//                     const response = await axios.get(
+//                         `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/auth/profile`,
+//                         {
+//                             headers: { Authorization: `Bearer ${token}` },
+//                         }
+//                     );
+//                     const user = response.data.data.user;
+//                     setUserName(user.first_name);
+//                 } catch (error) {
+//                     console.error('Error fetching user data', error);
+//                     setUserName(null);
+//                 } finally {
+//                     setLoading(false);
+//                 }
+//             } else {
+//                 setLoading(false);
+//             }
+//         };
+
+//         fetchUserData();
+//     }, []);
+
+
+//     return (
+//         <div className="m-auto flex items-center mt-5 mb-3 md:mb-auto md:mt-auto">
+//             {userName ? (
+//                 <a
+//                     href={`/${lang}/auth/profile`}
+//                     className="flex text-white bkMainColor px-[26px] py-[10px] rounded-lg"
+//                 >
+//                     <h1 className="mx-1">{dictionary.welcome.welcome}</h1>
+//                     {userName}
+//                 </a>
+//             ) : (
+//                 <a
+//                     href={`/${lang}/auth/signin`}
+//                     className="text-white bkMainColor px-[26px] py-[10px] rounded-lg"
+//                 >
+//                     <FontAwesomeIcon icon={faUser} className="ml-1" />
+//                     <span className='mx-1'>{dictionary ? dictionary.authLinks.login : "Loading..."}</span>
+//                 </a>
+//             )}
+//         </div>
+//     );
+// };
+
+// export default BtnLogin;
 
 
 
