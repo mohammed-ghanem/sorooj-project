@@ -12,7 +12,7 @@ const LogoNav = () => {
         // Delay the rendering of BtnLogin until after the page has loaded
         const timer = setTimeout(() => {
             setShowBtnLogin(true);
-        }, 0); // You can adjust the delay (e.g., 100ms or more) if needed
+        }, 2000); // You can adjust the delay (e.g., 100ms or more) if needed
 
         return () => clearTimeout(timer); // Cleanup timer
     }, []);
