@@ -1,33 +1,41 @@
-'use client'
+'use client';
 
 import React, { useEffect, useState } from 'react';
 import LangBtn from '../buttons/LangBtn';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
-import Cookies from 'js-cookie'; // Import js-cookie library
+import Cookies from 'js-cookie';
 import { useParams } from 'next/navigation';
-import en from '@/app/dictionaries/en.json'; // Import English dictionary
-import ar from '@/app/dictionaries/ar.json'; // Import Arabic dictionary
 
 const BtnLogin = () => {
-    // Access dynamic [lang] parameter
     const { lang }: { lang?: string } = useParams();
-
-    // Default state initialization to avoid rendering blocks
-    const [dictionary, setDictionary] = useState(lang === 'ar' ? ar : en);
+    const [dictionary, setDictionary] = useState<any>(null);
     const [userName, setUserName] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
 
-    // Update dictionary dynamically if `lang` changes
+    // Dynamically import the dictionaries based on language
     useEffect(() => {
-        setDictionary(lang === 'ar' ? ar : en);
+        const loadDictionary = async () => {
+            try {
+                if (lang === 'ar') {
+                    const arDict = await import('@/app/dictionaries/ar.json');
+                    setDictionary(arDict.default);
+                } else {
+                    const enDict = await import('@/app/dictionaries/en.json');
+                    setDictionary(enDict.default);
+                }
+            } catch (error) {
+                console.error('Error loading dictionary:', error);
+            }
+        };
+
+        loadDictionary();
     }, [lang]);
 
-    // Fetch user data and check authentication
     useEffect(() => {
         const fetchUserData = async () => {
-            const token = Cookies.get('access_token'); // Retrieve access token from cookies
+            const token = Cookies.get('access_token');
             const isVerified = Cookies.get('is_verified') === 'true';
 
             if (token && isVerified) {
@@ -38,35 +46,23 @@ const BtnLogin = () => {
                             headers: { Authorization: `Bearer ${token}` },
                         }
                     );
-                    const user = response.data.data.user; // Extract user details
+                    const user = response.data.data.user;
                     setUserName(user.first_name);
                 } catch (error) {
                     console.error('Error fetching user data', error);
-                    setUserName(null); // Reset userName if there's an error
+                    setUserName(null);
                 } finally {
-                    setLoading(false); // Ensure loading is stopped
+                    setLoading(false);
                 }
             } else {
-                setLoading(false); // No token, no loading
+                setLoading(false);
             }
         };
 
         fetchUserData();
     }, []);
 
-    // Render loading placeholder while fetching data
-    if (loading) {
-        return (
-            <div className="m-auto flex items-center mt-5 mb-3 md:mb-auto md:mt-auto">
-                <LangBtn />
-                <p className="text-white bkMainColor px-[26px] py-[10px] rounded-lg">
-                    Loading...
-                </p>
-            </div>
-        );
-    }
 
-    // Render final content
     return (
         <div className="m-auto flex items-center mt-5 mb-3 md:mb-auto md:mt-auto">
             <LangBtn />
@@ -75,9 +71,7 @@ const BtnLogin = () => {
                     href={`/${lang}/auth/profile`}
                     className="flex text-white bkMainColor px-[26px] py-[10px] rounded-lg"
                 >
-                    <h1 className="mx-1">
-                        {dictionary?.welcome?.welcome || 'Loading...'}
-                    </h1>
+                    <h1 className="mx-1">{dictionary.welcome.welcome}</h1>
                     {userName}
                 </a>
             ) : (
@@ -86,9 +80,7 @@ const BtnLogin = () => {
                     className="text-white bkMainColor px-[26px] py-[10px] rounded-lg"
                 >
                     <FontAwesomeIcon icon={faUser} className="ml-1" />
-                    <span className="mx-1">
-                        {dictionary?.authLinks?.login || 'Loading...'}
-                    </span>
+                    <span className='mx-1'>{dictionary ? dictionary.authLinks.login : "Loading..."}</span>
                 </a>
             )}
         </div>
@@ -100,9 +92,24 @@ export default BtnLogin;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // 'use client'
 
-// import React, { useEffect, useState } from 'react'
+// import React, { useEffect, useState, Suspense } from 'react'
 // import LangBtn from '../buttons/LangBtn'
 // import { faUser } from '@fortawesome/free-solid-svg-icons'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -111,12 +118,12 @@ export default BtnLogin;
 // import { useParams } from 'next/navigation'
 // import en from '@/app/dictionaries/en.json';  // Import English dictionary
 // import ar from '@/app/dictionaries/ar.json';  // Import Arabic dictionary
- 
+
 // const BtnLogin = () => {
 //     // Access dynamic [lang] parameter
 //     const { lang }: { lang?: string } = useParams();
 //     const [dictionary, setDictionary] = useState<any>(null);
-//    // const [mounted, setMounted] = useState<boolean>(false);
+//     // const [mounted, setMounted] = useState<boolean>(false);
 
 //     const [userName, setUserName] = useState<string | null>(null)
 //     const [loading, setLoading] = useState<boolean>(true)
@@ -159,7 +166,7 @@ export default BtnLogin;
 //                 })
 //         } else {
 //             setLoading(false);  // Stop loading if no token
-           
+
 //         }
 //     }, [lang])
 
@@ -178,22 +185,25 @@ export default BtnLogin;
 //     //         </div>
 //     //     )
 //     // }
- 
+
 //     return (
-//         <div className='m-auto flex items-center mt-5 mb-3 md:mb-auto md:mt-auto'>
-//             <LangBtn />
-//             {userName ? (
-//                 <a href={`/${lang}/auth/profile`} className='flex text-white bkMainColor px-[26px] py-[10px] rounded-lg'>
-//                     <h1 className=' mx-1'> {dictionary ? dictionary.welcome.welcome : "Loading..."} </h1>
-//                     {userName}
-//                 </a>
-//             ) : (
-//                 <a href={`/${lang}/auth/signin`} className='text-white bkMainColor px-[26px] py-[10px] rounded-lg'>
-//                     <FontAwesomeIcon icon={faUser} className='ml-1' />
-//                     <span className='mx-1'>{dictionary ? dictionary.authLinks.login : "Loading..."}</span>
-//                 </a>
-//             )}
-//         </div>
+//         <Suspense fallback={<div>Loading sus......</div>}>
+//             <div className='m-auto flex items-center mt-5 mb-3 md:mb-auto md:mt-auto'>
+//                 <LangBtn />
+//                 {userName ? (
+//                     <a href={`/${lang}/auth/profile`} className='flex text-white bkMainColor px-[26px] py-[10px] rounded-lg'>
+//                         <h1 className=' mx-1'> {dictionary ? dictionary.welcome.welcome : "Loading..."} </h1>
+//                         {userName}
+//                     </a>
+//                 ) : (
+//                     <a href={`/${lang}/auth/signin`} className='text-white bkMainColor px-[26px] py-[10px] rounded-lg'>
+//                         <FontAwesomeIcon icon={faUser} className='ml-1' />
+//                         <span className='mx-1'>{dictionary ? dictionary.authLinks.login : "Loading..."}</span>
+//                     </a>
+//                 )}
+//             </div>
+//         </Suspense>
+
 //     )
 // }
 
