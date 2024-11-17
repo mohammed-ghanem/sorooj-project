@@ -23,6 +23,8 @@ const LogoNav = () => {
             <SerachInput />
             {showBtnLogin && <BtnLogin />}
         </div>
+
+
     );
 };
 
