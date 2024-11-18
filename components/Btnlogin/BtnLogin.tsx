@@ -15,14 +15,20 @@ const BtnLogin = () => {
     const [isLoading, setIsLoading] = useState(true); // Tracks loading state
 
     useEffect(() => {
-        // Check cookies and update authentication status
-        const accessToken = Cookies.get('access_token');
-        const isVerified = Cookies.get('is_verified');
+        const checkAuthStatus = async () => {
+            // Simulate async behavior with a timeout
+            await new Promise(resolve => setTimeout(resolve, 2000));
 
-        if (accessToken && isVerified) {
-            setIsAuthenticated(true);
-        }
-        setIsLoading(false); // Set loading to false after checking
+            const accessToken = Cookies.get('access_token');
+            const isVerified = Cookies.get('is_verified');
+
+            if (accessToken && isVerified) {
+                setIsAuthenticated(true);
+            }
+            setIsLoading(false); // Set loading to false after checking
+        };
+        
+        checkAuthStatus();
     }, [lang, router]);
 
     return (
