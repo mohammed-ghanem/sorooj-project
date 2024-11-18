@@ -62,6 +62,64 @@ export default BtnLogin;
 
 
 
+// 'use client';
+
+// import { faSpinner, faUser } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { useRouter } from 'next/navigation';
+// import React, { useEffect, useState } from 'react';
+// import Cookies from 'js-cookie';
+// import LangUseParams from '../translate/LangUseParams';
+// import LangBtn from '../buttons/LangBtn';
+
+// const BtnLogin = () => {
+//     const lang = LangUseParams()
+//     const router = useRouter();
+//     const [isAuthenticated, setIsAuthenticated] = useState(false); // Tracks authentication status
+//     const [isLoading, setIsLoading] = useState(true); // Tracks loading state
+
+//     useEffect(() => {
+//         // Check cookies and update authentication status
+//         const accessToken = Cookies.get('access_token');
+//         const isVerified = Cookies.get('is_verified');
+
+//         if (accessToken && isVerified) {
+//             setIsAuthenticated(true);
+//         }
+//         setIsLoading(false); // Set loading to false after checking
+//     }, [lang, router]);
+
+//     return (
+//         <div className='m-auto flex items-center mt-5 mb-3 md:mb-auto md:mt-auto'>
+//             <LangBtn />
+//             <a
+//                 href={(isAuthenticated ? `/${lang}/auth/profile` : `/${lang}/auth/signin`)}
+//                 className="text-white bkMainColor px-[26px] py-[10px] rounded-lg"
+//             >
+//                 <FontAwesomeIcon icon={faUser} className="ml-1" />
+//                 <span className="mx-1">
+//                     {isLoading ? (
+//                         <FontAwesomeIcon icon={faSpinner} spin className="ml-1" />
+//                     ) : isAuthenticated ? (
+//                         'حسابى'
+//                     ) : (
+//                         'تسجيل الدخول'
+//                     )}
+//                 </span>
+
+//             </a>
+//         </div>
+//     );
+// };
+
+// export default BtnLogin;
+
+
+
+
+
+
+
 
 // 'use client';
 
