@@ -32,7 +32,7 @@ const LastNav = () => {
     ];
 
     return (
-        <nav className="bkPrimaryColor p-4 font-medium relative z-50">
+        <nav className="bkPrimaryColor p-4 font-medium relative z-40">
             <div className="container mx-auto flex justify-between items-center">
                 <div className="hidden lg:flex m-auto">
                     {navLinks.map((link, index) => (

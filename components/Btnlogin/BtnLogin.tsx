@@ -17,7 +17,7 @@ const BtnLogin = () => {
     useEffect(() => {
         const checkAuthStatus = async () => {
             // Simulate async behavior with a timeout
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            await new Promise(resolve => setTimeout(resolve, 5000));
 
             const accessToken = Cookies.get('access_token');
             const isVerified = Cookies.get('is_verified');
@@ -27,7 +27,7 @@ const BtnLogin = () => {
             }
             setIsLoading(false); // Set loading to false after checking
         };
-        
+
         checkAuthStatus();
     }, [lang, router]);
 
@@ -48,7 +48,6 @@ const BtnLogin = () => {
                         'تسجيل الدخول'
                     )}
                 </span>
-
             </a>
         </div>
     );
