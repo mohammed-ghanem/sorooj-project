@@ -2,8 +2,8 @@
 
 import Banners from "@/components/banners/Banners"
 import CoursesCard from "@/components/coursesCard/CoursesCard"
-import test from '@/assets/images/test.png'
-import defImage from "@/assets/images/default.webp"; // Default image
+import test from '@/assets/images/test.jpg'
+import soroojImg from "@/assets/images/111.webp"; // Default image
 import CategoriesBox from "@/components/categoryBox/CategoriesBox";
 import LangUseParams from "@/components/translate/LangUseParams"
 
@@ -18,7 +18,7 @@ const page = () => {
     <div>
       <div>
         <div>
-          <Banners src={defImage} textPath="الدورات المجانية" />
+          <Banners src={soroojImg} textPath="الدورات المجانية" />
         </div>
         <div className="coursesContainer container mx-auto my-20 grid grid-cols-1 lg:grid-cols-4 gap-0 lg:gap-10 w-[95%] lg:w-[80%]">
           <div className="my-5 lg:my-0">

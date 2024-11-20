@@ -1,7 +1,7 @@
 'use client'
 
 import Image from "next/image"
-import test from '@/assets/images/test.png'
+import test from '@/assets/images/test.jpg'
 import { faEye, faCalendar, faBookOpenReader, faUser, faBookOpen } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
