@@ -17,7 +17,7 @@ const BtnLogin = () => {
     useEffect(() => {
         const checkAuthStatus = async () => {
             // Simulate async behavior with a timeout
-            await new Promise(resolve => setTimeout(resolve, 5000));
+            await new Promise(resolve => setTimeout(resolve, 2000));
 
             const accessToken = Cookies.get('access_token');
             const isVerified = Cookies.get('is_verified');

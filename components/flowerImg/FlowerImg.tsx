@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import flower from '@/assets/images/flower.svg';
+import flower from '@/public/assets/images/flower.svg';
 
 const FlowerImg = () => {
     return (

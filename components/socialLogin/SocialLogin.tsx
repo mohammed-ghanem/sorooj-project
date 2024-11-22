@@ -1,5 +1,5 @@
-import facebook from '@/assets/images/facebook.svg'
-import google from '@/assets/images/google.svg'
+import facebook from '@/public/assets/images/facebook.svg'
+import google from '@/public/assets/images/google.svg'
 import Image from 'next/image' 
 import TranslateHook from '../translate/TranslateHook';
 

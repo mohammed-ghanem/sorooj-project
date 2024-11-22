@@ -1,6 +1,6 @@
 import Image from "next/image"
-import fatwaIcon from '@/assets/images/fatwaIcon.svg'
-import fatwaFlower from '@/assets/images/fatwa.svg'
+import fatwaIcon from '@/public/assets/images/fatwaIcon.svg'
+import fatwaFlower from '@/public/assets/images/fatwa.svg'
 
 
 

@@ -1,6 +1,6 @@
 "use client"
 import Banners from '../banners/Banners'
-import defImage from "@/assets/images/default.webp"; // Default image
+import defImage from "@/public/assets/images/default.webp"; // Default image
 import TranslateHook from "../translate/TranslateHook";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faShareNodes, faUser } from '@fortawesome/free-solid-svg-icons';
@@ -8,11 +8,11 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { faFacebookF, faTwitter, faInstagram, faTelegram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import Link from 'next/link';
 import Image from 'next/image';
-import coueseImg from "@/assets/images/courseImg.jpg"
+import coueseImg from "@/public/assets/images/courseImg.jpg"
 import VideoTabsCourse from '../videoCourseTab/VideoTabsCourse';
 import CourseDescriptionTabs from '../courseDescriptionTabs/CourseDescriptionTabs';
 
-import test from '@/assets/images/test.png'
+import test from '@/public/assets/images/test.png'
 import CoursesCard from '../coursesCard/CoursesCard';
 const CoursesContent = () => {
   // lang param (ar Or en)

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import FirstFooter from './FirstFooter'
 import LastFooter from './LastFooter'
-import footerVectorImage from '@/assets/images/footervector.png'
+import footerVectorImage from '@/public/assets/images/footervector.png'
 import ScrollToTop from '../ScrollToTop/ScrollToTop'
 
 

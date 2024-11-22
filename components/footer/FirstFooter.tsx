@@ -1,5 +1,5 @@
 import Image from "next/image"
-import logo from "@/assets/images/logo.png"
+import logo from "@/public/assets/images/logo.png"
 import SocialMedia from "../socialMedia/SocialMedia"
 import SubscribeForm from "../subscribers/SubscribeForm"
 

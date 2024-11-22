@@ -4,8 +4,8 @@ import axios from "axios"
 import Swal from "sweetalert2"
 import Cookies from 'js-cookie'; // Import js-cookie library
 import Image from 'next/image';
-import whiteAuthBk from '@/assets/images/Vector.svg';
-import loginauth from '@/assets/images/loginauth.svg';
+import whiteAuthBk from '@/public/assets/images/Vector.svg';
+import loginauth from '@/public/assets/images/loginauth.svg';
 import TranslateHook from '../../translate/TranslateHook';
 import LangUseParams from "@/components/translate/LangUseParams"
 import { z } from "zod";

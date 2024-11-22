@@ -1,7 +1,7 @@
 
 import Image from "next/image"
 
-import books from '@/assets/images/books.webp'
+import books from '@/public/assets/images/books.webp'
 import { faBookOpen, faBookOpenReader, faCalendar, faEye, faUser } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 

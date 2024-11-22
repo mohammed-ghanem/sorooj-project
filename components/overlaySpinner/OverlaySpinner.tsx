@@ -1,6 +1,6 @@
 // components/OverlaySpinner.tsx
 import Image from 'next/image';
-import loadingImg from '@/assets/images/loadingImg.svg'
+import loadingImg from '@/public/assets/images/loadingImg.svg'
 
 
 const OverlaySpinner: React.FC<{ isLoading: boolean }> = ({ isLoading }) => {

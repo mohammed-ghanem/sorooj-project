@@ -13,6 +13,7 @@ const config: Config = {
     extend: {
       colors: {
         'regal-blue': '#424C61',
+        customGold: '#9F854E'
       },
       width: {
         '95%': '95%',
@@ -21,6 +22,7 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+          //"border-pattern": "url('/assets/images/card.png')",
       },
       fontFamily: {
         cairo: ['Cairo', 'sans-serif'], // Add this line

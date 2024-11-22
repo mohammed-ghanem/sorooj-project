@@ -2,7 +2,7 @@
 
 import { faEye, faCalendar, faBookOpenReader, faUser, faBookOpen } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import test from '@/assets/images/test.png'
+import test from '@/public/assets/images/test.png'
 import Image from "next/image"
 import Link from 'next/link'
 

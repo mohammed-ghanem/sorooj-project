@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 import Cookies from "js-cookie" // Import the js-cookie library
 import { useRouter } from 'next/navigation'; // Use useParams for dynamic [lang] segment
 import Banners from "@/components/banners/Banners"
-import banner from "@/assets/images/books.png"
+import banner from "@/public/assets/images/books.png"
 import ProfileBoxCategories from "../profileBoxCategories/ProfileBoxCategories"
 import TranslateHook from '../../translate/TranslateHook';
 import LangUseParams from "@/components/translate/LangUseParams"

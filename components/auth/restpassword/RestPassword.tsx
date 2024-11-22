@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation"
 import Swal from "sweetalert2"
 import Cookies from "js-cookie" // Import js-cookie library
 import Image from 'next/image';
-import whiteAuthBk from '@/assets/images/Vector.svg';
-import restpass from '@/assets/images/restpass.svg';
+import whiteAuthBk from '@/public/assets/images/Vector.svg';
+import restpass from '@/public/assets/images/restpass.svg';
 import TranslateHook from '../../translate/TranslateHook';
 import LangUseParams from "@/components/translate/LangUseParams"
 import FlowerImg from "@/components/flowerImg/FlowerImg"

@@ -2,8 +2,8 @@
 
 import Banners from "@/components/banners/Banners"
 import CoursesCard from "@/components/coursesCard/CoursesCard"
-import test from '@/assets/images/test.jpg'
-import soroojImg from "@/assets/images/111.webp"; // Default image
+import test from '@/public/assets/images/test.jpg'
+import soroojImg from "@/public/assets/images/111.webp"; // Default image
 import CategoriesBox from "@/components/categoryBox/CategoriesBox";
 import LangUseParams from "@/components/translate/LangUseParams"
 

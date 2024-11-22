@@ -1,9 +1,5 @@
-import React from 'react'
+import AboutUs from "@/components/aboutUs/AboutUs";
 
-const page = () => {
-  return (
-    <div>about</div>
-  )
-}
-
-export default page
+export default function aboutUs() {
+  return <div><AboutUs /></div>
+} 

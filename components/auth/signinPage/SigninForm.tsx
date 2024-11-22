@@ -7,8 +7,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import Cookies from 'js-cookie'; // Import js-cookie to handle cookies
 import Image from 'next/image'
-import whiteAuthBk from '@/assets/images/Vector.svg'
-import loginauth from '@/assets/images/loginauth.svg'
+import whiteAuthBk from '@/public/assets/images/Vector.svg'
+import loginauth from '@/public/assets/images/loginauth.svg'
 import SocialLogin from '@/components/socialLogin/SocialLogin'
 import TranslateHook from '../../translate/TranslateHook';
 import LangUseParams from "@/components/translate/LangUseParams"

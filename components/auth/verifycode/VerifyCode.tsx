@@ -5,8 +5,8 @@ import axios from "axios"
 import Swal from "sweetalert2"
 import Cookies from 'js-cookie'
 import Image from 'next/image'
-import whiteAuthBk from '@/assets/images/Vector.svg'
-import optImage from '@/assets/images/otp.svg'
+import whiteAuthBk from '@/public/assets/images/Vector.svg'
+import optImage from '@/public/assets/images/otp.svg'
 import TranslateHook from '../../translate/TranslateHook'
 import LangUseParams from "@/components/translate/LangUseParams"
 import FlowerImg from "@/components/flowerImg/FlowerImg"

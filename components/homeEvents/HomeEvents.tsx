@@ -1,15 +1,15 @@
 import { Carousel, ConfigProvider } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
-import defImageEvent from "@/assets/images/event.png"; // Default image
+import defImageEvent from "@/public/assets/images/event.png"; // Default image
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleChevronRight } from '@fortawesome/free-solid-svg-icons/faCircleChevronRight';
 import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons/faCircleChevronLeft';
 import Timer from './Timer';
 import './style.css'
 
-import slider1 from "@/assets/images/1.png";
-import slider2 from "@/assets/images/2.png";
+import slider1 from "@/public/assets/images/1.png";
+import slider2 from "@/public/assets/images/2.png";
 import { faMicrophoneLinesSlash } from '@fortawesome/free-solid-svg-icons';
 
 const DefaultImage = {
