@@ -13,7 +13,8 @@ const config: Config = {
     extend: {
       colors: {
         'regal-blue': '#424C61',
-        customGold: '#9F854E'
+        customGold: '#9F854E',
+        customGray: '#f3f3f32e',
       },
       width: {
         '95%': '95%',

@@ -5,9 +5,13 @@ import aboutImg from '@/public/assets/images/11111.png'
 import cardImg from '@/public/assets/images/card.png'
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
-import borderImg from "@/public/assets/images/borderImage.png"
+import { faMinus, faPlay } from '@fortawesome/free-solid-svg-icons';
 import aboutFrame from "@/public/assets/images/aboutFrame.png"
+import target from "@/public/assets/images/target.png"
+
+import borderImg from "@/public/assets/images/borderImage.png"
+import border from "@/public/assets/images/border.png"
+
 
 const AboutUs = () => {
 
@@ -65,7 +69,7 @@ const AboutUs = () => {
                 {/* <section className='mission mt-16'>
                     <div className=' grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-10 w-[95%] xl:w-[80%] mx-auto'>
                         <div className="w-[95%] relative h-full m-auto">
-                            <Image className='relative -z-10 mx-auto h-96' src={borderImg} alt='border' />
+                            <Image className='relative -z-10 mx-auto h-96' src={border} alt='border' />
                             <span className='absolute font-bold text-[#fff] top-[18px] right-[70px] text-[28px]'>الرؤية</span>
                             <p className='mt-[10px] p-[40px] md:p-[50px] lg:p-[30px]  mx-auto relative -top-[45%] leading-[2.1]'>مركز سُرج للدراسات والأبحاث , هو مركز علمي دعوي بحثي يعني بتأصيل العقيدة الإسلامية وتعزيز الفطرة الإيمانية وتحصين المجتمع المسلم من الحرب علي الفطرة والإيمان والإسلام , وضرورة تقرير قواعد الشرح الصحيحة المستمدة من القران الكريم والسنه النبوية , وفق منهج السلف الصالح</p>
                         </div>
@@ -79,24 +83,40 @@ const AboutUs = () => {
                         </div>
                     </div>
                 </section> */}
-
                 {/*  */}
+
+                <section className='ourTarget'>
+                    <div className='grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-10 w-[95%] xl:w-[80%] mx-auto'>
+                        <div className='relative bkPrimaryColor p-5 '>
+                            <Image src={target} className='rounded-tl-[35px] rounded-br-[35px] rounded-tr-none rounded-bl-none border-[1px] border-[solid] border-[#fff] p-[10px]' alt='target' />
+                        </div>
+                        <div className=' col-span-2'>
+                            <h2>الاهداف العامة</h2>
+                            <ul>
+                                <li>
+                                    <FontAwesomeIcon icon={faMinus} />
+                                    <span>تأصيل العقيدة الصحيحة المستمدة من الكتاب والسنه وفق منهج سلف الأمه</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+
                 <section className='relative w-full h-full my-7'>
                     <Image className='-z-10' src={aboutFrame} fill alt='' />
                     <div className='container mx-auto' >
-                        <div className='p-7 container mx-auto my-20 grid grid-cols-1 lg:grid-cols-4 gap-0 lg:gap-10 w-[95%] lg:w-[80%] text-white'>
-                            <div className=''>title</div>
-                            <div className='col-span-3 grid grid-cols-3 gap-10'>
-                                <div>1</div>
-                                <div>2</div>
-                                <div>3</div>
-                                <div>1</div>
-                                <div>2</div>
-                                <div>3</div>
-                                <div>1</div>
-                                <div>2</div>
-                                <div>3</div>
-                            </div>
+                        <h3 className='text-center text-white font-bold pt-8 text-3xl'>ألية عمل المركز</h3>
+                        <div className='p-0 lg:p-7 container mx-auto my-10 pb-5 grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-10 w-[95%] lg:w-[80%] text-white text-center items-center'>
+                            <div className='border-dashed border-2 rounded-[6px] w-full bg-customGray mx-auto h-[140px] flex items-center justify-center font-bold px-3 md:px-6 lg:px-10 xl:px-16'>تصوير وتسجيل البرامج المرئية والمسموعه</div>
+                            <div className='border-dashed border-2 rounded-[6px] w-full bg-customGray mx-auto h-[140px] flex items-center justify-center font-bold px-3 md:px-6 lg:px-10 xl:px-16'>الدورات العلمية المختصه</div>
+                            <div className='border-dashed border-2 rounded-[6px] w-full bg-customGray mx-auto h-[140px] flex items-center justify-center font-bold px-3 md:px-6 lg:px-10 xl:px-16'>أكادمية سرج العملية لتأصيل طلاب العلم وتأهيل الدعاة في برامج دراسية سنوية</div>
+                            <div className='border-dashed border-2 rounded-[6px] w-full bg-customGray mx-auto h-[140px] flex items-center justify-center font-bold px-3 md:px-6 lg:px-10 xl:px-16'>الندوات والحوارات البناءه</div>
+                            <div className='border-dashed border-2 rounded-[6px] w-full bg-customGray mx-auto h-[140px] flex items-center justify-center font-bold px-3 md:px-6 lg:px-10 xl:px-16'>المحاضرات والكلمات</div>
+                            <div className='border-dashed border-2 rounded-[6px] w-full bg-customGray mx-auto h-[140px] flex items-center justify-center font-bold px-3 md:px-6 lg:px-10 xl:px-16'>الفتاوي والاستشارات واللقاءات المفتوحه</div>
+                            <div className='border-dashed border-2 rounded-[6px] w-full bg-customGray mx-auto h-[140px] flex items-center justify-center font-bold px-3 md:px-6 lg:px-10 xl:px-16'>تاليف الكتب المختصه والأبحاث المحكمة والمقالات</div>
+                            <div className='border-dashed border-2 rounded-[6px] w-full bg-customGray mx-auto h-[140px] flex items-center justify-center font-bold px-3 md:px-6 lg:px-10 xl:px-16'>تأصيل طلاب العلم وتأهيل الدعاة</div>
+                            <div className='border-dashed border-2 rounded-[6px] w-full bg-customGray mx-auto h-[140px] flex items-center justify-center font-bold px-3 md:px-6 lg:px-10 xl:px-16'>نشر الفوائد العلمية والدعوية عبر وسائل التواصل</div>
                         </div>
                     </div>
                 </section>
