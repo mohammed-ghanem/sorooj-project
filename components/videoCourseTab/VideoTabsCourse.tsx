@@ -11,9 +11,9 @@ const VideoTabsCourse: React.FC = () => {
     const courseVideoTabs = [
         {
             id: 1,
-            content: "https://www.youtube.com/embed/Wo7Qf38GLTQ",
+            content: "https://www.youtube.com/embed/9Be3wB4DpAg",
             title: "برنامج محطات فى العقيدة المحور الثانى مفهوم التوحيد",
-            imgPath: "https://img.youtube.com/vi/Wo7Qf38GLTQ/mqdefault.jpg",
+            imgPath: "https://img.youtube.com/vi/9Be3wB4DpAg/mqdefault.jpg",
             publishDate: "2 sep 2024"
         },
         {
