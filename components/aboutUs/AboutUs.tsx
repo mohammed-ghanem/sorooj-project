@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Banners from '../banners/Banners'
 import aboutImg from '@/public/assets/images/11111.png'
-import cardImg from '@/public/assets/images/card.png'
+import cardImg from '@/public/assets/images/dee.svg'
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlay } from '@fortawesome/free-solid-svg-icons';
@@ -11,6 +11,7 @@ import target from "@/public/assets/images/target.png"
 import earth from "@/public/assets/images/earth.png"
 import title from "@/public/assets/images/title.png"
 import SoroojPath from './SoroojPath';
+import man1 from "@/public/assets/images/man1.png"
 
 
 const AboutUs = () => {
@@ -33,7 +34,7 @@ const AboutUs = () => {
                                 وتعزيز الفطرة الإيمانية وتحصين المجتمع المسلم من الحرب علي الفطرة والإيمان والإسلام , وضرورة تقرير قواعد الشرح الصحيحة المستمدة من القران الكريم والسنه النبوية , وفق منهج السلف الصالح
                             </p>
                         </div>
-                        <div className="relative w-full max-w-lg mx-auto">
+                        <div className="relative w-full max-w-lg mx-auto bg-black">
                             {/* Cover Image */}
                             {!isPlaying && (
                                 <div className="">
@@ -188,6 +189,64 @@ const AboutUs = () => {
                             <div className='border-dashed border-2 rounded-[6px] w-full bg-customGray mx-auto h-[140px] flex items-center justify-center font-bold px-3 md:px-6 lg:px-10 xl:px-16'>تأصيل طلاب العلم وتأهيل الدعاة</div>
                             <div className='border-dashed border-2 rounded-[6px] w-full bg-customGray mx-auto h-[140px] flex items-center justify-center font-bold px-3 md:px-6 lg:px-10 xl:px-16'>نشر الفوائد العلمية والدعوية عبر وسائل التواصل</div>
                         </div>
+                    </div>
+                </section>
+                {/*  */}
+                <section className='managements mb-10 mt-4'>
+                    <h6 className="text-base mx-auto mb-10 md:text-2xl font-bold mainColor border-b-2 border-customGold w-[fit-content] pb-[4px]">اعضاء مجلس الادارة</h6>
+                    <div className='container mx-auto grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4 lg:gap-10 w-[95%] lg:w-[80%] text-center items-center'>
+
+                        <div className='bg-customGold w-[80%] mx-auto md:w-full  rounded-tl-[18px] rounded-br-[18px] rounded-tr-none rounded-bl-none [box-shadow:1px_1px_7px_#424c61]'>
+                            <div className='flex justify-center'>
+                                <Image className='border-[1px] border-[solid] border-[#fff] p-[10px] rounded-tl-[10px] rounded-br-[10px] rounded-tr-none rounded-bl-none mt-[20px] [box-shadow:2px_2px_1px_#424c61]' src={man1} alt='' />
+                            </div>
+                            <div className='mb-6'>
+                                <h4 className='text-white font-bold mt-3'>د حمد الهاجرى</h4>
+                                <p className='text-white mt-3'>رئيس مجلس الادارة</p>
+                            </div>
+                        </div>
+
+                        <div className='bg-customGold w-[80%] mx-auto md:w-full  rounded-tl-[18px] rounded-br-[18px] rounded-tr-none rounded-bl-none [box-shadow:1px_1px_7px_#424c61]'>
+                            <div className='flex justify-center'>
+                                <Image className='border-[1px] border-[solid] border-[#fff] p-[10px] rounded-tl-[10px] rounded-br-[10px] rounded-tr-none rounded-bl-none mt-[20px] [box-shadow:2px_2px_1px_#424c61]' src={man1} alt='' />
+                            </div>
+                            <div className='mb-6'>
+                                <h4 className='text-white font-bold mt-3'>د حمد الهاجرى</h4>
+                                <p className='text-white mt-3'>رئيس مجلس الادارة</p>
+                            </div>
+                        </div>
+
+                        <div className='bg-customGold w-[80%] mx-auto md:w-full  rounded-tl-[18px] rounded-br-[18px] rounded-tr-none rounded-bl-none [box-shadow:1px_1px_7px_#424c61]'>
+                            <div className='flex justify-center'>
+                                <Image className='border-[1px] border-[solid] border-[#fff] p-[10px] rounded-tl-[10px] rounded-br-[10px] rounded-tr-none rounded-bl-none mt-[20px] [box-shadow:2px_2px_1px_#424c61]' src={man1} alt='' />
+                            </div>
+                            <div className='mb-6'>
+                                <h4 className='text-white font-bold mt-3'>د حمد الهاجرى</h4>
+                                <p className='text-white mt-3'>رئيس مجلس الادارة</p>
+                            </div>
+                        </div>
+
+                        <div className='bg-customGold w-[80%] mx-auto md:w-full  rounded-tl-[18px] rounded-br-[18px] rounded-tr-none rounded-bl-none [box-shadow:1px_1px_7px_#424c61]'>
+                            <div className='flex justify-center'>
+                                <Image className='border-[1px] border-[solid] border-[#fff] p-[10px] rounded-tl-[10px] rounded-br-[10px] rounded-tr-none rounded-bl-none mt-[20px] [box-shadow:2px_2px_1px_#424c61]' src={man1} alt='' />
+                            </div>
+                            <div className='mb-6'>
+                                <h4 className='text-white font-bold mt-3'>د حمد الهاجرى</h4>
+                                <p className='text-white mt-3'>رئيس مجلس الادارة</p>
+                            </div>
+                        </div>
+
+                        <div className='bg-customGold w-[80%] mx-auto md:w-full  rounded-tl-[18px] rounded-br-[18px] rounded-tr-none rounded-bl-none [box-shadow:1px_1px_7px_#424c61]'>
+                            <div className='flex justify-center'>
+                                <Image className='border-[1px] border-[solid] border-[#fff] p-[10px] rounded-tl-[10px] rounded-br-[10px] rounded-tr-none rounded-bl-none mt-[20px] [box-shadow:2px_2px_1px_#424c61]' src={man1} alt='' />
+                            </div>
+                            <div className='mb-6'>
+                                <h4 className='text-white font-bold mt-3'>د حمد الهاجرى</h4>
+                                <p className='text-white mt-3'>رئيس مجلس الادارة</p>
+                            </div>
+                        </div>
+
+
                     </div>
                 </section>
             </div>
