@@ -8,10 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlay } from '@fortawesome/free-solid-svg-icons';
 import aboutFrame from "@/public/assets/images/aboutFrame.png"
 import target from "@/public/assets/images/target.png"
-
-
-import borderImg from "@/public/assets/images/borderImage.png"
-import border from "@/public/assets/images/border.png"
+import earth from "@/public/assets/images/earth.png"
+import title from "@/public/assets/images/title.png"
 import SoroojPath from './SoroojPath';
 
 
@@ -48,7 +46,7 @@ const AboutUs = () => {
                                     </div>
                                     {/* Play Button Overlay */}
                                     <div className="absolute inset-0 flex items-center bg-black bg-opacity-50">
-                                        <button onClick={handlePlay} className="absolute -right-[30px] text-white text-4xl border-[10px] border-[solid] border-[#fff] rounded-[35px] pt-[3px] pr-[12px] pb-px pl-[14px] bg-[#947e51] text-[24px] [box-shadow:1px_1px_10px_#333]">
+                                        <button onClick={handlePlay} className="absolute right-1 md:-right-[30px] text-white text-4xl border-[10px] border-[solid] border-[#fff] rounded-[35px] pt-[3px] pr-[12px] pb-px pl-[14px] bg-[#947e51] text-[24px] [box-shadow:1px_1px_10px_#333]">
                                             <FontAwesomeIcon icon={faPlay} />
                                         </button>
                                     </div>
@@ -68,26 +66,30 @@ const AboutUs = () => {
                     </div>
                 </section>
                 {/*  */}
-                {/* <section className='mission mt-16'>
+                <section className='mission mt-16'>
                     <div className=' grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-10 w-[95%] xl:w-[80%] mx-auto'>
                         <div className="w-[95%] relative h-full m-auto">
-                            <Image className='relative -z-10 mx-auto h-96' src={border} alt='border' />
-                            <span className='absolute font-bold text-[#fff] top-[18px] right-[70px] text-[28px]'>الرؤية</span>
-                            <p className='mt-[10px] p-[40px] md:p-[50px] lg:p-[30px]  mx-auto relative -top-[45%] leading-[2.1]'>مركز سُرج للدراسات والأبحاث , هو مركز علمي دعوي بحثي يعني بتأصيل العقيدة الإسلامية وتعزيز الفطرة الإيمانية وتحصين المجتمع المسلم من الحرب علي الفطرة والإيمان والإسلام , وضرورة تقرير قواعد الشرح الصحيحة المستمدة من القران الكريم والسنه النبوية , وفق منهج السلف الصالح</p>
+                            <div className=' absolute h-[60px] w-[120px] right-[30px] -top-[20px]'>
+                                <span className='absolute font-bold text-[#fff] text-[18px] right-[34px] top-[15px]'>الرؤية</span>
+                                <Image className='-z-10' src={title} fill alt='title' />
+                            </div>
+                            <p className='mt-[10px] pt-[60px] px-[10px] md:px-[30px] pb-[30px] mx-auto leading-[2.1] border-[1px] border-[solid] border-customGold rounded-[10px]'>مركز سُرج للدراسات والأبحاث , هو مركز علمي دعوي بحثي يعني بتأصيل العقيدة الإسلامية وتعزيز الفطرة الإيمانية وتحصين المجتمع المسلم من الحرب علي الفطرة والإيمان والإسلام , وضرورة تقرير قواعد الشرح الصحيحة المستمدة من القران الكريم والسنه النبوية , وفق منهج السلف الصالح</p>
                         </div>
 
-                        <div className="w-[95%] relative h-full m-auto">
-                            <Image className='relative -z-10 mx-auto h-96' src={borderImg} alt='border' />
-                            <span className='absolute font-bold text-[#fff] top-[18px] right-[70px] text-[28px]'>الرسالة</span>
-                            <p className='mt-[10px] p-[40px] md:p-[50px] lg:p-[30px]  mx-auto relative -top-[45%] leading-[2.1]'>
+                        <div className="w-[95%] relative h-full m-auto mt-8 lg:mt-0">
+                            <div className=' absolute h-[60px] w-[120px] right-[30px] -top-[20px]'>
+                                <span className='absolute font-bold text-[#fff] text-[18px] right-[31px] top-[15px]'>الرسالة</span>
+                                <Image className='-z-10' src={title} fill alt='title' />
+                            </div>
+                            <p className='mt-[10px] pt-[60px] px-[10px] md:px-[30px] pb-[30px] mx-auto leading-[2.1] border-[1px] border-[solid] border-customGold rounded-[10px]'>
                                 في ظل الهجمات الشرسة علي المسلمين في شتي المجالات والسبل والوسائل , يسعي المركز إلي إيجاد بيئة علمية فطرية إيمانية , ترسخ اليقين وسلامة المعتقد وتعني بنشر محاسن الإسلام , والسعي في ثبات منظومة الأسرة والمجتمع , مع الدعوة إلي الإيمان لهداية بقية المذاهب والأديان مع بناء الحصن المنيع ضد كل هجمة  مهما كان حجمها باستثمار كافة الجهود , وكافة الوسائل الحديثة والمتطورة والتقليدية في ي تحقيق تلك الأهداف , ليشمل جميع فئات المجتمع , من المربين والمؤثرين والمتأثرين والمتشككين
                             </p>
                         </div>
                     </div>
-                </section> */}
+                </section>
                 {/*  */}
 
-                <section className='ourTarget mt-10'>
+                <section className='ourTarget mt-14'>
                     <div className='grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-10 w-[95%] xl:w-[80%] mx-auto items-center'>
                         <div className='relative bkPrimaryColor p-5 [box-shadow:1px_1px_7px_#424c61]'>
                             <Image src={target} className='rounded-tl-[35px] rounded-br-[35px] rounded-tr-none rounded-bl-none border-[1px] border-[solid] border-[#fff] p-[10px]' alt='target' />
@@ -154,8 +156,8 @@ const AboutUs = () => {
                     </div>
                 </section>
                 {/*  */}
-                <section className='my-10 lg:my-20 relative w-full h-full'>
-                    {/* <Image className='-z-10' src={aboutFrame} fill alt='' /> */}
+                <section className='container mx-auto w-[95%] py-10 my-10 lg:my-20 relative h-full'>
+                    <Image className='-z-10 px-5' src={earth} fill alt='earth' />
                     <div className='grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-10 w-[95%] xl:w-[80%] mx-auto items-center'>
                         <div className='mb-8 lg:mb-0'>
                             <h4 className='text-base md:text-l font-bold mainColor border-b-2 border-customGold w-[fit-content] pb-[4px]'>
