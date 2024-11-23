@@ -10,13 +10,13 @@ const FirstFooter = () => {
                 <div className='col-span-1 md:col-span-1 block md:flex justify-around items-center'>
                     <div className=" w-48 h-40 relative">
                         <Image fill src={logo} alt="logo" />
-                    </div>
+                    </div> 
                     <div className="relative z-10">
                         <h4 className="mainColor font-bold text-lg mb-5 mr-3 lg:mr-0">تواصل معنا علي  :</h4>
                         <SocialMedia />
                     </div>
                 </div>
-                <div className='col-span-1 md:col-span-1'>
+                <div className='col-span-1 md:col-span-1' >
                     <SubscribeForm />
                 </div>
             </div>

@@ -9,7 +9,7 @@ const SubscribeForm = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setError('');
-
+ 
         try {
             const response = await fetch('/api/subscribe', {
                 method: 'POST',
@@ -31,9 +31,9 @@ const SubscribeForm = () => {
     };
 
     return (
-        <div className="max-w-md mx-auto mt-10">
+        <div className="max-w-md mx-auto mt-10"  >
             <h4 className="mainColor font-bold mr-3 lg:mr-0">اضف بريدك الالكترونى ليصلك كل جديد : </h4>
-            <form onSubmit={handleSubmit} className="mt-5 relative">
+            <form onSubmit={handleSubmit} className="mt-5 relative" style={{ direction: "rtl" }}>
                 <div className="mb-4">
                     <input
                         placeholder='ادخل بريدك الالكترونى'
