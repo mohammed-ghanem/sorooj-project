@@ -14,8 +14,58 @@ import CourseDescriptionTabs from '../courseDescriptionTabs/CourseDescriptionTab
 
 import test from '@/public/assets/images/test.png'
 import CoursesCard from '../coursesCard/CoursesCard';
-const CoursesContent = () => {
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import LangUseParams from '../translate/LangUseParams';
+
+
+
+const CoursesContent = ({ params }: any) => {
+  const [courseDetails, setCourseDetails] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   // lang param (ar Or en)
+  const lang = LangUseParams();
+  
+  console.log(params)
+
+  useEffect(() => {
+    // Fetch courses data
+    const fetchCourses = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/courses/${params.course.id}`,
+          {
+            params: { lang }, // Pass the language as a query parameter
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        console.log(response.data.data)
+
+        setCourseDetails(response.data.data); // Update state with fetched courses
+      } catch (err: any) {
+        setError(err.response?.data?.message || err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCourses();
+  }, [lang]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+
+
   const translate = TranslateHook();
   const socialMediaLinks = [
     { href: "https://www.facebook.com", icon: faFacebookF },
@@ -30,6 +80,10 @@ const CoursesContent = () => {
         <Banners src={defImage} textPath={translate ? translate.pages.coursesContentPage.bannerPathText : ""} />
       </div>
       <div className='container mx-auto'>
+
+
+
+
         <div className='courseDetails my-4 md:my-14 w-[95%] md:w-[80%] mx-auto flex flex-col-reverse lg:grid grid-cols-3 gap-4 items-center'>
           <div className='courseTitles w-[95%] md:w-[80%] col-span-2'>
             <h1 className=' text-base md:text-2xl font-bold mainColor'>

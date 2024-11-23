@@ -20,7 +20,7 @@ const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePubl
         // courses card
         <div className=" bkColor rounded-[15px] overflow-hidden relative">
             <div className="newCourses h-full">
-                <Image className="w-full" src={imgSrc} alt="test" height={100} />
+                <Image className="w-full" src={imgSrc} alt="test" height={100} width={100} />
                 <div className="px-3">
                     <div className="cardDetails grid grid-cols-2 gap-2 mt-3 font-bold">
                         <p className="text-[10px] mainColor opacity-[0.8] flex items-center">
