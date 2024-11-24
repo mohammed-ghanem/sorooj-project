@@ -7,6 +7,7 @@ import CoursesCard from "@/components/coursesCard/CoursesCard";
 import CategoriesBox from "@/components/categoryBox/CategoriesBox";
 import LangUseParams from "@/components/translate/LangUseParams";
 import soroojImg from "@/public/assets/images/111.webp"; // Default image
+import { generateSlug } from "@/utils/slug";
 
 
 
@@ -22,6 +23,8 @@ const Page = () => {
   useEffect(() => {
     // Fetch courses data
     const fetchCourses = async () => {
+
+
       try {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/courses`,
@@ -53,25 +56,22 @@ const Page = () => {
     return <div>Error: {error}</div>;
   }
 
-
-  // function getSlug(item: string) {
-  //   return item.replace(/ /g, "_").replace(/\./g, "").toLowerCase()
-  // }
-
-  const fetchCourses = courses.map((course: any) =>
-    <CoursesCard
-      key={course.id}
-      imgSrc={course.image || soroojImg} // Use default image if not provided
-      watchNumber={`${course.view_count} مشاهدة`}
-      datePublish={course.publish_date}
-      courseTitle={course.course_name}
-      doctorName={course.author_name}
-      descriptionCourse={course.description}
-      likeBtn={"like"}
-      pathLinkToContent={`/${lang}/courses/${course.id}`} // Link to course details
-    />
-  )
-
+  const fetchCourses = courses.map((course: any) => {
+    //const slug = generateSlug(course.course_name);
+    return (
+      <CoursesCard
+        key={course.id}
+        imgSrc={course.image || soroojImg} // Use default image if not provided
+        watchNumber={`${course.view_count} مشاهدة`}
+        datePublish={course.publish_date}
+        courseTitle={course.course_name}
+        doctorName={course.author_name}
+        descriptionCourse={course.description}
+        likeBtn={"like"}
+        pathLinkToContent={`/${lang}/courses/${course.id}`} // Link to course details
+      />
+    )
+  })
   return (
     <div>
       <div>

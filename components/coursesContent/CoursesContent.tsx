@@ -3,12 +3,13 @@ import Banners from '../banners/Banners'
 import defImage from "@/public/assets/images/default.webp"; // Default image
 import TranslateHook from "../translate/TranslateHook";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPenToSquare, faShareNodes, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays, faEye, faPenToSquare, faShareNodes, faUser } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { faFacebookF, faTwitter, faInstagram, faTelegram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import Link from 'next/link';
 import Image from 'next/image';
 import coueseImg from "@/public/assets/images/courseImg.jpg"
+import soroojImg from "@/public/assets/images/111.webp"; // Default image
 import VideoTabsCourse from '../videoCourseTab/VideoTabsCourse';
 import CourseDescriptionTabs from '../courseDescriptionTabs/CourseDescriptionTabs';
 
@@ -17,24 +18,39 @@ import CoursesCard from '../coursesCard/CoursesCard';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import LangUseParams from '../translate/LangUseParams';
+import { useParams } from "next/navigation"; // For retrieving route parameters
 
 
 
-const CoursesContent = ({ params }: any) => {
-  const [courseDetails, setCourseDetails] = useState([]);
+interface CourseDetails {
+  course_name: string;
+  image?: string;
+  description: string;
+  publish_date: string;
+  author_name: string;
+  view_count: number;
+}
+interface CategoryDetails {
+  name: string
+}
+
+
+const CoursesContent = () => {
+  const [courseDetails, setCourseDetails] = useState<CourseDetails | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [categoryDetails, setCategoryDetails] = useState<CategoryDetails | null>(null);
   // lang param (ar Or en)
   const lang = LangUseParams();
-  
-  console.log(params)
+  const translate = TranslateHook();
+  const { id } = useParams();
 
   useEffect(() => {
     // Fetch courses data
     const fetchCourses = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/courses/${params.course.id}`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/courses/${id}`,
           {
             params: { lang }, // Pass the language as a query parameter
             headers: {
@@ -42,10 +58,9 @@ const CoursesContent = ({ params }: any) => {
             },
           }
         );
-
-        console.log(response.data.data)
-
-        setCourseDetails(response.data.data); // Update state with fetched courses
+        console.log(response.data.data.Courses)
+        setCourseDetails(response.data.data.Courses); // Update state with fetched courses
+        setCategoryDetails(response.data.data.Courses.category)
       } catch (err: any) {
         setError(err.response?.data?.message || err.message);
       } finally {
@@ -54,7 +69,7 @@ const CoursesContent = ({ params }: any) => {
     };
 
     fetchCourses();
-  }, [lang]);
+  }, [id]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -65,8 +80,11 @@ const CoursesContent = ({ params }: any) => {
   }
 
 
+  if (!courseDetails) {
+    return <div>No course details found.</div>;
+  }
 
-  const translate = TranslateHook();
+
   const socialMediaLinks = [
     { href: "https://www.facebook.com", icon: faFacebookF },
     { href: "https://www.twitter.com", icon: faTwitter },
@@ -80,39 +98,42 @@ const CoursesContent = ({ params }: any) => {
         <Banners src={defImage} textPath={translate ? translate.pages.coursesContentPage.bannerPathText : ""} />
       </div>
       <div className='container mx-auto'>
-
-
-
-
         <div className='courseDetails my-4 md:my-14 w-[95%] md:w-[80%] mx-auto flex flex-col-reverse lg:grid grid-cols-3 gap-4 items-center'>
           <div className='courseTitles w-[95%] md:w-[80%] col-span-2'>
             <h1 className=' text-base md:text-2xl font-bold mainColor'>
               <FontAwesomeIcon className=' primaryColor text-lg ml-2' icon={faPenToSquare} />
-              دورة شرح كتاب البراهين العقلية
+              {courseDetails.course_name}
+
             </h1>
             <p className='primaryColor mt-4'>
               <FontAwesomeIcon className=' primaryColor ml-2' icon={faUser} />
-              الشيخ محمد بن هاشم الطاهري
+              {courseDetails.author_name}
             </p>
             <div className='mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 items-center'>
               <span>
                 <span className='text-2xl primaryColor opacity-[0.4]'> || </span>
-                <span> دورات -- فقة </span>
+                <span>{`الدورات --  ${categoryDetails ? categoryDetails.name : "No Category"} `}</span>
               </span>
               <span>
                 <span className='text-2xl primaryColor opacity-[0.4]'> || </span>
-                <span>  24 اكتوبر 2024 </span>
+                <span>
+                  <FontAwesomeIcon className='ml-1 primaryColor' icon={faCalendarDays} />
+                  {courseDetails.publish_date}
+                </span>
               </span>
               <span>
                 <span className='text-2xl primaryColor opacity-[0.4]'> || </span>
-                <span> 245 مشاهدة  </span>
+                <span>
+                  <FontAwesomeIcon className='ml-1 primaryColor' icon={faEye} />
+                  {`${courseDetails.view_count} مشاهدة `}
+                </span>
               </span>
             </div>
             <div className='shareContent mt-4'>
 
               <div className='mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 items-center' >
                 <div className='block md:flex items-center col-span-2'>
-                  <h4 className='mainColor text-sm font-bold ml-6 mb-2 md:mb-0'>
+                  <h4 className='mainColor text-sm font-bold ml-4 mb-2 md:mb-0'>
                     <FontAwesomeIcon className=' primaryColor ml-2' icon={faShareNodes} />
                     مشاركة عبر :
                   </h4>
@@ -157,7 +178,11 @@ const CoursesContent = ({ params }: any) => {
           </div>
           <div className='courseImg'>
             <div>
-              <Image className='w-full h-full max-h-60' src={coueseImg} alt='course-img' />
+              <Image className='w-full h-full max-h-60'
+                src={courseDetails?.image || soroojImg}
+                width={100}
+                height={100}
+                alt='course-img' />
             </div>
           </div>
         </div>
@@ -213,3 +238,16 @@ const CoursesContent = ({ params }: any) => {
 }
 
 export default CoursesContent
+
+
+
+
+
+{/* <div className="container mx-auto my-20 w-[95%] lg:w-[80%]">
+          <h1 className="text-2xl font-bold mb-4">{courseDetails.course_name}</h1>
+          <img src={courseDetails.image || soroojImg.src} alt={courseDetails.course_name} className="mb-4" />
+          <p className="text-gray-700">{courseDetails.description}</p>
+          <p className="mt-4">Published on: {courseDetails.publish_date}</p>
+          <p>Instructor: {courseDetails.author_name}</p>
+          <p>Views: {courseDetails.view_count}</p>
+        </div> */}
