@@ -7,9 +7,6 @@ import CoursesCard from "@/components/coursesCard/CoursesCard";
 import CategoriesBox from "@/components/categoryBox/CategoriesBox";
 import LangUseParams from "@/components/translate/LangUseParams";
 import soroojImg from "@/public/assets/images/111.webp"; // Default image
-import { generateSlug } from "@/utils/slug";
-
-
 
 
 const Page = () => {
@@ -57,7 +54,6 @@ const Page = () => {
   }
 
   const fetchCourses = courses.map((course: any) => {
-    //const slug = generateSlug(course.course_name);
     return (
       <CoursesCard
         key={course.id}
@@ -66,9 +62,9 @@ const Page = () => {
         datePublish={course.publish_date}
         courseTitle={course.course_name}
         doctorName={course.author_name}
-        descriptionCourse={course.description}
+        descriptionCourse={course.brief_description}
         likeBtn={"like"}
-        pathLinkToContent={`/${lang}/courses/${course.id}`} // Link to course details
+        pathLinkToContent={`/${lang}/courses/${course.slug}`} // Link to course details
       />
     )
   })
