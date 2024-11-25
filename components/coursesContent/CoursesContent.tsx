@@ -10,7 +10,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import coueseImg from "@/public/assets/images/courseImg.jpg"
 import soroojImg from "@/public/assets/images/111.webp"; // Default image
-import VideoTabsCourse from '../videoCourseTab/VideoTabsCourse';
 import CourseDescriptionTabs from '../courseDescriptionTabs/CourseDescriptionTabs';
 
 import test from '@/public/assets/images/test.png'
@@ -19,7 +18,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import LangUseParams from '../translate/LangUseParams';
 import { useParams } from "next/navigation"; // For retrieving route parameters
-
+import VideoCourseTab from '../videoCourseTab/VideoCourseTab';
 
 
 interface CourseDetails {
@@ -33,6 +32,12 @@ interface CourseDetails {
 interface CategoryDetails {
   name: string
 }
+interface CourseVideos {
+  name: string,
+  video_url: string,
+  course_id: number,
+  publish_date: string
+}
 
 
 const CoursesContent = () => {
@@ -40,6 +45,7 @@ const CoursesContent = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [categoryDetails, setCategoryDetails] = useState<CategoryDetails | null>(null);
+  const [courseVideos, setCourseVideos] = useState<CourseVideos[]>([]);
   // lang param (ar Or en)
   const lang = LangUseParams();
   const translate = TranslateHook();
@@ -58,9 +64,11 @@ const CoursesContent = () => {
             },
           }
         );
-        console.log(response.data.data.Courses)
+        console.log(response.data.data.Courses.videos)
         setCourseDetails(response.data.data.Courses); // Update state with fetched courses
         setCategoryDetails(response.data.data.Courses.category)
+        setCourseVideos(response.data.data.Courses.videos || []);
+
       } catch (err: any) {
         setError(err.response?.data?.message || err.message);
       } finally {
@@ -69,22 +77,18 @@ const CoursesContent = () => {
     };
 
     fetchCourses();
-  }, [id]);
+  }, [lang, id]);
 
   if (loading) {
     return <div>Loading...</div>;
   }
-
   if (error) {
     return <div>Error: {error}</div>;
   }
-
-
   if (!courseDetails) {
-    return <div>No course details found.</div>;
+    return <div>No course details found.</div>
   }
-
-
+  ///////////////////////////////////////////////////////////////
   const socialMediaLinks = [
     { href: "https://www.facebook.com", icon: faFacebookF },
     { href: "https://www.twitter.com", icon: faTwitter },
@@ -189,14 +193,14 @@ const CoursesContent = () => {
         <hr className='h-1' />
         {/* start all videos course */}
         <div className='videosCourse mt-2 md:mt-8'>
-          <VideoTabsCourse />
+          <VideoCourseTab courseVideos={courseVideos} />
         </div>
         {/* end all videos course */}
-        <hr className='h-1' />
+        <hr className='h-1 mt-8' />
         {/* start description course with suggest courses */}
         <div className='descriptionCourse w-[95%] md:w-[80%] mx-auto mt-2 mb-24 md:mt-8 grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-8'>
           <div className='col-span-2'>
-            <CourseDescriptionTabs />
+            <CourseDescriptionTabs courseDetails={courseDetails} />
           </div>
           {/* course suggestion */}
           <div className='mt-[24px] border-t-2 lg:border-t-0'>
@@ -238,16 +242,3 @@ const CoursesContent = () => {
 }
 
 export default CoursesContent
-
-
-
-
-
-{/* <div className="container mx-auto my-20 w-[95%] lg:w-[80%]">
-          <h1 className="text-2xl font-bold mb-4">{courseDetails.course_name}</h1>
-          <img src={courseDetails.image || soroojImg.src} alt={courseDetails.course_name} className="mb-4" />
-          <p className="text-gray-700">{courseDetails.description}</p>
-          <p className="mt-4">Published on: {courseDetails.publish_date}</p>
-          <p>Instructor: {courseDetails.author_name}</p>
-          <p>Views: {courseDetails.view_count}</p>
-        </div> */}

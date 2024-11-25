@@ -11,11 +11,12 @@ interface CoursesCardProps {
     doctorName: string;
     descriptionCourse: string;
     likeBtn?: any;
-    pathLinkToContent : any;
+    pathLinkToContent: any;
 
 }
 
-const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePublish, courseTitle, doctorName, descriptionCourse, likeBtn , pathLinkToContent }) => {
+const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePublish, courseTitle, doctorName, descriptionCourse, likeBtn, pathLinkToContent }) => {
+    const slicedTitle = courseTitle.length > 40 ? courseTitle.slice(0, 35) + '...' : courseTitle;
     return (
         // courses card
         <div className=" bkColor rounded-[15px] overflow-hidden relative">
@@ -34,7 +35,7 @@ const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePubl
                     </div>
                     <h2 className="mt-2">
                         <FontAwesomeIcon icon={faBookOpenReader} className="ml-1 primaryColor" />
-                        <span className="font-bold mainColor">{courseTitle}</span>
+                        <span className="font-bold mainColor text-sm">{slicedTitle}</span>
                     </h2>
                     <h3 className="mt-1">
                         <FontAwesomeIcon icon={faUser} className="ml-1 primaryColor" />
