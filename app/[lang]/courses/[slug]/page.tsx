@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import CoursesContent from '@/components/coursesContent/CoursesContent';
 import axios from 'axios';
-import DefaultImg from "@/public/assets/images/course-default.webp"
 
 // Dynamic Metadata
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
@@ -23,7 +22,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
                 description: course.description,
                 images: [
                     {
-                        url: course.image || DefaultImg,
+                        url: course.image ,
                         alt: course.course_name,
                     },
                 ],
