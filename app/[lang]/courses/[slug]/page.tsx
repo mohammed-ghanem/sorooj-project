@@ -24,6 +24,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
                     {
                         url: course.image ,
                         alt: course.course_name,
+                        width: 1200,
+                        height: 630,
                     },
                 ],
             },
