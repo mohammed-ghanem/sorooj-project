@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
                 description: course.description,
                 images: [
                     {
-                        url: course.image || '/assets/images/course-default.webp',
+                        url: course.image || 'public/assets/images/course-default.webp',
                         alt: course.course_name,
                     },
                 ],
