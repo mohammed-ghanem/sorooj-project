@@ -4,6 +4,7 @@ const nextConfig = {
     unoptimized: true,
     domains: [],
   },
+  reactStrictMode: false,
   // experimental: {
   //   appDir: true, // Ensure the app directory is enabled for Next.js 14
   // },

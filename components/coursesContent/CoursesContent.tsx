@@ -4,13 +4,10 @@ import defImage from "@/public/assets/images/default.webp"; // Default image
 import TranslateHook from "../translate/TranslateHook";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDays, faEnvelope, faEye, faPenToSquare, faShareNodes, faUser } from '@fortawesome/free-solid-svg-icons';
-import { faHeart } from '@fortawesome/free-regular-svg-icons'
-import { faFacebookF, faTwitter, faInstagram, faTelegram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { faFacebookF, faTwitter, faTelegram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import Image from 'next/image';
-import coueseImg from "@/public/assets/images/courseImg.jpg"
 import soroojImg from "@/public/assets/images/111.webp"; // Default image
 import CourseDescriptionTabs from '../courseDescriptionTabs/CourseDescriptionTabs';
-
 import test from '@/public/assets/images/test.png'
 import CoursesCard from '../coursesCard/CoursesCard';
 import { useEffect, useState } from 'react';
@@ -19,6 +16,9 @@ import LangUseParams from '../translate/LangUseParams';
 import { useParams } from "next/navigation"; // For retrieving route parameters
 import VideoCourseTab from '../videoCourseTab/VideoCourseTab';
 import { EmailShareButton, FacebookShareButton, TwitterShareButton, WhatsappShareButton, TelegramShareButton } from 'react-share';
+import Cookies from "js-cookie" // Import the js-cookie library
+import Swal from 'sweetalert2';
+import { HeartOutlined, HeartFilled } from '@ant-design/icons';
 
 
 interface CourseDetails {
@@ -46,37 +46,53 @@ const CoursesContent = () => {
   const [error, setError] = useState<string | null>(null);
   const [categoryDetails, setCategoryDetails] = useState<CategoryDetails | null>(null);
   const [courseVideos, setCourseVideos] = useState<CourseVideos[]>([]);
+  const [isFavorite, setIsFavorite] = useState<boolean | null>(null);
+
   // lang param (ar Or en)
   const lang = LangUseParams();
   const translate = TranslateHook();
   const { slug } = useParams();
 
   useEffect(() => {
-    // Fetch courses data
+    let isMounted = true;
+    console.log("fetch time")
+
     const fetchCourses = async () => {
       try {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/courses/${slug}`,
           {
-            params: { lang }, // Pass the language as a query parameter
+            params: { lang },
             headers: {
               "Content-Type": "application/json",
             },
           }
         );
-        setCourseDetails(response.data.data.Courses); // Update state with fetched courses
-        setCategoryDetails(response.data.data.Courses.category)
-        setCourseVideos(response.data.data.Courses.videos || []);
 
+        console.log(response.data.data.Courses.is_favorite)
+
+        if (isMounted) {
+          setCourseDetails(response.data.data.Courses);
+          setCategoryDetails(response.data.data.Courses.category);
+          setCourseVideos(response.data.data.Courses.videos || []);
+          setIsFavorite(response.data.data.Courses.is_favorite); // Initialize is_favorite state
+        }
       } catch (err: any) {
-        setError(err.response?.data?.message || err.message);
+        if (isMounted) {
+          setError(err.response?.data?.message || err.message);
+        }
       } finally {
-        setLoading(false);
+        if (isMounted) setLoading(false);
       }
     };
 
     fetchCourses();
+
+    return () => {
+      isMounted = false;
+    };
   }, [lang, slug]);
+
 
   if (loading) {
     return <div>Loading...</div>;
@@ -88,6 +104,48 @@ const CoursesContent = () => {
     return <div>No course details found.</div>
   }
   ///////////////////////////////////////////////////////////////
+
+  const handleWishlist = async () => {
+    const token = Cookies.get('access_token');
+
+    if (!token) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'غير مسجل',
+        text: 'يرجى تسجيل الدخول أولاً لتتمكن من اضافة المفضلة',
+      });
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/toggle-favorite/${slug}`, {
+          headers:
+            { Authorization: `Bearer ${token}` },
+           // withCredentials: true, // Ensures cookies are sent
+      }
+      );
+
+      // Toggle isFavorite based on the response
+      setIsFavorite(response.data.data.is_favorite);
+      Swal.fire({
+        icon: 'success',
+        title: 'تم الإرسال',
+        text: 'تم إضافة المفضلة بنجاح!',
+      });
+    } catch (error: any) {
+      console.error('Wishlist Error:', error.response?.data || error.message);
+      Swal.fire({
+        icon: 'error',
+        title: 'خطأ',
+        text: 'حدث خطأ. يرجى المحاولة مرة أخرى لاحقاً.',
+      });
+    }
+  };
+
+
+
+  ///////////////////////////////////////////////
   return (
     <section>
       <div>
@@ -194,6 +252,17 @@ const CoursesContent = () => {
                   </EmailShareButton>
                 </div>
               </div>
+              <div className="flex items-center">
+                <span className="ml-4 mainColor text-sm font-bold">Add to Wishlist</span>
+                <button onClick={handleWishlist} className="text-xl">
+                  {isFavorite ? (
+                    <HeartFilled className="text-red-500" />
+                  ) : (
+                    <HeartOutlined />
+                  )}
+                </button>
+              </div>
+
             </div>
 
 
