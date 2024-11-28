@@ -17,6 +17,7 @@ import { useParams } from "next/navigation"; // For retrieving route parameters
 import VideoCourseTab from '../videoCourseTab/VideoCourseTab';
 import { EmailShareButton, FacebookShareButton, TwitterShareButton, WhatsappShareButton, TelegramShareButton } from 'react-share';
 import AddWishList from '../addWishList/AddWishList';
+import SubscribeCourse from '../subscribeCourse/SubscribeCourse';
 
 
 interface CourseDetails {
@@ -51,7 +52,7 @@ const CoursesContent = () => {
 
   useEffect(() => {
 
-    console.log("fetch time")
+    //console.log("fetch time")
     const fetchCourses = async () => {
       try {
         const response = await axios.get(
@@ -205,15 +206,13 @@ const CoursesContent = () => {
 
             <div className='testCourse mt-5 grid grid-cols-1 md:grid-cols-3 gap-4 items-center'>
               <div className='col-span-2'>
-                <button className='bkMainColor text-white px-[20px] py-[10px] rounded-[6px]'>
-                  اشترك فى الدورة مجانا
-                </button>
+                <SubscribeCourse courseDetails={courseDetails}/>
               </div>
-              <div>
+              {/* <div>
                 <button className='bkMainColor text-white px-[20px] py-[10px] rounded-[6px]'>
                   بدء الاختبار
                 </button>
-              </div>
+              </div> */}
             </div>
 
           </div>

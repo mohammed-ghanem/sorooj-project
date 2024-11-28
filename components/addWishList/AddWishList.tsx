@@ -28,7 +28,7 @@ const AddWishList = ({ courseDetails }: any) => {
           }
         );
         const wishState = res.data.data.Courses.is_favorite;
-        console.log("Wish State:", wishState);
+        //console.log("Wish State:", wishState);
         setIs_favorite(wishState)
       } catch (error) {
         console.error(error);
@@ -40,58 +40,58 @@ const AddWishList = ({ courseDetails }: any) => {
     }
   }, [slug, token]);
   //////////////////////////////////////
-    const handleWishlist = async () => {
-        if (!token) {
-            Swal.fire({
-                icon: 'warning',
-                title: 'غير مسجل',
-                text: 'يرجى تسجيل الدخول أولاً لتتمكن من اضافة المفضلة',
-            });
-            return;
+  const handleWishlist = async () => {
+    if (!token) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'غير مسجل',
+        text: 'يرجى تسجيل الدخول أولاً لتتمكن من اضافة المفضلة',
+      });
+      return;
+    }
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/toggle-favorite/${course_id}`,
+        {}, // Empty body
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+            withCredentials: true,
+          },
         }
-        try {
-            const response = await axios.post(
-                `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/toggle-favorite/${course_id}`,
-                {}, // Empty body
-                {
-                    headers: {
-                      "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
-                        withCredentials: true,
-                    },
-                }
-            );
-            if (response.status === 200) {
-                setIs_favorite((prev) => !prev);
-                Swal.fire({
-                    icon: 'success',
-                    title: 'تم الإرسال',
-                    text: response.data.message || 'تم إضافة المفضلة بنجاح!',
-                });
-            }
-                Swal.fire({
-                    icon: 'success',
-                    title: 'تم الإرسال',
-                    text: response.data.message || 'تم إضافة المفضلة بنجاح!',
-                });
-            } catch (error: any) {
-                console.error('Wishlist Error:', error.response?.data || error.message);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'خطأ',
-                    text: 'حدث خطأ. يرجى المحاولة مرة أخرى لاحقاً.',
-                });
-            }
-    };
-    return <div className="flex items-center">
-              <button onClick={handleWishlist} className="text-2xl">
-                  {is_favorite ? (
-                      <HeartFilled className="mainColor" />
-                  ) : (
-                      <HeartOutlined />
-                )}
-              </button>
-            </div>;
+      );
+      if (response.status === 200) {
+        setIs_favorite((prev) => !prev);
+        Swal.fire({
+          icon: 'success',
+          title: 'تم الإرسال',
+          text: response.data.message || 'تم إضافة المفضلة بنجاح!',
+        });
+      }
+      Swal.fire({
+        icon: 'success',
+        title: 'تم الإرسال',
+        text: response.data.message || 'تم إضافة المفضلة بنجاح!',
+      });
+    } catch (error: any) {
+      console.error('Wishlist Error:', error.response?.data || error.message);
+      Swal.fire({
+        icon: 'error',
+        title: 'خطأ',
+        text: 'حدث خطأ. يرجى المحاولة مرة أخرى لاحقاً.',
+      });
+    }
+  };
+  return <div className="flex items-center">
+    <button onClick={handleWishlist} className="text-2xl">
+      {is_favorite ? (
+        <HeartFilled className="mainColor" />
+      ) : (
+        <HeartOutlined />
+      )}
+    </button>
+  </div>;
 };
 
 export default AddWishList;
