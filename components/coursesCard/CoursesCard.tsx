@@ -49,7 +49,7 @@ const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePubl
 
                     {likeBtn
                         &&
-                        <button className=" absolute left-[20px] top-[20px] bg-[#fff] p-[10px] rounded-[30px]">
+                        <button className=" absolute left-[20px] top-[20px] bg-[#fff] pt-[6px] px-[10px] pb-[4px] rounded-[30px]">
                             {likeBtn}
                         </button>
                     }

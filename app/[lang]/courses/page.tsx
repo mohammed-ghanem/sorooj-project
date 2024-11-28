@@ -7,13 +7,16 @@ import CoursesCard from "@/components/coursesCard/CoursesCard";
 import CategoriesBox from "@/components/categoryBox/CategoriesBox";
 import LangUseParams from "@/components/translate/LangUseParams";
 import soroojImg from "@/public/assets/images/111.webp"; // Default image
+import AddWishList from "@/components/addWishList/AddWishList";
+import Cookies from "js-cookie"; // Import the js-cookie library
 
 
 const Page = () => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
+  const token = Cookies.get('access_token');
+  
   // lang param (ar Or en)
   const lang = LangUseParams();
 
@@ -29,6 +32,8 @@ const Page = () => {
             params: { lang }, // Pass the language as a query parameter
             headers: {
               "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+              withCredentials: true,
             },
           }
         );
@@ -43,7 +48,7 @@ const Page = () => {
     };
 
     fetchCourses();
-  }, [lang]);
+  }, [lang, token]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -63,7 +68,7 @@ const Page = () => {
         courseTitle={course.course_name}
         doctorName={course.author_name}
         descriptionCourse={course.brief_description}
-        likeBtn={"like"}
+        likeBtn={<AddWishList courseDetails={course} />}
         pathLinkToContent={`/${lang}/courses/${course.slug}`} // Link to course details
       />
     )

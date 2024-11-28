@@ -16,9 +16,7 @@ import LangUseParams from '../translate/LangUseParams';
 import { useParams } from "next/navigation"; // For retrieving route parameters
 import VideoCourseTab from '../videoCourseTab/VideoCourseTab';
 import { EmailShareButton, FacebookShareButton, TwitterShareButton, WhatsappShareButton, TelegramShareButton } from 'react-share';
-import Cookies from "js-cookie" // Import the js-cookie library
-import Swal from 'sweetalert2';
-import { HeartOutlined, HeartFilled } from '@ant-design/icons';
+import AddWishList from '../addWishList/AddWishList';
 
 
 interface CourseDetails {
@@ -39,14 +37,12 @@ interface CourseVideos {
   publish_date: string
 }
 
-
 const CoursesContent = () => {
   const [courseDetails, setCourseDetails] = useState<CourseDetails | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [categoryDetails, setCategoryDetails] = useState<CategoryDetails | null>(null);
   const [courseVideos, setCourseVideos] = useState<CourseVideos[]>([]);
-  const [isFavorite, setIsFavorite] = useState<boolean | null>(null);
 
   // lang param (ar Or en)
   const lang = LangUseParams();
@@ -54,9 +50,8 @@ const CoursesContent = () => {
   const { slug } = useParams();
 
   useEffect(() => {
-    let isMounted = true;
-    console.log("fetch time")
 
+    console.log("fetch time")
     const fetchCourses = async () => {
       try {
         const response = await axios.get(
@@ -68,29 +63,17 @@ const CoursesContent = () => {
             },
           }
         );
-
-        console.log(response.data.data.Courses.is_favorite)
-
-        if (isMounted) {
-          setCourseDetails(response.data.data.Courses);
-          setCategoryDetails(response.data.data.Courses.category);
-          setCourseVideos(response.data.data.Courses.videos || []);
-          setIsFavorite(response.data.data.Courses.is_favorite); // Initialize is_favorite state
-        }
+        setCourseDetails(response.data.data.Courses);
+        setCategoryDetails(response.data.data.Courses.category);
+        setCourseVideos(response.data.data.Courses.videos || []);
       } catch (err: any) {
-        if (isMounted) {
-          setError(err.response?.data?.message || err.message);
-        }
+        setError(err.response?.data?.message || err.message);
       } finally {
-        if (isMounted) setLoading(false);
+        setLoading(false);
       }
     };
-
     fetchCourses();
 
-    return () => {
-      isMounted = false;
-    };
   }, [lang, slug]);
 
 
@@ -105,47 +88,6 @@ const CoursesContent = () => {
   }
   ///////////////////////////////////////////////////////////////
 
-  const handleWishlist = async () => {
-    const token = Cookies.get('access_token');
-
-    if (!token) {
-      Swal.fire({
-        icon: 'warning',
-        title: 'غير مسجل',
-        text: 'يرجى تسجيل الدخول أولاً لتتمكن من اضافة المفضلة',
-      });
-      return;
-    }
-
-    try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/toggle-favorite/${slug}`, {
-          headers:
-            { Authorization: `Bearer ${token}` },
-           // withCredentials: true, // Ensures cookies are sent
-      }
-      );
-
-      // Toggle isFavorite based on the response
-      setIsFavorite(response.data.data.is_favorite);
-      Swal.fire({
-        icon: 'success',
-        title: 'تم الإرسال',
-        text: 'تم إضافة المفضلة بنجاح!',
-      });
-    } catch (error: any) {
-      console.error('Wishlist Error:', error.response?.data || error.message);
-      Swal.fire({
-        icon: 'error',
-        title: 'خطأ',
-        text: 'حدث خطأ. يرجى المحاولة مرة أخرى لاحقاً.',
-      });
-    }
-  };
-
-
-
-  ///////////////////////////////////////////////
   return (
     <section>
       <div>
@@ -251,17 +193,12 @@ const CoursesContent = () => {
                     />
                   </EmailShareButton>
                 </div>
+                <div className="flex items-center">
+                  <span className="ml-4 mainColor text-sm font-bold">اضف الى المفضلة</span>
+                  <AddWishList courseDetails={courseDetails} />
+                </div>
               </div>
-              <div className="flex items-center">
-                <span className="ml-4 mainColor text-sm font-bold">Add to Wishlist</span>
-                <button onClick={handleWishlist} className="text-xl">
-                  {isFavorite ? (
-                    <HeartFilled className="text-red-500" />
-                  ) : (
-                    <HeartOutlined />
-                  )}
-                </button>
-              </div>
+
 
             </div>
 
