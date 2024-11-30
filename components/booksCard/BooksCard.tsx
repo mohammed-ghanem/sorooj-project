@@ -26,7 +26,7 @@ const BooksCard: React.FC<BooksCardProps> = ({
                     <div className='pt-[12px] px-[14px] pb-[4px]'>
                         <h2 className="text-sm font-bold">
                             <FontAwesomeIcon icon={faBookOpenReader} className="ml-1 primaryColor" />
-                            <span className="mainColor">{`${bookTitle.slice(0, 50)} ...`}</span>
+                            <span className="mainColor">{`${bookTitle.slice(0, 35)} ...`}</span>
                         </h2>
                     </div>
                     <div className=" block md:flex
@@ -34,7 +34,7 @@ const BooksCard: React.FC<BooksCardProps> = ({
                     p-2
                     ">
 
-                        <div className="flex-auto w-full h-[120px] md:h-auto md:w-56 relative rounded-tl-none rounded-br-[0px] md:rounded-br-[10px] md:rounded-tr-none rounded-bl-none overflow-hidden">
+                        <div className="flex-auto w-full h-[120px] md:h-auto md:w-60 relative rounded-tl-none rounded-br-[0px] md:rounded-br-[10px] md:rounded-tr-none rounded-bl-none overflow-hidden">
                             <Image src={imgSrc} className=" max-w-full" fill alt="book" />
                         </div>
 

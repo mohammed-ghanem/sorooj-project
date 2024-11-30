@@ -7,7 +7,7 @@ import Cookies from "js-cookie"; // Import the js-cookie library
 import Swal from "sweetalert2";
 import { HeartOutlined, HeartFilled } from '@ant-design/icons';
 
-const AddWishList = ({ courseDetails }: any) => {
+const CourseAddWishList = ({ courseDetails }: any) => {
   const token = Cookies.get('access_token');
   const { slug } = useParams();
   const course_id = courseDetails.id
@@ -93,4 +93,4 @@ const AddWishList = ({ courseDetails }: any) => {
   </div>;
 };
 
-export default AddWishList;
+export default CourseAddWishList;

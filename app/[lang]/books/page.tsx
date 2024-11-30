@@ -23,7 +23,7 @@ const page = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <BooksCard
                   imgSrc={bookdef}
-                  bookTitle="تساؤلات وشبهات متعلقة فى العقيدة"
+                  bookTitle="تساؤلات وشبهات متعلقة فى العقيدة والسنة والفقة والشريعة"
                   watchNumber="120"
                   datePublish="1-12-2024"
                   doctorName="بندر بن محمد الميمونى"

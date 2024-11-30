@@ -1,9 +1,5 @@
-import React from 'react'
+import BookContent from "@/components/bookContent/BookContent";
 
-const page = () => {
-  return (
-    <div>page</div>
-  )
+export default function Page() {
+  return <BookContent />;
 }
-
-export default page

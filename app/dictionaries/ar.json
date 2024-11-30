@@ -150,6 +150,9 @@
          },
          "coursesContentPage" :{
              "bannerPathText"  : "تفاصيل الدورة"
+         },
+         "booksContentPage" :{
+             "bannerPathText"  : "تفاصيل الكتاب"
          }
     },
     "authLinks" :{

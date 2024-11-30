@@ -1,8 +1,7 @@
 "use client";
 
-import { faChevronUp, faChevronDown, faFilter, faArrowTurnDown, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faChevronUp, faChevronDown, faFilter, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
 import { useState, useEffect } from "react";
 
 
@@ -86,7 +85,7 @@ const CategoriesBox = ({
         setLoading(false);
       }
     };
-
+ 
     fetchCategories();
   }, []);
 
@@ -129,9 +128,9 @@ const CategoriesBox = ({
 
   return (
     <div className="max-w-lg mx-auto p-2 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-bold mb-4 mainColor">
+      <h2 className="text-base font-bold mb-4 mainColor">
         <FontAwesomeIcon className="ml-3 primaryColor" icon={faFilter} />
-        تصنيف
+        تصنيف الاقسام
       </h2>
       <div
         className="mb-4 bkPrimaryColor w-full px-2 py-2 rounded-md text-white font-bold cursor-pointer"

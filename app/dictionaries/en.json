@@ -153,6 +153,9 @@
          },
          "coursesContentPage" :{
              "bannerPathText"  : "course content"
+         },
+         "booksContentPage" :{
+             "bannerPathText"  : "Book content"
          }
     },
     "authLinks" :{

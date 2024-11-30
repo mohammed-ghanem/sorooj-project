@@ -14,9 +14,9 @@ import LangUseParams from '../translate/LangUseParams';
 import { useParams } from "next/navigation"; // For retrieving route parameters
 import VideoCourseTab from '../videoCourseTab/VideoCourseTab';
 import { EmailShareButton, FacebookShareButton, TwitterShareButton, WhatsappShareButton, TelegramShareButton } from 'react-share';
-import AddWishList from '../addWishList/AddWishList';
 import SubscribeCourse from '../subscribeCourse/SubscribeCourse';
 import SuggestCourses from '../suggestCourses/SuggestCourses';
+import CourseAddWishList from '../courseAddWishList/CourseAddWishList';
 
 
 interface CourseDetails {
@@ -55,7 +55,7 @@ const CoursesContent = () => {
     const fetchCourses = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/courses/${slug}`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/${slug}`,
           {
             params: { lang },
             headers: {
@@ -89,7 +89,7 @@ const CoursesContent = () => {
     return <div>No course details found.</div>
   }
   ///////////////////////////////////////////////////////////////
-  console.log(courseDetails.view_count)
+  //console.log(courseDetails.view_count)
   return (
     <section>
       <div>
@@ -197,11 +197,9 @@ const CoursesContent = () => {
                 </div>
                 <div className="flex items-center">
                   <span className="ml-4 mainColor text-sm font-bold">اضف الى المفضلة</span>
-                  <AddWishList courseDetails={courseDetails} />
+                  <CourseAddWishList courseDetails={courseDetails} />
                 </div>
               </div>
-
-
             </div>
 
 

@@ -6,10 +6,10 @@ import axios from 'axios';
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
     try {
         const response = await axios.get(
-            `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/courses/${params.slug}`,
+            `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/${params.slug}`,
             {
                 params: { lang: 'en' }, // Adjust language as needed
-            }
+            } 
         );
         const course = response.data.data.Courses;
 
