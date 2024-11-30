@@ -16,7 +16,7 @@ const AddWishList = ({ courseDetails }: any) => {
     const wishList = async () => {
       try {
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/courses`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/courses/${slug}`,
           {
             headers: {
               "Content-Type": "application/json",
