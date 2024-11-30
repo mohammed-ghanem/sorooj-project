@@ -1,4 +1,3 @@
-// components/OverlaySpinner.tsx
 import Image from 'next/image';
 import loadingImg from '@/public/assets/images/loadingImg.svg'
 

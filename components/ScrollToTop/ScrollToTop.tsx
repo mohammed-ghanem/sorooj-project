@@ -33,7 +33,7 @@ const ScrollToTop = () => {
     isVisible && (
       <button
         onClick={scrollToTop}
-        className="fixed bottom-4 right-4 px-[12px] py-[10px] rounded-full bkMainColor text-white transition duration-300"
+        className="fixed bottom-4 z-20 right-4 px-[12px] py-[10px] rounded-full bkMainColor text-white transition duration-300"
       >
               <FontAwesomeIcon className='text-xl ' icon={faChevronUp} />
       </button>

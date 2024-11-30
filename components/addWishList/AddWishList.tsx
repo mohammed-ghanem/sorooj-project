@@ -12,12 +12,11 @@ const AddWishList = ({ courseDetails }: any) => {
   const { slug } = useParams();
   const course_id = courseDetails.id
   const [is_favorite, setIs_favorite] = useState<boolean>(courseDetails.is_favorite);
-
   useEffect(() => {
     const wishList = async () => {
       try {
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/courses/${slug}`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/courses`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -86,7 +85,7 @@ const AddWishList = ({ courseDetails }: any) => {
   return <div className="flex items-center">
     <button onClick={handleWishlist} className="text-2xl">
       {is_favorite ? (
-        <HeartFilled className="mainColor" />
+        <HeartFilled className="" style={{ "color": "#424C61" }} />
       ) : (
         <HeartOutlined />
       )}
