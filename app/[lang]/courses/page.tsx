@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Banners from "@/components/banners/Banners";
 import CoursesCard from "@/components/coursesCard/CoursesCard";
-import CategoriesBox from "@/components/categoryBox/CategoriesBox";
+import CoursesCategoriesBox from "@/components/coursesCategoryBox/CoursesCategoriesBox";
 import LangUseParams from "@/components/translate/LangUseParams";
 import soroojImg from "@/public/assets/images/111.webp"; // Default image
 import AddWishList from "@/components/addWishList/AddWishList";
@@ -80,7 +80,7 @@ const Page = () => {
       </div>
       <div className="coursesContainer container mx-auto my-20 grid grid-cols-1 lg:grid-cols-4 gap-0 lg:gap-10 w-[95%] lg:w-[80%]">
         <div className="my-5 lg:my-0">
-          <CategoriesBox
+          <CoursesCategoriesBox
             onCategorySelect={(categoryId) => setSelectedCategoryId(categoryId)} // Pass category ID updater
           />
         </div>
@@ -97,7 +97,7 @@ const Page = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {fetchCourses}
           </div>
-        </div> */}
+        </div> */} 
       </div>
     </div>
   );

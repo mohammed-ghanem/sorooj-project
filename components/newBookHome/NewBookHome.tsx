@@ -6,7 +6,7 @@ import { faBookOpen, faBookOpenReader, faCalendar, faEye, faUser } from "@fortaw
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 
-const NewBookHome = ({ item }: any) => {
+const NewBookHome = () => {
   return (
     // <div className="bg-red-400 h-[400px]">{item.name}</div>
 

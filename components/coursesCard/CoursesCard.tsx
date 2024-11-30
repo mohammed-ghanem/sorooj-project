@@ -16,8 +16,8 @@ interface CoursesCardProps {
 }
 
 const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePublish, courseTitle, doctorName, descriptionCourse, likeBtn, pathLinkToContent }) => {
-    const slicedTitle = courseTitle.length > 40 ? courseTitle.slice(0, 35) + '...' : courseTitle;
-    const slicedDescription = courseTitle.length > 41 ? descriptionCourse.slice(0, 40) + '...' : descriptionCourse;
+    //const slicedTitle = courseTitle.length > 40 ? courseTitle.slice(0, 30) + '...' : courseTitle;
+    //const slicedDescription = courseTitle.length > 20 ? descriptionCourse.slice(0, 5) + '...' : descriptionCourse;
     return (
         // courses card
         <div className=" bkColor rounded-[15px] overflow-hidden relative">
@@ -33,10 +33,10 @@ const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePubl
                             <FontAwesomeIcon icon={faCalendar} className="ml-1 primaryColor" />
                             <span>{datePublish}</span>
                         </p>
-                    </div>
+                    </div> 
                     <h2 className="mt-2">
                         <FontAwesomeIcon icon={faBookOpenReader} className="ml-1 primaryColor" />
-                        <span className="font-bold mainColor text-sm">{slicedTitle}</span>
+                        <span className="font-bold mainColor text-sm">{`${courseTitle.slice(0, 30)} ...`}</span>
                     </h2>
                     <h3 className="mt-1">
                         <FontAwesomeIcon icon={faUser} className="ml-1 primaryColor" />
@@ -44,7 +44,7 @@ const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePubl
                     </h3>
                     <p className="text-[12px] mainColor flex items-center mt-2">
                         <FontAwesomeIcon icon={faBookOpen} className="ml-1 primaryColor" />
-                        <span className=" opacity-[0.8]">{slicedDescription}</span>
+                        <span className=" opacity-[0.8]">{`${descriptionCourse.slice(0, 38)} ...`}</span>
                     </p>
 
                     {likeBtn

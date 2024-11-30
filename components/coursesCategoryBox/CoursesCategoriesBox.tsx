@@ -107,7 +107,7 @@ const CategoriesBox = ({
         {/* Parent or Subcategory */}
         
         <div
-          className={`my-2 cursor-pointer ${level === 0 ? "font-bold" : "pl-4"} ${colorClass}`}
+          className={`my-2 cursor-pointer ${level === 0 ? "font-bold" : "pl-1"} ${colorClass}`}
           onClick={() => onCategorySelect(category.id)} // Pass correct ID
         >
           {category.name}
@@ -115,7 +115,7 @@ const CategoriesBox = ({
         {/* Render Subcategories if available */}
         {category.subcategories && category.subcategories.length > 0 && (
           
-          <div className="pl-4 pr-5">
+          <div className="pl-1 pr-5">
               {category.subcategories!.map((subcategory) =>
                 renderCategoryTree(subcategory, level + 1)
               )}
