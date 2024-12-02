@@ -11,11 +11,79 @@ import { faFacebookF, faTelegram, faTwitter, faWhatsapp } from '@fortawesome/fre
 import Image from 'next/image';
 import soroojImg from "@/public/assets/images/111.webp"; // Default image
 import BookDescriptionTabs from '../bookDescriptionTabs/BookDescriptionTabs';
+import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
+import axios from 'axios';
+import BooksAddWishList from '../bookAddWishList/BooksAddWishList';
+import Cookies from "js-cookie"; // Import the js-cookie library
+import SuggestBooks from '../suggestBooks/SuggestBooks';
+
+
+interface BookDetails {
+    book_name: string;
+    image?: string;
+    description: string;
+    publish_date: string;
+    author_name: string;
+    view_count: number;
+}
+interface CategoryDetails {
+    name: string
+}
 
 const BookContent = () => {
+    const [bookDetails, setBookDetails] = useState<BookDetails | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    const [categoryDetails, setCategoryDetails] = useState<CategoryDetails | null>(null);
     // lang param (ar Or en)
     const lang = LangUseParams();
     const translate = TranslateHook();
+    const { slug } = useParams();
+    const token = Cookies.get("access_token");
+
+    useEffect(() => {
+
+        //console.log("fetch time")
+        const fetchBooks = async () => {
+            try {
+                const response = await axios.get(
+                    `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/books/${slug}`,
+                    {
+                        params: { lang },
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                            withCredentials: true,
+
+                        },
+                    }
+                );
+                setBookDetails(response.data.data.Books);
+                setCategoryDetails(response.data.data.Books.category);
+
+            } catch (err: any) {
+                setError(err.response?.data?.message || err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchBooks();
+
+    }, [lang, slug, token]);
+
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
+    if (!bookDetails) {
+        return <div>No book details found.</div>
+    }
+    ///////////////////////////////////////////////////////////////
+    console.log(bookDetails)
     return (
         <section>
             <div>
@@ -26,34 +94,30 @@ const BookContent = () => {
                     <div className='bookTitles w-[95%] md:w-[80%] col-span-2'>
                         <h1 className=' text-base md:text-2xl font-bold mainColor'>
                             <FontAwesomeIcon className=' primaryColor text-lg ml-2' icon={faPenToSquare} />
-                            {/* {courseDetails.course_name} */}
-                            حكم الخروج للجهاد بدون إذن ولي الأمر
+                            {bookDetails.book_name}
                         </h1>
                         <p className='primaryColor mt-4'>
                             <FontAwesomeIcon className=' primaryColor ml-2' icon={faUser} />
-                            {/* {courseDetails.author_name} */}
-                            محمد بن إسماعيل البخاري
+                            {bookDetails.author_name}
                         </p>
                         <div className='mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 items-center'>
                             <span>
                                 <span className='text-2xl primaryColor opacity-[0.4]'> || </span>
-                                {/* <span>{`الدورات --  ${categoryDetails ? categoryDetails.name : "No Category"} `}</span> */}
-                                <span>الدورات -- الفقة</span>
+                                <span>{`الدورات --  ${categoryDetails ? categoryDetails.name : "No Category"} `}</span>
                             </span>
                             <span>
                                 <span className='text-2xl primaryColor opacity-[0.4]'> || </span>
                                 <span>
                                     <FontAwesomeIcon className='ml-1 primaryColor' icon={faCalendarDays} />
-                                    {/* {courseDetails.publish_date} */}
-                                    20-12-2024
+                                    {bookDetails.publish_date}
+
                                 </span>
                             </span>
                             <span>
                                 <span className='text-2xl primaryColor opacity-[0.4]'> || </span>
                                 <span>
                                     <FontAwesomeIcon className='ml-1 primaryColor' icon={faEye} />
-                                    {/* {`${courseDetails.view_count} مشاهدة `} */}
-                                    140 مشاهدة
+                                    {`${bookDetails.view_count} مشاهدة `}
                                 </span>
                             </span>
                             <span>
@@ -133,8 +197,14 @@ const BookContent = () => {
                                     </EmailShareButton>
                                 </div>
                                 <div className="flex items-center">
+                                    {/* {bookDetails
+                                        ?
+                                        <span className="ml-4 mainColor text-sm font-bold">حذف من المفضلة</span>
+                                        :
+                                        <span className="ml-4 mainColor text-sm font-bold">اضف الى المفضلة</span>
+                                    } */}
                                     <span className="ml-4 mainColor text-sm font-bold">اضف الى المفضلة</span>
-                                    {/* <CourseAddWishList courseDetails={courseDetails} /> */}
+                                    <BooksAddWishList bookDetails={bookDetails} />
                                 </div>
                             </div>
                         </div>
@@ -152,16 +222,15 @@ const BookContent = () => {
                 </div>
                 <hr className='h-1' />
                 {/* start description course with suggest courses */}
-                <div className='descriptionbook w-[95%] md:w-[80%] mx-auto mt-2 mb-24 md:mt-8 grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-8'>
-                    <div className='col-span-2'>
-                        {/* <CourseDescriptionTabs courseDetails={courseDetails} /> */}
-                        <BookDescriptionTabs/>
+                <div className='descriptionbook w-[95%] md:w-[80%] mx-auto mt-2 mb-24 md:mt-8 grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-8'>
+                    <div className=''>
+                        <BookDescriptionTabs bookDetails={bookDetails} />
                     </div>
-                    {/* course suggestion */}
+                            {/* course suggestion */}
                     <div className='mt-[6px] border-t-2 lg:border-t-0'>
                         <h3 className='mt-[10px] mr-[10px] mb-[30px] ml-[0] font-bold mainColor'>الكتب المقترحة</h3>
                         <div className='w-[95%] md:w-[80%] grid grid-cols-1 mx-auto gap-8'>
-                            {/* <SuggestCourses /> */}
+                            <SuggestBooks/>
                         </div>
                     </div>
                 </div>

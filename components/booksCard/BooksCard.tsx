@@ -22,18 +22,14 @@ const BooksCard: React.FC<BooksCardProps> = ({
         <div className='bkPrimaryColor [box-shadow:1px_1px_7px_#424c61] p-[10px] rounded-tl-[15px] rounded-br-[15px] rounded-tr-none rounded-bl-none'>
             <div className='bg-white rounded-tl-[15px] rounded-br-[15px] rounded-tr-none rounded-bl-none border-[1px] border-[solid] border-[#fff]
                     rounded-[6px]'>
-                <Link href={pathLinkToContent}>
+                <div className='relative'>
                     <div className='pt-[12px] px-[14px] pb-[4px]'>
                         <h2 className="text-sm font-bold">
                             <FontAwesomeIcon icon={faBookOpenReader} className="ml-1 primaryColor" />
                             <span className="mainColor">{`${bookTitle.slice(0, 35)} ...`}</span>
                         </h2>
                     </div>
-                    <div className=" block md:flex
-                    h-auto
-                    p-2
-                    ">
-
+                    <div className=" block md:flex h-auto p-2 ">
                         <div className="flex-auto w-full h-[120px] md:h-auto md:w-60 relative rounded-tl-none rounded-br-[0px] md:rounded-br-[10px] md:rounded-tr-none rounded-bl-none overflow-hidden">
                             <Image src={imgSrc} className=" max-w-full" fill alt="book" />
                         </div>
@@ -57,10 +53,16 @@ const BooksCard: React.FC<BooksCardProps> = ({
                                 <FontAwesomeIcon icon={faBookOpen} className="ml-1 primaryColor pt-1" />
                                 <span className=" opacity-[0.8]">{`${descriptionCourse.slice(0, 32)} ...`}</span>
                             </p>
+                            <Link href={pathLinkToContent} className='mr-auto block w-[fit-content] px-[10px] py-[6px] rounded-[4px] bkMainColor text-[#fff] font-bold text-[14px]'>المزيد</Link>
                         </div>
-
+                        {likeBtn
+                            &&
+                            <span className=" absolute left-[14px] top-[7px] z-30 bg-[#fff] pt-[6px] px-[10px] pb-[4px] rounded-[30px]">
+                                {likeBtn}
+                            </span>
+                        }
                     </div>
-                </Link>
+                </div>
             </div>
 
 

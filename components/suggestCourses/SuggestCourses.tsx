@@ -27,7 +27,7 @@ const SuggestCourses = () => {
             } catch (error) {
                 console.error('Error fetching suggested courses', error);
             }
-        };
+        }; 
         fetchSuggestCourses();
     }, []);
 

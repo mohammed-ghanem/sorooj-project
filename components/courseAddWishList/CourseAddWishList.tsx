@@ -1,5 +1,5 @@
 "use client";
-
+ 
 import axios from "axios";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -16,7 +16,7 @@ const CourseAddWishList = ({ courseDetails }: any) => {
     const wishList = async () => {
       try {
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/courses/${slug}`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/${slug}`,
           {
             headers: {
               "Content-Type": "application/json",

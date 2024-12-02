@@ -11,7 +11,7 @@ const CourseDescriptionTabs = ({ courseDetails }: any) => {
   const courseContent =
     typeof courseDetails?.course_content === "string"
       ? courseDetails.course_content
-      : "<p>لا يوجد وصف للدورة</p>";
+      : "<p>لا يوجد وصف للدورة</p>"; 
 
   return (
     <Tabs>

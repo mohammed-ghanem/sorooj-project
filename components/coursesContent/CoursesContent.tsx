@@ -17,7 +17,7 @@ import { EmailShareButton, FacebookShareButton, TwitterShareButton, WhatsappShar
 import SubscribeCourse from '../subscribeCourse/SubscribeCourse';
 import SuggestCourses from '../suggestCourses/SuggestCourses';
 import CourseAddWishList from '../courseAddWishList/CourseAddWishList';
-
+import Cookies from "js-cookie"; // Import the js-cookie library
 
 interface CourseDetails {
   course_name: string;
@@ -43,11 +43,11 @@ const CoursesContent = () => {
   const [error, setError] = useState<string | null>(null);
   const [categoryDetails, setCategoryDetails] = useState<CategoryDetails | null>(null);
   const [courseVideos, setCourseVideos] = useState<CourseVideos[]>([]);
-
   // lang param (ar Or en)
   const lang = LangUseParams();
   const translate = TranslateHook();
   const { slug } = useParams();
+  const token = Cookies.get("access_token");
 
   useEffect(() => {
 
@@ -60,6 +60,7 @@ const CoursesContent = () => {
             params: { lang },
             headers: {
               "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
               withCredentials: true,
 
             },
@@ -76,7 +77,7 @@ const CoursesContent = () => {
     };
     fetchCourses();
 
-  }, [lang, slug]);
+  }, [lang, slug, token]);
 
 
   if (loading) {

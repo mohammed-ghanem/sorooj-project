@@ -60,7 +60,7 @@ const CategoryItem = ({
 };
 
 
-const CategoriesBox = ({
+const CoursesCategoriesBox = ({
   onCategorySelect,
 }: {
   onCategorySelect: (categoryId: number | null) => void;
@@ -145,7 +145,7 @@ const CategoriesBox = ({
   );
 };
 
-export default CategoriesBox;
+export default CoursesCategoriesBox;
 
 
 
