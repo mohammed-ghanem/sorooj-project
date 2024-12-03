@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
-@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lightgallery.css');
-@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lg-zoom.css');
-@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lg-share.css');
-@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lg-video.css');
-@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lg-thumbnail.css');
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

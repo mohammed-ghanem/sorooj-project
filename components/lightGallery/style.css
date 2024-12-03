@@ -1,0 +1,20 @@
+@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery.css');
+@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lg-zoom.css');
+@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lg-share.css');
+@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lg-video.css');
+@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lg-thumbnail.css');
+
+#lg-inner-1 .lg-item {
+    display: block!important;
+}
+.inline-gallery-container {
+    width: 100%;
+    height: 0;
+    padding-bottom: 65%;
+}
+.lg-fullscreen:after {
+    content: "\e20c";
+}
+.lg-autoplay-button:after {
+    content: "\e01d";
+}
