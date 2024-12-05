@@ -1,8 +1,11 @@
-import React from 'react'
+import QustionsPage from "@/components/questionsPage/QustionsPage"
+
 
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+      <QustionsPage/>
+    </div>
   )
 }
 

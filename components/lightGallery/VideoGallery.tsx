@@ -19,10 +19,10 @@ const videoGallery = () => {
       <div>
         <Banners src={defImage} textPath="المكتبة المرئية" />
       </div>
-      <div className='container my-10 mx-auto w-[80%] grid grid-cols-4 gap-4'>
+      <div className='container my-10 mx-auto w-[80%] grid grid-cols-1 lg:grid-cols-4 gap-4'>
         <div>categories</div>
         <LightGallery
-          elementClassNames={`col-span-3 grid grid-cols-3 gap-4`}
+          elementClassNames={`col-span-3 grid grid-cols-1 lg:grid-cols-3 gap-4`}
           mode="lg-fade"
           speed={500}
           videojsOptions={{ muted: true }}
