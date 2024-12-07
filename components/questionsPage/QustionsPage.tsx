@@ -28,9 +28,6 @@ const QustionsPage = () => {
                         </p>
                         <div className="text-end">
                             <NewFatwaBtn/>
-                            {/* <button className="text-white bkMainColor font-bold px-[26px] py-[10px] rounded-lg">
-                                طلب فتوى جديد
-                            </button> */}
                         </div>
                     </div>
                 </div>

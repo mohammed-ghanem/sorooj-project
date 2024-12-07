@@ -1,8 +1,9 @@
-import React from 'react'
+import QustionContentPage from "@/components/questionsPage/QustionContentPage"
+
 
 const page = () => {
   return (
-    <div>question content</div>
+    <div><QustionContentPage /></div>
   )
 }
 
