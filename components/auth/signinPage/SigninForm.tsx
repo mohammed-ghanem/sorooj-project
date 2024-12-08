@@ -60,26 +60,17 @@ const SignInForm = () => {
                 },
                 withCredentials: true,
             });
-
             // Extract necessary fields from the response
-            const dataResponse = response
             const accessToken = response.data.data.access_token;
             const isVerified = response.data.data.user.is_verified;
-
-
-
             // Step 3: Check if the user is verified
             if (!isVerified) {
-
-
-
                 Swal.fire({
                     title: `${translate ? translate.pages.signin.NotVerified : "Account Not Verified !"}`,
                     text: `${translate ? translate.pages.signin.newVerifyCode : "Please verify your account !"}`,
                     icon: 'warning',
                     confirmButtonText: `${translate ? translate.pages.signin.ok : "ok"}`
                 });
-
                 return;
             }
 

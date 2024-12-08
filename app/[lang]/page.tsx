@@ -17,6 +17,7 @@ import MoreWatching from "@/components/moreWatching/MoreWatching";
 import MoreWatchTitle from "@/components/homeTitles/MoreWatchTitle";
 import AnswerTitle from "@/components/homeTitles/AnswerTitle";
 import FatwaForm from "@/components/fatwaForm/FatwaForm";
+import CommingEvents from "@/components/commingEvents/CommingEvents";
 
 coursesApi;
 bookApi;
@@ -72,8 +73,8 @@ export default async function Home({ params }: Props) {
         >
           <NewCourseHome />
         </SwiperLib>
-        
-        <HomeEvents />
+        <CommingEvents/>
+        {/* <HomeEvents /> */}
         <VideoTitle />
         <VideoTabs />
         <BooksTitle />

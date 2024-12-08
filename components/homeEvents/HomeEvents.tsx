@@ -16,13 +16,14 @@ const DefaultImage = {
     src: defImageEvent,
     alt: 'default image',
 };
-
+ 
 const images: string | any[] = [
     // Intentionally left empty to test default image
     { src: "", alt: 'event 1', title: `انطلاق البرنامج التدريبى  ..  محطات فى العقيدة`, link: '/link1', time: "2024-12-31T23:59:59Z" },
    // { src: slider2, alt: 'event 2', title: `انطلاق البرنامج التدريبى  ..  محطات فى الفقة`, link: '/link1', time: "2024-10-31T23:59:59Z" },
 ];
 
+ 
 const HomeEvents: React.FC = () => {
     // If images array is empty, fallback to DefaultImage
     const imageList = images.length > 0
@@ -57,7 +58,7 @@ const HomeEvents: React.FC = () => {
                 className='container mx-auto w-[95%] md:w-[80%] mt-24 mb-64 lg:mb-auto h-[220px] lg:h-auto'
             >
                 {imageList.map((event, index) => (
-                    <div key={index} className='relative outline-none'>
+                    <div key={index} className='relative outline-none '>
                         <Image
                             className='w-[100%] lg:w-[1600px] h-[400px]'
                             src={event.src}

@@ -13,7 +13,7 @@ const Timer: React.FC<TimerProps> = ({ targetDate }) => {
     minutes: 0,
     seconds: 0,
   });
- 
+
   useEffect(() => {
     const calculateTimeLeft = () => {
       const difference = new Date(targetDate).getTime() - new Date().getTime();

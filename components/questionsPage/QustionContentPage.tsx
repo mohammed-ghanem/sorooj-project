@@ -12,7 +12,7 @@ const QustionContentPage = () => {
             <div>
                 <Banners src={defImage} textPath="سؤال وجواب" />
             </div>
-            <div className="answersContent container mx-auto my-16 grid grid-cols-12 gap-10">
+            <div className="answersContent container w-[95%] md:w-[80%] mx-auto my-16 grid grid-cols-12 gap-10">
                 <div className="col-span-12 lg:col-span-8">
                     <div className="askSection">
                         <h1 className="font-bold text-sm text-white bkPrimaryColor p-[14px] rounded-[8px] w-fit">السؤال</h1>
@@ -37,7 +37,7 @@ const QustionContentPage = () => {
                             وإذا دعت الحاجة إلى قيام الأبناء بخدمة أمّهم في الأمور التي فيها اطلاع على العورة ونحو ذلك؛ فلا حرج عليهم في هذه الحال، قال الرحيباني -رحمه الله- في مطالب أولي النهى: ولطبيب، ومن يلي خدمة مريض، أو أقطع يدين، ولو أنثى، في وضوء، واستنجاء نظر، ومس ما دعت إليه حاجة حتى الفرج؛ لأن ذلك موضع حاجة. انتهى.
 
                             والله أعلم.</p>
-                        <audio controls  className="w-[80%] md:w-full">
+                        <audio controls className="w-[80%] md:w-full">
                             <source src="horse.mp3" type="audio/mpeg" />
                         </audio>
                     </div>
