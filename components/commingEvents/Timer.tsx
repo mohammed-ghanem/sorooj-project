@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import "./style.css";
 
 interface TimerProps {
-  targetDate: string; // ISO date string for target date
+  targetDate: string; // ISO date string for target date in UTC
 }
 
 const Timer: React.FC<TimerProps> = ({ targetDate }) => {
@@ -16,17 +16,16 @@ const Timer: React.FC<TimerProps> = ({ targetDate }) => {
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      // Convert the UTC target date to local time
-      const targetTime = new Date(targetDate);
-      const localTargetTime = new Date(targetTime.getTime() - targetTime.getTimezoneOffset() * 60000); // Convert UTC to local time
-
-      const difference = localTargetTime.getTime() - new Date().getTime();
+      const targetDateUTC = new Date(targetDate); // Parse as UTC
+      const currentTimeUTC = new Date(); // Local time automatically converted
+      
+      const difference = targetDateUTC.getTime() - currentTimeUTC.getTime();
 
       if (difference > 0) {
         return {
           days: Math.floor(difference / (1000 * 60 * 60 * 24)),
           hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
+          minutes: Math.floor((difference / (1000 * 60)) % 60),
           seconds: Math.floor((difference / 1000) % 60),
         };
       } else {
@@ -34,26 +33,29 @@ const Timer: React.FC<TimerProps> = ({ targetDate }) => {
       }
     };
 
+    // Update the countdown every second
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
+    // Cleanup interval on component unmount
     return () => clearInterval(timer);
   }, [targetDate]);
 
   return (
     <div>
       <div className="mt-4 counterTime font-cairo text-white">
-        <span>ثانية : <span>{timeLeft.seconds}</span></span>
-        <span>دقيقة : <span>{timeLeft.minutes}</span></span>
-        <span>ساعة : <span>{timeLeft.hours}</span></span>
-        <span>يوم : <span>{timeLeft.days}</span></span>
+        <span> ثانية : <span>{timeLeft.seconds}</span></span>
+        <span> دقيقة : <span>{timeLeft.minutes}</span></span>
+        <span> ساعة : <span>{timeLeft.hours}</span></span>
+        <span> يوم : <span>{timeLeft.days}</span></span>
       </div>
     </div>
   );
 };
 
 export default Timer;
+
 
 
 // 'use client'
@@ -75,7 +77,8 @@ export default Timer;
 //   useEffect(() => {
 //     const calculateTimeLeft = () => {
 //       const difference = new Date(targetDate).getTime() - new Date().getTime();
-
+//       console.log(targetDate)
+//       console.log(new Date())
 //       if (difference > 0) {
 //         return {
 //           days: Math.floor(difference / (1000 * 60 * 60 * 24)),

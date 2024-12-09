@@ -8,7 +8,8 @@ import fatwaFlower from "@/public/assets/images/fatwa.svg";
 import { Carousel, ConfigProvider } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-import Countdown from "./conter";
+import axios from "axios";
+
 
 interface Event {
     id: number;
@@ -26,13 +27,17 @@ const CommingEvents: React.FC = () => {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const response = await fetch(
-                    `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/home/upcoming-events`
+                const res = await axios.get(
+                    `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/home/upcoming-events`,
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                            withCredentials: true,
+                        },
+                    }
                 );
-                const data = await response.json();
-                setEvents(data.data || []); // Assuming API response has a "events" field
+                setEvents(res.data.data || []); // Assuming API response has a "events" field
                 setLoading(false);
-                console.log(data.data[0].end)
             } catch (error) {
                 console.error("Error fetching events:", error);
                 setLoading(false);
@@ -46,13 +51,30 @@ const CommingEvents: React.FC = () => {
         return <div className="text-center"><FontAwesomeIcon className="mainColor" icon={faSpinner} spin /></div>;
     }
     if (!events.length) {
-        return <div className="text-center my-20">No upcoming events found.</div>;
+        return <div className="text-center my-20">
+            <div className=' container mx-auto bkBox my-44 w-[80%]  [box-shadow:1px_1px_7px_#ddd] rounded-[10px]'>
+                <div className='relative overflow-hidden grid grid-cols-2 gap-4 items-center'>
+                    <div className="">
+                        <div className="bkMainColor text-white text-center relative right-[130px] rounded-[10px] p-[60px] opacity-80 z-10">
+                            <h2 className="font-bold text-2xl">انتظرونا قريبا فى احداث قادمة</h2>
+                        </div>
+                    </div>
+                    <div className='relative py-12'>
+                        <Image src={comming} className='w-[80%] mx-auto h-[350px] [box-shadow:1px_1px_10px_#424C61] rounded-[10px]' alt='target' />
+                    </div>
+
+                    <div className="absolute right-0 bottom-0">
+                        <Image src={fatwaFlower} alt="flower" />
+                    </div>
+                    <div className=' absolute w-[320px] md:w-[424px] h-[300px] -top-[99px] right-[0px]'>
+                        <Image src={flower} fill alt='flowersvg' />
+                    </div>
+                </div>
+            </div >
+        </div>;
     }
     return (
         <section className="my-24">
-            {/* <div>
-                <Countdown/>
-            </div> */}
             <ConfigProvider
                 theme={{
                     components: {
