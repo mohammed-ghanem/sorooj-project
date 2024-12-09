@@ -19,6 +19,7 @@
     "@types/negotiator": "^0.6.3",
     "antd": "^5.20.3",
     "axios": "^1.7.7",
+    "date-fns": "^4.1.0",
     "html-react-parser": "^5.1.18",
     "i": "^0.3.7",
     "install": "^0.13.0",

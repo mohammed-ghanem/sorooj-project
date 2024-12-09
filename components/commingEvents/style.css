@@ -12,5 +12,22 @@
     margin-left: 4px;
 }
 .slick-next, .slick-prev{
-    color: #9F854E!important;
+    background: #9F854E!important;
+    color: #fff!important;
+}
+.slick-prev::after {
+    border-inline-width: 5px 0 !important;
+    border-block-width: 5px 0 !important;
+    width: 16px !important;
+    height: 16px !important;
+    left: 12px !important;
+    top: 10px !important;
+}
+.slick-next::after {
+    border-inline-width: 5px 0 !important;
+    border-block-width: 5px 0 !important;
+    width: 16px !important;
+    height: 16px !important;
+    left: 7px !important;
+    top: 10px !important;
 }
