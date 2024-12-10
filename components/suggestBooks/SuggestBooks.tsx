@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import LangUseParams from '../translate/LangUseParams';
 import { useParams } from 'next/navigation';
-import soroojImg from "@/public/assets/images/111.webp"; // Default image
+import soroojImg from "@/public/assets/images/default.webp"; // Default image
 import BooksCard from '../booksCard/BooksCard';
 import BooksAddWishList from '../bookAddWishList/BooksAddWishList';
 

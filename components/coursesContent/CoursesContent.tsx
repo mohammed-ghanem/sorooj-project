@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDays, faEnvelope, faEye, faPenToSquare, faShareNodes, faUser } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faTwitter, faTelegram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import Image from 'next/image';
-import soroojImg from "@/public/assets/images/111.webp"; // Default image
+import soroojImg from "@/public/assets/images/default.webp"; // Default image
 import CourseDescriptionTabs from '../courseDescriptionTabs/CourseDescriptionTabs';
 import { useEffect, useState } from 'react';
 import axios from 'axios';

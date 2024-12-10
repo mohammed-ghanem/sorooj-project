@@ -1,9 +1,8 @@
 'use client'
 import Banners from "@/components/banners/Banners"
 import BooksCard from "@/components/booksCard/BooksCard";
-import soroojImg from "@/public/assets/images/111.webp"; // Default image
+import soroojImg from "@/public/assets/images/default.webp"; // Default image
 import bookdef from "@/public/assets/images/bookdef.png";
-import bookkk from "@/public/assets/images/book.jpg";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie"; // Import the js-cookie library
 import LangUseParams from "@/components/translate/LangUseParams";

@@ -9,7 +9,7 @@ import { faCalendarDays, faDownload, faEnvelope, faEye, faPenToSquare, faShareNo
 import { EmailShareButton, FacebookShareButton, TelegramShareButton, TwitterShareButton, WhatsappShareButton } from 'react-share';
 import { faFacebookF, faTelegram, faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import Image from 'next/image';
-import soroojImg from "@/public/assets/images/111.webp"; // Default image
+import soroojImg from "@/public/assets/images/default.webp"; // Default image
 import BookDescriptionTabs from '../bookDescriptionTabs/BookDescriptionTabs';
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
@@ -21,7 +21,7 @@ import SuggestBooks from '../suggestBooks/SuggestBooks';
 
 interface BookDetails {
     book_name: string;
-    image?: string;
+    image?: any;
     description: string;
     publish_date: string;
     author_name: string;
@@ -211,9 +211,9 @@ const BookContent = () => {
 
                     </div>
                     <div className='courseImg'>
-                        <div>
+                        <div> 
                             <Image className='w-full h-full max-h-60'
-                                src={soroojImg}
+                                src={bookDetails.image}
                                 width={100}
                                 height={100}
                                 alt='course-img' />

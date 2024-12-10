@@ -3,7 +3,7 @@ import CoursesCard from '../coursesCard/CoursesCard';
 import axios from 'axios';
 import LangUseParams from '../translate/LangUseParams';
 import { useParams } from 'next/navigation';
-import soroojImg from "@/public/assets/images/111.webp"; // Default image
+import soroojImg from "@/public/assets/images/default.webp"; // Default image
 
 
 

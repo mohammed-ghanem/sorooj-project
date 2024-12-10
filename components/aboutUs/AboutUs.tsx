@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react';
 import Banners from '../banners/Banners'
-import aboutImg from '@/public/assets/images/11111.png'
+import aboutImg from '@/public/assets/images/default.webp'
 import cardImg from '@/public/assets/images/dee.svg'
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

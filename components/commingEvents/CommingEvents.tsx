@@ -28,7 +28,7 @@ const CommingEvents: React.FC = () => {
         const fetchEvents = async () => {
             try {
                 const res = await axios.get(
-                    `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/home/upcoming-events`,
+                    `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/home/upcoming-events?end=true`,
                     {
                         headers: {
                             "Content-Type": "application/json",

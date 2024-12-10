@@ -6,7 +6,7 @@ import Banners from "@/components/banners/Banners";
 import CoursesCard from "@/components/coursesCard/CoursesCard";
 import CoursesCategoriesBox from "@/components/coursesCategoryBox/CoursesCategoriesBox";
 import LangUseParams from "@/components/translate/LangUseParams";
-import soroojImg from "@/public/assets/images/111.webp"; // Default image
+import soroojImg from "@/public/assets/images/default.webp"; // Default image
 import Cookies from "js-cookie"; // Import the js-cookie library
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
