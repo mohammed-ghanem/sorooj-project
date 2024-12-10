@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import Cookies from 'js-cookie';  // Import the js-cookie library
 import Banners from '@/components/banners/Banners';
-import banner from "@/public/assets/images/books.png"
+import banner from "@/public/assets/images/default.webp"
 import ProfileBoxCategories from '../profileBoxCategories/ProfileBoxCategories';
 import 'react-phone-input-2/lib/style.css'
 import './style.css'
