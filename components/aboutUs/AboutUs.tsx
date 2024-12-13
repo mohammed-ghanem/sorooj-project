@@ -13,12 +13,9 @@ import title from "@/public/assets/images/title.png"
 import SoroojPath from './SoroojPath';
 import man1 from "@/public/assets/images/man1.png"
 
-return <div className="text-center"><FontAwesomeIcon className="mainColor text-2xl my-4" icon={faSpinner} spin /></div>;
 
 const AboutUs = () => {
-
     const [isPlaying, setIsPlaying] = useState(false);
-
     const handlePlay = () => {
         setIsPlaying(true);
     };
