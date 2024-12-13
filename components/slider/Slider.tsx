@@ -4,9 +4,6 @@ import Link from 'next/link';
 import "./style.css";
 
 import defImage from "@/public/assets/images/default.webp"; // Default image
-import slider1 from "@/public/assets/images/1.png";
-import slider2 from "@/public/assets/images/2.png";
-import slider3 from "@/public/assets/images/3.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleChevronRight } from '@fortawesome/free-solid-svg-icons/faCircleChevronRight';
 import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons/faCircleChevronLeft';
