@@ -8,7 +8,7 @@ const VideoCourseTabs = ({ courseVideos }: any) => {
   return (
     <div className="flex flex-col lg:flex-row items-center bg-black rounded-[15px] overflow-hidden w-full lg:w-3/4 mx-auto">
       {/* Tabs on the left for large screens, top for small/medium screens */}
-      <div className="flex lg:flex-col border-b lg:border-b-0 md:border-r w-full lg:w-1/3 h-auto lg:h-[395px] overflow-x-scroll lg:overflow-x-auto">
+      <div className="flex lg:flex-col border-b lg:border-b-0 md:border-r bg-white w-full lg:w-1/3 h-auto lg:h-[395px] overflow-x-scroll lg:overflow-x-auto">
         <div className='bkPrimaryColor p-[12px] w-full hidden lg:block'>
           <h4 className='text-white text-right  '>الفيديوهات</h4>
         </div>

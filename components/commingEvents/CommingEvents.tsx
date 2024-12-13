@@ -52,7 +52,7 @@ const CommingEvents: React.FC = () => {
     }
     if (!events.length) {
         return <div className="text-center my-20">
-            <div className=' container mx-auto bkBox my-44 w-[80%]  [box-shadow:1px_1px_7px_#ddd] rounded-[10px]'>
+            <div className=' container mx-auto bkBox my-20 w-[80%]  [box-shadow:1px_1px_7px_#ddd] rounded-[10px]'>
                 <div className='relative overflow-hidden grid grid-cols-2 gap-4 items-center'>
                     <div className="">
                         <div className="bkMainColor text-white text-center relative right-[130px] rounded-[10px] p-[60px] opacity-80 z-10">

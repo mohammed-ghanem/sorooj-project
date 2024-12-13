@@ -3,8 +3,8 @@ import { TwitterTweetEmbed } from 'react-twitter-embed';
 
 const TweetEmbed = () => {
     return (
-        <div>
-            <TwitterTweetEmbed tweetId={'1767537775748735200'} />
+        <div className='h-[600px] overflow-y-auto'>
+            <TwitterTweetEmbed tweetId={'1579756237272813568'} />
         </div>
     );
 };

@@ -7,11 +7,12 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import React, { ReactElement } from 'react';
 import 'swiper/swiper-bundle.css';
 import './style.css';  // Assuming you have your styles here
+import NewCourseHome from '../newCoursesHome/NewCourseHome';
 
 // Define the type for each course item
 interface allItem {
     id: number; // Use a specific type for id
-    name: string;
+    name?: string;
     [key: string]: any;
 }
 
@@ -44,11 +45,11 @@ const SwiperLib: React.FC<SwiperLibProps> = ({
         fetchData();
     }, []); // Empty dependency array ensures this runs once on mount
 
-    const cloneElements = items.map((item) => (
-        <SwiperSlide key={item.id}>
-            {React.cloneElement(children, { key: item.id, item })}
-        </SwiperSlide>
-    ));
+    // const cloneElements = items.map((item) => (
+    //     <SwiperSlide key={item.id}>
+    //         {React.cloneElement(children, { key: item.id, item })}
+    //     </SwiperSlide>
+    // ));
 
     if (loading) {
         return <div className="text-center py-10">Loading Swiper...</div>; // Show loading state
@@ -70,7 +71,8 @@ const SwiperLib: React.FC<SwiperLibProps> = ({
                 }}
                 breakpoints={breakpoints ? breakpoints : breakpoints}
             >
-                {cloneElements}
+                {/* {cloneElements} */}
+                {/* <NewCourseHome/> */}
             </Swiper>
         </div>
     );

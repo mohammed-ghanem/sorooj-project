@@ -22,21 +22,22 @@ const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePubl
         // courses card
         <div className=" bkColor rounded-[15px] overflow-hidden relative">
             <div className="newCourses h-full">
-                <Image className="w-full" src={imgSrc} alt="test" height={100} width={100} />
+                <Image className="w-full max-w-full" src={imgSrc} alt={`${courseTitle.slice(0, 20)} ...`}
+                    height={100} width={100} />
                 <div className="px-3">
                     <div className="cardDetails grid grid-cols-2 gap-2 mt-3 font-bold">
                         <p className="text-[10px] mainColor opacity-[0.8] flex items-center">
                             <FontAwesomeIcon icon={faEye} className="ml-1 primaryColor" />
-                            <span>{watchNumber}</span>
+                            <span>{watchNumber} مشاهدة</span>
                         </p>
-                        <p className="text-[10px] mainColor opacity-[0.8] flex items-center">
+                        <p className="text-[10px] mainColor opacity-[0.8] flex items-center justify-center">
                             <FontAwesomeIcon icon={faCalendar} className="ml-1 primaryColor" />
                             <span>{datePublish}</span>
                         </p>
                     </div> 
                     <h2 className="mt-2">
                         <FontAwesomeIcon icon={faBookOpenReader} className="ml-1 primaryColor" />
-                        <span className="font-bold mainColor text-sm">{`${courseTitle.slice(0, 30)} ...`}</span>
+                        <span className="font-bold mainColor text-sm">{`${courseTitle.slice(0, 35)} ...`}</span>
                     </h2>
                     <h3 className="mt-1">
                         <FontAwesomeIcon icon={faUser} className="ml-1 primaryColor" />
@@ -44,7 +45,7 @@ const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePubl
                     </h3>
                     <p className="text-[12px] mainColor flex items-center mt-2">
                         <FontAwesomeIcon icon={faBookOpen} className="ml-1 primaryColor" />
-                        <span className=" opacity-[0.8]">{`${descriptionCourse.slice(0, 38)} ...`}</span>
+                        <span className=" opacity-[0.8]">{`${descriptionCourse.slice(0, 45)} ...`}</span>
                     </p>
 
                     {likeBtn

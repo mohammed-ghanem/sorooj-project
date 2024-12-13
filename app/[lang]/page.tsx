@@ -5,7 +5,7 @@ import { getDictionary } from "./dictionaries";
 import Statistics from "@/components/statistics/Statistics";
 import NewCourseHome from "@/components/newCoursesHome/NewCourseHome";
 import SwiperLib from "@/components/swiperLib/SwiperLib";
-import { coursesApi } from "@/utils/coursesApi";
+import {fetchCoursesHome } from "@/utils/fetchCoursesHome";
 import { bookApi } from "@/utils/bookApi";
 import NewBookHome from "@/components/newBookHome/NewBookHome";
 import CoursesTitle from "@/components/homeTitles/CoursesTitle";
@@ -19,7 +19,7 @@ import AnswerTitle from "@/components/homeTitles/AnswerTitle";
 import FatwaForm from "@/components/fatwaForm/FatwaForm";
 import CommingEvents from "@/components/commingEvents/CommingEvents";
 
-coursesApi;
+
 bookApi;
 
 
@@ -35,6 +35,8 @@ export default async function Home({ params }: Props) {
   const { lang } = params;
 
   const dict = await getDictionary(lang);
+   // Fetch the courses data
+  //  const courses = await fetchCoursesHome(); // Fetch and resolve the courses data
   return (
     <div>
       <main className="w-full">
@@ -43,42 +45,13 @@ export default async function Home({ params }: Props) {
         <Slider />
         <Statistics />
         <CoursesTitle />
-        <SwiperLib
-          items={coursesApi}
-          navigation={true}
-          pagination={true}
-          slidesPerView={4}
-          breakpoints={{
-            320: {   // Mobile
-              slidesPerView: 1,
-              spaceBetween: 10,
-            },
-            640: {   // Small screens
-              slidesPerView: 2,
-              spaceBetween: 10,
-            },
-            768: {   // Medium screens (tablets)
-              slidesPerView: 2,
-              spaceBetween: 10,
-            },
-            1024: {  // Larger screens (desktops)
-              slidesPerView: 4,
-              spaceBetween: 10,
-            },
-            1440: {  // Larger screens (desktops)
-              slidesPerView: 4,
-              spaceBetween: 10,
-            },
-          }}
-        >
-          <NewCourseHome />
-        </SwiperLib>
+        <NewCourseHome/>
         <CommingEvents/>
         {/* <HomeEvents /> */}
         <VideoTitle />
         <VideoTabs />
         <BooksTitle />
-        <SwiperLib
+        {/* <SwiperLib
           items={bookApi}
           navigation={true}
           pagination={true}
@@ -107,7 +80,7 @@ export default async function Home({ params }: Props) {
           }}
         >
           <NewBookHome />
-        </SwiperLib>
+        </SwiperLib> */}
         <MoreWatchTitle />
         <MoreWatching />
         <AnswerTitle />

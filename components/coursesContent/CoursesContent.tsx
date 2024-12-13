@@ -3,7 +3,7 @@ import Banners from '../banners/Banners'
 import defImage from "@/public/assets/images/default.webp"; // Default image
 import TranslateHook from "../translate/TranslateHook";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarDays, faEnvelope, faEye, faPenToSquare, faShareNodes, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays, faEnvelope, faEye, faPenToSquare, faShareNodes, faSpinner, faUser } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faTwitter, faTelegram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import Image from 'next/image';
 import soroojImg from "@/public/assets/images/default.webp"; // Default image
@@ -81,7 +81,7 @@ const CoursesContent = () => {
 
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="text-center"><FontAwesomeIcon className="mainColor text-2xl my-4" icon={faSpinner} spin /></div>;
   }
   if (error) {
     return <div>Error: {error}</div>;

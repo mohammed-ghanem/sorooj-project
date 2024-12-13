@@ -81,7 +81,7 @@ const Page = () => {
     return pages;
   };
   if (loading) {
-    return <div className="text-center"><FontAwesomeIcon className="mainColor" icon={faSpinner} spin /></div>;
+    return <div className="text-center"><FontAwesomeIcon className="mainColor text-2xl my-4" icon={faSpinner} spin /></div>;
   }
 
   if (error) {
@@ -92,7 +92,7 @@ const Page = () => {
     return (
       <CoursesCard
         key={course.id}
-        imgSrc={course.image || soroojImg}
+        imgSrc={course.image}
         watchNumber={`${course.view_count} مشاهدة`}
         datePublish={course.publish_date}
         courseTitle={course.course_name}
