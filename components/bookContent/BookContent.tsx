@@ -5,7 +5,7 @@ import defImage from "@/public/assets/images/default.webp"; // Default image
 import LangUseParams from '../translate/LangUseParams';
 import TranslateHook from '../translate/TranslateHook';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarDays, faDownload, faEnvelope, faEye, faPenToSquare, faShareNodes, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays, faDownload, faEnvelope, faEye, faPenToSquare, faShareNodes, faSpinner, faUser } from '@fortawesome/free-solid-svg-icons';
 import { EmailShareButton, FacebookShareButton, TelegramShareButton, TwitterShareButton, WhatsappShareButton } from 'react-share';
 import { faFacebookF, faTelegram, faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import Image from 'next/image';
@@ -74,7 +74,8 @@ const BookContent = () => {
 
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div className="text-center"><FontAwesomeIcon className="mainColor text-2xl my-4" icon={faSpinner} spin /></div>;
+
     }
     if (error) {
         return <div>Error: {error}</div>;
