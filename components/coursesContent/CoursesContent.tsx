@@ -90,7 +90,6 @@ const CoursesContent = () => {
     return <div>No course details found.</div>
   }
   ///////////////////////////////////////////////////////////////
-  //console.log(courseDetails.view_count)
   return (
     <section>
       <div>
