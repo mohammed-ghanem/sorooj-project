@@ -111,7 +111,7 @@ const CommingEvents: React.FC = () => {
                                 className="pb-10 lg:pb-0 font-cairo relative overflow-hidden flex flex-col-reverse lg:grid grid-cols-1 lg:grid-cols-2 gap-4 items-center"
                             >
                                 <div className="w-[95%] lg:w-auto">
-                                    <div className="bg-white block text-white text-center relative right-0 lg:right-[130px]  rounded-[10px] p-[15px] opacity-80 z-10">
+                                    <div className="bg-white block text-white text-center relative right-0 lg:right-[130px]  rounded-[10px] p-[15px] opacity-80">
                                         <div>
                                             <Image className="m-auto" src={logo} width={150} height={150} alt="eventLogo" />
                                         </div>
@@ -149,9 +149,8 @@ const CommingEvents: React.FC = () => {
 
                                 <div className="relative py-6 lg:py-12">
                                     <Image
-                                        //   src={event.image || comming}
                                         src={event.image}
-                                        className="w-[95%] lg:w-[80%] mx-auto h-auto lg:h-[400px] [box-shadow:1px_1px_10px_#424C61] rounded-[10px]"
+                                        className="w-[95%] lg:w-[80%] mx-auto h-auto lg:h-[400px] [box-shadow:1px_1px_10px_#ddd] rounded-[10px]"
                                         alt={event.title}
                                         width={400}
                                         height={400}
