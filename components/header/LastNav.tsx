@@ -29,11 +29,54 @@ const LastNav = () => {
         { name: `${translate ? translate.navigation.liveair : "البث المباشر"}`, href: `/${lang}/liveair` },
         { name: `${translate ? translate.navigation.blog : "المدونة"}`, href: `/${lang}/blog` },
         { name: `${translate ? translate.navigation.contact : " اتصل بنا"}`, href: `/${lang}/contact-us` },
-        { name: `${translate ? translate.navigation.academy : "اكاديمية سرج"}`, href: `/${lang}/sorooj-academy` },
+        { name: `${translate ? translate.navigation.academy : "اكاديمية سرج"}`, href: `https://academy.sorooj.org` },
     ];
 
     return (
         <nav className="bkPrimaryColor p-4 font-medium relative z-40">
+            <div className="container mx-auto flex justify-between items-center">
+                <div className="hidden lg:flex m-auto">
+                    {navLinks.map((link, index) => (
+                        <Link
+                            key={index}
+                            href={link.href}
+                            className="text-white ml-4 text-[15px] leading-5"
+                            {...(index === navLinks.length - 1 ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                        >
+                            {link.name}
+                        </Link>
+                    ))}
+                </div>
+                <div className="lg:hidden">
+                    <button onClick={toggleMenu}>
+                        <FontAwesomeIcon icon={isOpen ? faTimes : faBars} className="text-white" />
+                    </button>
+                </div>
+            </div>
+            <div className={`lg:hidden ${isOpen ? 'block' : 'hidden'} mt-4`}>
+                {navLinks.map((link, index) => (
+                    <Link
+                        key={index}
+                        href={link.href}
+                        className="block text-white py-2"
+                        {...(index === navLinks.length - 1 ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                    >
+                        {link.name}
+                    </Link>
+                ))}
+            </div>
+        </nav>
+
+    );
+};
+
+export default LastNav;
+
+
+
+
+
+{/* <nav className="bkPrimaryColor p-4 font-medium relative z-40">
             <div className="container mx-auto flex justify-between items-center">
                 <div className="hidden lg:flex m-auto">
                     {navLinks.map((link, index) => (
@@ -55,8 +98,4 @@ const LastNav = () => {
                     </Link>
                 ))}
             </div>
-        </nav>
-    );
-};
-
-export default LastNav;
+        </nav> */}

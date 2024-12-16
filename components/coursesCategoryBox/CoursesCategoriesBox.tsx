@@ -4,7 +4,7 @@ import { faChevronUp, faChevronDown, faFilter, faSpinner } from "@fortawesome/fr
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
 
-
+ 
 
 type Category = {
   id: number;

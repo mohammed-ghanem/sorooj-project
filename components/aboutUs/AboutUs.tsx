@@ -190,7 +190,7 @@ const AboutUs = () => {
                     </div>
                 </section>
                 {/*  */}
-                <section className='managements mb-10 mt-4'>
+                {/* <section className='managements mb-10 mt-4'>
                     <h6 className="text-base mx-auto mb-10 md:text-2xl font-bold mainColor border-b-2 border-customGold w-[fit-content] pb-[4px]">اعضاء مجلس الادارة</h6>
                     <div className='container mx-auto grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4 lg:gap-10 w-[95%] lg:w-[80%] text-center items-center'>
 
@@ -246,7 +246,7 @@ const AboutUs = () => {
 
 
                     </div>
-                </section>
+                </section> */}
             </div>
         </div>
     )

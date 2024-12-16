@@ -102,7 +102,7 @@ const CommingEvents: React.FC = () => {
                     autoplay
                     fade
                     dots={false}
-                    className="content: none container mx-auto bkBox my-44 w-[95%] md:w-[80%]  [box-shadow:1px_1px_7px_#ddd] rounded-[10px]"
+                    className="content: none container mx-auto bkBox my-20 w-[95%] md:w-[80%]  [box-shadow:1px_1px_7px_#ddd] rounded-[10px]"
                 >
                     {events.map((event) => (
                         <div key={event.id} className="h-auto">

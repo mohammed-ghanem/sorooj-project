@@ -11,7 +11,6 @@ import NewBookHome from "@/components/newBookHome/NewBookHome";
 import CoursesTitle from "@/components/homeTitles/CoursesTitle";
 import VideoTitle from "@/components/homeTitles/VideoTitle";
 import BooksTitle from "@/components/homeTitles/BooksTitle";
-import HomeEvents from "@/components/homeEvents/HomeEvents";
 import TwitterSection from "@/components/twitterSection/TwitterSection";
 import MoreWatching from "@/components/moreWatching/MoreWatching";
 import MoreWatchTitle from "@/components/homeTitles/MoreWatchTitle";
@@ -47,7 +46,6 @@ export default async function Home({ params }: Props) {
         <CoursesTitle />
         <NewCourseHome/>
         <CommingEvents/>
-        {/* <HomeEvents /> */}
         <VideoTitle />
         <VideoTabs />
         <BooksTitle />

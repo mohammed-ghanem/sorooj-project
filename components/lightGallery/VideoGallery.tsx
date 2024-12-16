@@ -12,6 +12,7 @@ import Image from 'next/image';
 import Banners from '../banners/Banners';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlay, faClock, faPenNib, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import VideoGalleryCategories from './VideoGalleryCategories';
 
 const videoGallery = () => {
   return (
@@ -20,7 +21,7 @@ const videoGallery = () => {
         <Banners src={defImage} textPath="المكتبة المرئية" />
       </div>
       <div className='container my-10 mx-auto w-[80%] grid grid-cols-1 lg:grid-cols-4 gap-4'>
-        <div>categories</div>
+        <div><VideoGalleryCategories /></div>
         <LightGallery
           elementClassNames={`col-span-3 grid grid-cols-1 lg:grid-cols-3 gap-4`}
           mode="lg-fade"
@@ -280,7 +281,7 @@ const videoGallery = () => {
               </p>
             </div>
           </a>
-          
+
         </LightGallery>
       </div>
 

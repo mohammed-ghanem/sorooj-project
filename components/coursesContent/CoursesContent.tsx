@@ -203,7 +203,7 @@ const CoursesContent = () => {
             </div>
 
 
-            <div className='testCourse mt-5 grid grid-cols-1 md:grid-cols-3 gap-4 items-center'>
+            <div className='mt-5 grid grid-cols-1 md:grid-cols-3 gap-4 items-center'>
               <div className='col-span-2'>
                 <SubscribeCourse courseDetails={courseDetails} />
               </div>
@@ -218,7 +218,7 @@ const CoursesContent = () => {
                 height={100}
                 alt='course-img' />
             </div>
-          </div>
+          </div> 
         </div>
         <hr className='h-1' />
         {/* start all videos course */}

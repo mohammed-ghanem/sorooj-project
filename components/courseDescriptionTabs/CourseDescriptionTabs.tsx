@@ -4,7 +4,7 @@ import "./style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilePdf, faStar, faUserGraduate } from "@fortawesome/free-solid-svg-icons";
 import CourseBtnComment from "../courseBtnComment/CourseBtnComment";
-import parse from "html-react-parser";
+import parse from "html-react-parser"; 
 
 const CourseDescriptionTabs = ({ courseDetails }: any) => {
   // Ensure course_content is a string or provide a fallback

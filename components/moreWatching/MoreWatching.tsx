@@ -1,12 +1,10 @@
 'use client';
-
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faCalendar, faBookOpenReader, faUser, faBookOpen, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 import Link from 'next/link';
-import def from '@/public/assets/images/test.jpg'
 
 const MoreWatching = () => {
     const [mostViewed, setMostViewed] = useState<any[]>([]);
@@ -40,13 +38,13 @@ const MoreWatching = () => {
     }
 
     return (
-        <section className="container mx-auto w-[80%] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 md:gap-4">
+        <section className="container mx-auto w-[80%] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 md:gap-3">
             {mostViewed.map((item) => (
                 <div key={item.id} className="bkColor rounded-[15px] overflow-hidden relative mb-4">
                     <div className="newCourses h-full">
                         <Image
                             className="w-full"
-                            src={item.image || def} // Fallback image
+                            src={item.image} // Fallback image
                             alt={item.title}
                             width={300}
                             height={200}
@@ -64,11 +62,11 @@ const MoreWatching = () => {
                             </div>
                             <h2 className="mt-2">
                                 <FontAwesomeIcon icon={faBookOpenReader} className="ml-1 primaryColor" />
-                                <span className="font-bold mainColor text-sm">{`${item.name.slice(0, 32)} ...`}</span>
+                                <span className="font-bold mainColor text-sm">{`${item.name.slice(0, 30)} ...`}</span>
                             </h2>
                             <h3 className="mt-1">
                                 <FontAwesomeIcon icon={faUser} className="ml-1 primaryColor" />
-                                <span className="text-[12px] mainColor">{item.author_name}</span>
+                                <span className="text-[12px] mainColor">{`${item.author_name.slice(0,30)} ...`}</span>
                             </h3>
                             <p className="text-[12px] mainColor flex items-center mt-2">
                                 <FontAwesomeIcon icon={faBookOpen} className="ml-1 primaryColor" />

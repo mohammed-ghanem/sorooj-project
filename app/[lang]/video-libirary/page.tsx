@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description: 'المكتبة المرئية مركز سرج للدرسات والابحاث ',
     images: [
       {
-        url: '',
+        url: "https://www.sorooj.org/_next/static/media/logo.2da5fe49.png",
         width: 1200,
         height: 630,
         alt: 'المكتبة المرئية مركز سرج للدرسات والابحاث',
