@@ -8,7 +8,7 @@ import fullscreen from 'lightgallery/plugins/fullscreen'
 import autoplay from 'lightgallery/plugins/autoplay';
 import defImage from "@/public/assets/images/default.webp"; // Default image
 import "./style.css"
-import Image from 'next/image';
+import Image from 'next/image'; 
 import Banners from '../banners/Banners';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlay, faClock, faPenNib, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
