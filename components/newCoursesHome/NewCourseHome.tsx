@@ -5,7 +5,6 @@ import CoursesCard from "../coursesCard/CoursesCard";
 import LangUseParams from '../translate/LangUseParams';
 import { fetchCoursesHome } from '@/utils/fetchCoursesHome';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
@@ -79,7 +78,7 @@ const NewCourseHome = () => {
             slidesPerView: 4,
             spaceBetween: 10,
           },
-        }}
+        }} 
       >
         {courses.map((course) => (
           <SwiperSlide key={course.id}>

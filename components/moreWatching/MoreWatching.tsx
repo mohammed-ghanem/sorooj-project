@@ -41,9 +41,9 @@ const MoreWatching = () => {
         <section className="container mx-auto w-[80%] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 md:gap-3">
             {mostViewed.map((item) => (
                 <div key={item.id} className="bkColor rounded-[15px] overflow-hidden relative mb-4">
-                    <div className="newCourses h-full">
+                    <div className="">
                         <Image
-                            className="w-full"
+                            className="w-full h-44"
                             src={item.image} // Fallback image
                             alt={item.title}
                             width={300}

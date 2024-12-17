@@ -91,12 +91,12 @@ const BookCardPage = () => {
         return (
             <BooksCard
                 key={book.id}
-                imgSrc={book.image_url || bookdef}
+                imgSrc={book.image}
                 bookTitle={book.book_name}
                 watchNumber={book.view_count}
                 datePublish={book.publish_date}
                 doctorName={book.author_name}
-                descriptionCourse={book.brief_description}
+                descriptionBook={book.brief_description}
                 likeBtn={<BooksAddWishList bookDetails={book} />}
                 pathLinkToContent={`/${lang}/books/${book.slug}`}
             />

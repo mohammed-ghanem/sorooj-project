@@ -9,24 +9,26 @@ interface BooksCardProps {
     watchNumber: string;
     datePublish: string;
     doctorName: string;
-    descriptionCourse: string;
+    descriptionBook: string;
     likeBtn?: any;
     pathLinkToContent: any;
 }
 
 
 const BooksCard: React.FC<BooksCardProps> = ({
-    pathLinkToContent, imgSrc, bookTitle, watchNumber, datePublish, doctorName, descriptionCourse, likeBtn
-}) => {
+    pathLinkToContent, imgSrc, bookTitle, watchNumber, datePublish, doctorName, descriptionBook, likeBtn
+}) => { 
+    const slicedTitle = bookTitle.length > 40 ? bookTitle.slice(0, 40) + '...' : bookTitle;
+    const slicedDes = descriptionBook.length > 30 ? descriptionBook.slice(0, 30) + '...' : descriptionBook;
     return (
-        <div className='bkPrimaryColor [box-shadow:1px_1px_7px_#424c61] p-[10px] rounded-tl-[15px] rounded-br-[15px] rounded-tr-none rounded-bl-none'>
+        <div className='bkPrimaryColor [box-shadow:1px_1px_7px_#ddd] p-[10px] rounded-tl-[15px] rounded-br-[15px] rounded-tr-none rounded-bl-none'>
             <div className='bg-white rounded-tl-[15px] rounded-br-[15px] rounded-tr-none rounded-bl-none border-[1px] border-[solid] border-[#fff]
                     rounded-[6px]'>
                 <div className='relative'>
                     <div className='pt-[12px] px-[14px] pb-[4px]'>
                         <h2 className="text-sm font-bold">
                             <FontAwesomeIcon icon={faBookOpenReader} className="ml-1 primaryColor" />
-                            <span className="mainColor">{`${bookTitle.slice(0, 35)} ...`}</span>
+                            <span className="mainColor">{slicedTitle}</span>
                         </h2>
                     </div>
                     <div className=" block md:flex h-auto p-2 ">
@@ -51,9 +53,9 @@ const BooksCard: React.FC<BooksCardProps> = ({
                             </h3>
                             <p className="text-[12px] mainColor flex items-start">
                                 <FontAwesomeIcon icon={faBookOpen} className="ml-1 primaryColor pt-1" />
-                                <span className=" opacity-[0.8]">{`${descriptionCourse.slice(0, 32)} ...`}</span>
+                                <span className=" opacity-[0.8]">{slicedDes}</span>
                             </p>
-                            <Link href={pathLinkToContent} className='mr-auto block w-[fit-content] px-[10px] py-[6px] rounded-[4px] bkMainColor text-[#fff] font-bold text-[14px]'>المزيد</Link>
+                            <Link href={pathLinkToContent} className='mr-auto mt-2 block w-[fit-content] px-[10px] py-[6px] rounded-[4px] bkMainColor text-[#fff] font-bold text-[14px]'>المزيد</Link>
                         </div>
                         {likeBtn
                             &&

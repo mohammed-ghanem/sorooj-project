@@ -1,50 +1,100 @@
+'use client';
 
-import Image from "next/image"
-
-import books from '@/public/assets/images/books.webp'
-import { faBookOpen, faBookOpenReader, faCalendar, faEye, faUser } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useEffect, useState } from 'react';
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import LangUseParams from '../translate/LangUseParams';
+import { fetchBooksHome } from '@/utils/fetchBooksHome';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import 'swiper/css/autoplay';
+import 'swiper/css';
+import './style.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import BooksCard from '../booksCard/BooksCard';
 
 
 const NewBookHome = () => {
+  const [books, setBooks] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const lang = LangUseParams();
+
+  useEffect(() => {
+    const loadCourses = async () => {
+      try {
+        const coursesData = await fetchBooksHome(); // Reuse the exported function
+        setBooks(coursesData);
+        setLoading(false);
+      } catch (err: any) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    loadCourses();
+  }, []);
+
+  if (loading) {
+    return <div className="text-center"><FontAwesomeIcon className="mainColor text-2xl my-4" icon={faSpinner} spin /></div>;
+  }
+  if (error) return <div>Error: {error}</div>;
+
   return (
-    // <div className="bg-red-400 h-[400px]">{item.name}</div>
-
-    <div className=" block md:flex
-                    h-auto
-                    md:h-[120px]
-                    border-[1px]
-                    rounded-[6px] [box-shadow:1px_1px_1px_#ccc]">
-
-      <div className="flex-auto w-full h-[120px] md:h-auto md:w-32 relative">
-        <Image src={books} className=" max-w-full" fill alt="book" />
-      </div>
-
-      <div className="flex-auto w-full md:w-64 px-[10px] py-[5px] my-[10px] md:my-auto">
-        <h2 className="text-sm font-bold">
-          <FontAwesomeIcon icon={faBookOpenReader} className="ml-1 primaryColor" />
-          <span className="mainColor">تساؤلات وشبهات متعلقة .... </span>
-        </h2>
-        <div className="cardDetails grid grid-cols-2 gap-2 mt-2 font-bold">
-          <p className="text-[10px] mainColor opacity-[0.8] flex items-center">
-            <FontAwesomeIcon icon={faEye} className="ml-1 primaryColor" />
-            <span>120 مشاهدة</span>
-          </p>
-          <p className="text-[10px] mainColor opacity-[0.8] flex items-center">
-            <FontAwesomeIcon icon={faCalendar} className="ml-1 primaryColor" />
-            <span>24 اغسطس 2024</span>
-          </p>
-        </div>
-        <h3 className="">
-          <FontAwesomeIcon icon={faUser} className="ml-1 primaryColor" />
-          <span className="text-[12px] mainColor">الدكتور بندر ابن محمد الميمونى </span>
-        </h3>
-        <p className="text-[12px] mainColor flex items-start">
-          <FontAwesomeIcon icon={faBookOpen} className="ml-1 primaryColor pt-1" />
-          <span className=" opacity-[0.8]">برنامج محطات فى العقيدة المحور الثانى مفهوم التوحيد ...</span>
-        </p>
-      </div>
-
+    <div className="parentDiv relative">
+      <Swiper
+        className="mx-auto container"
+        style={{ width: "80%" }}
+        modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+        spaceBetween={10} // Set space between slides
+        slidesPerView={3} // Adjust the number of slides visible at once
+        navigation
+        pagination={{ clickable: true }}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
+        breakpoints={{
+          320: {   // Mobile
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          640: {   // Small screens
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          768: {   // Medium screens (tablets)
+            slidesPerView: 2,
+            spaceBetween: 12,
+          },
+          1024: {  // Larger screens (desktops)
+            slidesPerView: 3,
+            spaceBetween: 14,
+          },
+          1440: {  // Larger screens (desktops)
+            slidesPerView: 3,
+            spaceBetween: 16,
+          },
+        }}
+      >
+        {books.map((book) => (
+          <SwiperSlide key={book.id}>
+            <BooksCard
+              imgSrc={book.image}
+              watchNumber={book.view_count}
+              datePublish={book.publish_date}
+              bookTitle={book.book_name}
+              doctorName={book.author_name}
+              descriptionBook={book.brief_description}
+              pathLinkToContent={`/${lang}/books/${book.slug}`}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   )
 }
