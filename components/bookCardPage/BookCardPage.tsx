@@ -2,7 +2,6 @@
 import Banners from "@/components/banners/Banners"
 import BooksCard from "@/components/booksCard/BooksCard";
 import soroojImg from "@/public/assets/images/default.webp"; // Default image
-import bookdef from "@/public/assets/images/bookdef.png";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie"; // Import the js-cookie library
 import LangUseParams from "@/components/translate/LangUseParams";

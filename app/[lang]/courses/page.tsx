@@ -1,5 +1,5 @@
 import CoursesCardPage from "@/components/coursesCardPage/CoursesCardPage"
-import type { Metadata } from "next";
+import { Metadata } from "next";
 
 
 export const metadata: Metadata = {

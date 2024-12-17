@@ -1,6 +1,6 @@
+'use client'
 import BookCardPage from '@/components/bookCardPage/BookCardPage'
-
-import type { Metadata } from "next";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "كتب وابحاث مركز سرج للدرسات والابحاث ",
