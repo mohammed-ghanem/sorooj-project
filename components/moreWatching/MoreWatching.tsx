@@ -5,11 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faCalendar, faBookOpenReader, faUser, faBookOpen, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 import Link from 'next/link';
+import LangUseParams from '../translate/LangUseParams';
 
 const MoreWatching = () => {
     const [mostViewed, setMostViewed] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const lang = LangUseParams();
 
     const fetchMostViewed = async () => {
         try {
@@ -74,7 +76,7 @@ const MoreWatching = () => {
                             </p>
                         </div>
                         <Link
-                            href={`/details/${item.id}`}
+                            href={`/${lang}/${item.id}`}
                             className="block text-center bkPrimaryColor py-3 mt-[16px] text-white font-bold"
                         >
                             مشاهدة
