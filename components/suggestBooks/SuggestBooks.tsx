@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-
 import axios from 'axios';
 import LangUseParams from '../translate/LangUseParams';
 import { useParams } from 'next/navigation';
-import soroojImg from "@/public/assets/images/default.webp"; // Default image
 import BooksCard from '../booksCard/BooksCard';
-import BooksAddWishList from '../bookAddWishList/BooksAddWishList';
+
 
 const SuggestBooks = () => {
     const [booksSuggest, setBooksSuggest] = useState<[]>([]); // Updated type to array
@@ -24,14 +22,12 @@ const SuggestBooks = () => {
                     }
                 );
                 setBooksSuggest(response.data.data.suggested_Books); // Ensure this is an array
-               // console.log(response.data.data.suggested_Books)
             } catch (error) {
                 console.error('Error fetching suggested Books', error);
             }
         };
         fetchSuggestBooks();
     }, []);
-   
     return (
         <div className="grid grid-cols-1 gap-4">
             {booksSuggest.map((book: any) => (
