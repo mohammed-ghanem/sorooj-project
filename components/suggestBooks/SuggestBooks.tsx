@@ -37,7 +37,7 @@ const SuggestBooks = () => {
             {booksSuggest.map((book: any) => (
                 <BooksCard
                     key={book.id}
-                    imgSrc={book.image_url || soroojImg}
+                    imgSrc={book.image}
                     bookTitle={book.book_name}
                     watchNumber={book.view_count}
                     datePublish={book.publish_date}

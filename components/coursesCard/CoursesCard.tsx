@@ -29,7 +29,7 @@ const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePubl
                     <div className="cardDetails grid grid-cols-2 gap-2 mt-3 font-bold">
                         <p className="text-[10px] mainColor opacity-[0.8] flex items-center">
                             <FontAwesomeIcon icon={faEye} className="ml-1 primaryColor" />
-                            <span>{watchNumber} مشاهدة</span>
+                            <span>{watchNumber}</span>
                         </p>
                         <p className="text-[10px] mainColor opacity-[0.8] flex items-center justify-center">
                             <FontAwesomeIcon icon={faCalendar} className="ml-1 primaryColor" />

@@ -227,7 +227,6 @@ const BookContent = () => {
                     <div className=''>
                         <BookDescriptionTabs bookDetails={bookDetails} />
                     </div>
-                            {/* course suggestion */}
                     <div className='mt-[6px] border-t-2 lg:border-t-0'>
                         <h3 className='mt-[10px] mr-[10px] mb-[30px] ml-[0] font-bold mainColor'>الكتب المقترحة</h3>
                         <div className='w-[95%] md:w-[80%] grid grid-cols-1 mx-auto gap-8'>

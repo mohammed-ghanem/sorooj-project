@@ -10,11 +10,11 @@ const BookDescriptionTabs = ({ bookDetails }: any) => {
   const bookContent =
     typeof bookDetails?.book_content === "string"
       ? bookDetails.book_content
-      : "<p>لا يوجد وصف للدورة</p>"; 
+      : "<p>لا يوجد وصف للكتاب</p>"; 
   return (
     <Tabs>
       <TabList className="grid grid-cols-1 md:grid-cols-3 gap-2 lg:gap-10 mb-8 rounded-[6px] overflow-hidden text-center [box-shadow:1px_1px_10px_#ddd]">
-        <Tab>وصف الدورة</Tab>
+        <Tab>وصف الكتاب</Tab>
         <Tab>تحميل الكتاب </Tab>
         <Tab>التعليقات</Tab>
       </TabList>

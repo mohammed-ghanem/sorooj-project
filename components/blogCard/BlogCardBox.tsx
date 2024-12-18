@@ -7,29 +7,29 @@ interface BlogCardProps {
     imgSrc: any;
     watchNumber: string;
     datePublish: string;
-    courseTitle: string;
+    blogTitle: string;
     doctorName?: any;
-    descriptionCourse: string;
+    descriptionBlog: string;
     likeBtn?: any;
     pathLinkToContent: any;
 
 }
 
-const BlogCardBox: React.FC<BlogCardProps> = ({ imgSrc, watchNumber, datePublish, courseTitle, doctorName, descriptionCourse, likeBtn, pathLinkToContent }) => {
+const BlogCardBox: React.FC<BlogCardProps> = ({ imgSrc, watchNumber, datePublish, blogTitle, doctorName, descriptionBlog, likeBtn, pathLinkToContent }) => {
     // const slicedTitle = courseTitle.length > 30 ? courseTitle.slice(0, 30) + '...' : courseTitle;
-    // const slicedDescription = descriptionCourse.length > 38 ? descriptionCourse.slice(0, 38) + '...' : descriptionCourse;
+ const slicedDescription = descriptionBlog.length > 40 ? descriptionBlog.slice(0, 40) + '...' : descriptionBlog;
     // const slicedDoctor = doctorName.length > 35 ? doctorName.slice (0,35) + "..." : doctorName
     return (
         // Blog Card
         <div className=" bkColor rounded-[15px] overflow-hidden relative">
-            <div className="newCourses h-full">
-                <Image className="w-full max-w-full" src={imgSrc} alt={`${courseTitle.slice(0, 20)} ...`}
-                    height={100} width={100} />
+            <div className="h-full">
+                <Image className="w-full max-w-full h-52" src={imgSrc} alt={blogTitle}
+                    height={200} width={100} />
                 <div className="px-3">
                     <div className="cardDetails grid grid-cols-2 gap-2 mt-3 font-bold">
                         <p className="text-[10px] mainColor opacity-[0.8] flex items-center">
                             <FontAwesomeIcon icon={faEye} className="ml-1 primaryColor" />
-                            <span>{watchNumber} مشاهدة</span>
+                            <span>{watchNumber}</span>
                         </p>
                         <p className="text-[10px] mainColor opacity-[0.8] flex items-center justify-center">
                             <FontAwesomeIcon icon={faCalendar} className="ml-1 primaryColor" />
@@ -38,11 +38,11 @@ const BlogCardBox: React.FC<BlogCardProps> = ({ imgSrc, watchNumber, datePublish
                     </div>
                     <h2 className="mt-2">
                         <FontAwesomeIcon icon={faBookOpenReader} className="ml-1 primaryColor" />
-                        <span className="font-bold mainColor text-sm">title</span>
+                        <span className="font-bold mainColor text-sm">{blogTitle}</span>
                     </h2>
                     <p className="text-[12px] mainColor flex items-center mt-2">
                         <FontAwesomeIcon icon={faBookOpen} className="ml-1 primaryColor" />
-                        <span className=" opacity-[0.8]">short des</span>
+                        <span className=" opacity-[0.8]">{slicedDescription}</span>
                     </p>
 
                     {likeBtn

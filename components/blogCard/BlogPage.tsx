@@ -86,9 +86,9 @@ const BlogPage = () => {
         imgSrc={blog.image}
         watchNumber={`${blog.view_count} مشاهدة`}
         datePublish={blog.publish_date}
-        courseTitle={blog.course_name}
+        blogTitle={blog.blog_name}
         doctorName={blog.author_name}
-        descriptionCourse={blog.brief_description}
+        descriptionBlog={blog.brief_description}
         pathLinkToContent={`/${lang}/blogs/${blog.slug}`}
       />
     );

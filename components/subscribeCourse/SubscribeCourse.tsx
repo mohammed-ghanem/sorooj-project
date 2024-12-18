@@ -88,7 +88,7 @@ const SubscribeCourse = ({ courseDetails }: any) => {
         <div className="testCourse mt-5 grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
             <div className='col-span-2'>
                 <button onClick={handleSubscribeBtn}
-                    className="bkMainColor text-white px-[20px] py-[10px] rounded-[6px]">
+                    className={`bkMainColor text-white px-[20px] py-[10px] rounded-[6px]`}>
                     {is_subscribed ? 'الغاء الاشتراك' : 'اشترك فى الدورة مجانا'}
                 </button>
             </div>
