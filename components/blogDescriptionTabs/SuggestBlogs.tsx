@@ -40,8 +40,8 @@ const SuggestBlogs = () => {
                     imgSrc={blog.image}
                     watchNumber={`${blog.view_count} مشاهدة`}
                     datePublish={blog.publish_date}
-                    courseTitle={blog.course_name}
-                    descriptionCourse={blog.brief_description}
+                    blogTitle={blog.blog_name}
+                    descriptionBlog={blog.brief_description}
                     pathLinkToContent={`/${lang}/blogs/${blog.slug}`}
                 />
             ))}
