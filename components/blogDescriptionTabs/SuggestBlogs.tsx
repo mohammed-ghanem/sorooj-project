@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import CoursesCard from '../coursesCard/CoursesCard';
 import axios from 'axios';
 import LangUseParams from '../translate/LangUseParams';
-import { useParams } from 'next/navigation';
-import soroojImg from "@/public/assets/images/default.webp"; // Default image
 import BlogCardBox from '../blogCard/BlogCardBox';
-
-
 
 const SuggestBlogs = () => {
     const [blogsSuggest, setBlogsSuggest] = useState<[]>([]); // Updated type to array
     const lang = LangUseParams();
-    const { slug } = useParams();
+    //const { slug } = useParams();
     useEffect(() => {
         const fetchSuggestCourses = async () => {
             try {
@@ -26,7 +21,7 @@ const SuggestBlogs = () => {
                 );
                 setBlogsSuggest(response.data.data.suggested_blogs); // Ensure this is an array
             } catch (error) {
-                console.error('Error fetching suggested courses', error);
+                console.error('Error fetching suggested blogs', error);
             }
         };
         fetchSuggestCourses();
@@ -42,7 +37,7 @@ const SuggestBlogs = () => {
                     datePublish={blog.publish_date}
                     blogTitle={blog.blog_name}
                     descriptionBlog={blog.brief_description}
-                    pathLinkToContent={`/${lang}/blogs/${blog.slug}`}
+                    pathLinkToContent={`/${lang}/blog/${blog.slug}`}
                 />
             ))}
         </div>

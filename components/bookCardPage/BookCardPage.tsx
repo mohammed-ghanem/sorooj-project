@@ -11,26 +11,6 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import BooksCategoriesBox from "@/components/booksCategoryBox/BooksCategoriesBox";
 import BooksAddWishList from "@/components/bookAddWishList/BooksAddWishList";
 
-// import { Metadata } from "next";
-
-// export const metadata: Metadata = {
-//     title: "كتب وابحاث مركز سرج للدرسات والابحاث ",
-//     description: " كتب وابحاث مركز سرج كافة الاخبار والاحداث والدروس والمحاضرات المتعلفة بمركز سرج للدراسات والبحث العلمى منارة وفهم المذاهب الفكرية المعاصرة",
-//     keywords: "مركز,سرج,للدراسات,والابحاث,المذاهب,الفكرية,كتب,ابحاث,المعاصرة",
-//     openGraph: {
-//         title: "كتب وابحاث مركز سرج للدراسات والابحاث",
-//         description: "كتب وابحاث مركز سرج للدراسات والابحاث منارة البحث العلمى والمذاهب الفكرية المعاصرة",
-//         images: [
-//             {
-//                 url: "https://www.sorooj.org/_next/static/media/logo.2da5fe49.png",
-//                 alt: "كتب وابحاث مركز سرج للدراسات والابحاث",
-//                 width: 1200,
-//                 height: 630,
-//             },
-//         ],
-//     },
-// };
-
 const BookCardPage = () => {
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);

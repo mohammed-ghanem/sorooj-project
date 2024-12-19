@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 };
 const page = () => {
   return (
-    <div><BookCardPage /></div>
+    <div><BookCardPage/></div>
   )
 }
 

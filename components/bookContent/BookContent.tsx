@@ -9,7 +9,6 @@ import { faCalendarDays, faDownload, faEnvelope, faEye, faPenToSquare, faShareNo
 import { EmailShareButton, FacebookShareButton, TelegramShareButton, TwitterShareButton, WhatsappShareButton } from 'react-share';
 import { faFacebookF, faTelegram, faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import Image from 'next/image';
-import soroojImg from "@/public/assets/images/default.webp"; // Default image
 import BookDescriptionTabs from '../bookDescriptionTabs/BookDescriptionTabs';
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';

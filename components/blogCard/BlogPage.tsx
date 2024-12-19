@@ -38,7 +38,7 @@ const BlogPage = () => {
 
         setBlogs(response.data.data);
         setTotalPages(response.data.meta.last_page || 1); // Update total pages if available
-
+         console.log(response.data.data)
       } catch (err: any) {
         setError(err.response?.data?.message || err.message);
       } finally {
@@ -89,7 +89,7 @@ const BlogPage = () => {
         blogTitle={blog.blog_name}
         doctorName={blog.author_name}
         descriptionBlog={blog.brief_description}
-        pathLinkToContent={`/${lang}/blogs/${blog.slug}`}
+        pathLinkToContent={`/${lang}/blog/${blog.slug}`}
       />
     );
   });

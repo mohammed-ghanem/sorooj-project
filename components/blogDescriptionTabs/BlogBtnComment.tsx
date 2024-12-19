@@ -11,7 +11,7 @@ const BlogBtnComment = ({blogDetails} : any) => {
     const [name, setName] = useState('');
     const [comment, setComment] = useState('');
 
-    const course_id = blogDetails.id; // Assuming 'id' is the unique identifier for each course in the courseDetails object
+    const blog_id = blogDetails.id; // Assuming 'id' is the unique identifier for each course in the courseDetails object
     const token = Cookies.get('access_token');
 
     const showModal = () => {
@@ -39,7 +39,7 @@ const BlogBtnComment = ({blogDetails} : any) => {
 
         try {
             await axios.post(
-                `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/add-comment/${course_id}`,
+                `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/blogs/add-comment/${blog_id}`,
                 { name, comment, stars },
                 { headers: { Authorization: `Bearer ${token}` } }
             );

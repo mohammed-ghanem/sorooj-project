@@ -11,27 +11,21 @@ import { useEffect, useState } from 'react';
 import LangUseParams from '../translate/LangUseParams';
 import TranslateHook from '../translate/TranslateHook';
 import { useParams } from 'next/navigation';
-import Cookies from "js-cookie"; // Import the js-cookie library
 import axios from 'axios';
 import SuggestBlogs from '../blogDescriptionTabs/SuggestBlogs';
 interface BlogDetails {
-    course_name: string;
-    image?: string;
+    blog_name: string;
+    image?: any;
     description: string;
     publish_date: string;
     author_name: string;
     view_count: number;
+    videos: any
+    video_url: any
 }
 interface CategoryDetails {
     name: string
 }
-interface CourseVideos {
-    name: string,
-    video_url: string,
-    course_id: number,
-    publish_date: string
-}
-
 const BlogContent = () => {
     const [blogDetails, setBlogDetails] = useState<BlogDetails | null>(null);
     const [loading, setLoading] = useState(true);
@@ -42,7 +36,6 @@ const BlogContent = () => {
     const lang = LangUseParams();
     const translate = TranslateHook();
     const { slug } = useParams();
-    const token = Cookies.get("access_token");
 
     useEffect(() => {
 
@@ -55,14 +48,13 @@ const BlogContent = () => {
                         params: { lang },
                         headers: {
                             "Content-Type": "application/json",
-                            Authorization: `Bearer ${token}`,
                             withCredentials: true,
 
                         },
                     }
                 );
-                setBlogDetails(response.data.data.blogs);
-                setCategoryDetails(response.data.data.blogs.category);
+                setBlogDetails(response.data.data.Blogs);
+                setCategoryDetails(response.data.data.Blogs.category);
             } catch (err: any) {
                 setError(err.response?.data?.message || err.message);
             } finally {
@@ -71,7 +63,7 @@ const BlogContent = () => {
         };
         fetchCourses();
 
-    }, [lang, slug, token]);
+    }, [lang, slug]);
 
 
     if (loading) {
@@ -81,7 +73,7 @@ const BlogContent = () => {
         return <div>Error: {error}</div>;
     }
     if (!blogDetails) {
-        return <div>No course details found.</div>
+        return <div>No blog details found.</div>
     }
 
     return (
@@ -94,30 +86,26 @@ const BlogContent = () => {
                     <div className='blogTitles w-[95%] md:w-[80%] col-span-2'>
                         <h1 className=' text-base md:text-2xl font-bold mainColor'>
                             <FontAwesomeIcon className=' primaryColor text-lg ml-2' icon={faPenToSquare} />
-                            عنوان المدونة
+                            {blogDetails.blog_name}
 
                         </h1>
                         <div className='mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 items-center'>
                             <span>
                                 <span className='text-2xl primaryColor opacity-[0.4]'> || </span>
-                                {/* <span>{`المدونة --  ${categoryDetails ? categoryDetails.name : "No Category"} `}</span> */}
-                                <span>{`المدونة --  اخبار `}</span>
-
+                                <span>{`المدونة --  ${categoryDetails ? categoryDetails.name : "No Category"} `}</span>
                             </span>
                             <span>
                                 <span className='text-2xl primaryColor opacity-[0.4]'> || </span>
                                 <span>
                                     <FontAwesomeIcon className='ml-1 primaryColor' icon={faCalendarDays} />
-                                    20/12/2024
+                                    {blogDetails.publish_date}
                                 </span>
                             </span>
                             <span>
                                 <span className='text-2xl primaryColor opacity-[0.4]'> || </span>
                                 <span>
                                     <FontAwesomeIcon className='ml-1 primaryColor' icon={faEye} />
-                                    {/* {`${courseDetails.view_count} مشاهدة `} */}
-                                    {`250 مشاهدة `}
-
+                                    {`${blogDetails.view_count} مشاهدة `}
                                 </span>
                             </span>
                         </div>
@@ -195,7 +183,7 @@ const BlogContent = () => {
                     <div className='blogImg'>
                         <div>
                             <Image className='w-full h-full max-h-60'
-                                src={defImage}
+                                src={blogDetails.image}
                                 width={100}
                                 height={100}
                                 alt='course-img' />
@@ -206,13 +194,25 @@ const BlogContent = () => {
                 {/* start description blog with suggest blogs */}
                 <div className='descriptionCourse w-[95%] md:w-[80%] mx-auto mt-2 mb-24 md:mt-8 grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-8'>
                     <div className='col-span-2'>
-                        {/* <CourseDescriptionTabs courseDetails={courseDetails} /> */}
-                        blog tabs
+                        {
+                            blogDetails.videos[0].video_url
+                                ?
+                                <div className='mb-5'>
+                                    <iframe className='w-full h-80'
+                                        src={`https://www.youtube.com/embed/${blogDetails.videos[0].video_url}?enablejsapi=1`}
+                                        title={blogDetails.videos[0].name}
+                                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope;"
+                                        allowFullScreen
+                                    />
+                                </div>
+                                :
+                                <div></div>
+                        }
                         <BlogDescriptionTabs blogDetails={blogDetails} />
                     </div>
                     {/* blog suggestion */}
                     <div className='mt-[6px] border-t-2 lg:border-t-0'>
-                        <h3 className='mt-[10px] mr-[10px] mb-[30px] ml-[0] font-bold mainColor'>الدورات المقترحة</h3>
+                        <h3 className='mt-[10px] mr-[10px] mb-[30px] ml-[0] font-bold mainColor'>مدونات المقترحة</h3>
                         <div className='w-[95%] md:w-[80%] grid grid-cols-1 mx-auto gap-8'>
                             <SuggestBlogs />
                         </div>

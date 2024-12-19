@@ -9,14 +9,14 @@ import BlogBtnComment from "./BlogBtnComment";
 const BlogDescriptionTabs = ({ blogDetails }: any) => {
     // Ensure course_content is a string or provide a fallback
     const BlogContent =
-        typeof blogDetails?.course_content === "string"
-            ? blogDetails.course_content
-            : "<p>لا يوجد وصف للدورة</p>";
+        typeof blogDetails?.blog_content === "string"
+            ? blogDetails.blog_content
+            : "<p>لا يوجد وصف للمدونة</p>";
 
     return (
         <Tabs>
             <TabList className="grid grid-cols-1 md:grid-cols-3 gap-2 lg:gap-10 mb-8 rounded-[6px] overflow-hidden text-center [box-shadow:1px_1px_10px_#ddd]">
-                <Tab>وصف الدورة</Tab>
+                <Tab>تفاصيل المدونة</Tab>
                 <Tab>الملفات المرفقة</Tab>
                 <Tab>التعليقات</Tab>
             </TabList>
