@@ -20,7 +20,15 @@
                 "VideoLibirary" : "المكتبة المرئية",
                 "AnswerQuestion"  : "سؤال وجواب",
                 "Subscribers"  : "المشتركين"
-            }
+            },
+            "titles" : {
+                "EducationalCourses" :  "الدورات المجانية",
+                "Books" : "الكتب والابحاث",
+                "VideoLibirary" : "المكتبة المرئية",
+                "AnswerQuestion"  : "سؤال وجواب",
+                "MoreWatching" : "الاكثر مشاهدة",
+                "SeeAll" : "عرض الكل" 
+                }
         },
         "lesson" : {
             "title" : "اهلا وسهلا بكم فى الدروس "

@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import comming from "@/public/assets/images/comming.png";
 import Image from "next/image";
-import Timer from "./Timer";
 import flower from "@/public/assets/images/flower.svg";
 import fatwaFlower from "@/public/assets/images/fatwa.svg";
 import { Carousel, ConfigProvider } from "antd";
@@ -61,7 +60,7 @@ const CommingEvents: React.FC = () => {
         return <div className="text-center"><FontAwesomeIcon className="mainColor" icon={faSpinner} spin /></div>;
     }
     if (!events.length) {
-        return <div className="text-center my-20">
+        return <div className="text-center my-20" style={{ "direction" : "rtl" }}>
             <div className=' container mx-auto bkBox my-20 w-[80%]  [box-shadow:1px_1px_7px_#ddd] rounded-[10px]'>
                 <div className='relative overflow-hidden grid grid-cols-2 gap-4 items-center'>
                     <div className="bg-white right-0 lg:right-[130px] relative z-10 opacity-80 p-8 w-[95%] lg:w-auto rounded-[8px] [box-shadow:1px_1px_10px_#ddd]">
@@ -85,7 +84,7 @@ const CommingEvents: React.FC = () => {
         </div>;
     }
     return (
-        <section className="my-24">
+        <section className="my-24" style={{ "direction" : "rtl" }}>
             <ConfigProvider
                 theme={{
                     components: {

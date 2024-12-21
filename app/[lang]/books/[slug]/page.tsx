@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/books/${params.slug}`,
             {
                 params: { lang: 'en' }, // Adjust language as needed
-            } 
+            }
         );
         const book = response.data.data.Books;
 
@@ -20,9 +20,24 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             openGraph: {
                 title: book.book_name,
                 description: book.description,
+                type: "website",
+                url: `${process.env.NEXT_PUBLIC_BASE_URL}/books/${params.slug}`,
                 images: [
                     {
-                        url: book.image ,
+                        url: book.image,
+                        alt: book.course_name,
+                        width: 1200,
+                        height: 630,
+                    },
+                ],
+            },
+            twitter: {
+                title: book.book_name,
+                description: book.description,
+                site: 'https://x.com/soroojcenter',
+                images: [
+                    {
+                        url: book.image,
                         alt: book.course_name,
                         width: 1200,
                         height: 630,
@@ -39,5 +54,5 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default function Page() {
-  return <BookContent />;
+    return <BookContent />;
 }

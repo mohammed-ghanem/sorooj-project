@@ -45,7 +45,7 @@ const NewBookHome = () => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="parentDiv relative">
+    <div className="parentDiv relative" style={{ "direction" : "rtl" }}>
       <Swiper
         className="mx-auto container"
         style={{ width: "80%" }}

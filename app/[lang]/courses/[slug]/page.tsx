@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/${params.slug}`,
             {
                 params: { lang: 'en' }, // Adjust language as needed
-            } 
+            }
         );
         const course = response.data.data.Courses;
 
@@ -20,9 +20,24 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             openGraph: {
                 title: course.course_name,
                 description: course.description,
+                type: "website",
+                url: `${process.env.NEXT_PUBLIC_BASE_URL}/courses/${params.slug}`,
                 images: [
                     {
-                        url: course.image ,
+                        url: course.image,
+                        alt: course.course_name,
+                        width: 1200,
+                        height: 630,
+                    },
+                ],
+            },
+            twitter: {
+                site: 'https://x.com/soroojcenter',
+                title: course.course_name,
+                description: course.description,
+                images: [
+                    {
+                        url: course.image,
                         alt: course.course_name,
                         width: 1200,
                         height: 630,

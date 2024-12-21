@@ -69,7 +69,9 @@ const FatwaForm = () => {
   };
 
   return (
-    <section className='my-14 relative container mx-auto sm:w-[95%] md:w-[80%] flex flex-wrap-reverse lg:grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-2 items-center bkMainColor rounded-[10px] overflow-hidden'>
+    <section className='my-14 relative container mx-auto sm:w-[95%] md:w-[80%] flex flex-wrap-reverse lg:grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-2 items-center bkMainColor rounded-[10px] overflow-hidden'
+      style={{ "direction": "rtl" }}
+    >
       <div className=" py-10 relative z-40 col-span-2 w-[95%] md:w-[80%] mx-auto">
         <div className="mb-5 text-white font-bold">
           <h5>هل تريد طلب فتوى !  </h5>

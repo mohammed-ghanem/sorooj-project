@@ -7,7 +7,7 @@ import ScrollToTop from '../ScrollToTop/ScrollToTop'
 
 const Footer = () => {
   return (
-    <div className=" bkColor relative pt-[40px] pb-[10px]">
+    <div className=" bkColor relative pt-[40px] pb-[10px]" style={{ "direction" : "rtl" }}>
       <Image src={footerVectorImage} className=' object-cover absolute ' alt='footerVector' />
       <FirstFooter />
       <hr className='h-[2px] bkPrimaryColor my-5 opacity-65' />

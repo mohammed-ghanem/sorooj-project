@@ -21,6 +21,14 @@
                 "VideoLibirary" : "Video Libirary",
                 "AnswerQuestion"  : "Answer & Question",
                 "Subscribers"  : "Subscribers"
+            },
+            "titles" : {
+                "EducationalCourses" : "Educational courses",
+                "books" : "Books",
+                "VideoLibirary" : "Video Libirary",
+                "AnswerQuestion"  : "Answer & Question",
+                "MoreWatching" : "More Watching",
+                "SeeAll" : "More"
             }
         },
         "lesson" : {

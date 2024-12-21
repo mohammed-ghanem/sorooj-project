@@ -15,6 +15,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: " مركز سرج للدراسات والابحاث",
     description: " مركز سرج للدراسات والابحاث منارة البحث العلمى والمذاهب الفكرية المعاصرة",
+    type: "website",
+    url: "https://www.sorooj.org",
+    locale: "ar_SA",
+    siteName: " مركز سرج للدراسات والابحاث",
     images: [
       {
         url: "https://www.sorooj.org/_next/static/media/logo.2da5fe49.png",

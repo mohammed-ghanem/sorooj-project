@@ -3,44 +3,28 @@
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
-import { useParams } from 'next/navigation'
-import en from '@/app/dictionaries/en.json';  // Import English dictionary
-import ar from '@/app/dictionaries/ar.json';  // Import Arabic dictionary
+import LangUseParams from '../translate/LangUseParams';
 import { useEffect, useState } from 'react';
+import TranslateHook from '../translate/TranslateHook';
 
 
 const FastLinksFooter = () => {
      // Access dynamic [lang] parameter
-     const { lang }: { lang?: string } = useParams();
-     const [dictionary, setDictionary] = useState<any>(null);
-     const [mounted, setMounted] = useState<boolean>(false);
-    
-    useEffect(() => {
-        // Dynamically set the dictionary based on the current language
-        if (lang === 'en') {
-            setDictionary(en);
-        } else if (lang === 'ar') {
-            setDictionary(ar);
-        }
-    }, [lang]);
-
-    useEffect(() => {
-        setMounted(true); // Ensure the component is mounted before accessing params
-    }, []);
-
-    if (!mounted) return null; // Avoid rendering before the component is mounted
-    
+     const lang = LangUseParams();
+     const translate = TranslateHook();
     // Array of links
     const links = [
-        { href: `/${lang}`, text: `${dictionary.navigation.home}` },
-        { href: '/', text: 'عن المركز' },
-        { href: '/', text: ' الدورات المجانية' },
-        { href: '/', text: ' احكام وفتاوى' },
-        { href: '/', text: '  المكتبة المرئية' },
-        { href: '/', text: '  المكتبة الصوتية' },
-        { href: '/', text: '  المقالات' },
-        { href: '/', text: '  البث المباشر' },
-        { href: '/', text: '  الكتب والابحاث' },
+        { name: `${translate ? translate.navigation.home : "الرئيسية"}`, href: `/${lang}` },
+        { name: `${translate ? translate.navigation.about : "عن المركز"}`, href: `/${lang}/about` },
+        { name: `${translate ? translate.navigation.courses : "الدورات المجانية "}`, href: `/${lang}/courses` },
+        { name: `${translate ? translate.navigation.books : " الكتب والابحاث"}`, href: `/${lang}/books` },
+        { name: `${translate ? translate.navigation.questions : " سؤال وجواب"}`, href: `/${lang}/questions` },
+        { name: `${translate ? translate.navigation.videolibirary : " المكتبة المرئية"}`, href: `/${lang}/video-libirary` },
+        { name: `${translate ? translate.navigation.audiolibirary : " المكتبة الصوتية"}`, href: `/${lang}/audio-libirary` },
+        { name: `${translate ? translate.navigation.liveair : "البث المباشر"}`, href: `/${lang}/liveair` },
+        { name: `${translate ? translate.navigation.blog : "المدونة"}`, href: `/${lang}/blog` },
+        { name: `${translate ? translate.navigation.contact : " اتصل بنا"}`, href: `/${lang}/contact-us` },
+        { name: `${translate ? translate.navigation.academy : "اكاديمية سرج"}`, href: `https://academy.sorooj.org` },
     ];
 
     return (
@@ -51,7 +35,7 @@ const FastLinksFooter = () => {
                     <div key={index} className='col-span-1 text-white flex items-center mt-2 '>
                         <FontAwesomeIcon icon={faChevronLeft} className='primaryColor mr-2 text-sm ml-2' />
                         <Link href={link.href} className='mainColor font-semibold'>
-                            {link.text}
+                            {link.name}
                         </Link>
                     </div>
                 ))}

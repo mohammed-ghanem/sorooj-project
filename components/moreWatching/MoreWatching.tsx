@@ -33,14 +33,16 @@ const MoreWatching = () => {
     if (isLoading) {
         return <div className="text-center"><FontAwesomeIcon className="mainColor text-2xl my-4" icon={faSpinner} spin /></div>;
     }
-    
+
 
     if (error) {
         return <div className="text-center text-red-500">{error}</div>;
     }
 
     return (
-        <section className="container mx-auto w-[80%] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 md:gap-3">
+        <section className="container mx-auto w-[80%] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 md:gap-3"
+            style={{ "direction": "rtl" }}
+        >
             {mostViewed.map((item) => (
                 <div key={item.id} className="bkColor rounded-[15px] overflow-hidden relative mb-4">
                     <div className="">
@@ -68,7 +70,7 @@ const MoreWatching = () => {
                             </h2>
                             <h3 className="mt-1">
                                 <FontAwesomeIcon icon={faUser} className="ml-1 primaryColor" />
-                                <span className="text-[12px] mainColor">{`${item.author_name.slice(0,30)} ...`}</span>
+                                <span className="text-[12px] mainColor">{`${item.author_name.slice(0, 30)} ...`}</span>
                             </h3>
                             <p className="text-[12px] mainColor flex items-center mt-2">
                                 <FontAwesomeIcon icon={faBookOpen} className="ml-1 primaryColor" />
@@ -76,7 +78,7 @@ const MoreWatching = () => {
                             </p>
                         </div>
                         <Link
-                            href={`/${lang}/${item.id}`}
+                            href={`/${lang}/${item.type}/${item.slug}`}
                             className="block text-center bkPrimaryColor py-3 mt-[16px] text-white font-bold"
                         >
                             مشاهدة
