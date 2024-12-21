@@ -33,6 +33,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             },
             twitter: {
                 site: 'https://x.com/soroojcenter',
+                card: 'summary_large_image',
                 title: course.course_name,
                 description: course.description,
                 images: [

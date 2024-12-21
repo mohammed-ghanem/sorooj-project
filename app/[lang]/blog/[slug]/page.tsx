@@ -34,6 +34,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             twitter: {
                 title: blog.blog_name,
                 description: blog.description,
+                card: 'summary_large_image',
                 site: 'https://x.com/soroojcenter',
                 images: [
                     {
