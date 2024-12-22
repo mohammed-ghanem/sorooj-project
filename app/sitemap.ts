@@ -11,8 +11,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             return [];
         }
     };
-
-    const endpoints = ["courses", "books", "get-questions", "blogs"];
+    // "get-questions",
+    const endpoints = ["courses", "books", "blogs"];
     const [courses, books, questions, blogs] = await Promise.all(
         endpoints.map((endpoint) =>
             fetchWithFallback(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/${endpoint}`)
@@ -29,10 +29,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: book.created_at ? new Date(book.created_at) : new Date(),
     }));
 
-    const questionUrls = questions.map((question: { slug: string; created_at: string }) => ({
-        url: `https://www.sorooj.org/ar/questions/${question.slug}`,
-        lastModified: question.created_at ? new Date(question.created_at) : new Date(),
-    }));
+    // const questionUrls = questions.map((question: { slug: string; created_at: string }) => ({
+    //     url: `https://www.sorooj.org/ar/questions/${question.slug}`,
+    //     lastModified: question.created_at ? new Date(question.created_at) : new Date(),
+    // }));
 
     const blogUrls = blogs.map((blog: { slug: string; created_at: string }) => ({
         url: `https://www.sorooj.org/ar/blogs/${blog.slug}`,
@@ -51,10 +51,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         { url: "https://www.sorooj.org/ar/contact-us", lastModified: new Date() },
     ];
 
-    return [...staticUrls, ...courseUrls, ...bookUrls, ...questionUrls, ...blogUrls];
+    return [...staticUrls, ...courseUrls, ...bookUrls, ...blogUrls];
 }
 
-
+//...questionUrls,
 
 
 
