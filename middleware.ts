@@ -51,7 +51,9 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     "/((?!api|_next/static|_next/image|favicon.ico).*)",
-    "/[lang]/auth/:path*"
+    "/[lang]/auth/:path*",
+    "/sitemap.xml",
+    "/robots.txt"
   ],
 };
 
