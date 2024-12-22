@@ -7,6 +7,10 @@ export function middleware(request: NextRequest) {
   const token = request.cookies.get('access_token');
 
   // 1. Language handling middleware logic
+  const staticRoutes = ['/sitemap.xml', '/robots.txt', '/favicon.ico'];
+  if (staticRoutes.includes(pathname)) {
+    return NextResponse.next(); // Allow request to proceed without rewrites or redirects
+  }
 
   // Check if the pathname starts with any of the locales in the config
   const localeInPath = i18n.locales.find((locale) =>
@@ -50,10 +54,8 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
     "/[lang]/auth/:path*",
-    "/sitemap.xml",
-    "/robots.txt"
   ],
 };
 
