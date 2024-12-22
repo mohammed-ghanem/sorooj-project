@@ -5,9 +5,13 @@ const nextConfig = {
     domains: [],
   },
   reactStrictMode: false,
-  // experimental: {
-  //   appDir: true, // Ensure the app directory is enabled for Next.js 14
-  // },
-}
-
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap.xml', // The public route for your sitemap
+        destination: '/sitemap', // The internal route to the sitemap page
+      },
+    ];
+  },
+};
 export default nextConfig
