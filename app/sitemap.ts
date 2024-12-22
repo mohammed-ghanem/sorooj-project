@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next';
 import { i18n } from '@/i18n-config'; // Assuming your i18n config is here
 
-const SITE_URL = "https://www.sorooj.org"
+const SITE_URL = "https://sorooj.vercel.app"
 
 
 const Sitemap = () => {
