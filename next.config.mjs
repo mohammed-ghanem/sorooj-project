@@ -5,9 +5,9 @@ const nextConfig = {
     domains: [],
   },
   reactStrictMode: false,
-  experimental: {
-    metadataRoutes: true,
-  },
+  // experimental: {
+  //   metadataRoutes: true,
+  // },
 }
 
 export default nextConfig

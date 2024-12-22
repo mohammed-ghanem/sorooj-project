@@ -1,98 +1,62 @@
-import type { MetadataRoute } from 'next'
- 
-export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: 'https://www.sorooj.org',
-      lastModified: new Date(),
-      alternates: {
-        languages: {
-          ar: 'https://www.sorooj.org/ar',
-          en: 'https://www.sorooj.org/en',
-        },
-      },
-    },
-    {
-      url: 'https://www.sorooj.org/about',
-      lastModified: new Date(),
-      alternates: {
-        languages: {
-          ar: 'https://www.sorooj.org/ar/about',
-          en: 'https://www.sorooj.org/en/about',
-        },
-      },
-    },
-    {
-      url: 'https://www.sorooj.org/contact-us',
-      lastModified: new Date(),
-      alternates: {
-        languages: {
-          ar: 'https://www.sorooj.org/ar/contact-us',
-          en: 'https://www.sorooj.org/en/contact-us',
-        },
-      },
-    },
-  ]
+import { MetadataRoute } from "next";
+import axios from "axios";
+
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+    // Fetch static url data
+    const staticUrls = [
+        { url: "https://www.sorooj.org/ar/about", lastModified: new Date() },
+        { url: "https://www.sorooj.org/ar/courses", lastModified: new Date() },
+        { url: "https://www.sorooj.org/ar/books", lastModified: new Date() },
+        { url: "https://www.sorooj.org/ar/blogs", lastModified: new Date() },
+        { url: "https://www.sorooj.org/ar/questions", lastModified: new Date() },
+        { url: "https://www.sorooj.org/ar/video-libirary", lastModified: new Date() },
+        { url: "https://www.sorooj.org/ar/audio-libirary", lastModified: new Date() },
+        { url: "https://www.sorooj.org/ar/liveair", lastModified: new Date() },
+        { url: "https://www.sorooj.org/ar/contact-us", lastModified: new Date() },
+    ];
+
+    // Fetch dynamic courses data
+    const coursesResponse = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses`);
+    const CoursesData = coursesResponse.data.data
+
+    // Map dynamic data to sitemap format
+    const coursesUrls = CoursesData.map((item: { slug: string; created_at: string }) => ({
+        url: `https://www.sorooj.org/ar/${item.slug}`,
+        lastModified: new Date(item.created_at), // Use the last modified date from the API
+    }));
+
+    //************************************************** */
+
+    // Fetch dynamic books data
+    const booksResponse = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/books`);
+    const booksData = booksResponse.data.data
+
+    // Map dynamic data to sitemap format
+    const booksUrls = booksData.map((item: { slug: string; created_at: string }) => ({
+        url: `https://www.sorooj.org/ar/${item.slug}`,
+        lastModified: new Date(item.created_at), // Use the last modified date from the API
+    }));
+    //************************************************** */
+    // Fetch dynamic blogs data
+    const blogsResponse = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/blogs`);
+    const blogsData = blogsResponse.data.data
+    // Map dynamic data to sitemap format
+    const blogsUrls = blogsData.map((item: { slug: string; created_at: string }) => ({
+        url: `https://www.sorooj.org/ar/${item.slug}`,
+        lastModified: new Date(item.created_at), // Use the last modified date from the API
+    }));
+    //************************************************** */
+    // Fetch dynamic questions data
+    // const questionsResponse = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/get-questions`);
+    // const questionsData = questionsResponse.data.data
+    // // Map dynamic data to sitemap format
+    // const questionsUrls = questionsData.map((item: { slug: string; created_at: string }) => ({
+    //     url: `https://www.sorooj.org/ar/${item.slug}`,
+    //     lastModified: new Date(item.created_at), // Use the last modified date from the API
+    // }));
+
+
+
+    return [...staticUrls, ...coursesUrls, ...booksUrls, ...blogsUrls];
 }
-
-
-
-
-
-
-
-
-// import { MetadataRoute } from "next";
-
-
-
-// export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-
-
-//     // const fetchWithFallback = async (url: string) => {
-//     //     try {
-//     //         const response = await fetch(url);
-//     //         if (!response.ok) throw new Error(`Failed to fetch: ${url}`);
-//     //         return await response.json();
-//     //     } catch (error) {
-//     //         console.error(error);
-//     //         return [];
-//     //     }
-//     // };
-
-//     // const endpoints = ["courses", "books", "blogs"];
-//     // const [courses, books, questions, blogs] = await Promise.all(
-//     //     endpoints.map((endpoint) =>
-//     //         fetchWithFallback(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/${endpoint}`)
-//     //     )
-//     // );
-
-//     // const courseUrls = courses.map((course: { slug: string; created_at: string }) => ({
-//     //     url: `https://www.sorooj.org/ar/courses/${course.slug}`,
-//     //     lastModified: course.created_at ? new Date(course.created_at) : new Date(),
-//     // }));
-
-//     // const bookUrls = books.map((book: { slug: string; created_at: string }) => ({
-//     //     url: `https://www.sorooj.org/ar/books/${book.slug}`,
-//     //     lastModified: book.created_at ? new Date(book.created_at) : new Date(),
-//     // }));
-
-//     // const blogUrls = blogs.map((blog: { slug: string; created_at: string }) => ({
-//     //     url: `https://www.sorooj.org/ar/blogs/${blog.slug}`,
-//     //     lastModified: blog.created_at ? new Date(blog.created_at) : new Date(),
-//     // }));
-
-//     const staticUrls = [
-//         { url: "https://www.sorooj.org/ar/about", lastModified: new Date() },
-//         { url: "https://www.sorooj.org/ar/courses", lastModified: new Date() },
-//         { url: "https://www.sorooj.org/ar/books", lastModified: new Date() },
-//         { url: "https://www.sorooj.org/ar/blogs", lastModified: new Date() },
-//         { url: "https://www.sorooj.org/ar/questions", lastModified: new Date() },
-//         { url: "https://www.sorooj.org/ar/video-libirary", lastModified: new Date() },
-//         { url: "https://www.sorooj.org/ar/audio-libirary", lastModified: new Date() },
-//         { url: "https://www.sorooj.org/ar/liveair", lastModified: new Date() },
-//         { url: "https://www.sorooj.org/ar/contact-us", lastModified: new Date() },
-//     ];
- 
-//     return [...staticUrls];
-// }
