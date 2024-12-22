@@ -35,15 +35,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // }));
 
     const staticUrls = [
-        { url: "https://www.sorooj.org/ar/about", lastModified: new Date() },
-        { url: "https://www.sorooj.org/ar/courses", lastModified: new Date() },
-        { url: "https://www.sorooj.org/ar/books", lastModified: new Date() },
-        { url: "https://www.sorooj.org/ar/blogs", lastModified: new Date() },
-        { url: "https://www.sorooj.org/ar/questions", lastModified: new Date() },
-        { url: "https://www.sorooj.org/ar/video-libirary", lastModified: new Date() },
-        { url: "https://www.sorooj.org/ar/audio-libirary", lastModified: new Date() },
-        { url: "https://www.sorooj.org/ar/liveair", lastModified: new Date() },
-        { url: "https://www.sorooj.org/ar/contact-us", lastModified: new Date() },
+        { url: "https://sorooj.vercel.app/ar/about", lastModified: new Date() },
+        { url: "https://sorooj.vercel.app/ar/courses", lastModified: new Date() },
+        { url: "https://sorooj.vercel.app/ar/books", lastModified: new Date() },
+        { url: "https://sorooj.vercel.app/ar/blogs", lastModified: new Date() },
+        { url: "https://sorooj.vercel.app/ar/questions", lastModified: new Date() },
+        { url: "https://sorooj.vercel.app/ar/video-libirary", lastModified: new Date() },
+        { url: "https://sorooj.vercel.app/ar/audio-libirary", lastModified: new Date() },
+        { url: "https://sorooj.vercel.app/ar/liveair", lastModified: new Date() },
+        { url: "https://sorooj.vercel.app/ar/contact-us", lastModified: new Date() },
     ];
  
     return [...staticUrls];
