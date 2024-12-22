@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
             userAgent: "*",
             allow: "/",
         },
-        sitemap: "https://sorooj.vercel.app/sitemap.xml",
+        sitemap: "https://www.sorooj.org/sitemap.xml",
     };
 }

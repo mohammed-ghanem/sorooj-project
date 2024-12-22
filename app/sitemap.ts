@@ -1,43 +1,39 @@
-import { GetServerSideProps } from 'next';
-import { i18n } from '@/i18n-config'; // Assuming your i18n config is here
-
-const SITE_URL = "https://sorooj.vercel.app"
-
-
-const Sitemap = () => {
-    return null; // No need to render anything; this is only for generating XML
-  };
-  
-  export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-    const languages = i18n.locales;
-    const pages = ['/', '/about', '/contact-us']; // Add your pages here
-  
-    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    ${pages
-      .map((page) =>
-        languages
-          .map(
-            (lang) => `
-      <url>
-        <loc>${SITE_URL}/${lang}${page === '/' ? '' : page}</loc>
-        <changefreq>weekly</changefreq>
-        <priority>${page === '/' ? '1.0' : '0.8'}</priority>
-      </url>`
-          )
-          .join('')
-      )
-      .join('')}
-  </urlset>`;
-  
-    res.setHeader('Content-Type', 'text/xml');
-    res.write(sitemap);
-    res.end();
-  
-    return { props: {} };
-  };
-  
-  export default Sitemap;
+import type { MetadataRoute } from 'next'
+ 
+export default function sitemap(): MetadataRoute.Sitemap {
+  return [
+    {
+      url: 'https://www.sorooj.org',
+      lastModified: new Date(),
+      alternates: {
+        languages: {
+          ar: 'https://www.sorooj.org/ar',
+          en: 'https://www.sorooj.org/en',
+        },
+      },
+    },
+    {
+      url: 'https://www.sorooj.org/about',
+      lastModified: new Date(),
+      alternates: {
+        languages: {
+          ar: 'https://www.sorooj.org/ar/about',
+          en: 'https://www.sorooj.org/en/about',
+        },
+      },
+    },
+    {
+      url: 'https://www.sorooj.org/contact-us',
+      lastModified: new Date(),
+      alternates: {
+        languages: {
+          ar: 'https://www.sorooj.org/ar/contact-us',
+          en: 'https://www.sorooj.org/en/contact-us',
+        },
+      },
+    },
+  ]
+}
 
 
 
