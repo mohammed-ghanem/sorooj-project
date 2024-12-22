@@ -20,7 +20,7 @@ const BlogPage = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       setLoading(true);
-      try {
+      try { 
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/blogs`,
           {
@@ -89,7 +89,7 @@ const BlogPage = () => {
         blogTitle={blog.blog_name}
         doctorName={blog.author_name}
         descriptionBlog={blog.brief_description}
-        pathLinkToContent={`/${lang}/blog/${blog.slug}`}
+        pathLinkToContent={`/${lang}/blogs/${blog.slug}`}
       />
     );
   });

@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import axios from 'axios';
 import "./style.css";
-
 import defImage from "@/public/assets/images/default.webp"; // Default image
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleChevronRight } from '@fortawesome/free-solid-svg-icons/faCircleChevronRight';
@@ -29,7 +28,6 @@ const Slider: React.FC = () => {
         );
         setImages(response.data.data || []); // Assuming `response.data.images` is the array of images
         setLoading(false);
-        console.log(response.data.data)
       } catch (error) {
         console.error("Error fetching slider images:", error);
         setImages([DefaultImage]); // Fallback to default image

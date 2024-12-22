@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
                 title: blog.blog_name,
                 description: blog.description,
                 type: "website",
-                url: `${process.env.NEXT_PUBLIC_BASE_URL}/blog/${params.slug}`,
+                url: `${process.env.NEXT_PUBLIC_BASE_URL}/blogs/${params.slug}`,
                 images: [
                     {
                         url: blog.image,

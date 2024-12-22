@@ -45,8 +45,6 @@ const CommingEvents: React.FC = () => {
                 );
                 setEvents(res.data.data || []); // Assuming API response has a "events" field
                 setLoading(false);
-
-                console.log(res.data.data)
             } catch (error) {
                 console.error("Error fetching events:", error);
                 setLoading(false);

@@ -18,7 +18,6 @@ const MoreWatching = () => {
             setIsLoading(true);
             const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/home/most-viewed`);
             setMostViewed(res.data.data.most_viewed || []); // Adjust based on your API response structure
-            console.log(res.data.data.most_viewed)
         } catch (err: any) {
             setError(err.message || 'Failed to fetch data');
         } finally {
