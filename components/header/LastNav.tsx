@@ -27,7 +27,7 @@ const LastNav = () => {
         { name: `${translate ? translate.navigation.liveair : "البث المباشر"}`, href: `/${lang}/liveair` },
         { name: `${translate ? translate.navigation.blog : "المدونة"}`, href: `/${lang}/blogs` },
         { name: `${translate ? translate.navigation.contact : " اتصل بنا"}`, href: `/${lang}/contact-us` },
-        { name: `${translate ? translate.navigation.academy : "اكاديمية سرج"}`, href: `https://academy.sorooj.org` },
+        { name: `${translate ? translate.navigation.academy : "اكاديمية سرج"}`, href: `` },
     ];
 
     return (
