@@ -51,11 +51,10 @@ const CoursesContent = () => {
 
   useEffect(() => {
 
-    //console.log("fetch time")
     const fetchCourses = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/${slug}`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/${slug.slice(0,100)}`,
           {
             params: { lang },
             headers: {

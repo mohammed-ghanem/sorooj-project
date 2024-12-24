@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
                 type: "website",
                 url: `${process.env.NEXT_PUBLIC_BASE_URL}/courses/${params.slug}`,
                 images: [
-                    {
+                    { 
                         url: course.image,
                         alt: course.course_name,
                         width: 1200,

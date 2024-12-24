@@ -4,9 +4,67 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Banners from "../banners/Banners"
 import defImage from "@/public/assets/images/default.webp"; // Default image
 import NewFatwaBtn from "./NewFatwaBtn";
-import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
+import { faCircleQuestion, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
+import LangUseParams from "../translate/LangUseParams";
+import { useParams } from "next/navigation";
+import axios from "axios";
+import parse from "html-react-parser";
 
+
+
+interface AnswerDetails {
+    answer_content: string;
+    audio_file: any;
+    youtube_link: string
+
+}
 const QustionContentPage = () => {
+    const [answerDetails, setAnswerDetails] = useState<AnswerDetails | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    const lang = LangUseParams();
+    const { slug } = useParams();
+
+    useEffect(() => {
+
+        const fetchAnswer = async () => {
+            try {
+                const response = await axios.get(
+                    `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/fatwa/${slug}`,
+                    {
+                        params: { lang },
+                        headers: {
+                            "Content-Type": "application/json",
+                            withCredentials: true,
+
+                        },
+                    }
+                );
+                setAnswerDetails(response.data.data.FatwaAnswer);
+            } catch (err: any) {
+                setError(err.response?.data?.message || err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchAnswer();
+
+
+    }, [lang, slug]);
+
+
+    if (loading) {
+        return <div className="text-center"><FontAwesomeIcon className="mainColor text-2xl my-4" icon={faSpinner} spin /></div>;
+    }
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
+    if (!answerDetails) {
+        return <div>No answer content details found.</div>
+    }
+
+
     return (
         <div>
             <div>
@@ -16,30 +74,36 @@ const QustionContentPage = () => {
                 <div className="col-span-12 lg:col-span-8">
                     <div className="askSection">
                         <h1 className="font-bold text-sm text-white bkPrimaryColor p-[14px] rounded-[8px] w-fit">السؤال</h1>
-                        <p className="p-4 mainColor">ما أحكام خدمة الوالدين عند العجز عن خدمة أنفسهما ؟</p>
+                        <p className="p-4 mainColor">
+                            fetch question title
+                        </p>
                     </div>
                     <div className="answerSection">
                         <h2 className="font-bold text-sm text-white bkPrimaryColor p-[14px] rounded-[8px] w-fit">الاجابة</h2>
-                        <p className="p-4 mainColor leading-[2.1]">الحمد لله والصلاة والسلام على رسول الله وعلى آله وصحبه، أما بعد:
+                        <p className="p-4 mainColor leading-[2.1]">
+                            {answerDetails.answer_content ? parse(answerDetails.answer_content) : ""}
+                        </p>
 
-                            فخدمة الوالدين عند حاجتهما إليها، وعجزهما عن القيام عليها بالنفس، أو بالمال حق واجب على أولادهما جميعا -ذكورهم، وإناثهم- إما أن يقوموا بالخدمة بأنفسهم، أو يستأجروا من يقوم بخدمتهما إن حصلت الكفاية بذلك.
+                        {answerDetails.audio_file
+                            ?
+                            <audio controls className="w-[80%] md:w-full">
+                                <source src={answerDetails.audio_file} type="audio/mpeg" />
+                            </audio>
+                            : ""
+                        }
 
-                            قال السفاريني -رحمه الله- في غذاء الألباب عند كلامه على حقوق الوالدين: ومن حقوقهما خدمتهما إذا احتاجا، أو أحدهما إلى خدمة. انتهى.
+                        {answerDetails.youtube_link
+                            ?
+                            <iframe className='w-full h-80'
+                                src={`https://www.youtube.com/embed/${answerDetails.youtube_link}?enablejsapi=1`}
+                                title="answerVideo"
+                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope;"
+                                allowFullScreen
+                            />
+                            :
+                            ""
+                        }
 
-                            وقال الخادمي الحنفي -رحمه الله- في بريقة محمودية متحدثاً عن حقوق الوالدين: إذا احتاجا إلى الخدمة خدمهما. انتهى.
-
-                            وجاء في الموسوعة الفقهية: أما خدمة الولد لوالده، أو استخدام الأب لولده: فجائز بلا خلاف، بل إن ذلك من البر المأمور به شرعاً، ويكون واجباً على الولد خدمة، أو إخدام والده عند الحاجة. انتهى.
-
-                            وعليه؛ فإن كانت أمكم محتاجة للخدمة فالواجب عليكم جميعا خدمتها؛ وعلى أختكم أن تقوم بحصتها من خدمة أمها، وتلي أمورها الخاصة التي تحتاج إلى اطلاع على العورات، ونحو ذلك، لكون عورة المرأة مع المرأة أخف من عورتها مع الرجال المحارم، ولكون الأمّ أوصت بذلك؛ لكن إذا منعها زوجها من خدمة أمها؛ فهي معذورة، وعليها أن تقوم بما تقدر عليه من البر، والإحسان، وتستأجر من تقوم بخدمة أمّها، أو تساهم في أجرتها إن أمكنها ذلك، وراجع الفتوى: 190983.
-
-                            ولا ينبغي للزوج أن يمنع زوجته من خدمة أمّها؛ لكن إذا تعارض ذلك مع حقّه فله منعها؛ لأنّ حق الزوج آكد من حقّ الوالدين، قال ابن تيمية -رحمه الله: الْمَرْأَةُ إذَا تَزَوَّجَتْ كَانَ زَوْجُهَا أَمْلَكَ بِهَا مِنْ أَبَوَيْهَا، وَطَاعَةُ زَوْجِهَا عَلَيْهَا أَوْجَبُ. انتهى من مجموع الفتاوى.
-
-                            وإذا دعت الحاجة إلى قيام الأبناء بخدمة أمّهم في الأمور التي فيها اطلاع على العورة ونحو ذلك؛ فلا حرج عليهم في هذه الحال، قال الرحيباني -رحمه الله- في مطالب أولي النهى: ولطبيب، ومن يلي خدمة مريض، أو أقطع يدين، ولو أنثى، في وضوء، واستنجاء نظر، ومس ما دعت إليه حاجة حتى الفرج؛ لأن ذلك موضع حاجة. انتهى.
-
-                            والله أعلم.</p>
-                        <audio controls className="w-[80%] md:w-full">
-                            <source src="horse.mp3" type="audio/mpeg" />
-                        </audio>
                     </div>
                 </div>
                 <div className="col-span-12 lg:col-span-4">

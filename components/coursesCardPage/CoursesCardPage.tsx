@@ -152,6 +152,6 @@ const CoursesCardPage = () => {
             </div>
         </div>
     );
-};
+}; 
 
 export default CoursesCardPage;

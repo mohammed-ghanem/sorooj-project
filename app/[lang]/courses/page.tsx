@@ -1,7 +1,7 @@
 import CoursesCardPage from "@/components/coursesCardPage/CoursesCardPage"
 import { Metadata } from "next";
 
-
+ 
 export const metadata: Metadata = {
     title: "دورات تعليمية بمركز سرج للدراسات والابحاث",
     description: "دورات تعليمية مجانية منارة البحث العلمى والمذاهب الفكرية المعاصرة",
