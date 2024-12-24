@@ -16,7 +16,9 @@ import parse from "html-react-parser";
 interface AnswerDetails {
     answer_content: string;
     audio_file: any;
-    youtube_link: string
+    youtube_link: string;
+    fatwa_question: any;
+    question: string;
 
 }
 const QustionContentPage = () => {
@@ -75,7 +77,7 @@ const QustionContentPage = () => {
                     <div className="askSection">
                         <h1 className="font-bold text-sm text-white bkPrimaryColor p-[14px] rounded-[8px] w-fit">السؤال</h1>
                         <p className="p-4 mainColor">
-                            fetch question title
+                            {answerDetails.fatwa_question.question}
                         </p>
                     </div>
                     <div className="answerSection">

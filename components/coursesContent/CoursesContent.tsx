@@ -54,7 +54,7 @@ const CoursesContent = () => {
     const fetchCourses = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/${slug.slice(0,100)}`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/${slug}`,
           {
             params: { lang },
             headers: {

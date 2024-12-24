@@ -82,9 +82,12 @@ const QustionsPage = () => {
         return <div>Error: {error}</div>;
     }
 
+
     const allQuestions = questions.map((question: any) => (
         <div key={question.id} className="questionsBox grid grid-cols-12 px-5 pt-4">
-            <p className="col-span-10 mainColor font-bold text-sm">{question.question}</p>
+            <p className="col-span-10 mainColor font-bold text-sm">
+                {question.question.length > 150 ? question.question.slice(0, 150) + ' ... ' : question.question}
+            </p>
             <div className="col-span-2 text-left">
                 <Link
                     className="primaryColor border-b-2 border-customGold"
@@ -104,7 +107,7 @@ const QustionsPage = () => {
                 <Banners src={defImage} textPath="سؤال وجواب" />
             </div>
             <div className="my-14 container mx-auto w-[95%] md:w-[80%] grid grid-cols-1 lg:grid-cols-5 gap-10">
-                <div className="col-span-2">
+                <div className="col-span-2 h-80">
                     <h1 className="primaryColor font-bold ">سؤال وجواب</h1>
                     <p className="mainColor mt-3 font-bold">
                         اليك اسئلة واجوبة وكل ما تحتاج السؤال عنة

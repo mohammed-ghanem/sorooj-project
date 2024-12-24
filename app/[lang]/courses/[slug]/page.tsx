@@ -58,20 +58,3 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 export default function Page() {
     return <CoursesContent />;
 }
-
-
-
-
-
-
-
-
-
-
-// import CoursesContent from "@/components/coursesContent/CoursesContent";
-
-
-// export default function coursesContentPage() {
-//     return <div><CoursesContent /></div>;
-
-// } 
