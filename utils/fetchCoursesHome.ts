@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'; 
 
 // Define the type for course items
 export interface CourseItem {

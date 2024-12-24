@@ -27,7 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }));
 
     //************************************************** */
- 
+
     // Fetch dynamic books data
     const booksResponse = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/books`);
     const booksData = booksResponse.data.data
@@ -48,15 +48,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }));
     //************************************************** */
     // Fetch dynamic questions data
-    // const questionsResponse = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/get-questions`);
-    // const questionsData = questionsResponse.data.data
-    // // Map dynamic data to sitemap format
-    // const questionsUrls = questionsData.map((item: { slug: string }) => ({
-    //     url: `https://www.sorooj.org/ar/${item.slug}`,
-    //    // lastModified: new Date(item.created_at), // Use the last modified date from the API
-    // }));
+    const questionsResponse = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/fatwa/get-questions`);
+    const questionsData = questionsResponse.data.data
+    // Map dynamic data to sitemap format
+    const questionsUrls = questionsData.map((item: { slug: string; created_at: string }) => ({
+        url: `https://www.sorooj.org/ar/${item.slug}`,
+        lastModified: new Date(item.created_at), // Use the last modified date from the API
+    }));
 
 
 
-    return [...staticUrls, ...coursesUrls, ...booksUrls, ...blogsUrls ];
+    return [...staticUrls, ...coursesUrls, ...booksUrls, ...blogsUrls , ...questionsUrls];
 }
