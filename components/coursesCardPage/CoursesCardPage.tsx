@@ -52,7 +52,7 @@ const CoursesCardPage = () => {
             } finally {
                 setLoading(false);
             }
-        };
+        }; 
 
         fetchCourses();
     }, [lang, token, selectedCategoryId, currentPage]); // Re-fetch when category ID changes

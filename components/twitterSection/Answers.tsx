@@ -12,7 +12,7 @@ import LangUseParams from '../translate/LangUseParams';
 import './style.css';
 import Image from 'next/image';
 import noQues from "@/public/assets/images/noques.svg"
-
+ 
 const Answers = () => {
     const [questions, setQuestions] = useState<FatwaItem[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
@@ -54,7 +54,7 @@ const Answers = () => {
     const items = questions.map((question) => ({
         key: question.id.toString(),
         label: (
-            <h5 className="font-bold font-cairo text-white">
+            <h5 className="font-bold font-cairo mainColor">
                 {question.question.length > 90
                     ? question.question.slice(0, 90) + " ... "
                     : question.question}
@@ -71,7 +71,7 @@ const Answers = () => {
                                 : parse(question.answer.answer_content)
                                }
                             <Link
-                                className="primaryColor border-b-2 border-customGold font-bold"
+                                className="primaryColor border-b-2 border-customGold font-bold hover:text-[#424C61]"
                                 href={`/${lang}/questions/${question.slug}`}
                             >
                                 اقراء المزيد
@@ -92,12 +92,12 @@ const Answers = () => {
             items={items}
             defaultActiveKey={defaultActiveKey}
             accordion // Enable accordion behavior
-            expandIconPosition="end"
+            expandIconPosition="end" 
             expandIcon={({ isActive }) =>
                 isActive ? (
-                    <MinusCircleOutlined style={{ fontSize: '24px', color: '#fff' }} />
+                    <MinusCircleOutlined style={{ fontSize: '24px', color: '#9F854E' }} />
                 ) : (
-                    <PlusCircleOutlined style={{ fontSize: '24px', color: '#fff' }} />
+                    <PlusCircleOutlined style={{ fontSize: '24px', color: '#9F854E' }} />
                 )
             }
         />

@@ -37,7 +37,7 @@ const VideoCourseTabs = ({ courseVideos }: any) => {
           </div>
         ))}
       </div>
-
+ 
       {/* Content on the right for large screens, full width for small/medium screens */}
       <div className="flex-grow w-full lg:w-auto bg-black">
         {courseVideos.map(

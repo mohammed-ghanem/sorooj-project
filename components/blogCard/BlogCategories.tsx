@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 
 type Category = {
-    id: number;
+    id: number; 
     name: string;
     subcategories?: Category[];
 };

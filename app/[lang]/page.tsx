@@ -1,6 +1,5 @@
 
 import Slider from "@/components/slider/Slider";
-import VideoTabs from "@/components/videoLibTabs/VideoTabs";
 import { getDictionary } from "./dictionaries";
 import Statistics from "@/components/statistics/Statistics";
 import NewCourseHome from "@/components/newCoursesHome/NewCourseHome";
@@ -14,6 +13,7 @@ import MoreWatchTitle from "@/components/homeTitles/MoreWatchTitle";
 import AnswerTitle from "@/components/homeTitles/AnswerTitle";
 import FatwaForm from "@/components/fatwaForm/FatwaForm";
 import CommingEvents from "@/components/commingEvents/CommingEvents";
+import VideoLibTabs from "@/components/videoLibTabs/VideoLibTabs";
 
 
 export const dynamic = 'force-static';
@@ -40,7 +40,7 @@ export default async function Home({ params }: Props) {
         <NewCourseHome />
         <CommingEvents />
         <VideoTitle />
-        <VideoTabs />
+        <VideoLibTabs/>
         <BooksTitle />
         <NewBookHome />
         <MoreWatchTitle />

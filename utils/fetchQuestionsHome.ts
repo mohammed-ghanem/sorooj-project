@@ -7,7 +7,7 @@ export interface FatwaItem {
     answer_content: any;
     slug: string;
 
-}
+} 
 
 export const fetchQuestionsHome = async (
     page = 0,

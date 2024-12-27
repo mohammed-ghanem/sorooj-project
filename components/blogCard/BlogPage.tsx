@@ -102,7 +102,7 @@ const BlogPage = () => {
       <div className="container mx-auto my-20 grid grid-cols-1 lg:grid-cols-4 gap-0 lg:gap-10 w-[95%] lg:w-[80%]">
         <div>
           <BlogCategories
-            onCategorySelect={(categoryId) => setSelectedCategoryId(categoryId)}
+            onCategorySelect={(categoryId) => setSelectedCategoryId(categoryId)} 
           />
         </div>
         <div className="lg:col-span-3">
