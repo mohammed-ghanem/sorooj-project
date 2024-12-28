@@ -1,6 +1,5 @@
 "use client";
 import { useEffect } from "react";
-import { parse } from "querystring";
 import Cookies from "js-cookie";
 import facebook from "@/public/assets/images/facebook.svg";
 import google from "@/public/assets/images/google.svg";
@@ -16,11 +15,15 @@ const SocialLogin = () => {
         if (queryString) {
             const params = new URLSearchParams(queryString);
             const token = params.get("token");
+            console.log("Extracted Token:", token); // Debugging
             if (token) {
                 // Store the token in a cookie
                 Cookies.set("access_token", token, { expires: 7, secure: true });
-                // Redirect to the home page
-                window.location.href = "https://www.sorooj.org";
+                console.log("Token saved to cookie"); // Debugging
+                // Delay redirection to ensure cookie is set
+                setTimeout(() => {
+                    window.location.href = "https://www.sorooj.org";
+                }, 500);
             }
         }
     }, []);
