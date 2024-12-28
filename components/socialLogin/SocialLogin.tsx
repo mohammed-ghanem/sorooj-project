@@ -23,6 +23,7 @@ const SocialLogin = () => {
 
                 // Store the token securely in cookies
                 Cookies.set("access_token", token, { expires: 7, secure: true });
+                Cookies.set("is_verified", "true", { expires: 7, secure: true });
                 console.log("Token saved to cookies"); // Debugging
 
                 // Clear the query string from the URL
