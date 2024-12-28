@@ -9,7 +9,6 @@ import TranslateHook from "../translate/TranslateHook";
 
 const SocialLogin = () => {
     const translate = TranslateHook();
-
     const GOOGLE_LOGIN_URL = `https://dashboard.sorooj.org/client-api/v1/auth/google/redirect`;
 
     useEffect(() => {
@@ -20,12 +19,22 @@ const SocialLogin = () => {
                 const token = urlParams.get("token");
 
                 if (token) {
+                    // Debugging: log the token
+                    console.log("Token:", token);
+
                     // Store the token in cookies
-                    Cookies.set("access_token", token, { expires: 7 });
+                    Cookies.set("access_token", token, {
+                        expires: 7,
+                        domain: "sorooj.org",
+                    });
+
+                    // Debugging: verify the cookie
+                    console.log("Cookie set:", Cookies.get("access_token"));
 
                     // Redirect to the home page
-                    window.location.href = "/";
-
+                    setTimeout(() => {
+                        window.location.href = "/";
+                    }, 500);
                 }
             } catch (error) {
                 console.error("An error occurred while handling the token:", error);
@@ -61,6 +70,7 @@ const SocialLogin = () => {
 };
 
 export default SocialLogin;
+
 
 
 
