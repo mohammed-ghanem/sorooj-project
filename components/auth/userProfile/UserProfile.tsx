@@ -113,7 +113,7 @@ const UserProfile = () => {
                                         ""
                                     }
 
-                                    {/* change password */}
+                                    {/* change password and edite profile*/}
                                     {userLastName
                                         ?
                                         <div className="grid grid-cols-2 gap-2 mt-5">
