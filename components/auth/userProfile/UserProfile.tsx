@@ -71,7 +71,7 @@ const UserProfile = () => {
                     {userName ? (
                         <div className="container mx-auto w-full md:w-[80%] my-20 grid grid-cols-1 lg:grid-cols-3 gap-2 relative z-50">
                             <div>
-                                <ProfileBoxCategories />
+                                <ProfileBoxCategories ifUserFromSocial={userLastName} />
                             </div>
                             <div className="col-span-2">
                                 <div className="userBoxDetails w-[95%] mx-auto rounded-[6px] mt-4 p-4 bkBox">

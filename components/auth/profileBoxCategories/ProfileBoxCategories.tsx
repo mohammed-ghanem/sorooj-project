@@ -10,7 +10,7 @@ import LangUseParams from "@/components/translate/LangUseParams"
 
 
 
-const ProfileBoxCategories = () => {
+const ProfileBoxCategories = ({ ifUserFromSocial }: any) => {
     // lang param (ar Or en)
     const lang = LangUseParams() // Access dynamic [lang] parameter
     const translate = TranslateHook();
@@ -92,14 +92,19 @@ const ProfileBoxCategories = () => {
                             </span>
                         </Link>
                     </li>
-                    <li className='bkColor'>
-                        <Link href={`/${lang}/auth/change-password`}>
-                            <FontAwesomeIcon className={`primaryColor ${lang === "en" ? 'mr-2' : 'mr-0'}`} icon={faLock} />
-                            <span className='mr-3 mainColor text-sm font-bold'>
-                                {translate ? translate.pages.profileCategory.changePassword : ""}
-                            </span>
-                        </Link>
-                    </li>
+                    {ifUserFromSocial
+                        ?
+                        <li className='bkColor'>
+                            <Link href={`/${lang}/auth/change-password`}>
+                                <FontAwesomeIcon className={`primaryColor ${lang === "en" ? 'mr-2' : 'mr-0'}`} icon={faLock} />
+                                <span className='mr-3 mainColor text-sm font-bold'>
+                                    {translate ? translate.pages.profileCategory.changePassword : ""}
+                                </span>
+                            </Link>
+                        </li>
+                        : null
+                    }
+
                     <li className='bkMainColor text-white'>
                         <Link href={''}>
                             <FontAwesomeIcon className={`text-white ${lang === "en" ? 'mr-2' : 'mr-0'}`} icon={faRightFromBracket} />
