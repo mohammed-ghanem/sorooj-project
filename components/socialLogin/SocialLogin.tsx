@@ -19,7 +19,7 @@ const SocialLogin = () => {
 
         if (token) {
             // Store the token in cookies
-            Cookies.set("access_token", token, { expires: 7, secure: true, sameSite: "Strict" });
+            Cookies.set("access_token", token);
 
             // Redirect to the home page
             window.location.href = "/"
