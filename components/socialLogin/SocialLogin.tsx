@@ -10,17 +10,17 @@ import TranslateHook from "../translate/TranslateHook";
 const SocialLogin = () => {
     const translate = TranslateHook();
 
-    // Function to extract token from the URL and store it in cookies
+    // Function to handle token extraction
     const handleToken = () => {
-        // Check if the URL contains a token in the query string
         const queryString = window.location.search;
+        console.log("Query String:", queryString); // Debugging
+
         if (queryString) {
             const params = new URLSearchParams(queryString);
             const token = params.get("token");
+            console.log("Extracted Token:", token); // Debugging: Log the token
 
             if (token) {
-                console.log("Extracted Token:", token); // Debugging: Log the token
-
                 // Store the token securely in cookies
                 Cookies.set("access_token", token, { expires: 7, secure: true });
                 console.log("Token saved to cookies"); // Debugging
@@ -28,24 +28,24 @@ const SocialLogin = () => {
                 // Clear the query string from the URL
                 const cleanUrl = window.location.origin + window.location.pathname;
                 window.history.replaceState(null, "", cleanUrl);
-
-                return true; // Indicate token was processed
+            } else {
+                console.error("No token found in URL"); // Debugging
             }
+        } else {
+            console.error("No query string in URL"); // Debugging
         }
-        return false; // Indicate no token was found
     };
 
     useEffect(() => {
-        // Call the token handling function
+        console.log("SocialLogin useEffect triggered"); // Debugging
         handleToken();
     }, []);
 
-    // Handle social login redirection
     const handleLogin = (provider: string) => {
         const baseUrl = "https://dashboard.sorooj.org/client-api/v1/auth";
         const redirectUrl = `${baseUrl}/${provider}/redirect`;
 
-        // Redirect the user to the provider's login page
+        console.log("Redirecting to:", redirectUrl); // Debugging
         window.location.href = redirectUrl;
     };
 
@@ -85,6 +85,7 @@ const SocialLogin = () => {
 };
 
 export default SocialLogin;
+
 
 
 
