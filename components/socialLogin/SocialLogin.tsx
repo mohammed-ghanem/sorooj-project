@@ -10,8 +10,8 @@ import TranslateHook from "../translate/TranslateHook";
 const SocialLogin = () => {
     const translate = TranslateHook();
 
-    // Handle token extraction and storage
-    useEffect(() => {
+    // Function to extract token from the URL and store it in cookies
+    const handleToken = () => {
         // Check if the URL contains a token in the query string
         const queryString = window.location.search;
         if (queryString) {
@@ -19,22 +19,25 @@ const SocialLogin = () => {
             const token = params.get("token");
 
             if (token) {
-                // Debugging: Log the token
-                console.log("Extracted Token:", token);
+                console.log("Extracted Token:", token); // Debugging: Log the token
 
                 // Store the token securely in cookies
                 Cookies.set("access_token", token, { expires: 7, secure: true });
+                console.log("Token saved to cookies"); // Debugging
 
-                console.log("Token saved to cookie");
+                // Clear the query string from the URL
+                const cleanUrl = window.location.origin + window.location.pathname;
+                window.history.replaceState(null, "", cleanUrl);
 
-                // Redirect to the desired page
-                setTimeout(() => {
-                    window.location.href = "https://www.sorooj.org";
-                }, 500);
-            } else {
-                console.error("No token found in the URL.");
+                return true; // Indicate token was processed
             }
         }
+        return false; // Indicate no token was found
+    };
+
+    useEffect(() => {
+        // Call the token handling function
+        handleToken();
     }, []);
 
     // Handle social login redirection
@@ -82,6 +85,7 @@ const SocialLogin = () => {
 };
 
 export default SocialLogin;
+
 
 
 
