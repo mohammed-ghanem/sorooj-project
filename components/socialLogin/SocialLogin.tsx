@@ -26,8 +26,9 @@ const SocialLogin = () => {
                 console.log("Token saved to cookies"); // Debugging
 
                 // Clear the query string from the URL
-                const cleanUrl = window.location.origin + window.location.pathname;
-                window.history.replaceState(null, "", cleanUrl);
+                // const cleanUrl = window.location.origin + window.location.pathname;
+                // window.history.replaceState(null, "", cleanUrl);
+                window.location.href = "https://www.sorooj.org"
 
                 return true; // Indicate token was processed
             }
