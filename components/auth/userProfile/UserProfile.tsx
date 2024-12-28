@@ -47,7 +47,7 @@ const UserProfile = () => {
                     setLoading(false)  // Stop loading once done
                 })
         } else {
-             setLoading(false)  // Stop loading if no token
+            setLoading(false)  // Stop loading if no token
             // Redirect unverified users or those without a token to the sign-in page
             Cookies.remove('access_token');
             Cookies.remove('is_verified');
@@ -71,23 +71,29 @@ const UserProfile = () => {
                     {userName ? (
                         <div className="container mx-auto w-full md:w-[80%] my-20 grid grid-cols-1 lg:grid-cols-3 gap-2 relative z-50">
                             <div>
-                                <ProfileBoxCategories  />
+                                <ProfileBoxCategories />
                             </div>
                             <div className="col-span-2">
                                 <div className="userBoxDetails w-[95%] mx-auto rounded-[6px] mt-4 p-4 bkBox">
                                     <div className="grid grid-cols-2 gap-2">
                                         <div>
                                             <label className="mainColor">
-                                                {translate ? translate.pages.userProfile.firstName : ""} 
+                                                {translate ? translate.pages.userProfile.firstName : ""}
                                             </label>
                                             <p className="bg-[#fff] p-[10px] rounded-[4px]  mt-2">{userName}</p>
                                         </div>
-                                        <div>
-                                            <label className="mainColor">
-                                                {translate ? translate.pages.userProfile.lastName : ""}
-                                            </label>
-                                            <p className="bg-[#fff] p-[10px] rounded-[4px]  mt-2">{userLastName}</p>
-                                        </div>
+                                        {userLastName
+                                            ?
+                                            <div>
+                                                <label className="mainColor">
+                                                    {translate ? translate.pages.userProfile.lastName : ""}
+                                                </label>
+                                                <p className="bg-[#fff] p-[10px] rounded-[4px]  mt-2">{userLastName}</p>
+                                            </div>
+                                            :
+                                            ""
+                                        }
+
                                     </div>
                                     <div className="mt-2">
                                         <label className="mainColor">
@@ -95,19 +101,29 @@ const UserProfile = () => {
                                         </label>
                                         <p className="bg-[#fff] p-[10px]  rounded-[4px] mt-2">{userEmail}</p>
                                     </div>
-                                    <div className="mt-2">
-                                        <label className="mainColor">
-                                            {translate ? translate.pages.userProfile.phoneNumber : ""}
-                                        </label>
-                                        <p className="bg-[#fff] p-[10px]  rounded-[4px] mt-2">{userMobile}</p>
-                                    </div>
+                                    {userMobile
+                                        ?
+                                        <div className="mt-2">
+                                            <label className="mainColor">
+                                                {translate ? translate.pages.userProfile.phoneNumber : ""}
+                                            </label>
+                                            <p className="bg-[#fff] p-[10px]  rounded-[4px] mt-2">{userMobile}</p>
+                                        </div>
+                                        :
+                                        ""
+                                    }
 
                                     {/* change password */}
-                                    <div className="grid grid-cols-2 gap-2 mt-5">
-                                        <Link className="text-white bkMainColor w-[fit-content] px-[20px] py-[10px] rounded-[6px]" href={`/${lang}/auth/update-profile`}>
-                                            {translate ? translate.pages.userProfile.editProfile : ""}
-                                        </Link>
-                                    </div>
+                                    {userLastName
+                                        ?
+                                        <div className="grid grid-cols-2 gap-2 mt-5">
+                                            <Link className="text-white bkMainColor w-[fit-content] px-[20px] py-[10px] rounded-[6px]" href={`/${lang}/auth/update-profile`}>
+                                                {translate ? translate.pages.userProfile.editProfile : ""}
+                                            </Link>
+                                        </div>
+                                        :
+                                        ""
+                                    }
                                 </div>
                             </div>
                         </div>
