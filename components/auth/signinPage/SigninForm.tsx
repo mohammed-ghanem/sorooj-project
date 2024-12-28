@@ -150,7 +150,7 @@ const SignInForm = () => {
                         {translate ? translate.pages.signin.loginTitle : ""}
                     </h1>
                     <form onSubmit={handleSubmit}
-                        className="p-4 w-[95%] md:w-[80%] mx-auto z-50 relative">
+                        className="p-4 w-[95%] md:w-[80%] mx-auto z-30 relative">
                         <div className="mb-4">
                             <label className={`block text-sm font-bold leading-6 mainColor
                                                 ${lang === "en" ? 'text-start' : 'text-end'}`

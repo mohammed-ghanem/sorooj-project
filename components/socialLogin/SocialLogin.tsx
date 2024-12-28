@@ -1,5 +1,6 @@
-"use client"
+"use client";
 import { useEffect } from "react";
+import axios from "axios";
 import Cookies from "js-cookie";
 import facebook from "@/public/assets/images/facebook.svg";
 import google from "@/public/assets/images/google.svg";
@@ -8,23 +9,30 @@ import TranslateHook from "../translate/TranslateHook";
 
 const SocialLogin = () => {
     const translate = TranslateHook();
-    
 
     const GOOGLE_LOGIN_URL = `https://dashboard.sorooj.org/client-api/v1/auth/google/redirect`;
 
     useEffect(() => {
-        // Extract the token from the URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const token = urlParams.get("token");
+        const handleToken = async () => {
+            try {
+                // Extract the token from the URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const token = urlParams.get("token");
 
-        if (token) {
-            // Store the token in cookies
-            Cookies.set("access_token", token);
+                if (token) {
+                    // Store the token in cookies
+                    Cookies.set("access_token", token, { expires: 7 });
 
-            // Redirect to the home page
-            window.location.href = "/"
-          
-        }
+                    // Redirect to the home page
+                    window.location.href = "/";
+
+                }
+            } catch (error) {
+                console.error("An error occurred while handling the token:", error);
+            }
+        };
+
+        handleToken();
     }, []);
 
     return (
