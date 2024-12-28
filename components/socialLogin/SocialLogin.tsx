@@ -8,41 +8,41 @@ import Image from "next/image";
 import TranslateHook from "../translate/TranslateHook";
 
 const SocialLogin = () => {
-    const translate = TranslateHook();
-    const GOOGLE_LOGIN_URL = `https://dashboard.sorooj.org/client-api/v1/auth/google/redirect`;
+     const translate = TranslateHook();
+    // const GOOGLE_LOGIN_URL = `https://dashboard.sorooj.org/client-api/v1/auth/google/redirect`;
 
-    useEffect(() => {
-        const handleToken = async () => {
-            try {
-                // Extract the token from the URL
-                const urlParams = new URLSearchParams(window.location.search);
-                const token = urlParams.get("token");
+    // useEffect(() => {
+    //     const handleToken = async () => {
+    //         try {
+    //             // Extract the token from the URL
+    //             const urlParams = new URLSearchParams(window.location.search);
+    //             const token = urlParams.get("token");
 
-                if (token) {
-                    // Debugging: log the token
-                    console.log("Token:", token);
+    //             if (token) {
+    //                 // Debugging: log the token
+    //                 console.log("Token:", token);
 
-                    // Store the token in cookies
-                    Cookies.set("access_token", token, {
-                        expires: 7,
-                        domain: "sorooj.org",
-                    });
+    //                 // Store the token in cookies
+    //                 Cookies.set("access_token", token, {
+    //                     expires: 7,
+    //                     domain: "sorooj.org",
+    //                 });
 
-                    // Debugging: verify the cookie
-                    console.log("Cookie set:", Cookies.get("access_token"));
+    //                 // Debugging: verify the cookie
+    //                 console.log("Cookie set:", Cookies.get("access_token"));
 
-                    // Redirect to the home page
-                    setTimeout(() => {
-                        window.location.href = "/";
-                    }, 500);
-                }
-            } catch (error) {
-                console.error("An error occurred while handling the token:", error);
-            }
-        };
+    //                 // Redirect to the home page
+    //                 setTimeout(() => {
+    //                     window.location.href = "/";
+    //                 }, 500);
+    //             }
+    //         } catch (error) {
+    //             console.error("An error occurred while handling the token:", error);
+    //         }
+    //     };
 
-        handleToken();
-    }, []);
+    //     handleToken();
+    // }, []);
 
     return (
         <div className="text-center">
@@ -59,7 +59,7 @@ const SocialLogin = () => {
                     </a>
                 </div>
                 <div className="bg-[#faf9f6] p-[10px] rounded-[5px] [box-shadow:1px_1px_6px_#ddd]">
-                    <a href={GOOGLE_LOGIN_URL} className="flex items-center justify-center">
+                    <a href={''} className="flex items-center justify-center">
                         {translate ? translate.socialLogin.google : ""}
                         <Image src={google} className="ml-2" width={30} height={30} alt="google icon" />
                     </a>
