@@ -42,7 +42,7 @@ const SocialLogin = () => {
                     </a>
                 </div>
                 <div className="bg-[#faf9f6] p-[10px] rounded-[5px] [box-shadow:1px_1px_6px_#ddd]">
-                    <a href={GOOGLE_LOGIN_URL} className="flex items-center justify-center">
+                    <a href={``} className="flex items-center justify-center">
                         {translate ? translate.socialLogin.google : ""}
                         <Image src={google} className="ml-2" width={30} height={30} alt="google icon" />
                     </a>
