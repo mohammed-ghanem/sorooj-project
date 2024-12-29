@@ -77,7 +77,7 @@ const ProfileBoxCategories = ({ ifUserFromSocial }: any) => {
                         </Link>
                     </li>
                     <li className='bkColor'>
-                        <Link href={''}>
+                        <Link href={`/${lang}/auth/my-questions`}>
                             <FontAwesomeIcon className={`primaryColor ${lang === "en" ? 'mr-2' : 'mr-0'}`} icon={faClipboardQuestion} />
                             <span className='mr-3 mainColor text-sm font-bold'>
                                 {translate ? translate.pages.profileCategory.myQuestions : ""}

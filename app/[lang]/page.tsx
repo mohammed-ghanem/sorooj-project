@@ -14,8 +14,6 @@ import AnswerTitle from "@/components/homeTitles/AnswerTitle";
 import FatwaForm from "@/components/fatwaForm/FatwaForm";
 import CommingEvents from "@/components/commingEvents/CommingEvents";
 import VideoLibTabs from "@/components/videoLibTabs/VideoLibTabs";
-
-
 export const dynamic = 'force-static';
 
 type Props = {

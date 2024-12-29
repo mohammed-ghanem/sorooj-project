@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"; 
 import Cookies from "js-cookie"; // Import the js-cookie library
 import Banners from "@/components/banners/Banners";
 import banner from "@/public/assets/images/default.webp";
