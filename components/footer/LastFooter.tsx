@@ -18,6 +18,7 @@ const LastFooter = () => {
                 <div className='text-white mr-2 md:mr-9'>
                     <ContactUsFooter />
                 </div>
+                <div itemScope itemType="https://schema.org/Organization"></div>
             </div>
         </div>
     )
