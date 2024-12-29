@@ -48,6 +48,7 @@ export default async function RootLayout({
 
   return (
     <html lang={params.lang} dir={params.lang === "ar" ? "rtl" : 'ltr'}>
+      <meta name="google-site-verification" content="YfNkxZHZmpRw78PR8UXkWzsjFE4V47vygBtsd4qrFy4" />
       <body>
         <OverlaySpinnerManager />
         <Header />
