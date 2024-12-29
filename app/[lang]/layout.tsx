@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Script from "next/script"; // Import Next.js Script component
+
 import "./globals.css";
 import '@/utils/fontAwesome'; // Import the Font Awesome configuration
 import { AntdRegistry } from '@ant-design/nextjs-registry';
@@ -49,6 +51,18 @@ export default async function RootLayout({
   return (
     <html lang={params.lang} dir={params.lang === "ar" ? "rtl" : 'ltr'}>
       <meta name="google-site-verification" content="YfNkxZHZmpRw78PR8UXkWzsjFE4V47vygBtsd4qrFy4" />
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-NEGR8JH6EC"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-NEGR8JH6EC');
+        `}
+      </Script>
       <body>
         <OverlaySpinnerManager />
         <Header />
