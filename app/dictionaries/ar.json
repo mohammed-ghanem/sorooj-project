@@ -12,7 +12,7 @@
         "liveair" : "البث المباشر",
         "academy" : "اكاديمية سرج" 
     },
-    "pages" : {
+    "pages" : { 
         "homePage" : {
             "statistics" : {
                 "FreeCourses": "الدورات المجانية",
@@ -151,7 +151,7 @@
               "cancel" : "الغاء",
               "logoutSuccess" : "تم تسجيل الخروج بنجاح",
               "personalInfo" : "البيانات الشخصية",
-              "myCourses" : "دوراتى",
+              "myCourses" : "دوراتى التعليمية",
               "favoriteSubjects" : "المواضيع المفضلة",
               "myQuestions" : "اسئلتى",
               "comments" : "تعليقاتى",

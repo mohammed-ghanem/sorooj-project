@@ -61,7 +61,7 @@ const ProfileBoxCategories = ({ ifUserFromSocial }: any) => {
                         </Link>
                     </li>
                     <li className='bkColor'>
-                        <Link href={''}>
+                        <Link href={`/${lang}/auth/my-courses`}>
                             <FontAwesomeIcon className={`primaryColor ${lang === "en" ? 'mr-2' : 'mr-0'}`} icon={faBook} />
                             <span className='mr-3 mainColor text-sm font-bold'>
                                 {translate ? translate.pages.profileCategory.myCourses : ""}
@@ -69,9 +69,9 @@ const ProfileBoxCategories = ({ ifUserFromSocial }: any) => {
                         </Link>
                     </li>
                     <li className=' bkColor'>
-                        <Link href={''}>
+                        <Link href={`/${lang}/auth/my-favorites`}>
                             <FontAwesomeIcon className={`primaryColor ${lang === "en" ? 'mr-2' : 'mr-0'}`} icon={faHeart} />
-                            <span className='mr-3 mainColor text-sm font-bold'>
+                            <span className='mr-2 mainColor text-sm font-bold'>
                                 {translate ? translate.pages.profileCategory.favoriteSubjects : ""}
                             </span>
                         </Link>
@@ -84,26 +84,26 @@ const ProfileBoxCategories = ({ ifUserFromSocial }: any) => {
                             </span>
                         </Link>
                     </li>
-                    <li className='bkColor'>
+                    {/* <li className='bkColor'>
                         <Link href={''}>
                             <FontAwesomeIcon className={`primaryColor ${lang === "en" ? 'mr-2' : 'mr-0'}`} icon={faMessage} />
                             <span className='mr-3 mainColor text-sm font-bold'>
                                 {translate ? translate.pages.profileCategory.comments : ""}
                             </span>
                         </Link>
+                    </li> */}
+
+
+                    <li className='bkColor'>
+                        <Link href={`/${lang}/auth/change-password`}>
+                            <FontAwesomeIcon className={`primaryColor ${lang === "en" ? 'mr-2' : 'mr-0'}`} icon={faLock} />
+                            <span className='mr-3 mainColor text-sm font-bold'>
+                                {translate ? translate.pages.profileCategory.changePassword : ""}
+                            </span>
+                        </Link>
                     </li>
-                    {ifUserFromSocial
-                        ?
-                        <li className='bkColor'>
-                            <Link href={`/${lang}/auth/change-password`}>
-                                <FontAwesomeIcon className={`primaryColor ${lang === "en" ? 'mr-2' : 'mr-0'}`} icon={faLock} />
-                                <span className='mr-3 mainColor text-sm font-bold'>
-                                    {translate ? translate.pages.profileCategory.changePassword : ""}
-                                </span>
-                            </Link>
-                        </li>
-                        : null
-                    }
+
+
 
                     <li className='bkMainColor text-white'>
                         <Link href={''}>

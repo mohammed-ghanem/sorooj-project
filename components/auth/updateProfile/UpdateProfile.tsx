@@ -123,7 +123,7 @@ const UpdateProfile = () => {
       setLoading(false);
     }
   };
-
+ 
   return (
     <section>
       <div>

@@ -40,7 +40,7 @@ const SuggestBooks = () => {
                     doctorName={book.author_name}
                     descriptionBook={book.brief_description}
                     //likeBtn={<BooksAddWishList bookDetails={book} />}
-                    pathLinkToContent={`/${lang}/books/${slug}`}
+                    pathLinkToContent={`/${lang}/books/${book.slug}`}
                 />
 
             ))}

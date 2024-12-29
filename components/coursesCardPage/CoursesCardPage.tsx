@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import CourseAddWishList from "@/components/courseAddWishList/CourseAddWishList";
 
-
+ 
 const CoursesCardPage = () => {
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);

@@ -24,6 +24,7 @@ const SuggestCourses = () => {
                     }
                 );
                 setCoursesSuggest(response.data.data.suggested_courses); // Ensure this is an array
+               
             } catch (error) {
                 console.error('Error fetching suggested courses', error);
             }
@@ -43,7 +44,7 @@ const SuggestCourses = () => {
                     courseTitle={course.course_name}
                     doctorName={course.author_name}
                     descriptionCourse={course.brief_description}
-                    pathLinkToContent={`/${lang}/course/${slug}`}
+                    pathLinkToContent={`/${lang}/courses/${course.slug}`}
                 />
             ))}
         </div>
