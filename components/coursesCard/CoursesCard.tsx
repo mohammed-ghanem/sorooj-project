@@ -51,7 +51,7 @@ const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePubl
 
                     {likeBtn
                         &&
-                        <span className=" absolute left-[20px] top-[20px] bg-[#fff] pt-[6px] px-[10px] pb-[4px] rounded-[30px]">
+                        <span className=" absolute left-[20px] top-[20px] bg-[#fff] pt-[8px] px-[8px] pb-[6px] rounded-[30px]">
                             {likeBtn}
                         </span>
                     }

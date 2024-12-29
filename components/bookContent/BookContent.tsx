@@ -18,6 +18,7 @@ import Cookies from "js-cookie"; // Import the js-cookie library
 import SuggestBooks from '../suggestBooks/SuggestBooks';
 
 
+
 interface BookDetails {
     book_name: string;
     image?: any;
@@ -197,13 +198,6 @@ const BookContent = () => {
                                     </EmailShareButton>
                                 </div>
                                 <div className="flex items-center">
-                                    {/* {bookDetails
-                                        ?
-                                        <span className="ml-4 mainColor text-sm font-bold">حذف من المفضلة</span>
-                                        :
-                                        <span className="ml-4 mainColor text-sm font-bold">اضف الى المفضلة</span>
-                                    } */}
-                                    <span className="ml-4 mainColor text-sm font-bold">اضف الى المفضلة</span>
                                     <BooksAddWishList bookDetails={bookDetails} />
                                 </div>
                             </div>
@@ -211,7 +205,7 @@ const BookContent = () => {
 
                     </div>
                     <div className='courseImg'>
-                        <div> 
+                        <div>
                             <Image className='w-full h-full max-h-60'
                                 src={bookDetails.image}
                                 width={100}
@@ -229,7 +223,7 @@ const BookContent = () => {
                     <div className='mt-[6px] border-t-2 lg:border-t-0'>
                         <h3 className='mt-[10px] mr-[10px] mb-[30px] ml-[0] font-bold mainColor'>الكتب المقترحة</h3>
                         <div className='w-[95%] md:w-[80%] grid grid-cols-1 mx-auto gap-8'>
-                            <SuggestBooks/>
+                            <SuggestBooks />
                         </div>
                     </div>
                 </div>

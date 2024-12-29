@@ -17,7 +17,7 @@ interface BooksCardProps {
 
 const BooksCard: React.FC<BooksCardProps> = ({
     pathLinkToContent, imgSrc, bookTitle, watchNumber, datePublish, doctorName, descriptionBook, likeBtn
-}) => { 
+}) => {
     const slicedTitle = bookTitle.length > 40 ? bookTitle.slice(0, 40) + '...' : bookTitle;
     const slicedDes = descriptionBook.length > 30 ? descriptionBook.slice(0, 30) + '...' : descriptionBook;
     return (
@@ -59,7 +59,7 @@ const BooksCard: React.FC<BooksCardProps> = ({
                         </div>
                         {likeBtn
                             &&
-                            <span className=" absolute left-[14px] top-[7px] z-30 bg-[#fff] pt-[6px] px-[10px] pb-[4px] rounded-[30px]">
+                            <span className=" absolute left-[14px] top-[7px] z-30 bg-[#fff] pt-[8px] px-[8px] pb-[6px] rounded-[30px]">
                                 {likeBtn}
                             </span>
                         }

@@ -195,7 +195,7 @@ const CoursesContent = () => {
                   </EmailShareButton>
                 </div>
                 <div className="flex items-center">
-                  <span className="ml-4 mainColor text-sm font-bold">اضف الى المفضلة</span>
+                  {/* <span className="ml-4 mainColor text-sm font-bold">اضف الى المفضلة</span> */}
                   <CourseAddWishList courseDetails={courseDetails} />
                 </div>
               </div>

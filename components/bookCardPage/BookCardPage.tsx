@@ -11,6 +11,7 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import BooksCategoriesBox from "@/components/booksCategoryBox/BooksCategoriesBox";
 import BooksAddWishList from "@/components/bookAddWishList/BooksAddWishList";
 
+
 const BookCardPage = () => {
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);

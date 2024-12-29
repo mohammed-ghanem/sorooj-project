@@ -1,5 +1,5 @@
 "use client";
- 
+
 import axios from "axios";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -85,9 +85,15 @@ const CourseAddWishList = ({ courseDetails }: any) => {
   return <div className="flex items-center">
     <button onClick={handleWishlist} className="text-2xl">
       {is_favorite ? (
-        <HeartFilled className="" style={{ "color": "#424C61" }} />
+        <div className="flex items-center">
+          <HeartFilled className="" style={{ "color": "#424C61" }} />
+          {/* <span className="textFav text-sm font-bold mr-2">حذف من المفضلة</span> */}
+        </div>
       ) : (
-        <HeartOutlined />
+        <div className="flex items-center">
+          <HeartOutlined />
+          {/* <span className="textFav text-xs font-bold mr-2">اضف الى المفضلة</span> */}
+        </div>
       )}
     </button>
   </div>;
