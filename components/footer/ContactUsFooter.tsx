@@ -17,7 +17,7 @@ const ContactUsFooter = () => {
     return (
         <div>
             <h4 className='text-2xl mt-2 lg:mt-0 primaryColor'>تواصل معنا</h4>
-            <div className='mt-4 mr-4'>
+            <div className='mt-4 mr-4 text-sm'>
                 {fakeData.map((contact, index) => (
                     <div key={index} className='mb-2 flex items-center'>
 

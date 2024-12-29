@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Script from "next/script"; // Import Next.js Script component
-
 import "./globals.css";
 import '@/utils/fontAwesome'; // Import the Font Awesome configuration
 import { AntdRegistry } from '@ant-design/nextjs-registry';
@@ -12,7 +11,7 @@ import OverlaySpinnerManager from "@/components/overlaySpinner/OverlaySpinnerMan
 
 export const metadata: Metadata = {
   title: "مركز سرج  لدراسة المذاهب الفكرية المعاصرة ",
-  description: "مركز سرج - منارة للبحث العلمى والتعليم المتخصص فى استكشاف وفهم المذاهب الفكرية المعاصرة , بما فى ذلك الدينية والفلسفية والسياسية من اجل تمكين المتعلمين فى اتخاذ قرارات مستنيرة فى ظل التنوع الفكرى المتزايد",
+  description: "مركز سُرُجْ - منارة للبحث العلمى والتعليم المتخصص فى استكشاف وفهم المذاهب الفكرية المعاصرة , بما فى ذلك الدينية والفلسفية والسياسية من اجل تمكين المتعلمين فى اتخاذ قرارات مستنيرة فى ظل التنوع الفكرى المتزايد",
   keywords: "مركز,سرج,للدراسات,والابحاث,المذاهب,الفكرية,المعاصرة",
   openGraph: {
     title: " مركز سرج للدراسات والابحاث",

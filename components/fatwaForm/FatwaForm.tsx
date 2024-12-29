@@ -111,7 +111,7 @@ const FatwaForm = () => {
 
         </form>
       </div>
-      <div className='relative h-full bkColor rounded-tl-none rounded-br-[235px] rounded-tr-none md:rounded-tr-[235px] rounded-bl-[200px] md:rounded-bl-none w-full mr-auto'>
+      <div className='relative h-full bkColor rounded-tl-none rounded-br-[220px] rounded-tr-none md:rounded-tr-[235px] rounded-bl-[200px] md:rounded-bl-none w-full mr-auto'>
         <Image className="m-auto text-transparent relative md:absolute h-full w-full max-w-[75%] md:max-w-[90%] left-0"
           src={fatwaIcon}
           alt="fatwaIcon" />

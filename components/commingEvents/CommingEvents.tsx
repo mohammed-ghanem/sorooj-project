@@ -58,18 +58,18 @@ const CommingEvents: React.FC = () => {
         return <div className="text-center"><FontAwesomeIcon className="mainColor" icon={faSpinner} spin /></div>;
     }
     if (!events.length) {
-        return <div className="text-center my-20" style={{ "direction" : "rtl" }}>
-            <div className=' container mx-auto bkBox my-20 w-[80%]  [box-shadow:1px_1px_7px_#ddd] rounded-[10px]'>
-                <div className='relative overflow-hidden grid grid-cols-2 gap-4 items-center'>
-                    <div className="bg-white right-0 lg:right-[130px] relative z-10 opacity-80 p-8 w-[95%] lg:w-auto rounded-[8px] [box-shadow:1px_1px_10px_#ddd]">
+        return <div className="text-center my-20" style={{ "direction": "rtl" }}>
+            <div className=' container mx-auto bkBox my-20 w-[95%] lg:w-[80%]  [box-shadow:1px_1px_7px_#ddd] rounded-[10px]'>
+                <div className='relative overflow-hidden py-3 lg:px-3 flex flex-col-reverse lg:grid grid-cols-1 lg:grid-cols-2 gap-4 items-center'>
+                    <div className="bg-white col-span-2 lg:col-span-2  relative z-10 opacity-80 p-8 w-[95%] lg:w-auto rounded-[8px] [box-shadow:1px_1px_10px_#ddd]">
                         <div>
                             <Image className="m-auto" src={logo} width={150} height={150} alt="eventLogo" />
                         </div>
                         <p className="bkMainColor text-white my-5 py-2 px-4 w-[fit-content] m-auto rounded-[6px] font-bold">انتظرونا فى احداث قادمة قريبا</p>
                     </div>
-                    <div className='relative py-12'>
+                    {/* <div className='relative py-1 lg:py-12 col-span-2 lg:col-span-1'>
                         <Image src={comming} className='w-[80%] mx-auto h-[350px] [box-shadow:1px_1px_10px_#424C61] rounded-[10px]' alt='target' />
-                    </div>
+                    </div> */}
 
                     <div className="absolute right-0 bottom-0">
                         <Image src={fatwaFlower} alt="flower" />
@@ -82,7 +82,7 @@ const CommingEvents: React.FC = () => {
         </div>;
     }
     return (
-        <section className="my-24" style={{ "direction" : "rtl" }}>
+        <section className="my-24" style={{ "direction": "rtl" }}>
             <ConfigProvider
                 theme={{
                     components: {
@@ -107,7 +107,7 @@ const CommingEvents: React.FC = () => {
                                 style={{ direction: "rtl" }}
                                 className="pb-10 lg:pb-0 font-cairo relative overflow-hidden flex flex-col-reverse lg:grid grid-cols-1 lg:grid-cols-2 gap-4 items-center"
                             >
-                                <div className="w-[95%] lg:w-auto">
+                                <div className="w-[95%] lg:w-auto col-span-2 lg:col-span-1">
                                     <div className="bg-white block text-white text-center relative right-0 lg:right-[130px]  rounded-[10px] p-[15px] opacity-80">
                                         <div>
                                             <Image className="m-auto" src={logo} width={150} height={150} alt="eventLogo" />
@@ -124,7 +124,7 @@ const CommingEvents: React.FC = () => {
                                                 {event.instructor}
                                             </h4>
                                         </div>
-                                        <div className="text-right w-1/2 m-auto">
+                                        <div className="text-right w-[95%] lg:w-1/2 m-auto">
                                             <div className="mt-3">
                                                 <FontAwesomeIcon className="primaryColor ml-2" icon={faCalendarDays} />
                                                 <span className="mainColor">{event.day}</span>
@@ -143,8 +143,7 @@ const CommingEvents: React.FC = () => {
                                         </div>
                                     </div>
                                 </div>
-
-                                <div className="relative py-6 lg:py-12">
+                                <div className="relative py-6 lg:py-12 col-span-2 lg:col-span-1">
                                     <Image
                                         src={event.image}
                                         className="w-[95%] lg:w-[80%] mx-auto h-auto lg:h-[400px] [box-shadow:1px_1px_10px_#ddd] rounded-[10px]"

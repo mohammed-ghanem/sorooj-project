@@ -151,7 +151,7 @@ const MyFavorites = () => {
                     <div>
                         <ProfileBoxCategories />
                     </div>
-                    <div className="bkBox w-[95%] mx-auto col-span-2 p-5">
+                    <div className="bkBox w-[95%] mx-auto col-span-2 p-5"  style={{ "direction" : "rtl" }}>
                         <h2 className="w-[fit-content] bkPrimaryColor px-[14px] py-[6px] font-bold rounded-[5px] text-[#fff] mb-[20px] text-sm">مواضيعى المفضلة</h2>
                         {favorites.map((favorite: any) => {
                             if (favorite.type === "books" && favorite.book) {

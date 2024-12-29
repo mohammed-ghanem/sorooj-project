@@ -10,6 +10,8 @@ import ProfileBoxCategories from "../profileBoxCategories/ProfileBoxCategories"
 import TranslateHook from '../../translate/TranslateHook';
 import LangUseParams from "@/components/translate/LangUseParams"
 import FlowerImg from "@/components/flowerImg/FlowerImg"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faSpinner } from "@fortawesome/free-solid-svg-icons"
 
 
 const UserProfile = () => {
@@ -62,7 +64,7 @@ const UserProfile = () => {
                 <Banners src={banner} textPath={translate ? translate.pages.userProfile.title : ""} />
             </div>
             {loading ? (
-                <p>Loading...</p>
+                <div className="text-center"><FontAwesomeIcon className="mainColor text-2xl my-4" icon={faSpinner} spin /></div>
             ) : (
                 <div className=" relative">
                     {/* flower img */}

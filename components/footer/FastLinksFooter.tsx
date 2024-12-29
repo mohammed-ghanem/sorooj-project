@@ -34,7 +34,7 @@ const FastLinksFooter = () => {
                 {links.map((link, index) => (
                     <div key={index} className='col-span-1 text-white flex items-center mt-2 '>
                         <FontAwesomeIcon icon={faChevronLeft} className='primaryColor mr-2 text-sm ml-2' />
-                        <Link href={link.href} className='mainColor font-semibold'>
+                        <Link href={link.href} className='mainColor font-semibold text-sm'>
                             {link.name}
                         </Link>
                     </div>

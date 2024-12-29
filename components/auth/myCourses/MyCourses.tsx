@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react"; 
+import { useState, useEffect } from "react";
 import Cookies from "js-cookie"; // Import the js-cookie library
 import Banners from "@/components/banners/Banners";
 import banner from "@/public/assets/images/default.webp";
@@ -73,13 +73,13 @@ const MyCourses = () => {
           <div>
             <ProfileBoxCategories />
           </div>
-          <div className="bkBox w-[95%] mx-auto col-span-2 p-5">
+          <div className="bkBox w-[95%] mx-auto col-span-2 p-5" style={{ "direction": "rtl" }}>
             <h2 className="w-[fit-content] bkPrimaryColor px-[14px] py-[6px] font-bold rounded-[5px] text-[#fff] mb-[20px]">دوراتى التعليمية</h2>
             {courses.length > 0
               ?
               courses.map((course: any) => (
                 <div
-                  key={course.id} 
+                  key={course.id}
                   className="grid gap-2 grid-cols-12 items-center mb-4 bg-[#fff] p-[14px] rounded-[5px] [box-shadow:1px_1px_10px_#ddd]"
                 >
                   <div className="col-span-12 lg:col-span-2">
