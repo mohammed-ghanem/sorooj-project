@@ -151,7 +151,7 @@ const SignupForm = () => {
             } catch (axiosError) {
                 // Close loading indicator on error
                 Swal.close();
-                if (axios.isAxiosError(axiosError)) {
+                if (axios.isAxiosError(axiosError)) { 
                     if (axiosError.response?.status === 422) {
                         // Show SweetAlert2 alert for email already registered
                         Swal.fire({
