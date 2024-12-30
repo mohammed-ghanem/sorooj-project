@@ -7,11 +7,11 @@ import React from 'react';
 const ContactUsFooter = () => {
     // Simulating fetched data
     const fakeData = [
-        { title: 'للرجال', phone: '966555555555' },
-        { title: 'للنساء', phone: '96644444444' },
+        { title: 'للرجال', phone: '96597475504' },
+        { title: 'للنساء', phone: '96597475504' },
     ];
     const websiteEmail = {
-        email: 'contact@example.com',
+        email: 'sorooj.enquiry@gmail.com',
     }
 
     return (
