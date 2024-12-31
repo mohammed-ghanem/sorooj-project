@@ -14,6 +14,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         { url: "https://www.sorooj.org/ar/audio-libirary", lastModified: new Date() },
         { url: "https://www.sorooj.org/ar/liveair", lastModified: new Date() },
         { url: "https://www.sorooj.org/ar/contact-us", lastModified: new Date() },
+        { url: "https://www.sorooj.org/ar/privacy-policy", lastModified: new Date() },
+        { url: "https://www.sorooj.org/ar/terms", lastModified: new Date() },
+        { url: "https://www.sorooj.org/ar/delete-account", lastModified: new Date() },
     ];
 
     // Fetch dynamic courses data
@@ -58,5 +61,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
 
 
-    return [...staticUrls, ...coursesUrls, ...booksUrls, ...blogsUrls , ...questionsUrls];
+    return [...staticUrls, ...coursesUrls, ...booksUrls, ...blogsUrls, ...questionsUrls];
 }

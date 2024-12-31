@@ -10,6 +10,9 @@
         "audiolibirary" : "audio Libirary",
         "blog" : "Blog",
         "liveair" : "Live-Air",
+        "terms" : "Terms",
+        "policy" : "privacy-policy",
+        "deleteAccount" : "delete account",
         "academy" : "Sorooj Academy"
 
     },
