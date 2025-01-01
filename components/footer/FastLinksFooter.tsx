@@ -25,11 +25,11 @@ const FastLinksFooter = () => {
         { name: `${translate ? translate.navigation.contact : " اتصل بنا"}`, href: `/${lang}/contact-us` },
         { name: `${translate ? translate.navigation.terms : "الشروط والاحكام"}`, href: `/${lang}/terms` },
         { name: `${translate ? translate.navigation.policy : "سياسة الخصوصية"}`, href: `/${lang}/privacy-policy` },
-        { name: `${translate ? translate.navigation.deleteAccount : "حذف حسابك"}`, href: `/${lang}/terms` },
+        { name: `${translate ? translate.navigation.deleteAccount : "حذف حسابك"}`, href: `/${lang}/delete-account` },
         { name: `${translate ? translate.navigation.academy : "اكاديمية سرج"}`, href: `https://academy.sorooj.org` },
     ];
 
-    return (
+    return ( 
         <div>
             <h4 className='text-2xl mt-2 lg:mt-0 primaryColor'>روابط سريعة</h4>
             <div className='row grid grid-cols-2 items-center mt-4 mr-4'>
