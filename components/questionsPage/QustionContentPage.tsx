@@ -26,7 +26,7 @@ const QustionContentPage = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const lang = LangUseParams();
-    const { slug } = useParams();
+    const { slug } = useParams(); 
 
     useEffect(() => {
 

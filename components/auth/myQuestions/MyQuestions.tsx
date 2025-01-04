@@ -17,6 +17,8 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 const MyQuestions = () => {
     const [myQuestions, setMyQuestions] = useState([]); // State for storing myQuestions data
     const [loading, setLoading] = useState(true); // State for loading indicator
+    const [currentPage, setCurrentPage] = useState(1); // Track current page
+    const [totalPages, setTotalPages] = useState(1); // Track total pages
     const [error, setError] = useState<string | null>(null); // State for error handling
     const lang = LangUseParams(); // Access dynamic [lang] parameter
     const translate = TranslateHook();
@@ -42,11 +44,16 @@ const MyQuestions = () => {
                         headers: {
                             Authorization: `Bearer ${token}`,
                         },
+                        params: {
+                            limit: 5,
+                            page: currentPage, // Pass current page as a query parameter
+                        },
                     }
                 );
 
                 // Update state with fetched data
                 setMyQuestions(response.data.data);
+                setTotalPages(response.data.meta.last_page || 1); // Update total pages if available
             } catch (error: any) {
                 setError(error.response?.data?.message || "Failed to fetch myQuestions");
             } finally {
@@ -55,7 +62,31 @@ const MyQuestions = () => {
         };
 
         fetchMyQuestions();
-    }, []);
+    }, [currentPage]);
+
+    const handlePageChange = (page: number) => {
+        if (page > 0 && page <= totalPages) {
+            setCurrentPage(page);
+        }
+    };
+
+    const renderPageNumbers = () => {
+        const pages = [];
+        for (let i = 1; i <= totalPages; i++) {
+            pages.push(
+                <button
+                    key={i}
+                    onClick={() => handlePageChange(i)}
+                    // active page
+                    className={`px-4 py-2 mx-1 rounded ${i === currentPage ? "bkMainColor text-white font-bold" : "bg-gray-200"
+                        }`}
+                >
+                    {i}
+                </button>
+            );
+        }
+        return pages;
+    };
 
     if (loading) return <div className="text-center"><FontAwesomeIcon className="mainColor text-2xl my-4" icon={faSpinner} spin /></div>;
 
@@ -73,7 +104,7 @@ const MyQuestions = () => {
                     <div>
                         <ProfileBoxCategories />
                     </div>
-                    <div className="bkBox w-[95%] mx-auto col-span-2 p-5"  style={{ "direction" : "rtl" }}>
+                    <div className="bkBox w-[95%] mx-auto col-span-2 p-5" style={{ "direction": "rtl" }}>
                         <h2 className="w-[fit-content] bkPrimaryColor px-[14px] py-[6px] font-bold rounded-[5px] text-[#fff] mb-[20px]">اسئلتى</h2>
                         {myQuestions.length > 0
                             ?
@@ -101,6 +132,31 @@ const MyQuestions = () => {
                             <div className="mainColor text-center font-bold"> ليس لديك اسئلة !! </div>
                         }
 
+                        {/* start Pagination Controls */}
+                        {
+                            myQuestions.length > 0 ? (
+                                <div className="flex justify-center items-center mt-8">
+                                    <button
+                                        onClick={() => handlePageChange(currentPage - 1)}
+                                        disabled={currentPage === 1}
+                                        className="px-4 py-2 bg-gray-200 mainColor rounded disabled:opacity-50"
+                                    >
+                                        السابق
+                                    </button>
+                                    {/* Render numbered pages */}
+                                    {renderPageNumbers()}
+                                    <button
+                                        onClick={() => handlePageChange(currentPage + 1)}
+                                        disabled={currentPage === totalPages}
+                                        className="px-4 py-2 bg-gray-200 mainColor rounded disabled:opacity-50"
+                                    >
+                                        التالي
+                                    </button>
+                                </div>
+                            ) :
+                                ""
+                        }
+                        {/*end Pagination Controls */}
                     </div>
                 </div>
             </div>

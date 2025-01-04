@@ -2,11 +2,11 @@ import { Metadata } from "next";
 import LiveAir from "../../../components/liveAir/LiveAir";
 
 export const metadata: Metadata = {
-  title: "البث المباشر",
+  title: "البث المباشر- يوتيوب",
   description: "   البث المباشر الالكتروني سرج للدراسات والابحاث",
   keywords: "البث,المباشر,الموقع,الالكترونى,سرج,الدراسات,والابحاث",
   openGraph: {
-    title: "البث مباشر",
+    title: "البث المباشر- يوتيوب",
     description: "  البث المباشر الموقع الالكتروني سرج للدراسات والابحاث",
     images: [
       {

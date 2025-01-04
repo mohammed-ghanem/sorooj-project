@@ -142,7 +142,7 @@ const MyFavorites = () => {
 
     return (
         <section>
-            <div>
+            <div> 
                 <Banners src={banner} textPath={translate ? translate.pages.userProfile.title : ""} />
             </div>
             <div className="relative">

@@ -1,24 +1,88 @@
 'use client'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Banners from '../banners/Banners'
 import aboutImg from '@/public/assets/images/default.webp'
 import cardImg from '@/public/assets/images/dee.svg'
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinus, faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import aboutFrame from "@/public/assets/images/aboutFrame.png"
 import target from "@/public/assets/images/target.png"
 import earth from "@/public/assets/images/earth.png"
 import title from "@/public/assets/images/title.png"
 import SoroojPath from './SoroojPath';
-import man1 from "@/public/assets/images/man1.png"
+import axios from 'axios';
+import parse from "html-react-parser";
+
+type StaticPageData = {
+    [x: string]: any;
+    content?: string;
+    video?: string;
+    points?: string[];
+    scalar?: string;
+};
+
+const AboutUs: React.FC = () => {
+    const [about, setAbout] = useState<StaticPageData>({});
+    const [vision, setVision] = useState<StaticPageData>({});
+    const [message, setMessage] = useState<StaticPageData>({});
+    const [objects, setObjects] = useState<StaticPageData>({});
+    const [trackTitle, setTrackTitle] = useState<StaticPageData>({});
+    const [mission, setMission] = useState<string[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [isPlaying, setIsPlaying] = useState<boolean>(false);
+
+    const fetchData = async (endpoint: string, setter: (data: StaticPageData) => void) => {
+        try {
+            const response = await axios.get<StaticPageData>(
+                `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/static-pages/${endpoint}`,
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true,
+                }
+            );
+            setter(response.data);
+        } catch (error) {
+            console.error(`Error fetching ${endpoint} data:`, error);
+        }
+    };
+
+    useEffect(() => {
+        const fetchAllData = async () => {
+            setLoading(true);
+            await Promise.all([
+                fetchData('about-center', setAbout),
+                fetchData('vision', setVision),
+                fetchData('message', setMessage),
+                fetchData('general-objectives', setObjects),
+                fetchData('tracks-center-areas', setTrackTitle),
+                fetchData('center-mechanism', (data) => setMission(data.data.points || [])),
+            ]);
+
+            setLoading(false);
+        };
+        fetchAllData();
+    }, []);
 
 
-const AboutUs = () => {
-    const [isPlaying, setIsPlaying] = useState(false);
     const handlePlay = () => {
         setIsPlaying(true);
     };
+
+    if (loading) {
+        return <div className="text-center py-10">Loading...</div>;
+    }
+
+
+    const fetchMission = mission.map((point: any) => (
+        <div
+            key={point.index}
+            className="border-dashed border-2 rounded-[6px] w-full bg-customGray mx-auto h-[140px] flex items-center justify-center font-bold px-3 md:px-6 lg:px-10 xl:px-16"
+        >
+            {point.title}
+        </div>
+    ));
+
     return (
         <div>
             <Banners src={aboutImg} textPath={"عن المركز"} />
@@ -28,8 +92,7 @@ const AboutUs = () => {
                         <div className='w-[95%] md:w-[80%] mx-auto'>
                             <h2 className='text-base md:text-2xl font-bold mainColor border-b-2 border-customGold w-[fit-content] pb-[4px]'>عن المركز</h2>
                             <p className='leading-[1.9] mt-[20px] pr-3 lg:pr-[40px]'>
-                                مركز سُرج للدراسات والأبحاث , هو مركز علمي دعوي بحثي يعني بتأصيل العقيدة الإسلامية
-                                وتعزيز الفطرة الإيمانية وتحصين المجتمع المسلم من الحرب علي الفطرة والإيمان والإسلام , وضرورة تقرير قواعد الشرح الصحيحة المستمدة من القران الكريم والسنه النبوية , وفق منهج السلف الصالح
+                                {about.data.content}
                             </p>
                         </div>
                         <div className="relative w-full max-w-lg mx-auto bg-black">
@@ -55,7 +118,7 @@ const AboutUs = () => {
                             {isPlaying && (
                                 <iframe
                                     className="w-full aspect-video"
-                                    src="https://www.youtube.com/embed/3-9uWAOCdq8?autoplay=1" // Replace `your-video-id` with the actual YouTube video ID
+                                    src={`https://www.youtube.com/embed/${about.data.video}?autoplay=1`} // Replace `your-video-id` with the actual YouTube video ID
                                     title="YouTube video"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowFullScreen
@@ -72,7 +135,9 @@ const AboutUs = () => {
                                 <span className='absolute font-bold text-[#fff] text-[18px] right-[34px] top-[15px]'>الرؤية</span>
                                 <Image className='-z-10' src={title} fill alt='title' />
                             </div>
-                            <p className='mt-[10px] pt-[60px] px-[10px] md:px-[30px] pb-[30px] mx-auto leading-[2.1] border-[1px] border-[solid] border-customGold rounded-[10px]'>مركز سُرج للدراسات والأبحاث , هو مركز علمي دعوي بحثي يعني بتأصيل العقيدة الإسلامية وتعزيز الفطرة الإيمانية وتحصين المجتمع المسلم من الحرب علي الفطرة والإيمان والإسلام , وضرورة تقرير قواعد الشرح الصحيحة المستمدة من القران الكريم والسنه النبوية , وفق منهج السلف الصالح</p>
+                            <p className='mt-[10px] pt-[60px] px-[10px] md:px-[30px] pb-[30px] mx-auto leading-[2.1] border-[1px] border-[solid] border-customGold rounded-[10px]'>
+                                {vision.data.content}
+                            </p>
                         </div>
 
                         <div className="w-[95%] relative h-full m-auto mt-8 lg:mt-0">
@@ -81,7 +146,7 @@ const AboutUs = () => {
                                 <Image className='-z-10' src={title} fill alt='title' />
                             </div>
                             <p className='mt-[10px] pt-[60px] px-[10px] md:px-[30px] pb-[30px] mx-auto leading-[2.1] border-[1px] border-[solid] border-customGold rounded-[10px]'>
-                                في ظل الهجمات الشرسة علي المسلمين في شتي المجالات والسبل والوسائل , يسعي المركز إلي إيجاد بيئة علمية فطرية إيمانية , ترسخ اليقين وسلامة المعتقد وتعني بنشر محاسن الإسلام , والسعي في ثبات منظومة الأسرة والمجتمع , مع الدعوة إلي الإيمان لهداية بقية المذاهب والأديان مع بناء الحصن المنيع ضد كل هجمة  مهما كان حجمها باستثمار كافة الجهود , وكافة الوسائل الحديثة والمتطورة والتقليدية في ي تحقيق تلك الأهداف , ليشمل جميع فئات المجتمع , من المربين والمؤثرين والمتأثرين والمتشككين
+                                {message.data.content}
                             </p>
                         </div>
                     </div>
@@ -90,67 +155,14 @@ const AboutUs = () => {
 
                 <section className='ourTarget mt-14'>
                     <div className='grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-10 w-[95%] xl:w-[80%] mx-auto items-center'>
-                        <div className='relative bkPrimaryColor p-5 [box-shadow:1px_1px_7px_#424c61]'>
+                        <div className='relative bkPrimaryColor p-5 [box-shadow:1px_1px_7px_#424c61] h-auto'>
                             <Image src={target} className='rounded-tl-[35px] rounded-br-[35px] rounded-tr-none rounded-bl-none border-[1px] border-[solid] border-[#fff] p-[10px]' alt='target' />
                         </div>
                         <div className='mt-3 lg:mt-0 col-span-2 bkColor rounded-[6px] px-[15px] lg:px-[40px] py-[20px]'>
                             <h3 className='text-base md:text-l font-bold mainColor border-b-2 border-customGold w-[fit-content] pb-[4px]'>الاهداف العامة</h3>
-                            <ul className='mt-3'>
-                                <li className='mt-2'>
-                                    <div className='flex'>
-                                        <FontAwesomeIcon className='primaryColor ml-2' icon={faMinus} />
-                                        <span className='mainColor'>تأصيل العقيدة الصحيحة المستمدة من الكتاب والسنه وفق منهج سلف الأمه</span>
-                                    </div>
-                                </li>
-                                <li className='mt-2'>
-                                    <div className='flex'>
-                                        <FontAwesomeIcon className='primaryColor ml-2' icon={faMinus} />
-                                        <span className='mainColor'>بث ونشر محاسن الإسلام وتحصيل الأمان العقدي.</span>
-                                    </div>
-                                </li>
-                                <li className='mt-2'>
-                                    <div className='flex'>
-                                        <FontAwesomeIcon className='primaryColor ml-2' icon={faMinus} />
-                                        <span className='mainColor'>ترسيخ المسلمات الدينية والثوابت الإيمانية.</span>
-                                    </div>
-
-                                </li>
-                                <li className='mt-2'>
-                                    <div className='flex'>
-                                        <FontAwesomeIcon className='primaryColor ml-2' icon={faMinus} />
-                                        <span className='mainColor'>تحصين المسلمين ووقاية الشباب والأسرة المسلمة من آثار الأفكار والشبهات المعاصرة.</span>
-                                    </div>
-                                </li>
-                                <li className='mt-2'>
-                                    <div className='flex'>
-                                        <FontAwesomeIcon className='primaryColor ml-2' icon={faMinus} />
-                                        <span className='mainColor'>تحصين المسلمين ووقاية الشباب والأسرة المسلمة من آثار الأفكار والشبهات المعاصرة.</span>
-                                    </div>
-                                </li>
-                                <li className='mt-2'>
-                                    <div className='flex'>
-                                        <FontAwesomeIcon className='primaryColor ml-2' icon={faMinus} />
-                                        <span className='mainColor'>الإعداد البحثي لطلاب العلم والدعاة وفق قواعد البحث العلمي لتخريج نخبة من المختصين
-                                            في مجال الكتابة العلمية بجميع أشكالها مع طرح المواضيع البحثية المتفقة مع رؤية ورسالة
-                                            المركز.</span>
-                                    </div>
-                                </li>
-                                <li className='mt-2'>
-                                    <div className='flex'>
-                                        <FontAwesomeIcon className='primaryColor ml-2' icon={faMinus} />
-                                        <span className='mainColor'>رصد أبرز المذاهب الفكرية المعاصرة وتتبع منابعها ومخرجاتها ومراكزها والتعامل معها وفق
-                                            منهج أهل السنة والجماعة.</span>
-                                    </div>
-                                </li>
-                                <li className='mt-2'>
-                                    <div className='flex'>
-                                        <FontAwesomeIcon className='primaryColor ml-2' icon={faMinus} />
-                                        <p className='mainColor'>تقديم المحتوى المرئي والمسموع والمطبوع، بآل ي ات وبرامج حديثة عبر المنصات المتاحة ووسائل
-                                            التواصل الجتماعي مع إظهار جهود أهل السنة والجماعة في مسائل تعزيز اليقين، والرد
-                                            على الشبهات .</p>
-                                    </div>
-                                </li>
-                            </ul>
+                            <p className=''>
+                                {parse(objects.data.scalar)}
+                            </p>
                         </div>
                     </div>
                 </section>
@@ -163,7 +175,7 @@ const AboutUs = () => {
                                 مسارات ومجالات المركز
                             </h4>
                             <p className='leading-[1.9] mt-[20px] pr-3 lg:pr-[20px]'>
-                                استكشاف المسارات الاربعة المتنوعة التى يقدمها المركز والتى تشمل مجالات التعليم والبحث العلمى والابتكار التكنولوجى والتنمية المستدامة مما يتيح للمتدربين والباحثين فرصة فريدة لتوسيع افاقهم وتحقيق اهدافهم المهنية فى بيئة تعليمية متكاملة
+                                {trackTitle.data.content}
                             </p>
                         </div>
                         <div>
@@ -177,20 +189,24 @@ const AboutUs = () => {
                     <div className='container mx-auto' >
                         <h3 className='text-center text-white font-bold pt-8 text-3xl'>ألية عمل المركز</h3>
                         <div className='p-0 lg:p-7 container mx-auto my-10 pb-5 grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-10 w-[95%] lg:w-[80%] text-white text-center items-center'>
-                            <div className='border-dashed border-2 rounded-[6px] w-full bg-customGray mx-auto h-[140px] flex items-center justify-center font-bold px-3 md:px-6 lg:px-10 xl:px-16'>تصوير وتسجيل البرامج المرئية والمسموعه</div>
-                            <div className='border-dashed border-2 rounded-[6px] w-full bg-customGray mx-auto h-[140px] flex items-center justify-center font-bold px-3 md:px-6 lg:px-10 xl:px-16'>الدورات العلمية المختصه</div>
-                            <div className='border-dashed border-2 rounded-[6px] w-full bg-customGray mx-auto h-[140px] flex items-center justify-center font-bold px-3 md:px-6 lg:px-10 xl:px-16'>أكادمية سرج العملية لتأصيل طلاب العلم وتأهيل الدعاة في برامج دراسية سنوية</div>
-                            <div className='border-dashed border-2 rounded-[6px] w-full bg-customGray mx-auto h-[140px] flex items-center justify-center font-bold px-3 md:px-6 lg:px-10 xl:px-16'>الندوات والحوارات البناءه</div>
-                            <div className='border-dashed border-2 rounded-[6px] w-full bg-customGray mx-auto h-[140px] flex items-center justify-center font-bold px-3 md:px-6 lg:px-10 xl:px-16'>المحاضرات والكلمات</div>
-                            <div className='border-dashed border-2 rounded-[6px] w-full bg-customGray mx-auto h-[140px] flex items-center justify-center font-bold px-3 md:px-6 lg:px-10 xl:px-16'>الفتاوي والاستشارات واللقاءات المفتوحه</div>
-                            <div className='border-dashed border-2 rounded-[6px] w-full bg-customGray mx-auto h-[140px] flex items-center justify-center font-bold px-3 md:px-6 lg:px-10 xl:px-16'>تاليف الكتب المختصه والأبحاث المحكمة والمقالات</div>
-                            <div className='border-dashed border-2 rounded-[6px] w-full bg-customGray mx-auto h-[140px] flex items-center justify-center font-bold px-3 md:px-6 lg:px-10 xl:px-16'>تأصيل طلاب العلم وتأهيل الدعاة</div>
-                            <div className='border-dashed border-2 rounded-[6px] w-full bg-customGray mx-auto h-[140px] flex items-center justify-center font-bold px-3 md:px-6 lg:px-10 xl:px-16'>نشر الفوائد العلمية والدعوية عبر وسائل التواصل</div>
+                            {fetchMission}
                         </div>
                     </div>
                 </section>
-                {/*  */}
-                {/* <section className='managements mb-10 mt-4'>
+
+            </div>
+        </div>
+    )
+}
+
+export default AboutUs
+
+
+
+
+
+{/*  */ }
+{/* <section className='managements mb-10 mt-4'>
                     <h6 className="text-base mx-auto mb-10 md:text-2xl font-bold mainColor border-b-2 border-customGold w-[fit-content] pb-[4px]">اعضاء مجلس الادارة</h6>
                     <div className='container mx-auto grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4 lg:gap-10 w-[95%] lg:w-[80%] text-center items-center'>
 
@@ -247,9 +263,3 @@ const AboutUs = () => {
 
                     </div>
                 </section> */}
-            </div>
-        </div>
-    )
-}
-
-export default AboutUs

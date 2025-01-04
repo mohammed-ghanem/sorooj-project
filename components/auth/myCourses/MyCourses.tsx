@@ -18,6 +18,8 @@ const MyCourses = () => {
   const [courses, setCourses] = useState([]); // State for storing courses data
   const [loading, setLoading] = useState(true); // State for loading indicator
   const [error, setError] = useState<string | null>(null); // State for error handling
+  const [currentPage, setCurrentPage] = useState(1); // Track current page
+  const [totalPages, setTotalPages] = useState(1); // Track total pages
   const lang = LangUseParams(); // Access dynamic [lang] parameter
   const translate = TranslateHook();
 
@@ -39,13 +41,18 @@ const MyCourses = () => {
           `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/profile/get-courses-subscriptions`,
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${token}`,
             },
-          }
+            params: {
+                limit: 5,
+                page: currentPage, // Pass current page as a query parameter
+            },
+        }
         );
 
         // Update state with fetched data
         setCourses(response.data.data);
+        setTotalPages(response.data.meta.last_page || 1); // Update total pages if available
       } catch (error: any) {
         setError(error.response?.data?.message || "Failed to fetch courses");
       } finally {
@@ -54,7 +61,32 @@ const MyCourses = () => {
     };
 
     fetchCourses();
-  }, []);
+  }, [currentPage]);
+
+  const handlePageChange = (page: number) => {
+    if (page > 0 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
+
+  const renderPageNumbers = () => {
+    const pages = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pages.push(
+        <button
+          key={i}
+          onClick={() => handlePageChange(i)}
+          // active page
+          className={`px-4 py-2 mx-1 rounded ${i === currentPage ? "bkMainColor text-white font-bold" : "bg-gray-200"
+            }`}
+        >
+          {i}
+        </button>
+      );
+    }
+    return pages;
+  };
+
 
   if (loading) return <div className="text-center"><FontAwesomeIcon className="mainColor text-2xl my-4" icon={faSpinner} spin /></div>;
 
@@ -106,6 +138,31 @@ const MyCourses = () => {
               :
               <div className="mainColor text-center font-bold"> لست مشترك فى اى دورة تعليمية !! </div>
             }
+            {/* start Pagination Controls */}
+            {
+              courses.length > 0 ? (
+                <div className="flex justify-center items-center mt-8">
+                  <button
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className="px-4 py-2 bg-gray-200 mainColor rounded disabled:opacity-50"
+                  >
+                    السابق
+                  </button>
+                  {/* Render numbered pages */}
+                  {renderPageNumbers()}
+                  <button
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className="px-4 py-2 bg-gray-200 mainColor rounded disabled:opacity-50"
+                  >
+                    التالي
+                  </button>
+                </div>
+              ) :
+                ""
+            }
+            {/*end Pagination Controls */}
 
           </div>
         </div>
