@@ -25,7 +25,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // Map dynamic data to sitemap format
     const coursesUrls = CoursesData.map((item: { slug: string; created_at: string }) => ({
-        url: `https://www.sorooj.org/ar/${item.slug}`,
+        url: `https://www.sorooj.org/ar/courses/${item.slug}`,
         lastModified: new Date(item.created_at), // Use the last modified date from the API
     }));
 
@@ -37,7 +37,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // Map dynamic data to sitemap format
     const booksUrls = booksData.map((item: { slug: string; created_at: string }) => ({
-        url: `https://www.sorooj.org/ar/${item.slug}`,
+        url: `https://www.sorooj.org/ar/books/${item.slug}`,
         lastModified: new Date(item.created_at), // Use the last modified date from the API
     }));
     //************************************************** */
@@ -46,7 +46,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const blogsData = blogsResponse.data.data
     // Map dynamic data to sitemap format
     const blogsUrls = blogsData.map((item: { slug: string; created_at: string }) => ({
-        url: `https://www.sorooj.org/ar/${item.slug}`,
+        url: `https://www.sorooj.org/ar/blogs/${item.slug}`,
         lastModified: new Date(item.created_at), // Use the last modified date from the API
     }));
     //************************************************** */
@@ -55,7 +55,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const questionsData = questionsResponse.data.data
     // Map dynamic data to sitemap format
     const questionsUrls = questionsData.map((item: { slug: string; created_at: string }) => ({
-        url: `https://www.sorooj.org/ar/${item.slug}`,
+        url: `https://www.sorooj.org/ar/questions/${item.slug}`,
         lastModified: new Date(item.created_at), // Use the last modified date from the API
     }));
 
