@@ -15,7 +15,7 @@
         transform: rotate(360deg);
     }
 }
-
+ 
 html {
   @apply font-cairo; /* Apply the Cairo font as the default */
 }

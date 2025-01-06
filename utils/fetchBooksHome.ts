@@ -11,7 +11,7 @@ export interface BookItem {
     description?: string;
     slug: string;
 }
-
+ 
 // Fetch courses from the API
 export const fetchBooksHome = async (
     page = 0,

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import loadingImg from '@/public/assets/images/loadingImg.svg'
 
-
+ 
 const OverlaySpinner: React.FC<{ isLoading: boolean }> = ({ isLoading }) => {
     if (!isLoading) return null;
 

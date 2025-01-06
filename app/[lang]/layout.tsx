@@ -13,6 +13,10 @@ export const metadata: Metadata = {
   title: "مركز سرج  لدراسة المذاهب الفكرية المعاصرة ",
   description: "مركز سُرُجْ - منارة للبحث العلمى والتعليم المتخصص فى استكشاف وفهم المذاهب الفكرية المعاصرة , بما فى ذلك الدينية والفلسفية والسياسية من اجل تمكين المتعلمين فى اتخاذ قرارات مستنيرة فى ظل التنوع الفكرى المتزايد",
   keywords: "مركز,سرج,للدراسات,والابحاث,المذاهب,الفكرية,المعاصرة",
+  icons: {
+    icon: "https://dashboard.sorooj.org/storage/26/favicon.ico", // Main favicon
+    shortcut: "https://dashboard.sorooj.org/storage/26/favicon.ico",
+  },
   openGraph: {
     title: " مركز سرج للدراسات والابحاث",
     description: " مركز سرج للدراسات والابحاث منارة البحث العلمى والمذاهب الفكرية المعاصرة",

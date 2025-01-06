@@ -198,6 +198,8 @@ const BookContent = () => {
                                     </EmailShareButton>
                                 </div>
                                 <div className="flex items-center">
+                                    <span className="ml-4 mainColor text-sm font-bold">المفضلة</span>
+                                    <span className='ml-4 text-2xl primaryColor opacity-[0.4]'> || </span>
                                     <BooksAddWishList bookDetails={bookDetails} />
                                 </div>
                             </div>

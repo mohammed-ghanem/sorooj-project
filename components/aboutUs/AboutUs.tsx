@@ -13,6 +13,7 @@ import title from "@/public/assets/images/title.png"
 import SoroojPath from './SoroojPath';
 import axios from 'axios';
 import parse from "html-react-parser";
+import Mangement from './Mangement';
 
 type StaticPageData = {
     [x: string]: any;
@@ -193,6 +194,10 @@ const AboutUs: React.FC = () => {
                         </div>
                     </div>
                 </section>
+                {/* management */}
+                <div>
+                    <Mangement />
+                </div>
 
             </div>
         </div>
@@ -201,65 +206,3 @@ const AboutUs: React.FC = () => {
 
 export default AboutUs
 
-
-
-
-
-{/*  */ }
-{/* <section className='managements mb-10 mt-4'>
-                    <h6 className="text-base mx-auto mb-10 md:text-2xl font-bold mainColor border-b-2 border-customGold w-[fit-content] pb-[4px]">اعضاء مجلس الادارة</h6>
-                    <div className='container mx-auto grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4 lg:gap-10 w-[95%] lg:w-[80%] text-center items-center'>
-
-                        <div className='bg-customGold w-[80%] mx-auto md:w-full  rounded-tl-[18px] rounded-br-[18px] rounded-tr-none rounded-bl-none [box-shadow:1px_1px_7px_#424c61]'>
-                            <div className='flex justify-center'>
-                                <Image className='border-[1px] border-[solid] border-[#fff] p-[10px] rounded-tl-[10px] rounded-br-[10px] rounded-tr-none rounded-bl-none mt-[20px] [box-shadow:2px_2px_1px_#424c61]' src={man1} alt='' />
-                            </div>
-                            <div className='mb-6'>
-                                <h4 className='text-white font-bold mt-3'>د حمد الهاجرى</h4>
-                                <p className='text-white mt-3'>رئيس مجلس الادارة</p>
-                            </div>
-                        </div>
-
-                        <div className='bg-customGold w-[80%] mx-auto md:w-full  rounded-tl-[18px] rounded-br-[18px] rounded-tr-none rounded-bl-none [box-shadow:1px_1px_7px_#424c61]'>
-                            <div className='flex justify-center'>
-                                <Image className='border-[1px] border-[solid] border-[#fff] p-[10px] rounded-tl-[10px] rounded-br-[10px] rounded-tr-none rounded-bl-none mt-[20px] [box-shadow:2px_2px_1px_#424c61]' src={man1} alt='' />
-                            </div>
-                            <div className='mb-6'>
-                                <h4 className='text-white font-bold mt-3'>د حمد الهاجرى</h4>
-                                <p className='text-white mt-3'>رئيس مجلس الادارة</p>
-                            </div>
-                        </div>
-
-                        <div className='bg-customGold w-[80%] mx-auto md:w-full  rounded-tl-[18px] rounded-br-[18px] rounded-tr-none rounded-bl-none [box-shadow:1px_1px_7px_#424c61]'>
-                            <div className='flex justify-center'>
-                                <Image className='border-[1px] border-[solid] border-[#fff] p-[10px] rounded-tl-[10px] rounded-br-[10px] rounded-tr-none rounded-bl-none mt-[20px] [box-shadow:2px_2px_1px_#424c61]' src={man1} alt='' />
-                            </div>
-                            <div className='mb-6'>
-                                <h4 className='text-white font-bold mt-3'>د حمد الهاجرى</h4>
-                                <p className='text-white mt-3'>رئيس مجلس الادارة</p>
-                            </div>
-                        </div>
-
-                        <div className='bg-customGold w-[80%] mx-auto md:w-full  rounded-tl-[18px] rounded-br-[18px] rounded-tr-none rounded-bl-none [box-shadow:1px_1px_7px_#424c61]'>
-                            <div className='flex justify-center'>
-                                <Image className='border-[1px] border-[solid] border-[#fff] p-[10px] rounded-tl-[10px] rounded-br-[10px] rounded-tr-none rounded-bl-none mt-[20px] [box-shadow:2px_2px_1px_#424c61]' src={man1} alt='' />
-                            </div>
-                            <div className='mb-6'>
-                                <h4 className='text-white font-bold mt-3'>د حمد الهاجرى</h4>
-                                <p className='text-white mt-3'>رئيس مجلس الادارة</p>
-                            </div>
-                        </div>
-
-                        <div className='bg-customGold w-[80%] mx-auto md:w-full  rounded-tl-[18px] rounded-br-[18px] rounded-tr-none rounded-bl-none [box-shadow:1px_1px_7px_#424c61]'>
-                            <div className='flex justify-center'>
-                                <Image className='border-[1px] border-[solid] border-[#fff] p-[10px] rounded-tl-[10px] rounded-br-[10px] rounded-tr-none rounded-bl-none mt-[20px] [box-shadow:2px_2px_1px_#424c61]' src={man1} alt='' />
-                            </div>
-                            <div className='mb-6'>
-                                <h4 className='text-white font-bold mt-3'>د حمد الهاجرى</h4>
-                                <p className='text-white mt-3'>رئيس مجلس الادارة</p>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </section> */}

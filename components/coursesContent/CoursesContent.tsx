@@ -19,6 +19,8 @@ import SuggestCourses from '../suggestCourses/SuggestCourses';
 import CourseAddWishList from '../courseAddWishList/CourseAddWishList';
 import Cookies from "js-cookie"; // Import the js-cookie library
 
+
+
 interface CourseDetails {
   course_name: string;
   image?: string;
@@ -49,6 +51,7 @@ const CoursesContent = () => {
   const { slug } = useParams();
   const token = Cookies.get("access_token");
 
+
   useEffect(() => {
 
     const fetchCourses = async () => {
@@ -76,7 +79,7 @@ const CoursesContent = () => {
     };
     fetchCourses();
 
-  }, [lang, slug, token]);
+  }, [lang, slug, token ]);
 
 
   if (loading) {
@@ -195,7 +198,8 @@ const CoursesContent = () => {
                   </EmailShareButton>
                 </div>
                 <div className="flex items-center">
-                  {/* <span className="ml-4 mainColor text-sm font-bold">اضف الى المفضلة</span> */}
+                  <span className="ml-4 mainColor text-sm font-bold">المفضلة</span>
+                  <span className='ml-4 text-2xl primaryColor opacity-[0.4]'> || </span>
                   <CourseAddWishList courseDetails={courseDetails} />
                 </div>
               </div>

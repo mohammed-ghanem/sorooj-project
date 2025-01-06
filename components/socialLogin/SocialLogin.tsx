@@ -59,9 +59,9 @@ const SocialLogin = () => {
                 ــــــــــــــــــــــــــــــــــــــــــ
             </p>
 
-            <div className="socialLogin w-[95%] md:w-[70%] mx-auto my-6 grid grid-cols-1 md:grid-cols-2 gap-1">
+            <div className="socialLogin w-[95%]  md:w-[50%] mx-auto my-6 grid grid-cols-1 md:grid-cols-1 gap-1  relative z-30">
                 {/* Facebook Login Button */}
-                <div
+                {/* <div
                     className="bg-[#faf9f6] p-[10px] rounded-[5px] [box-shadow:1px_1px_6px_#ddd] cursor-pointer"
                     onClick={() => handleLogin("facebook")}
                 >
@@ -69,11 +69,11 @@ const SocialLogin = () => {
                         {translate?.socialLogin.facebook}
                         <Image src={facebook} className="ml-2" width={30} height={30} alt="Facebook icon" />
                     </div>
-                </div>
+                </div> */}
 
                 {/* Google Login Button */}
                 <div
-                    className="bg-[#faf9f6] p-[10px] rounded-[5px] [box-shadow:1px_1px_6px_#ddd] cursor-pointer"
+                    className="bg-[#faf9f6] flex p-[10px] rounded-[5px] [box-shadow:1px_1px_6px_#ddd] justify-center cursor-pointer"
                     onClick={() => handleLogin("google")}
                 >
                     <div className="flex items-center justify-center text-sm">
