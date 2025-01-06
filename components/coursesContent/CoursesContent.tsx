@@ -77,7 +77,7 @@ const CoursesContent = () => {
         setLoading(false);
       }
     };
-    fetchCourses();
+      fetchCourses();
 
   }, [lang, slug, token ]);
 
