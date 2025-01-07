@@ -58,17 +58,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         url: `https://www.sorooj.org/ar/questions/${item.slug}`,
         lastModified: new Date(item.created_at), // Use the last modified date from the API
     }));
-    //************************************************** */
-    // Fetch dynamic questions data
+     //************************************************** */
+    // Fetch dynamic blogs data
     const audiosResponse = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/audios`);
     const audiosData = audiosResponse.data.data
     // Map dynamic data to sitemap format
-    const audiosUrls = audiosData.map((item: { slug: string; created_at: string }) => ({
+    const audioUrls = audiosData.map((item: { slug: string; publish_date: string }) => ({
         url: `https://www.sorooj.org/ar/audio-library/${item.slug}`,
-        lastModified: new Date(item.created_at), // Use the last modified date from the API
+        lastModified: new Date(item.publish_date), // Use the last modified date from the API
     }));
+    
 
 
 
-    return [...staticUrls, ...coursesUrls, ...booksUrls, ...blogsUrls, ...questionsUrls , ...audiosUrls];
+    return [...staticUrls, ...coursesUrls, ...booksUrls, ...blogsUrls, ...questionsUrls , ...audioUrls];
 }
