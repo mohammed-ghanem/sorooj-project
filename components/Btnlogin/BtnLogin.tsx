@@ -5,14 +5,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
-import LangUseParams from '../translate/LangUseParams';
+
 import LangBtn from '../buttons/LangBtn';
+import LangUseParams from '../translate/LangUseParams';
+import TranslateHook from '../translate/TranslateHook';
 
 const BtnLogin = () => {
     const lang = LangUseParams()
     const router = useRouter();
     const [isAuthenticated, setIsAuthenticated] = useState(false); // Tracks authentication status
     const [isLoading, setIsLoading] = useState(true); // Tracks loading state
+    const translate = TranslateHook();
 
     useEffect(() => {
         const checkAuthStatus = async () => {
@@ -43,9 +46,9 @@ const BtnLogin = () => {
                     {isLoading ? (
                         <FontAwesomeIcon icon={faSpinner} spin className="ml-1" />
                     ) : isAuthenticated ? (
-                        'حسابى'
+                        `${translate ? translate.pages.userProfile.title : "حسابى"}`
                     ) : (
-                        'تسجيل الدخول'
+                        `${translate ? translate.pages.signin.loginButton : "تسجيل الدخول"}`
                     )}
                 </span>
             </a>

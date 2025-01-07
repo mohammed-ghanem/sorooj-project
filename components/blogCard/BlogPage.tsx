@@ -4,7 +4,7 @@ import Banners from '../banners/Banners'
 import BlogCardBox from "./BlogCardBox";
 import { useEffect, useState } from "react";
 import LangUseParams from "../translate/LangUseParams";
-import axios from "axios";
+import axios from "axios"; 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import BlogCategories from "./BlogCategories";
@@ -18,7 +18,7 @@ const BlogPage = () => {
   const [totalPages, setTotalPages] = useState(1); // Track total pages
   const lang = LangUseParams();
   useEffect(() => {
-    const fetchCourses = async () => {
+    const fetchBlog = async () => {
       setLoading(true);
       try { 
         const response = await axios.get(
@@ -46,7 +46,7 @@ const BlogPage = () => {
       }
     };
 
-    fetchCourses();
+    fetchBlog();
   }, [lang, selectedCategoryId, currentPage]); // Re-fetch when category ID changes
 
   const handlePageChange = (page: number) => {

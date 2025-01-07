@@ -16,9 +16,7 @@ interface BlogCardProps {
 }
 
 const BlogCardBox: React.FC<BlogCardProps> = ({ imgSrc, watchNumber, datePublish, blogTitle, doctorName, descriptionBlog, likeBtn, pathLinkToContent }) => {
-    // const slicedTitle = courseTitle.length > 30 ? courseTitle.slice(0, 30) + '...' : courseTitle;
  const slicedDescription = descriptionBlog.length > 40 ? descriptionBlog.slice(0, 40) + '...' : descriptionBlog;
-    // const slicedDoctor = doctorName.length > 35 ? doctorName.slice (0,35) + "..." : doctorName
     return (
         // Blog Card
         <div className=" bkColor rounded-[15px] overflow-hidden relative">

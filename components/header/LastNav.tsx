@@ -23,7 +23,7 @@ const LastNav = () => {
         { name: `${translate ? translate.navigation.books : " الكتب والابحاث"}`, href: `/${lang}/books` },
         { name: `${translate ? translate.navigation.questions : " سؤال وجواب"}`, href: `/${lang}/questions` },
         { name: `${translate ? translate.navigation.videolibirary : " المكتبة المرئية"}`, href: `/${lang}/video-libirary` },
-        { name: `${translate ? translate.navigation.audiolibirary : " المكتبة الصوتية"}`, href: `/${lang}/audio-libirary` },
+        { name: `${translate ? translate.navigation.audiolibirary : " المكتبة الصوتية"}`, href: `/${lang}/audio-library` },
         { name: `${translate ? translate.navigation.liveair : "البث المباشر"}`, href: `/${lang}/live-air` },
         { name: `${translate ? translate.navigation.blog : "المدونة"}`, href: `/${lang}/blogs` },
         { name: `${translate ? translate.navigation.contact : " اتصل بنا"}`, href: `/${lang}/contact-us` },

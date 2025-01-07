@@ -6,12 +6,16 @@ import { useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import Cookies from 'js-cookie';
+import TranslateHook from "../translate/TranslateHook";
+import LangUseParams from "../translate/LangUseParams";
 
 
 
 const FatwaForm = () => {
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
+  const translate = TranslateHook();
+  const lang = LangUseParams()
 
   const handleOk = async (e: any) => {
     e.preventDefault();
@@ -73,9 +77,13 @@ const FatwaForm = () => {
       style={{ "direction": "rtl" }}
     >
       <div className=" py-10 relative z-40 col-span-2 w-[95%] md:w-[80%] mx-auto">
-        <div className="mb-5 text-white font-bold">
-          <h5>هل تريد طلب فتوى !  </h5>
-          <p className="my-4">نحن فى انتظارك , يسعدنا مساعدتك </p>
+        <div className={`mb-5 text-white font-bold ${lang === "en" ? "text-end" : "text-start"}`} >
+          <h5>
+            {translate ? translate.pages.homePage.fatwaForm.title : "هل تريد طلب فتوى !"}
+          </h5>
+          <p className="my-4">
+            {translate ? translate.pages.homePage.fatwaForm.help : "نحن فى انتظارك , يسعدنا مساعدتك"}
+          </p>
         </div>
         <form onSubmit={handleOk}>
           <div className="grid grid-cols-1">
@@ -83,11 +91,13 @@ const FatwaForm = () => {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="الاسم"
-              className="block w-full rounded-md border-0 py-2 pr-2
+              placeholder={`${translate ? translate.pages.homePage.fatwaForm.name : "الاسم"}`}
+              className={`block w-full rounded-md border-0 py-2 
              shadow-sm ring-1 ring-inset 
             ring-white placeholder:mainColor focus:ring-2 focus:outline-none
-            sm:text-sm sm:leading-6 bkColor mainColor font-bold"
+            sm:text-sm sm:leading-6 bkColor mainColor font-bold
+            ${lang === "en" ? "text-end pl-2" : "text-start pr-2"}
+            `}
 
             />
           </div>
@@ -95,18 +105,20 @@ const FatwaForm = () => {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             rows={4}
-            placeholder="ادخل رسالتك"
-            className="block w-full rounded-md border-0 py-1.5 h-[180px] my-4 pr-2 
+            placeholder={`${translate ? translate.pages.homePage.fatwaForm.message : "ادخل استفساراك"}`}
+            className={`block w-full rounded-md border-0 py-1.5 h-[180px] my-4 pr-2 
              shadow-sm ring-1 ring-inset
              ring-white placeholder:mainColor focus:ring-2 focus:outline-none
-             sm:text-sm sm:leading-6 bkColor mainColor font-bold">
+             sm:text-sm sm:leading-6 bkColor mainColor font-bold
+              ${lang === "en" ? "text-end pl-2" : "text-start pr-2"}
+              `}>
 
           </textarea>
           <button
             type="submit"
             className='bkBox primaryColor font-bold px-[20px] py-[10px] rounded-[6px] mt-5 block mx-auto font-cairo'
           >
-            إرسال
+            {translate ? translate.pages.homePage.fatwaForm.submit : "ارسال"}
           </button>
 
         </form>

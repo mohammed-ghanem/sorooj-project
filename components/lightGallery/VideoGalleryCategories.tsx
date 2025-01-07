@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
 
 
-type Category = {
+type Category = { 
   id: number;
   name: string;
   subcategories?: Category[];

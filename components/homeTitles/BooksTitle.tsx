@@ -7,7 +7,7 @@ const BooksTitle = () => {
     const lang = LangUseParams();
     const translate = TranslateHook();
     return (
-        <div className='container mx-auto flex justify-between items-center my-7'>
+        <div className='container mx-auto w-[95%] lg:w-[80%] flex justify-between items-center my-7'>
             <h2 className='text-xl md:text-2xl font-bold mb-4 primaryColor mr-4'>
                 {translate ? translate.pages.homePage.titles.books : "الكتب والابحاث"}
             </h2>

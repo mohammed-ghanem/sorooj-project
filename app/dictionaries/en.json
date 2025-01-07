@@ -32,6 +32,26 @@
                 "AnswerQuestion"  : "Answer & Question",
                 "MoreWatching" : "More Watching",
                 "SeeAll" : "More"
+            },
+            "fatwaForm" :  {
+                "title" :  "Do you want to request a fatwa",
+                "help" : "We are waiting for you, we are happy to help you",
+                "name" : "name",
+                "message" : "Your Question",
+                "submit" : "send"
+            },
+            "footer" : {
+                "title" : "Social Media Links :",
+                "subscribers" : "Add your Email To Receive All New Updates",
+                "placeHolder" : "Email Address",
+                "submit" : "send",
+                "loading" : "Loading...",
+                "alreadySubscribed" : "This Email Is Already subscribed. Enter Another Email",
+                "aboutCenter" : "About Sorooj Center",
+                "fastLinks" : "Fast Links",
+                "contactUs" : "Contact Us",
+                "forMen" : "Men :",
+                "forWomen" : "Women :"
             }
         },
         "lesson" : {
@@ -146,7 +166,20 @@
             "editFailed" : "Failed to Update Profile",
             "ok" : "OK",
             "edit" : "Update" ,
-            "editProfileTitle" : "Edit Profile"
+            "editProfileTitle" : "Edit Profile",
+            "myCourses" :"My Courses",
+            "continue" : "continue",
+            "myFavorites" : "My Favorites",
+            "myQuestions" : "My Questions",
+            "view" : "View",
+            "viewAnswer" : "View Answer",
+            "noCourses" : "You have no courses",
+            "prev" : "prev",
+            "next" : "next",
+            "noFavorites" : "You have no favorite subjects",
+            "noQuestions" : "You have no questions"
+
+
             
          },
          "profileCategory" : {

@@ -105,7 +105,16 @@ const MyQuestions = () => {
                         <ProfileBoxCategories />
                     </div>
                     <div className="bkBox w-[95%] mx-auto col-span-2 p-5" style={{ "direction": "rtl" }}>
-                        <h2 className="w-[fit-content] bkPrimaryColor px-[14px] py-[6px] font-bold rounded-[5px] text-[#fff] mb-[20px]">اسئلتى</h2>
+
+                        <h2 className={`w-[fit-content] 
+                            bkPrimaryColor px-[14px] py-[6px]
+                            font-bold rounded-[5px] text-[#fff] mb-[20px]
+                            ${lang === "en" ? "mr-auto" : "ml-auto"}
+                            `}>
+
+                            {translate ? translate.pages.userProfile.myQuestions : ""}
+                        </h2>
+
                         {myQuestions.length > 0
                             ?
                             myQuestions.map((fatwa: any) => (
@@ -123,13 +132,15 @@ const MyQuestions = () => {
                                             href={`/${lang}/questions/${fatwa.slug}`}
                                             className="bkMainColor py-1 px-5 text-white text-xs rounded-[5px] font-bold"
                                         >
-                                            الاجابة
+                                            {translate ? translate.pages.userProfile.viewAnswer : ""}
                                         </Link>
                                     </div>
                                 </div>
                             ))
                             :
-                            <div className="mainColor text-center font-bold"> ليس لديك اسئلة !! </div>
+                            <div className="mainColor text-center font-bold">
+                                {translate ? translate.pages.userProfile.noQuestions : ""}
+                            </div>
                         }
 
                         {/* start Pagination Controls */}
@@ -141,7 +152,7 @@ const MyQuestions = () => {
                                         disabled={currentPage === 1}
                                         className="px-4 py-2 bg-gray-200 mainColor rounded disabled:opacity-50"
                                     >
-                                        السابق
+                                        {translate ? translate.pages.userProfile.prev : ""}
                                     </button>
                                     {/* Render numbered pages */}
                                     {renderPageNumbers()}
@@ -150,7 +161,7 @@ const MyQuestions = () => {
                                         disabled={currentPage === totalPages}
                                         className="px-4 py-2 bg-gray-200 mainColor rounded disabled:opacity-50"
                                     >
-                                        التالي
+                                        {translate ? translate.pages.userProfile.next : ""}
                                     </button>
                                 </div>
                             ) :

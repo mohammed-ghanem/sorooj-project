@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
                     },
                 ],
             },
-        };
+        }; 
     } catch (error) {
         return {
             title: 'Error',

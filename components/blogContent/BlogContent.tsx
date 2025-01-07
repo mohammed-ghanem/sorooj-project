@@ -40,7 +40,7 @@ const BlogContent = () => {
     useEffect(() => {
 
         //console.log("fetch time")
-        const fetchCourses = async () => {
+        const fetchBlog = async () => {
             try {
                 const response = await axios.get(
                     `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/blogs/${slug}`,
@@ -61,7 +61,7 @@ const BlogContent = () => {
                 setLoading(false);
             }
         };
-        fetchCourses();
+        fetchBlog();
 
     }, [lang, slug]);
 
@@ -87,7 +87,7 @@ const BlogContent = () => {
                         <h1 className=' text-base md:text-2xl font-bold mainColor'>
                             <FontAwesomeIcon className=' primaryColor text-lg ml-2' icon={faPenToSquare} />
                             {blogDetails.blog_name}
-
+ 
                         </h1>
                         <div className='mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 items-center'>
                             <span>

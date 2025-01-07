@@ -19,7 +19,7 @@ const FastLinksFooter = () => {
         { name: `${translate ? translate.navigation.books : " الكتب والابحاث"}`, href: `/${lang}/books` },
         { name: `${translate ? translate.navigation.questions : " سؤال وجواب"}`, href: `/${lang}/questions` },
         { name: `${translate ? translate.navigation.videolibirary : " المكتبة المرئية"}`, href: `/${lang}/video-libirary` },
-        { name: `${translate ? translate.navigation.audiolibirary : " المكتبة الصوتية"}`, href: `/${lang}/audio-libirary` },
+        { name: `${translate ? translate.navigation.audiolibirary : " المكتبة الصوتية"}`, href: `/${lang}/audio-library` },
         { name: `${translate ? translate.navigation.liveair : "البث المباشر"}`, href: `/${lang}/live-air` },
         { name: `${translate ? translate.navigation.blog : "المدونة"}`, href: `/${lang}/blogs` },
         { name: `${translate ? translate.navigation.contact : " اتصل بنا"}`, href: `/${lang}/contact-us` },
@@ -31,7 +31,9 @@ const FastLinksFooter = () => {
 
     return ( 
         <div>
-            <h4 className='text-2xl mt-2 lg:mt-0 primaryColor'>روابط سريعة</h4>
+            <h4 className='text-2xl mt-2 lg:mt-0 primaryColor'>
+            {translate ? translate.pages.homePage.footer.fastLinks : ""}
+            </h4>
             <div className='row grid grid-cols-2 items-center mt-4 mr-4'>
                 {links.map((link, index) => (
                     <div key={index} className='col-span-1 text-white flex items-center mt-2 '>

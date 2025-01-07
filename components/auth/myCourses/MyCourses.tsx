@@ -41,13 +41,13 @@ const MyCourses = () => {
           `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/profile/get-courses-subscriptions`,
           {
             headers: {
-                Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${token}`,
             },
             params: {
-                limit: 5,
-                page: currentPage, // Pass current page as a query parameter
+              limit: 5,
+              page: currentPage, // Pass current page as a query parameter
             },
-        }
+          }
         );
 
         // Update state with fetched data
@@ -106,7 +106,14 @@ const MyCourses = () => {
             <ProfileBoxCategories />
           </div>
           <div className="bkBox w-[95%] mx-auto col-span-2 p-5" style={{ "direction": "rtl" }}>
-            <h2 className="w-[fit-content] bkPrimaryColor px-[14px] py-[6px] font-bold rounded-[5px] text-[#fff] mb-[20px]">دوراتى التعليمية</h2>
+            <h2 className={`w-[fit-content] 
+              bkPrimaryColor px-[14px] py-[6px]
+              font-bold rounded-[5px] text-[#fff] mb-[20px]
+              ${lang === "en" ? "mr-auto" : "ml-auto"}
+              `}>
+
+              {translate ? translate.pages.userProfile.myCourses : ""}
+            </h2>
             {courses.length > 0
               ?
               courses.map((course: any) => (
@@ -130,13 +137,15 @@ const MyCourses = () => {
                       href={`/${lang}/courses/${course.slug}`}
                       className="bkMainColor py-1 px-5 text-white text-xs rounded-[5px] font-bold"
                     >
-                      استمرار
+                      {translate ? translate.pages.userProfile.continue : ""}
                     </Link>
                   </div>
                 </div>
               ))
               :
-              <div className="mainColor text-center font-bold"> لست مشترك فى اى دورة تعليمية !! </div>
+              <div className="mainColor text-center font-bold">
+                {translate ? translate.pages.userProfile.noCourses : ""}
+              </div>
             }
             {/* start Pagination Controls */}
             {
@@ -147,7 +156,7 @@ const MyCourses = () => {
                     disabled={currentPage === 1}
                     className="px-4 py-2 bg-gray-200 mainColor rounded disabled:opacity-50"
                   >
-                    السابق
+                    {translate ? translate.pages.userProfile.prev : ""}
                   </button>
                   {/* Render numbered pages */}
                   {renderPageNumbers()}
@@ -156,7 +165,7 @@ const MyCourses = () => {
                     disabled={currentPage === totalPages}
                     className="px-4 py-2 bg-gray-200 mainColor rounded disabled:opacity-50"
                   >
-                    التالي
+                    {translate ? translate.pages.userProfile.next : ""}
                   </button>
                 </div>
               ) :

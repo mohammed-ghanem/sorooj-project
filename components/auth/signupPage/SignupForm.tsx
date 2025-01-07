@@ -147,7 +147,7 @@ const SignupForm = () => {
                     // Redirect to the verify code page
                     router.push(`/${lang}/auth/verify-code?email=${form.email}`);
                 });
-
+ 
             } catch (axiosError) {
                 // Close loading indicator on error
                 Swal.close();

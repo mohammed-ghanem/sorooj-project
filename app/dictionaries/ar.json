@@ -31,7 +31,27 @@
                 "AnswerQuestion"  : "سؤال وجواب",
                 "MoreWatching" : "الاكثر مشاهدة",
                 "SeeAll" : "عرض الكل" 
-                }
+            },
+            "fatwaForm" :  {
+                "title" :  "هل تريد طلب فتوى !",
+                "help" : "نحن فى انتظارك , يسعدنا مساعدتك",
+                "name" : "الاسم",
+                "message" : "ادخل سؤالك",
+                "submit" : "ارسل"
+            },
+            "footer" : {
+                "title" : "تواصل معنا على :",
+                "subscribers" : "اضف بريدك الالكترونى ليصلك كل جديد :",
+                "placeHolder" : "البريد الالكترونى",
+                "submit" : "ارسل",
+                "loading" : " جار الإرسال ...",
+                "alreadySubscribed" : "هذا البريد مشترك بالفعل برجاء ادخل بريد الكترونى اخر",
+                "aboutCenter" : " عن المركز",
+                "fastLinks" : "روابط سريعة",
+                "contactUs" : "تواصل معنا",
+                "forMen" : " للرجال :" ,
+                "forWomen" : " للنساء :"
+            }
         },
         "lesson" : {
             "title" : "اهلا وسهلا بكم فى الدروس "
@@ -133,7 +153,7 @@
             "error" : "حدث خطا برجاء اعادة المحاولة فى وقت لاحق  والتاكد من عنوان بريدك الالكترونى"
         },
         "userProfile" : {
-           "title" : "حسابى",
+           "title" : "حسابى", 
            "editProfile" : "تعديل البيانات",
            "save" : "حفظ",
            "firstName" : "الاسم الاول",
@@ -144,7 +164,18 @@
            "editFailed" : "فشل تعديل البيانات", 
            "ok" : "تم",
            "edit" : "تعديل",
-           "editProfileTitle" : "تعديل البيانات"
+           "editProfileTitle" : "تعديل البيانات",
+           "myCourses" :"دوراتى التعليمية",
+           "continue" : "استمرار",
+           "myFavorites" : "مواضيعى المفضلة",
+           "myQuestions" : "اسئلتى",
+           "view" : "مشاهدة",
+           "viewAnswer" : "الاجابة",
+           "noCourses" : "لست مشترك فى اى دورة تعليمية !! ",
+           "prev" : "السابق",
+           "next" : "التالى",
+           "noFavorites" : "ليس لديك مواضيع مفضلة",
+           "noQuestions" : "ليس لديك اسئلة"
         },
         "profileCategory" : {
               "logoutTitle" : "هل انت متاكد ؟",

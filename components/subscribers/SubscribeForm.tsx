@@ -3,20 +3,21 @@ import { useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import LangUseParams from '../translate/LangUseParams';
+import TranslateHook from '../translate/TranslateHook';
 
 const SubscribeForm = () => {
     const [email, setEmail] = useState<string>('')
     const [loading, setLoading] = useState(false);
     const lang = LangUseParams(); // Access dynamic [lang] parameter
-
+    const translate = TranslateHook();
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         if (!email) {
             Swal.fire({
                 icon: 'error',
-                title: 'خطأ',
-                text: 'يرجى إدخال بريدك الإلكتروني!',
+                title: lang === 'ar' ? 'خطأ' : 'error!',
+                text: lang === 'ar' ? 'يرجى إدخال بريدك الإلكتروني!' : 'Please Enter Your Email ',
             });
             return;
         }
@@ -44,6 +45,7 @@ const SubscribeForm = () => {
 
             // Close loading indicator upon success
             Swal.close();
+
             Swal.fire({
                 icon: 'success',
                 title: lang === 'ar' ? 'تم الاشتراك بنجاح' : 'successfully!',
@@ -52,12 +54,23 @@ const SubscribeForm = () => {
 
             // Reset form on success
             setEmail('');
-        } catch (err: any) {
-            Swal.fire({
-                icon: 'error',
-                title: 'خطأ',
-                text: 'حدث خطأ ما. يرجى المحاولة مرة أخرى.',
-            });
+        } catch (axiosError) {
+            // Close loading indicator on error
+            Swal.close();
+            if (axios.isAxiosError(axiosError)) {
+                if (axiosError.response?.status === 422) {
+                    // Show SweetAlert2 alert for email already registered
+                    Swal.fire({
+                        title: `${translate ? translate.pages.signup.titleFailed : "Registration Failed!"}`,
+                        text: `${translate ? translate.pages.homePage.footer.alreadySubscribed : ""}`,
+                        icon: 'error',
+                        confirmButtonText: `${translate ? translate.pages.signup.ok : ""}`,
+                    });
+                } else {
+                    // Handle other errors
+                    console.error("Error", axiosError);
+                }
+            }
         } finally {
             setLoading(false);
         }
@@ -65,11 +78,22 @@ const SubscribeForm = () => {
 
     return (
         <div className="max-w-md mx-auto mt-10">
-            <h4 className="mainColor font-bold mr-3 lg:mr-0">اضف بريدك الالكترونى ليصلك كل جديد :</h4>
-            <form onSubmit={handleSubmit} className="mt-5 relative" style={{ direction: 'rtl' }}>
+            <h4 className={`mainColor font-bold mr-3 lg:mr-0`}>
+                {translate ? translate.pages.homePage.footer.subscribers : "اضف بريدك الالكترونى ليصلك كل جديد"}
+
+            </h4>
+            <form onSubmit={handleSubmit} className={`mt-5 relative
+            
+            `}
+                style={{ direction: lang === "en" ? "ltr" : "rtl" }}
+            >
                 <div className="mb-4">
                     <input
-                        placeholder="ادخل بريدك الالكترونى"
+                        placeholder={`${translate
+                            ?
+                            translate.pages.homePage.footer.placeHolder
+                            : "البريد الالكتورنى"}
+                            `}
                         type="email"
                         id="email"
                         name="email"
@@ -81,10 +105,27 @@ const SubscribeForm = () => {
                 </div>
                 <button
                     type="submit"
-                    className="absolute bkPrimaryColor text-white focus:outline-none top-[0] left-[0] px-[40px] py-[12px] md:py-[10px] rounded-[30px]"
+                    className={`absolute bkPrimaryColor
+                         text-white
+                         focus:outline-none top-[0]
+                         px-[40px] py-[12px] md:py-[10px] rounded-[30px]
+                         ${lang === "en" ? " right-[0]" : " left-[0]"}
+                         
+                         `}
                     disabled={loading}
                 >
-                    {loading ? 'جار الإرسال...' : 'ارسال'}
+                    {loading
+                        ?
+                        `${translate
+                            ?
+                            translate.pages.homePage.footer.loading
+                            : "جار الارسال ..."}
+                            `                                    :
+                        `${translate
+                            ?
+                            translate.pages.homePage.footer.submit
+                            : "ارسال"}
+                            `                    }
                 </button>
             </form>
         </div>

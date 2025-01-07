@@ -142,7 +142,7 @@ const MyFavorites = () => {
 
     return (
         <section>
-            <div> 
+            <div>
                 <Banners src={banner} textPath={translate ? translate.pages.userProfile.title : ""} />
             </div>
             <div className="relative">
@@ -151,8 +151,16 @@ const MyFavorites = () => {
                     <div>
                         <ProfileBoxCategories />
                     </div>
-                    <div className="bkBox w-[95%] mx-auto col-span-2 p-5"  style={{ "direction" : "rtl" }}>
-                        <h2 className="w-[fit-content] bkPrimaryColor px-[14px] py-[6px] font-bold rounded-[5px] text-[#fff] mb-[20px] text-sm">مواضيعى المفضلة</h2>
+                    <div className="bkBox w-[95%] mx-auto col-span-2 p-5" style={{ "direction": "rtl" }}>
+
+                        <h2 className={`w-[fit-content] 
+                            bkPrimaryColor px-[14px] py-[6px]
+                            font-bold rounded-[5px] text-[#fff] mb-[20px]
+                            ${lang === "en" ? "mr-auto" : "ml-auto"}
+                            `}>
+
+                            {translate ? translate.pages.userProfile.myFavorites : ""}
+                        </h2>
                         {favorites.map((favorite: any) => {
                             if (favorite.type === "books" && favorite.book) {
                                 return (
@@ -177,7 +185,7 @@ const MyFavorites = () => {
                                                 href={`/${lang}/${favorite.type}/${favorite.book.slug}`}
                                                 className="bkMainColor py-1 px-5 text-white text-xs rounded-[5px] font-bold"
                                             >
-                                                مشاهدة
+                                                {translate ? translate.pages.userProfile.view : ""}
                                             </Link>
                                         </div>
                                     </div>
@@ -205,13 +213,15 @@ const MyFavorites = () => {
                                                 href={`/${lang}/${favorite.type}/${favorite.course.slug}`}
                                                 className="bkMainColor py-1 px-5 text-white text-xs rounded-[5px] font-bold"
                                             >
-                                                مشاهدة
+                                                 {translate ? translate.pages.userProfile.view : ""}
                                             </Link>
                                         </div>
                                     </div>
                                 );
                             } else {
-                                <div> ليس لديك مواضيع مفضلة</div>;
+                                <div>
+                                     {translate ? translate.pages.userProfile.noFavorites : ""}
+                                </div>;
                             }
                         })}
                         {/* start Pagination Controls */}
@@ -223,7 +233,7 @@ const MyFavorites = () => {
                                         disabled={currentPage === 1}
                                         className="px-4 py-2 bg-gray-200 mainColor rounded disabled:opacity-50"
                                     >
-                                        السابق
+                                        {translate ? translate.pages.userProfile.prev : ""}
                                     </button>
                                     {/* Render numbered pages */}
                                     {renderPageNumbers()}
@@ -232,7 +242,7 @@ const MyFavorites = () => {
                                         disabled={currentPage === totalPages}
                                         className="px-4 py-2 bg-gray-200 mainColor rounded disabled:opacity-50"
                                     >
-                                        التالي
+                                        {translate ? translate.pages.userProfile.next : ""}
                                     </button>
                                 </div>
                             ) :

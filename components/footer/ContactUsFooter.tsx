@@ -4,7 +4,8 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import Link from 'next/link';
-import { useEffect, useState } from 'react'; 
+import { useEffect, useState } from 'react';
+import TranslateHook from '../translate/TranslateHook';
 
 interface SocialLinks {
     phones?: any;
@@ -16,6 +17,8 @@ const ContactUsFooter = () => {
     const [contactLinks, setContactLinks] = useState<SocialLinks>({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const translate = TranslateHook();
+
     // Simulating fetched data
 
 
@@ -50,21 +53,22 @@ const ContactUsFooter = () => {
 
     return (
         <div>
-            <h4 className='text-2xl mt-2 lg:mt-0 primaryColor'>تواصل معنا</h4>
+            <h4 className='text-2xl mt-2 lg:mt-0 primaryColor'>
+                {translate ? translate.pages.homePage.footer.contactUs : ""}
+            </h4>
             <div className='mt-4 mr-4 text-sm'>
 
                 <div className='mb-2 flex items-center'>
 
-                    <FontAwesomeIcon icon={faWhatsapp} className='ml-2 text-2xl primaryColor' />
-                    <span className='mainColor font-semibold'>
-                        للرجال :
-                        <span className='ml-2 mr-2 '>
+                    <FontAwesomeIcon icon={faWhatsapp} className='ml-2 mr-2 text-2xl primaryColor' />
+                    <span className='mainColor font-semibold flex'>
+                        {translate ? translate.pages.homePage.footer.forMen : ""}                        <span className='ml-2 mr-2 '>
                             <Link
                                 href={`https://api.whatsapp.com/send?phone=${contactLinks.phones.man}`}
                                 target='_blank'
                                 title={`تواصل مع ${contactLinks.phones.man}`}
                                 rel='nofollow'
-                                className='mainColor'
+                                className='mainColor '
                             >
                                 {contactLinks.phones.man}
                             </Link>
@@ -73,10 +77,9 @@ const ContactUsFooter = () => {
                 </div>
                 <div className='mb-2 flex items-center'>
 
-                    <FontAwesomeIcon icon={faWhatsapp} className='ml-2 text-2xl primaryColor' />
-                    <span className='mainColor font-semibold'>
-                        للنساء :
-                        <span className='ml-2 mr-2 '>
+                    <FontAwesomeIcon icon={faWhatsapp} className='ml-2 mr-2 text-2xl primaryColor' />
+                    <span className='mainColor font-semibold flex'>
+                    {translate ? translate.pages.homePage.footer.forWomen : ""}                        <span className='ml-2 mr-2 '>
                             <Link
                                 href={`https://api.whatsapp.com/send?phone=${contactLinks.phones.women}`}
                                 target='_blank'
@@ -92,7 +95,7 @@ const ContactUsFooter = () => {
 
 
                 <div className='flex items-center'>
-                    <FontAwesomeIcon icon={faEnvelope} className='ml-2 text-2xl primaryColor' />
+                    <FontAwesomeIcon icon={faEnvelope} className='ml-2 mr-2 text-2xl primaryColor' />
                     <Link href={`mailto:${contactLinks.email}`} className='mainColor font-semibold' title="" >
                         {contactLinks.email}
                     </Link>
