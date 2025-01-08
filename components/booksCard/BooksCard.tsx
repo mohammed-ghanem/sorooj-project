@@ -18,7 +18,7 @@ interface BooksCardProps {
 const BooksCard: React.FC<BooksCardProps> = ({
     pathLinkToContent, imgSrc, bookTitle, watchNumber, datePublish, doctorName, descriptionBook, likeBtn
 }) => {
-    const slicedTitle = bookTitle.length > 40 ? bookTitle.slice(0, 40) + '...' : bookTitle;
+    const slicedTitle = bookTitle.length > 38 ? bookTitle.slice(0, 38) + '...' : bookTitle;
     const slicedDes = descriptionBook.length > 30 ? descriptionBook.slice(0, 30) + '...' : descriptionBook;
     return (
         <div className='bkPrimaryColor [box-shadow:1px_1px_7px_#ddd] p-[10px] rounded-tl-[15px] rounded-br-[15px] rounded-tr-none rounded-bl-none'>

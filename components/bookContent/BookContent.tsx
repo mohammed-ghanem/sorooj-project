@@ -86,7 +86,7 @@ const BookContent = () => {
     ///////////////////////////////////////////////////////////////
     console.log(bookDetails)
     return (
-        <section>
+        <section> 
             <div>
                 <Banners src={defImage} textPath={translate ? translate.pages.booksContentPage.bannerPathText : ""} />
             </div>
@@ -206,13 +206,13 @@ const BookContent = () => {
                         </div>
 
                     </div>
-                    <div className='courseImg'>
+                    <div className='bookImg'>
                         <div>
                             <Image className='w-full h-full max-h-60'
                                 src={bookDetails.image}
                                 width={100}
                                 height={100}
-                                alt='course-img' />
+                                alt='book-img' />
                         </div>
                     </div>
                 </div>

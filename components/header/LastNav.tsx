@@ -15,6 +15,9 @@ const LastNav = () => {
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
+    const closeMenu = () => {
+        setIsOpen(false);
+    };
 
     const navLinks = [
         { name: `${translate ? translate.navigation.home : "الرئيسية"}`, href: `/${lang}` },
@@ -54,6 +57,7 @@ const LastNav = () => {
             <div className={`lg:hidden ${isOpen ? 'block' : 'hidden'} mt-4`}>
                 {navLinks.map((link, index) => (
                     <Link
+                        onClick={closeMenu}
                         key={index}
                         href={link.href}
                         className="block text-white py-2"

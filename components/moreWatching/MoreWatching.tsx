@@ -48,7 +48,8 @@ const MoreWatching = () => {
                         <Image
                             className="w-full h-44"
                             src={item.image} // Fallback image
-                            alt={item.title}
+                           // alt={item.title}
+                            alt={"moreWatchingImg"}
                             width={300}
                             height={200}
                         />
@@ -73,7 +74,7 @@ const MoreWatching = () => {
                             </h3>
                             <p className="text-[12px] mainColor flex items-center mt-2">
                                 <FontAwesomeIcon icon={faBookOpen} className="ml-1 primaryColor" />
-                                <span className="opacity-[0.8]">{`${item.brief_description.slice(0, 38)} ...`}</span>
+                                <span className="opacity-[0.8]">{`${item.brief_description.slice(0, 36)} ...`}</span>
                             </p>
                         </div>
                         <Link

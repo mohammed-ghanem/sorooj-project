@@ -1,6 +1,5 @@
 'use client'
 import { useEffect, useState } from "react";
-import comming from "@/public/assets/images/comming.png";
 import Image from "next/image";
 import flower from "@/public/assets/images/flower.svg";
 import fatwaFlower from "@/public/assets/images/fatwa.svg";
@@ -8,7 +7,7 @@ import { Carousel, ConfigProvider } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays, faClock, faLocationDot, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import logo from "@/public/assets/images/loadingImg.svg"
+import logo from "@/public/assets/images/logo.png"
 import "./style.css"
 
 
@@ -62,8 +61,11 @@ const CommingEvents: React.FC = () => {
             <div className=' container mx-auto bkBox my-20 w-[95%] lg:w-[80%]  [box-shadow:1px_1px_7px_#ddd] rounded-[10px]'>
                 <div className='relative overflow-hidden py-3 lg:px-3 flex flex-col-reverse lg:grid grid-cols-1 lg:grid-cols-2 gap-4 items-center'>
                     <div className="bg-white col-span-2 lg:col-span-2  relative z-10 opacity-80 p-8 w-[95%] lg:w-auto rounded-[8px] [box-shadow:1px_1px_10px_#ddd]">
-                        <div>
-                            <Image className="m-auto" src={logo} width={150} height={150} alt="eventLogo" />
+                        <div className="">
+                            <Image 
+                                className="m-auto w-[250px] h-[250px]"
+                                style={{ height: 'auto' }}
+                                src={logo} alt="eventLogo" />
                         </div>
                         <p className="bkMainColor text-white my-5 py-2 px-4 w-[fit-content] m-auto rounded-[6px] font-bold">انتظرونا فى احداث قادمة قريبا</p>
                     </div>

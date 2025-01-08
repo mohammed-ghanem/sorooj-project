@@ -4,7 +4,7 @@ import Banners from '../banners/Banners';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import defImage from "@/public/assets/images/default.webp"; // Default image
 import AudioCategories from './AudioCategories';
-import { faCirclePlay, faClock, faMicrophoneLines, faPenNib, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faMicrophoneLines, faPenNib, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import { useEffect, useState } from "react";
 import LangUseParams from "../translate/LangUseParams";
@@ -41,7 +41,7 @@ const AudioLibirary = () => {
 
                 setAllAudio(response.data.data);
                 setTotalPages(response.data.meta.last_page || 1); // Update total pages if available
-                console.log(response.data.data)
+               
             } catch (err: any) {
                 setError(err.response?.data?.message || err.message);
             } finally {

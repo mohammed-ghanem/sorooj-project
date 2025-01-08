@@ -7,7 +7,7 @@ const OverlaySpinner: React.FC<{ isLoading: boolean }> = ({ isLoading }) => {
 
     return (
         <div className="fixed inset-0 z-50 grid items-center justify-center bkColor">
-            <Image width={250} height={250} src={loadingImg} alt="Loading..." />
+            <Image  className='w-[250px] h-[250px]' src={loadingImg} alt="Loading..." />
             <div className='flex justify-center fixed top-[65%] w-full'>
                 <div className='h-4 w-4 bkPrimaryColor rounded-full animate-bounce [animation-delay:-0.3s]'></div>
                 <div className='h-4 w-4 mx-2 bkPrimaryColor rounded-full animate-bounce [animation-delay:-0.15s]'></div>

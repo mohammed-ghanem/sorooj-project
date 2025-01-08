@@ -72,12 +72,14 @@ const Slider: React.FC = () => {
               className="w-[100%] lg:w-[1600px] h-auto lg:h-[400px]"
               src={image.image}
               alt={image.alt}
-              width={1600}
-              height={400}
+              style={{ height: 'auto' }}
+              // width={1600}
+              // height={400}
+              
             />
             {image.title && (
               <div className="absolute inset-0 flex justify-center items-end mb-4">
-                <Link href={image.link || '#'}>
+                <Link href={image.link || ''}>
                   <span className="styleTitle font-bold mainColor bg-white bg-opacity-25 px-2 py-1 rounded">
                     {image.title}
                   </span>
