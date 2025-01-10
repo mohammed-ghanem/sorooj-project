@@ -35,7 +35,8 @@ const LangBtn = () => {
     }
 
     // Use Next.js router to navigate to the new path without causing a full page reload
-    router.push(newPath);
+    //router.push(newPath); // i stoped this because the lightgalley have issue without reload
+    window.location.href = newPath
   };
 
   const arabicIcon = <div className='flex items-center border-[1px] border-[#9F854E] rounded-[15px] px-[6px] py-[3px] mx-[4px] my-[0]'><span className=' font-bold mx-[3px] my-[0] text-[#424C61]'>AR</span><FontAwesomeIcon className='primaryColor text-xl	' icon={faGlobe} /></div>
