@@ -79,7 +79,7 @@ const BlogContent = () => {
     return (
         <div>
             <div>
-                <Banners src={defImage} textPath="تفاصيل المدونة" />
+                <Banners src={defImage} parentTitle={`المدونة`} textPath="تفاصيل المدونة" />
             </div>
             <div className='container mx-auto'>
                 <div className='blogDetails my-4 md:my-14 w-[95%] md:w-[80%] mx-auto flex flex-col-reverse lg:grid grid-cols-3 gap-4 items-center'>

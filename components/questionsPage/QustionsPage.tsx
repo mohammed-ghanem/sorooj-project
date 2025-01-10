@@ -104,7 +104,7 @@ const QustionsPage = () => {
     return (
         <div>
             <div>
-                <Banners src={defImage} textPath="سؤال وجواب" />
+                <Banners src={defImage} parentTitle={`الرئيسية`} textPath="سؤال وجواب" />
             </div>
             <div className="my-14 container mx-auto w-[95%] md:w-[80%] grid grid-cols-1 lg:grid-cols-5 gap-10">
                 <div className="col-span-2 h-80">

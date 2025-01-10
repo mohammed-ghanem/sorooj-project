@@ -106,7 +106,7 @@ const CoursesCardPage = () => {
     return (
         <div>
             <div>
-                <Banners src={soroojImg} textPath="الدورات المجانية" />
+                <Banners src={soroojImg} parentTitle={`الرئيسية`} textPath="الدورات المجانية" />
             </div>
             <div className="coursesContainer container mx-auto my-20 grid grid-cols-1 lg:grid-cols-4 gap-0 lg:gap-10 w-[95%] lg:w-[80%]">
                 <div className="my-5 lg:my-0">

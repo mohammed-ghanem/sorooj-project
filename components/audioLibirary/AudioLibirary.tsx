@@ -122,7 +122,7 @@ const AudioLibirary = () => {
     return (
         <div>
             <div>
-                <Banners src={defImage} textPath="المكتبة الصوتية" />
+                <Banners src={defImage} parentTitle={`الرئيسية`} textPath="المكتبة الصوتية" />
             </div>
             <div className='container my-10 mx-auto w-[80%] grid grid-cols-1 lg:grid-cols-4 gap-4'>
                 <div>

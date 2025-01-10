@@ -86,7 +86,7 @@ const AboutUs: React.FC = () => {
 
     return (
         <div>
-            <Banners src={aboutImg} textPath={"عن المركز"} />
+            <Banners src={aboutImg} parentTitle={`الرئيسية`} textPath={"عن المركز"} />
             <div className="mt-20" style={{ direction: "rtl" }}>
                 <section className='container mx-auto aboutText'>
                     <div className='grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-10 w-[95%] lg:w-[80%] mx-auto'>

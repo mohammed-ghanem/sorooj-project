@@ -78,7 +78,7 @@ const AudioLibraryContent = () => {
     return (
         <section>
             <div>
-                <Banners src={defImage} textPath={"تفاصيل الصوتى"} />
+                <Banners src={defImage} parentTitle={`الصوتية`} textPath={"تفاصيل الصوتى"} />
             </div>
             <div className='container mx-auto'>
                 <div className='audioDetails my-4 md:my-14 w-[95%] md:w-[80%] mx-auto flex flex-col-reverse lg:grid grid-cols-3 gap-4 items-center'>

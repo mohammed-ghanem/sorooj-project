@@ -88,7 +88,7 @@ const BookContent = () => {
     return (
         <section> 
             <div>
-                <Banners src={defImage} textPath={translate ? translate.pages.booksContentPage.bannerPathText : ""} />
+                <Banners src={defImage} parentTitle={`الكتب`} textPath={translate ? translate.pages.booksContentPage.bannerPathText : ""} />
             </div>
             <div className='container mx-auto'>
                 <div className='bookDetails my-4 md:my-14 w-[95%] md:w-[80%] mx-auto flex flex-col-reverse lg:grid grid-cols-3 gap-4 items-center'>

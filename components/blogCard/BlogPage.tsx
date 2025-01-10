@@ -97,7 +97,7 @@ const BlogPage = () => {
   return (
     <div>
       <div>
-        <Banners src={soroojImg} textPath="المدونة" />
+        <Banners src={soroojImg} parentTitle={`الرئيسية`} textPath="المدونة" />
       </div>
       <div className="container mx-auto my-20 grid grid-cols-1 lg:grid-cols-4 gap-0 lg:gap-10 w-[95%] lg:w-[80%]">
         <div>

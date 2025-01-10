@@ -87,7 +87,7 @@ const ContactUs = () => {
     return (
         <div className="relative grdianBK" style={{ direction: "rtl" }}>
             <div>
-                <Banners src={soroojImg} textPath="تواصل معنا" />
+                <Banners src={soroojImg} parentTitle={`الرئيسية`} textPath="تواصل معنا" />
             </div>
             <div className="container mx-auto items-center">
                 <div className="my-10" style={{ direction: "ltr" }}>

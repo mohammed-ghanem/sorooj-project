@@ -95,7 +95,7 @@ const CoursesContent = () => {
   return (
     <section>
       <div>
-        <Banners src={defImage} textPath={translate ? translate.pages.coursesContentPage.bannerPathText : ""} />
+        <Banners src={defImage} parentTitle={`الدروات`} textPath={translate ? translate.pages.coursesContentPage.bannerPathText : ""} />
       </div>
       <div className='container mx-auto'>
         <div className='courseDetails my-4 md:my-14 w-[95%] md:w-[80%] mx-auto flex flex-col-reverse lg:grid grid-cols-3 gap-4 items-center'>

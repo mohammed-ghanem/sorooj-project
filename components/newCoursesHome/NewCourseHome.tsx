@@ -84,7 +84,7 @@ const NewCourseHome = () => {
           <SwiperSlide key={course.id}>
             <CoursesCard
               imgSrc={course.image || '/default-course.jpg'} // Provide a default image if not available
-              watchNumber={course.view_count || '0'} // Replace with the correct key for watch count
+              watchNumber={course.view_count  + " مشاهدة " || '0'} // Replace with the correct key for watch count
               datePublish={course.publish_date || 'Unknown Date'} // Replace with the correct key for the date
               courseTitle={course.course_name || 'Untitled Course'} // Replace with the correct key for title
               doctorName={course.author_name || 'Unknown Instructor'} // Replace with the correct key for doctor name
