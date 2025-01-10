@@ -23,8 +23,7 @@ export const metadata: Metadata = {
 const page = () => {
   return (
     <div>
-      videos
-      {/* <VideoGallery /> */}
+      <VideoGallery />
     </div>
   )
 }
