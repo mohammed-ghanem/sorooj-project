@@ -10,7 +10,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         { url: "https://www.sorooj.org/ar/books", lastModified: new Date() },
         { url: "https://www.sorooj.org/ar/blogs", lastModified: new Date() },
         { url: "https://www.sorooj.org/ar/questions", lastModified: new Date() },
-        { url: "https://www.sorooj.org/ar/video-libirary", lastModified: new Date() },
+        { url: "https://www.sorooj.org/ar/video-library", lastModified: new Date() },
         { url: "https://www.sorooj.org/ar/audio-library", lastModified: new Date() },
         { url: "https://www.sorooj.org/ar/liveair", lastModified: new Date() },
         { url: "https://www.sorooj.org/ar/contact-us", lastModified: new Date() },
