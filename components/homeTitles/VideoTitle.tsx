@@ -12,7 +12,7 @@ const VideoTitle = () => {
         {translate ? translate.pages.homePage.titles.VideoLibirary : "المكتبة المرئية"}
       </h3>
       <Link
-        href={`/${lang}/video-libirary`}
+        href={`/${lang}/video-library`}
         className="ml-8 border-[1px] font-bold border-[solid] border-[#424C61] 
         mainColor rounded-[5px] px-[10px]
         py-[6px] hover:bg-[#424C61] hover:text-[#fff]
