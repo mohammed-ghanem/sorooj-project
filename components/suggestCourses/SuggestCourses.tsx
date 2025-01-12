@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 import CoursesCard from '../coursesCard/CoursesCard';
 import axios from 'axios';
 import LangUseParams from '../translate/LangUseParams';
-import { useParams } from 'next/navigation';
 import soroojImg from "@/public/assets/images/default.webp"; // Default image
 
+interface Course {
+    id: number;
+  }
 
-
-const SuggestCourses = () => {
-    const [coursesSuggest, setCoursesSuggest] = useState<[]>([]); // Updated type to array
-    const lang = LangUseParams();
-    const { slug } = useParams();
+const SuggestCourses = ({ currentCourseId }: any) => {
+    const [coursesSuggest, setCoursesSuggest] = useState<Course[]>([]);
+    const lang = LangUseParams();   
     useEffect(() => {
         const fetchSuggestCourses = async () => {
             try {
@@ -23,14 +23,24 @@ const SuggestCourses = () => {
                         },
                     }
                 );
-                setCoursesSuggest(response.data.data.suggested_courses); // Ensure this is an array
-               
+                const suggestedCourses = response.data.data.suggested_courses || [];
+
+                // Filter courses by id instead of slug
+                const filteredCourses = suggestedCourses.filter(
+                    (course: Course) => course.id !== currentCourseId
+                );
+                // Set the filtered courses to state
+                setCoursesSuggest(filteredCourses);
+
+                //  setCoursesSuggest(response.data.data.suggested_courses); // Ensure this is an array
+
             } catch (error) {
                 console.error('Error fetching suggested courses', error);
             }
-        }; 
+        };
         fetchSuggestCourses();
-    }, []);
+       
+    }, [currentCourseId]);
 
     return (
         <div className="grid grid-cols-1 gap-4">
