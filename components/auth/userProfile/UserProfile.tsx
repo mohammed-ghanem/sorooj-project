@@ -61,7 +61,7 @@ const UserProfile = () => {
     return (
         <section>
             <div>
-                <Banners src={banner} textPath={translate ? translate.pages.userProfile.title : ""} />
+                <Banners src={banner} parentTitle={`الرئيسية`} textPath={translate ? translate.pages.userProfile.title : ""} />
             </div>
             {loading ? (
                 <div className="text-center"><FontAwesomeIcon className="mainColor text-2xl my-4" icon={faSpinner} spin /></div>
