@@ -1,5 +1,4 @@
 'use client'
-
 import Banners from '../banners/Banners'
 import defImage from "@/public/assets/images/default.webp"; // Default image
 import LangUseParams from '../translate/LangUseParams';
@@ -45,7 +44,6 @@ const BookContent = () => {
 
     useEffect(() => {
 
-        //console.log("fetch time")
         const fetchBooks = async () => {
             try {
                 const response = await axios.get(
@@ -85,13 +83,12 @@ const BookContent = () => {
         return <div>No book details found.</div>
     }
     ///////////////////////////////////////////////////////////////
-    console.log(bookDetails)
     return (
         <section>
             <div>
-                <Banners src={defImage} parentTitle={`الكتب`} textPath={translate ? translate.pages.booksContentPage.bannerPathText : ""} />
+                <Banners src={defImage} parentTitle={`الكتب`} textPath= "تفاصيل الكتاب" />
             </div>
-            <div className='container mx-auto'>
+            <div className='container mx-auto'  style={{ direction: "rtl" }}>
                 <div className='bookDetails my-4 md:my-14 w-[95%] md:w-[80%] mx-auto flex flex-col-reverse lg:grid grid-cols-3 gap-4 items-center'>
                     <div className='bookTitles w-[95%] md:w-[80%] col-span-2'>
                         <h1 className=' text-base md:text-2xl font-bold mainColor'>

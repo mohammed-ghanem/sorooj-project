@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie"; // Import the js-cookie library
 import Swal from "sweetalert2";
+import Link from "next/link";
 
 
 const SubscribeCourse = ({ courseDetails }: any) => {
@@ -103,11 +104,22 @@ const SubscribeCourse = ({ courseDetails }: any) => {
             <div className="col-span-2">
                 {is_subscribed
                     ?
-                    <button className='bkMainColor text-white px-[20px] py-[10px] rounded-[6px]'>
-                        بدء الاختبار
-                    </button>
+                    (
+                        courseDetails.exam_link
+                            ?
+                            <Link
+                                href={courseDetails.exam_link}
+                                target="_blank"
+                                className='bkMainColor text-white px-[20px] py-[10px] rounded-[6px]'>
+                                بدء الاختبار
+                            </Link>
+                            :
+                            ""
+                    )
                     :
-                    ''}
+                    ""
+                }
+
             </div>
         </div>
     )

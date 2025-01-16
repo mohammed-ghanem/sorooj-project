@@ -78,6 +78,7 @@ const NewFatwaBtn = () => {
                 open={isModalOpen}
                 onCancel={() => setIsModalOpen(false)}
                 footer={null}
+                style={{ direction: "rtl" }}
             >
                 <h6 className='text-center font-bold font-cairo mainColor text-xl mb-4'>طلب فتوى</h6>
                 <div style={{ marginBottom: '16px' }}>

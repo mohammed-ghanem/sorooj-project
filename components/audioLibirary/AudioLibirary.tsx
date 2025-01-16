@@ -41,7 +41,7 @@ const AudioLibirary = () => {
 
                 setAllAudio(response.data.data);
                 setTotalPages(response.data.meta.last_page || 1); // Update total pages if available
-               
+
             } catch (err: any) {
                 setError(err.response?.data?.message || err.message);
             } finally {
@@ -124,7 +124,8 @@ const AudioLibirary = () => {
             <div>
                 <Banners src={defImage} parentTitle={`الرئيسية`} textPath="المكتبة الصوتية" />
             </div>
-            <div className='container my-10 mx-auto w-[80%] grid grid-cols-1 lg:grid-cols-4 gap-4'>
+            <div className='container my-10 mx-auto w-[80%] grid grid-cols-1 lg:grid-cols-4 gap-4'
+                style={{ direction: "rtl" }}>
                 <div>
                     <AudioCategories
                         onCategorySelect={(categoryId) => setSelectedCategoryId(categoryId)}

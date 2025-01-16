@@ -58,7 +58,8 @@ const Telegram = () => {
 
     }
     return (
-        <section className="container my-8 mx-auto w-[95%] lg:w-[80%]">
+        <section className="container my-8 mx-auto w-[95%] lg:w-[80%]"
+            style={{ direction: "rtl" }}>
             <div className="grid grid-cols-3 gap-4 items-center">
                 <div className="mx-auto col-span-3 md:col-span-1 w-[95%] md:w-[80%]">
                     <AllChannelsBox />

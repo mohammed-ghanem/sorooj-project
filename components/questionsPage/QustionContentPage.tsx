@@ -72,7 +72,8 @@ const QustionContentPage = () => {
             <div>
                 <Banners src={defImage} parentTitle={`سؤال وجواب`} textPath="الاجابة" />
             </div>
-            <div className="answersContent container w-[95%] md:w-[80%] mx-auto my-16 grid grid-cols-12 gap-10">
+            <div className="answersContent container w-[95%] md:w-[80%] mx-auto my-16 grid grid-cols-12 gap-10"
+             style={{ direction: "rtl" }}>
                 <div className="col-span-12 lg:col-span-8">
                     <div className="askSection">
                         <h1 className="font-bold text-sm text-white bkPrimaryColor p-[14px] rounded-[8px] w-fit">السؤال</h1>

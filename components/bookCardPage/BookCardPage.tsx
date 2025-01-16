@@ -109,7 +109,9 @@ const BookCardPage = () => {
             <div>
                 <Banners src={soroojImg} parentTitle={`الرئيسية`} textPath="الكتب والابحاث" />
             </div>
-            <div className="bookContainer container mx-auto my-20 grid grid-cols-1 lg:grid-cols-4 gap-0 lg:gap-10 w-[95%] lg:w-[80%]">
+            <div className="bookContainer container mx-auto my-20 grid grid-cols-1 lg:grid-cols-4 gap-0 lg:gap-10 w-[95%] lg:w-[80%]"
+             style={{ direction: "rtl" }}
+            >
                 <div className="my-5 lg:my-0">
                     <BooksCategoriesBox onCategorySelect={(categoryId) => setSelectedCategoryId(categoryId)} />
                 </div>

@@ -12,8 +12,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             }
         );
         const audio = response.data.data.Audio;
-        console.log(audio.name)
-
         return {
             title: audio.name || 'Default audio Title',
             description: audio.description || 'Default audio Description',

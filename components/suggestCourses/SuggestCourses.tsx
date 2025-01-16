@@ -6,11 +6,11 @@ import soroojImg from "@/public/assets/images/default.webp"; // Default image
 
 interface Course {
     id: number;
-  }
+}
 
 const SuggestCourses = ({ currentCourseId }: any) => {
     const [coursesSuggest, setCoursesSuggest] = useState<Course[]>([]);
-    const lang = LangUseParams();   
+    const lang = LangUseParams();
     useEffect(() => {
         const fetchSuggestCourses = async () => {
             try {
@@ -39,24 +39,31 @@ const SuggestCourses = ({ currentCourseId }: any) => {
             }
         };
         fetchSuggestCourses();
-       
+
     }, [currentCourseId]);
 
     return (
         <div className="grid grid-cols-1 gap-4">
-            {coursesSuggest.map((course: any) => (
+            {coursesSuggest.length > 0
+                ?
+                coursesSuggest.map((course: any) => (
 
-                <CoursesCard
-                    key={course.id}
-                    imgSrc={course.image || soroojImg}
-                    watchNumber={`${course.view_count} مشاهدة`}
-                    datePublish={course.publish_date}
-                    courseTitle={course.course_name}
-                    doctorName={course.author_name}
-                    descriptionCourse={course.brief_description}
-                    pathLinkToContent={`/${lang}/courses/${course.slug}`}
-                />
-            ))}
+                    <CoursesCard
+                        key={course.id}
+                        imgSrc={course.image || soroojImg}
+                        watchNumber={`${course.view_count} مشاهدة`}
+                        datePublish={course.publish_date}
+                        courseTitle={course.course_name}
+                        doctorName={course.author_name}
+                        descriptionCourse={course.brief_description}
+                        pathLinkToContent={`/${lang}/courses/${course.slug}`}
+                    />
+                ))
+
+                :
+                "لا يوجد دورات مقترحة "
+            }
+
         </div>
     );
 };

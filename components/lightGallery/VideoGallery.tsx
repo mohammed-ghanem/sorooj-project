@@ -84,7 +84,8 @@ const VideoGallery = () => {
   return (
     <div>
       <Banners src={defImage} parentTitle={`الرئيسية`} textPath="المكتبة المرئية" />
-      <div className="container my-10 mx-auto w-[80%] grid grid-cols-1 lg:grid-cols-4 gap-4">
+      <div className="container my-10 mx-auto w-[80%] grid grid-cols-1 lg:grid-cols-4 gap-4"
+        style={{ direction: "rtl" }}>
         <div>
           <VideoGalleryCategories onCategorySelect={(categoryId) => setSelectedCategoryId(categoryId)} />
         </div>

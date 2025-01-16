@@ -66,7 +66,6 @@ const VideoGalleryCategories = ({
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
   const lang = LangUseParams() // Access dynamic [lang] parameter
-  console.log(lang)
 
   useEffect(() => {
     const fetchCategories = async () => {

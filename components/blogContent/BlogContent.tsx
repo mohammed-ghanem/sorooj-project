@@ -9,11 +9,11 @@ import Image from 'next/image';
 import BlogDescriptionTabs from '../blogDescriptionTabs/BlogDescriptionTabs';
 import { useEffect, useState } from 'react';
 import LangUseParams from '../translate/LangUseParams';
-import TranslateHook from '../translate/TranslateHook';
 import { useParams } from 'next/navigation';
 import axios from 'axios';
 import SuggestBlogs from '../blogDescriptionTabs/SuggestBlogs';
 interface BlogDetails {
+    id: any;
     blog_name: string;
     image?: any;
     description: string;
@@ -34,12 +34,9 @@ const BlogContent = () => {
 
     // lang param (ar Or en)
     const lang = LangUseParams();
-    const translate = TranslateHook();
     const { slug } = useParams();
 
     useEffect(() => {
-
-        //console.log("fetch time")
         const fetchBlog = async () => {
             try {
                 const response = await axios.get(
@@ -81,13 +78,15 @@ const BlogContent = () => {
             <div>
                 <Banners src={defImage} parentTitle={`المدونة`} textPath="تفاصيل المدونة" />
             </div>
-            <div className='container mx-auto'>
+            <div className='container mx-auto'
+                style={{ direction: "rtl" }}
+            >
                 <div className='blogDetails my-4 md:my-14 w-[95%] md:w-[80%] mx-auto flex flex-col-reverse lg:grid grid-cols-3 gap-4 items-center'>
                     <div className='blogTitles w-[95%] md:w-[80%] col-span-2'>
                         <h1 className=' text-base md:text-2xl font-bold mainColor'>
                             <FontAwesomeIcon className=' primaryColor text-lg ml-2' icon={faPenToSquare} />
                             {blogDetails.blog_name}
- 
+
                         </h1>
                         <div className='mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 items-center'>
                             <span>
@@ -214,7 +213,7 @@ const BlogContent = () => {
                     <div className='mt-[6px] border-t-2 lg:border-t-0'>
                         <h3 className='mt-[10px] mr-[10px] mb-[30px] ml-[0] font-bold mainColor'>مدونات المقترحة</h3>
                         <div className='w-[95%] md:w-[80%] grid grid-cols-1 mx-auto gap-8'>
-                            <SuggestBlogs />
+                            <SuggestBlogs currentBlogDetails={blogDetails.id} />
                         </div>
                     </div>
                 </div>

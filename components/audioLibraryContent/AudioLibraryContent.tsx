@@ -80,7 +80,9 @@ const AudioLibraryContent = () => {
             <div>
                 <Banners src={defImage} parentTitle={`الصوتية`} textPath={"تفاصيل الصوتى"} />
             </div>
-            <div className='container mx-auto'>
+            <div className='container mx-auto'
+                style={{ direction: "rtl" }}
+            >
                 <div className='audioDetails my-4 md:my-14 w-[95%] md:w-[80%] mx-auto flex flex-col-reverse lg:grid grid-cols-3 gap-4 items-center'>
                     <div className='audioTitles w-[95%] md:w-[80%] col-span-2'>
                         <h1 className=' text-base md:text-2xl font-bold mainColor'>

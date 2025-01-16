@@ -6,11 +6,10 @@ import BooksCard from '../booksCard/BooksCard';
 
 interface Book {
     id: number;
-  }
-const SuggestBooks = ({ currentBookId }: any) => { 
-     const [booksSuggest, setBooksSuggest] = useState<Book[]>([]);
+}
+const SuggestBooks = ({ currentBookId }: any) => {
+    const [booksSuggest, setBooksSuggest] = useState<Book[]>([]);
     const lang = LangUseParams();
-    const { slug } = useParams();
     useEffect(() => {
         const fetchSuggestBooks = async () => {
             try {
@@ -42,20 +41,26 @@ const SuggestBooks = ({ currentBookId }: any) => {
     }, [currentBookId]);
     return (
         <div className="grid grid-cols-1 gap-4">
-            {booksSuggest.map((book: any) => (
-                <BooksCard
-                    key={book.id}
-                    imgSrc={book.image}
-                    bookTitle={book.book_name}
-                    watchNumber={book.view_count}
-                    datePublish={book.publish_date}
-                    doctorName={book.author_name}
-                    descriptionBook={book.brief_description}
-                    //likeBtn={<BooksAddWishList bookDetails={book} />}
-                    pathLinkToContent={`/${lang}/books/${book.slug}`}
-                />
+            {booksSuggest.length > 0
+                ?
+                booksSuggest.map((book: any) => (
+                    <BooksCard
+                        key={book.id}
+                        imgSrc={book.image}
+                        bookTitle={book.book_name}
+                        watchNumber={book.view_count}
+                        datePublish={book.publish_date}
+                        doctorName={book.author_name}
+                        descriptionBook={book.brief_description}
+                        //likeBtn={<BooksAddWishList bookDetails={book} />}
+                        pathLinkToContent={`/${lang}/books/${book.slug}`}
+                    />
 
-            ))}
+                ))
+                :
+                "لا يوجد كتب وابحاث مقترحة"
+            }
+
         </div>
     );
 };

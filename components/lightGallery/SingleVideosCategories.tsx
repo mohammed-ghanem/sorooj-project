@@ -60,7 +60,6 @@ const SingleVideosCategories = () => {
 
                 setCategory(response.data.data); // Ensure `data` is an array
                 setTotalPages(response.data.meta?.last_page || 1);
-                console.log(response.data.data)
             } catch (error) {
                 console.error("Error fetching category data:", error);
             } finally {
@@ -168,7 +167,8 @@ const SingleVideosCategories = () => {
             <div>
                 <Banners src={defImage} parentTitle={`المرئية`} textPath={`${categoryName}`} />
             </div>
-            <div className='container my-10 mx-auto w-[80%] grid grid-cols-1 lg:grid-cols-4 gap-4'>
+            <div className='container my-10 mx-auto w-[80%] grid grid-cols-1 lg:grid-cols-4 gap-4'
+                style={{ direction: "rtl" }}>
                 <div><VideoGalleryCategories onCategorySelect={(categoryId) => setSelectedCategoryId(categoryId)} /></div>
 
                 {allVideos.length > 0

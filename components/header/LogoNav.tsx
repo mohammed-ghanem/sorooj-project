@@ -1,6 +1,6 @@
 import BtnLogin from "../Btnlogin/BtnLogin"
 import Logo from "../logo/Logo"
-import SerachInput from "../searchBar/SerachInput"
+import SerachInput from "../searchBar/SearchInput"
 
 
 

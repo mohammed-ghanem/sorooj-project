@@ -27,7 +27,6 @@ const CourseAddWishList = ({ courseDetails }: any) => {
           }
         );
         const wishState = res.data.data.Courses.is_favorite;
-        //console.log("Wish State:", wishState);
         setIs_favorite(wishState)
       } catch (error) {
         console.error(error);

@@ -18,7 +18,7 @@ const LiveAir = () => {
 
     useEffect(() => {
 
-        const fetchYoutubeLive = async () => { 
+        const fetchYoutubeLive = async () => {
             try {
                 const response = await axios.get(
                     `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/live/youtube-live`,
@@ -53,7 +53,8 @@ const LiveAir = () => {
 
 
     return (
-        <section className="container my-8 mx-auto w-[95%] lg:w-[80%] ">
+        <section className="container my-8 mx-auto w-[95%] lg:w-[80%] "
+            style={{ direction: "rtl" }}>
             <div className="grid grid-cols-3 gap-4 items-center">
                 <div className="mx-auto col-span-3 md:col-span-1 w-[95%] lg:w-[80%]">
                     <AllChannelsBox />

@@ -4,7 +4,7 @@ import Banners from '../banners/Banners'
 import BlogCardBox from "./BlogCardBox";
 import { useEffect, useState } from "react";
 import LangUseParams from "../translate/LangUseParams";
-import axios from "axios"; 
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import BlogCategories from "./BlogCategories";
@@ -20,7 +20,7 @@ const BlogPage = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       setLoading(true);
-      try { 
+      try {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/blogs`,
           {
@@ -38,7 +38,7 @@ const BlogPage = () => {
 
         setBlogs(response.data.data);
         setTotalPages(response.data.meta.last_page || 1); // Update total pages if available
-         console.log(response.data.data)
+        console.log(response.data.data)
       } catch (err: any) {
         setError(err.response?.data?.message || err.message);
       } finally {
@@ -99,10 +99,12 @@ const BlogPage = () => {
       <div>
         <Banners src={soroojImg} parentTitle={`الرئيسية`} textPath="المدونة" />
       </div>
-      <div className="container mx-auto my-20 grid grid-cols-1 lg:grid-cols-4 gap-0 lg:gap-10 w-[95%] lg:w-[80%]">
+      <div className="container mx-auto my-20 grid grid-cols-1 lg:grid-cols-4 gap-0 lg:gap-10 w-[95%] lg:w-[80%]"
+        style={{ direction: "rtl" }}
+      >
         <div>
           <BlogCategories
-            onCategorySelect={(categoryId) => setSelectedCategoryId(categoryId)} 
+            onCategorySelect={(categoryId) => setSelectedCategoryId(categoryId)}
           />
         </div>
         <div className="lg:col-span-3">
