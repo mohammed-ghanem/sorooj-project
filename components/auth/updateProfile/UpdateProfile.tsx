@@ -127,7 +127,7 @@ const UpdateProfile = () => {
   return (
     <section>
       <div>
-        <Banners src={banner} textPath={translate ? translate.pages.userProfile.editProfileTitle : ""} />
+        <Banners src={banner} parentTitle={`الرئيسية`} textPath={translate ? translate.pages.userProfile.editProfileTitle : ""} />
       </div>
       <div className=' relative'>
         {/* flower img */}

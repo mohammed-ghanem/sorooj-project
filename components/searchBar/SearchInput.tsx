@@ -12,6 +12,8 @@ const SearchInput = () => {
         if (searchQuery.trim() !== '') {
             // Navigate to the search page with the query as a parameter
             router.push(`/search?query=${encodeURIComponent(searchQuery)}`);
+            // Clear the input field
+            setSearchQuery("");
         }
     };
 
@@ -37,24 +39,3 @@ const SearchInput = () => {
 };
 
 export default SearchInput;
-
-
-
-
-// import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-
-// const SerachInput = () => {
-//     return (
-//         <div className='w-[95%] mx-auto'>
-//             <div className=' md:w-full relative flex items-center border-2 rounded-md border-regal-blue p-2 text-sm '>
-//                 <input className='block w-full text-gray-900 bg-transparent dark:placeholder-gray-400 dark:text-whit outline-0 p-1'
-//                     type="text" placeholder="البحث" />
-//                 <FontAwesomeIcon className=' absolute  left-0 w-10 h-4 p-4 bg-regal-blue text-white cursor-pointer' icon={faMagnifyingGlass} />
-//             </div>
-//         </div>
-//     )
-// }
-
-// export default SerachInput

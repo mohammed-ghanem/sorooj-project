@@ -94,7 +94,7 @@ const MyQuestions = () => {
     return (
         <section>
             <div>
-                <Banners src={banner} textPath={translate ? translate.pages.userProfile.title : ""} />
+                <Banners src={banner} parentTitle={`الرئيسية`} textPath={translate ? translate.pages.userProfile.title : ""} />
             </div>
 
             <div className="relative">
