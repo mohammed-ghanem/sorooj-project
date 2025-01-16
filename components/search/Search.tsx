@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 const Search = () => {
@@ -52,4 +52,13 @@ const Search = () => {
     );
 };
 
-export default Search;
+
+const SearchWithSuspense = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Search />
+    </Suspense>
+  );
+};
+
+export default SearchWithSuspense;
