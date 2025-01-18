@@ -5,9 +5,55 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilePdf, faStar, faUserGraduate } from "@fortawesome/free-solid-svg-icons";
 import parse from "html-react-parser";
 import BlogBtnComment from "./BlogBtnComment";
+import { useState } from "react";
+import axios from "axios";
 
 const BlogDescriptionTabs = ({ blogDetails }: any) => {
-    // Ensure course_content is a string or provide a fallback
+    const [loading, setLoading] = useState(false);
+
+    const updateDownloadCount = async (slug: string) => {
+        try {
+            // Ensure the slug is not null or empty
+            if (!slug) {
+                return;
+            }
+            // Increment the download count by 1
+            const newDownloadCount = blogDetails.download_count + 1;
+
+            // Update the download count
+            const response = await axios.post(
+                `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/blogs/set-download-count/${slug}`,
+                { download_count: newDownloadCount },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        withCredentials: true,
+                    },
+                }
+            );
+        } catch (err: any) {
+            console.error("Failed to update download count:", err.response?.data?.message || err.message);
+        }
+    };
+
+    const handleDownloadClick = async (slug: string, file: any) => {
+        setLoading(true); // Set loading to true
+        try {
+            // Check if file URL exists
+            if (file && file.url) {
+                // Update the download count using the slug
+                await updateDownloadCount(slug);
+                // Optionally, you can trigger the file download here if needed
+                // Example: window.open(file.url, "_blank"); // For example, to open the PDF in a new tab
+            } else {
+                console.error("File URL is not available.");
+            }
+        } catch (error) {
+            console.error("Failed to update download count:", error);
+        } finally {
+            setLoading(false); // Set loading to false when done
+        }
+    };
     const BlogContent =
         typeof blogDetails?.blog_content === "string"
             ? blogDetails.blog_content
@@ -34,7 +80,9 @@ const BlogDescriptionTabs = ({ blogDetails }: any) => {
                                 className="p-[10px] [box-shadow:1px_1px_10px_#ddd] rounded-[5px] mb-[14px] bkBox"
                             >
                                 <FontAwesomeIcon className="primaryColor ml-1" icon={faFilePdf} />
-                                <a href={file.url} className="mainColor">
+                                <a href={file.url} className="mainColor"
+                                    onClick={() => handleDownloadClick(blogDetails.slug, file)}
+                                >
                                     {file.name}
                                 </a>
                             </li>

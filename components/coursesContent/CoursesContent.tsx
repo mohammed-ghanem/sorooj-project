@@ -69,12 +69,14 @@ const CoursesContent = () => {
             },
           }
         );
-        setCourseDetails(response.data.data.Courses);
-        setCategoryDetails(response.data.data.Courses.category);
-        setCourseVideos(response.data.data.Courses.videos || []);
+        // Set the initial course details
+        const courseData = response.data.data.Courses;
+        setCourseDetails(courseData);
+        setCategoryDetails(courseData.category);
+        setCourseVideos(courseData.videos || []);
 
-        // Call the API to increment the view count
-        incrementViewCount(response.data.data.Courses.id);
+        // Increment view count
+        incrementViewCount(courseData.slug, courseData.view_count);
 
       } catch (err: any) {
         setError(err.response?.data?.message || err.message);
@@ -83,11 +85,11 @@ const CoursesContent = () => {
       }
     };
     // Function to increment the view count
-    const incrementViewCount = async (courseId: string | number) => {
+    const incrementViewCount = async (slug: string | number, currentViewCount: number) => {
       try {
         await axios.post(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/set-view-count/${courseId}`,
-          {},
+          `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/courses/set-view-count/${slug}`,
+          { view_count: currentViewCount + 1 }, // Send the required view_count field
           {
             headers: {
               "Content-Type": "application/json",
@@ -96,6 +98,10 @@ const CoursesContent = () => {
             },
           }
         );
+      // Optimistically update the view count locally
+      setCourseDetails((prev) =>
+        prev ? { ...prev, view_count: currentViewCount + 1 } : prev
+      );
       } catch (err: any) {
         console.error("Failed to increment view count:", err.response?.data?.message || err.message);
       }
@@ -120,7 +126,7 @@ const CoursesContent = () => {
       <div>
         <Banners src={defImage} parentTitle={`الدروات`} textPath="تفاصيل الدورة" />
       </div>
-      <div className='container mx-auto'  style={{ direction: "rtl" }}>
+      <div className='container mx-auto' style={{ direction: "rtl" }}>
         <div className='courseDetails my-4 md:my-14 w-[95%] md:w-[80%] mx-auto flex flex-col-reverse lg:grid grid-cols-3 gap-4 items-center'>
           <div className='courseTitles w-[95%] md:w-[80%] col-span-2'>
             <h1 className=' text-base md:text-2xl font-bold mainColor'>
@@ -213,7 +219,7 @@ const CoursesContent = () => {
                     url={window.location.href}
                     className='ml-3'
                   >
-                    <FontAwesomeIcon 
+                    <FontAwesomeIcon
                       className='text-[#9F854E] text-xl border-[1px] border-[solid] border-[#9F854E] rounded-[30px] p-[5px] w-[22px]
                       hover:border-[#424C61] hover:bg-[#424C61] hover:text-[#fff] hover:ease-in duration-300'
                       icon={faEnvelope}

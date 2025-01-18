@@ -58,13 +58,39 @@ const BookContent = () => {
                         },
                     }
                 );
-                setBookDetails(response.data.data.Books);
-                setCategoryDetails(response.data.data.Books.category);
+                const bookData = response.data.data.Books
+                setBookDetails(bookData);
+                setCategoryDetails(bookData.category);
+                // Increment view count
+                incrementViewCount(bookData.slug, bookData.view_count);
 
             } catch (err: any) {
                 setError(err.response?.data?.message || err.message);
             } finally {
                 setLoading(false);
+            }
+        };
+
+        // Function to increment the view count
+        const incrementViewCount = async (slug: string | number, currentViewCount: number) => {
+            try {
+                await axios.post(
+                    `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/books/set-view-count/${slug}`,
+                    { view_count: currentViewCount + 1 }, // Send the required view_count field
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                            withCredentials: true,
+                        },
+                    }
+                );
+                // Optimistically update the view count locally
+                setBookDetails((prev) =>
+                    prev ? { ...prev, view_count: currentViewCount + 1 } : prev
+                );
+            } catch (err: any) {
+                console.error("Failed to increment view count:", err.response?.data?.message || err.message);
             }
         };
         fetchBooks();
@@ -86,9 +112,9 @@ const BookContent = () => {
     return (
         <section>
             <div>
-                <Banners src={defImage} parentTitle={`الكتب`} textPath= "تفاصيل الكتاب" />
+                <Banners src={defImage} parentTitle={`الكتب`} textPath="تفاصيل الكتاب" />
             </div>
-            <div className='container mx-auto'  style={{ direction: "rtl" }}>
+            <div className='container mx-auto' style={{ direction: "rtl" }}>
                 <div className='bookDetails my-4 md:my-14 w-[95%] md:w-[80%] mx-auto flex flex-col-reverse lg:grid grid-cols-3 gap-4 items-center'>
                     <div className='bookTitles w-[95%] md:w-[80%] col-span-2'>
                         <h1 className=' text-base md:text-2xl font-bold mainColor'>

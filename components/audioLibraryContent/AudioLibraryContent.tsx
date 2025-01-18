@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { EmailShareButton, FacebookShareButton, TelegramShareButton, TwitterShareButton, WhatsappShareButton } from 'react-share';
 import axios from "axios";
 import Image from 'next/image';
-import { faCalendarDays, faEnvelope, faFileAudio, faPenToSquare, faShareNodes, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarDays, faEnvelope, faEye, faFileAudio, faPenToSquare, faShareNodes, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import Banners from '../banners/Banners'
 import defImage from "@/public/assets/images/default.webp"; // Default image
 import { faFacebookF, faTelegram, faTwitter, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
@@ -89,7 +89,7 @@ const AudioLibraryContent = () => {
                             <FontAwesomeIcon className=' primaryColor text-lg ml-2' icon={faPenToSquare} />
                             {audioDetails.name}
                         </h1>
-                        <div className='my-4 grid grid-cols-1 md:grid-cols-3 gap-4 items-center'>
+                        <div className='my-4 grid grid-cols-1 md:grid-cols-4 gap-4 items-center'>
                             <span className=" col-span-2">
                                 <span className='text-2xl primaryColor opacity-[0.4]'> || </span>
                                 <span>{`المكتبة الصوتية --  ${categoryDetails ? categoryDetails.name : "No Category"} `}</span>

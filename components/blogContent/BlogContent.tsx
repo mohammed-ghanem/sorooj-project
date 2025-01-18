@@ -2,7 +2,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Banners from '../banners/Banners'
 import defImage from "@/public/assets/images/default.webp"; // Default image
-import { faCalendarDays, faEnvelope, faEye, faPenToSquare, faShareNodes, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays, faDownload, faEnvelope, faEye, faPenToSquare, faShareNodes, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { EmailShareButton, FacebookShareButton, TelegramShareButton, TwitterShareButton, WhatsappShareButton } from 'react-share';
 import { faFacebookF, faTelegram, faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import Image from 'next/image';
@@ -20,8 +20,10 @@ interface BlogDetails {
     publish_date: string;
     author_name: string;
     view_count: number;
-    videos: any
-    video_url: any
+    download_count: number;
+    videos: any;
+    video_url: any;
+    attachments: any;
 }
 interface CategoryDetails {
     name: string
@@ -50,14 +52,43 @@ const BlogContent = () => {
                         },
                     }
                 );
-                setBlogDetails(response.data.data.Blogs);
-                setCategoryDetails(response.data.data.Blogs.category);
+
+                const blogData = response.data.data.Blogs
+                setBlogDetails(blogData);
+                setCategoryDetails(blogData.category);
+
+                // Increment view count
+                incrementViewCount(blogData.slug, blogData.view_count);
+
             } catch (err: any) {
                 setError(err.response?.data?.message || err.message);
             } finally {
                 setLoading(false);
             }
         };
+
+        // Function to increment the view count
+        const incrementViewCount = async (slug: string | number, currentViewCount: number) => {
+            try {
+                await axios.post(
+                    `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/blogs/set-view-count/${slug}`,
+                    { view_count: currentViewCount + 1 }, // Send the required view_count field
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                            withCredentials: true,
+                        },
+                    }
+                );
+                // Optimistically update the view count locally
+                setBlogDetails((prev) =>
+                    prev ? { ...prev, view_count: currentViewCount + 1 } : prev
+                );
+            } catch (err: any) {
+                console.error("Failed to increment view count:", err.response?.data?.message || err.message);
+            }
+        };
+
         fetchBlog();
 
     }, [lang, slug]);
@@ -88,7 +119,7 @@ const BlogContent = () => {
                             {blogDetails.blog_name}
 
                         </h1>
-                        <div className='mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 items-center'>
+                        <div className='mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 items-center'>
                             <span>
                                 <span className='text-2xl primaryColor opacity-[0.4]'> || </span>
                                 <span>{`المدونة --  ${categoryDetails ? categoryDetails.name : "No Category"} `}</span>
@@ -107,6 +138,20 @@ const BlogContent = () => {
                                     {`${blogDetails.view_count} مشاهدة `}
                                 </span>
                             </span>
+                            {
+                                blogDetails.attachments && blogDetails.attachments.length > 0
+                                    ? (
+                                        <span>
+                                            <span className='text-2xl primaryColor opacity-[0.4]'> || </span>
+                                            <span>
+                                                <FontAwesomeIcon className='ml-1 primaryColor' icon={faDownload} />
+                                                {`${blogDetails.download_count} تحميل `}
+                                            </span>
+                                        </span>
+                                    )
+                                    : null
+                            }
+
                         </div>
 
                         <div className='shareContent mt-4'>
