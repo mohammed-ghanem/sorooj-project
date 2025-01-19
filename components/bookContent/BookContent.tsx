@@ -26,6 +26,7 @@ interface BookDetails {
     publish_date: string;
     author_name: string;
     view_count: number;
+    download_count: number;
 }
 interface CategoryDetails {
     name: string
@@ -149,7 +150,7 @@ const BookContent = () => {
                                 <span className='text-2xl primaryColor opacity-[0.4]'> || </span>
                                 <span>
                                     <FontAwesomeIcon className='ml-1 primaryColor' icon={faDownload} />
-                                    140 تحميل
+                                    {`${bookDetails.download_count} مشاهدة `}
                                 </span>
                             </span>
                         </div>

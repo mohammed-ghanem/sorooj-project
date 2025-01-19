@@ -5,12 +5,60 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilePdf, faStar, faUserGraduate } from "@fortawesome/free-solid-svg-icons";
 import parse from "html-react-parser";
 import BookBtnComment from "../bookBtnComment/BookBtnComment";
+import axios from "axios";
+import { useState } from "react";
 const BookDescriptionTabs = ({ bookDetails }: any) => {
-  // Ensure course_content is a string or provide a fallback
+  const [loading, setLoading] = useState(false);
+  // Ensure book_content is a string or provide a fallback
+
+  const updateDownloadCount = async (slug: string) => {
+    try {
+      // Ensure the slug is not null or empty
+      if (!slug) {
+        return;
+      }
+      // Increment the download count by 1
+      const newDownloadCount = bookDetails.download_count + 1;
+
+      // Update the download count
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/books/set-download-count/${slug}`,
+        { download_count: newDownloadCount },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            withCredentials: true,
+          },
+        }
+      );
+    } catch (err: any) {
+      console.error("Failed to update download count:", err.response?.data?.message || err.message);
+    }
+  };
+
+  const handleDownloadClick = async (slug: string, file: any) => {
+    setLoading(true); // Set loading to true
+    try {
+      // Check if file URL exists
+      if (file && file.url) {
+        // Update the download count using the slug
+        await updateDownloadCount(slug);
+        // Optionally, you can trigger the file download here if needed
+        // Example: window.open(file.url, "_blank"); // For example, to open the PDF in a new tab
+      } else {
+        console.error("File URL is not available.");
+      }
+    } catch (error) {
+      console.error("Failed to update download count:", error);
+    } finally {
+      setLoading(false); // Set loading to false when done
+    }
+  };
+
   const bookContent =
     typeof bookDetails?.book_content === "string"
       ? bookDetails.book_content
-      : "<p>لا يوجد وصف للكتاب</p>"; 
+      : "<p>لا يوجد وصف للكتاب</p>";
   return (
     <Tabs>
       <TabList className="grid grid-cols-1 md:grid-cols-3 gap-2 lg:gap-10 mb-8 rounded-[6px] overflow-hidden text-center [box-shadow:1px_1px_10px_#ddd]">
@@ -32,7 +80,9 @@ const BookDescriptionTabs = ({ bookDetails }: any) => {
                 className="p-[10px] [box-shadow:1px_1px_10px_#ddd] rounded-[5px] mb-[14px] bkBox"
               >
                 <FontAwesomeIcon className="primaryColor ml-1" icon={faFilePdf} />
-                <a href={file.url} className="mainColor">
+                <a href={file.url} className="mainColor"
+                  onClick={() => handleDownloadClick(bookDetails.slug, file)}
+                >
                   {file.name}
                 </a>
               </li>
@@ -79,7 +129,7 @@ const BookDescriptionTabs = ({ bookDetails }: any) => {
 
         {/* btn add comment */}
         <div>
-          <BookBtnComment bookDetails={bookDetails}/> 
+          <BookBtnComment bookDetails={bookDetails} />
         </div>
       </TabPanel>
     </Tabs>
