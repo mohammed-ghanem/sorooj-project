@@ -75,6 +75,7 @@ const Slider: React.FC = () => {
               style={{ height: 'auto' }}
               // width={1600}
               // height={400}
+              fill
               
             />
             {image.title && (

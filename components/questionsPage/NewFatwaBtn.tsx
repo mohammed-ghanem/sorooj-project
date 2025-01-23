@@ -72,7 +72,7 @@ const NewFatwaBtn = () => {
             <button
                 onClick={showModal}
                 className='bkMainColor text-white px-[20px] py-[10px] rounded-[6px] mt-5'>
-                طلب فتوى جديد
+                  طلب سؤال
             </button>
             <Modal
                 open={isModalOpen}

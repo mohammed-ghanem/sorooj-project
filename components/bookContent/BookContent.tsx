@@ -150,7 +150,7 @@ const BookContent = () => {
                                 <span className='text-2xl primaryColor opacity-[0.4]'> || </span>
                                 <span>
                                     <FontAwesomeIcon className='ml-1 primaryColor' icon={faDownload} />
-                                    {`${bookDetails.download_count} مشاهدة `}
+                                    {`${bookDetails.download_count} تحميل `}
                                 </span>
                             </span>
                         </div>
