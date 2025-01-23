@@ -69,13 +69,13 @@ const Slider: React.FC = () => {
         {imageList.map((image, index) => (
           <div key={index} className="relative outline-none">
             <Image
-              className="w-[100%] lg:w-[1600px] h-auto lg:h-[400px]"
+              className="w-[100%] lg:w-[1600px] h-auto lg:h-[350px]"
               src={image.image}
               alt={image.alt}
               style={{ height: 'auto' }}
-              // width={1600}
-              // height={400}
-              fill
+              width={1600}
+              height={350}
+              
               
             />
             {image.title && (
