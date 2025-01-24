@@ -2,6 +2,7 @@ import Image from "next/image"
 // import mixlr from "@/public/assets/images/mixlr.svg"
 import youtube from "@/public/assets/images/youtube.svg"
 import telegram from "@/public/assets/images/telegram.svg"
+import facebook from "@/public/assets/images/facebooklive.svg"
 import Link from "next/link"
 import LangUseParams from "../translate/LangUseParams"
 
@@ -16,7 +17,11 @@ const AllChannelsBox = () => {
             </Link>
             <hr className="h-1 bkMainColor hidden md:block" />
             <Link href={`/${lang}/live-air/telegram`} className="flex justify-center h-24">
-                <Image src={telegram} width={250} height={100} alt="youtube" />
+                <Image src={telegram} width={250} height={100} alt="telegram" />
+            </Link>
+            <hr className="h-1 bkMainColor hidden md:block" />
+            <Link href={`/${lang}/live-air/facebook-live`} className="flex justify-center h-24">
+                <Image src={facebook} width={250} height={100} alt="facebook" />
             </Link>
             {/* <hr className="h-1 bkMainColor" />
             <Link href={`/${lang}/live-air/mixlr`} className="flex justify-center h-24">

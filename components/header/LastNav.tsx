@@ -31,7 +31,7 @@ const LastNav = () => {
         { name: `${translate ? translate.navigation.blog : "المدونة"}`, href: `/${lang}/blogs` },
         { name: `${translate ? translate.navigation.contact : " اتصل بنا"}`, href: `/${lang}/contact-us` },
         { name: `${translate ? translate.navigation.academy : "اكاديمية سرج"}`, href: `https://academy.sorooj.org` },
-    ]; 
+    ];
 
     return (
         <nav className="bkPrimaryColor p-4 font-medium relative z-40">
@@ -39,12 +39,14 @@ const LastNav = () => {
                 <div className="hidden lg:flex m-auto">
                     {navLinks.map((link, index) => (
                         <Link
+                            prefetch={true}
                             key={index}
                             href={link.href}
                             className="text-white ml-4 text-[15px] leading-5"
                             {...(index === navLinks.length - 1 ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                         >
                             {link.name}
+
                         </Link>
                     ))}
                 </div>
