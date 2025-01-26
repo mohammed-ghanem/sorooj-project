@@ -2,7 +2,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Banners from '../banners/Banners'
 import defImage from "@/public/assets/images/default.webp"; // Default image
-import { faCalendarDays, faDownload, faEnvelope, faEye, faPenToSquare, faShareNodes, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays, faDownload, faEnvelope, faEye, faPenToSquare, faShareNodes, faSpinner, faUser } from '@fortawesome/free-solid-svg-icons';
 import { EmailShareButton, FacebookShareButton, TelegramShareButton, TwitterShareButton, WhatsappShareButton } from 'react-share';
 import { faFacebookF, faTelegram, faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import Image from 'next/image';
@@ -119,6 +119,10 @@ const BlogContent = () => {
                             {blogDetails.blog_name}
 
                         </h1>
+                        <p className='primaryColor mt-4'>
+                            <FontAwesomeIcon className=' primaryColor ml-2' icon={faUser} />
+                            {blogDetails.author_name}
+                        </p>
                         <div className='mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 items-center'>
                             <span>
                                 <span className='text-2xl primaryColor opacity-[0.4]'> || </span>
