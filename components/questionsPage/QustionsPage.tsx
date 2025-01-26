@@ -90,6 +90,7 @@ const QustionsPage = () => {
             </p>
             <div className="col-span-2 text-left">
                 <Link
+                    prefetch={true}
                     className="primaryColor border-b-2 border-customGold"
                     href={`/${lang}/questions/${question.slug}`}
                 >
@@ -107,7 +108,7 @@ const QustionsPage = () => {
                 <Banners src={defImage} parentTitle={`الرئيسية`} textPath="سؤال وجواب" />
             </div>
             <div className="my-14 container mx-auto w-[95%] md:w-[80%] grid grid-cols-1 lg:grid-cols-5 gap-10"
-             style={{ direction: "rtl" }}
+                style={{ direction: "rtl" }}
             >
                 <div className="col-span-2 h-80">
                     <h1 className="primaryColor font-bold ">سؤال وجواب</h1>

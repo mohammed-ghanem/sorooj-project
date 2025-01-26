@@ -45,6 +45,8 @@ const BooksAddWishList = ({ bookDetails }: any) => {
         icon: 'warning',
         title: 'غير مسجل',
         text: 'يرجى تسجيل الدخول أولاً لتتمكن من اضافة المفضلة',
+        confirmButtonText: `تم`
+
       });
       return;
     }
@@ -66,12 +68,16 @@ const BooksAddWishList = ({ bookDetails }: any) => {
           icon: 'success',
           title: 'تم الإرسال',
           text: response.data.message || 'تم إضافة المفضلة بنجاح!',
+          confirmButtonText: `تم`
+
         });
       }
       Swal.fire({
         icon: 'success',
         title: 'تم الإرسال',
         text: response.data.message || 'تم إضافة المفضلة بنجاح!',
+        confirmButtonText: `تم`
+
       });
     } catch (error: any) {
       console.error('Wishlist Error:', error.response?.data || error.message);
@@ -79,22 +85,22 @@ const BooksAddWishList = ({ bookDetails }: any) => {
         icon: 'error',
         title: 'خطأ',
         text: 'حدث خطأ. يرجى المحاولة مرة أخرى لاحقاً.',
-      }); 
+        confirmButtonText: `تم`
+
+      });
     }
   };
- 
-  
+
+
   return <div className="flex items-center">
     <button onClick={handleWishlist} className="text-2xl">
       {is_favorite ? (
         <div className="flex items-center">
           <HeartFilled className="" style={{ "color": "#424C61" }} />
-          {/* <span className="bookFavtext text-sm font-bold mr-2">حذف من المفضلة</span> */}
         </div>
       ) : (
         <div className="flex items-center">
           <HeartOutlined />
-          {/* <span className="bookFavtext text-xs font-bold mr-2">اضف الى المفضلة</span> */}
         </div>
       )}
     </button>

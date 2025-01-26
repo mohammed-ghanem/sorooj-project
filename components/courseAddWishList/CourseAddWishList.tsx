@@ -65,12 +65,15 @@ const CourseAddWishList = ({ courseDetails }: any) => {
           icon: 'success',
           title: 'تم الإرسال',
           text: response.data.message || 'تم إضافة المفضلة بنجاح!',
+          confirmButtonText: `تم`
+
         });
       }
       Swal.fire({
         icon: 'success',
         title: 'تم الإرسال',
         text: response.data.message || 'تم إضافة المفضلة بنجاح!',
+        confirmButtonText: `تم`
       });
     } catch (error: any) {
       console.error('Wishlist Error:', error.response?.data || error.message);
@@ -78,6 +81,8 @@ const CourseAddWishList = ({ courseDetails }: any) => {
         icon: 'error',
         title: 'خطأ',
         text: 'حدث خطأ. يرجى المحاولة مرة أخرى لاحقاً.',
+        confirmButtonText: `تم`
+
       });
     }
   };

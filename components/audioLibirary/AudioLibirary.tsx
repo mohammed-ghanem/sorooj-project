@@ -83,7 +83,7 @@ const AudioLibirary = () => {
     }
 
     const fetchAllAudioBox = allAudio.map((audio: any) => (
-        <Link key={audio.id}
+        <Link prefetch={true} key={audio.id}
             href={`/${lang}/audio-library/${audio.slug}`}
             className="gallery-item bkBox rounded-[8px] overflow-hidden [box-shadow:1px_1px_7px_#ddd] cursor-pointer"
         >

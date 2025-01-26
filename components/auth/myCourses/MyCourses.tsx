@@ -10,7 +10,7 @@ import LangUseParams from "@/components/translate/LangUseParams";
 import FlowerImg from "@/components/flowerImg/FlowerImg";
 import Image from "next/image";
 import Link from "next/link";
-import axios from "axios"; // Import Axios
+import axios from "axios"; // Import Axios 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner, faUser } from "@fortawesome/free-solid-svg-icons";
 

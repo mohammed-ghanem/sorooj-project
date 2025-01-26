@@ -49,10 +49,8 @@ const BlogCardBox: React.FC<BlogCardProps> = ({ imgSrc, watchNumber, datePublish
                             {likeBtn}
                         </span>
                     }
-
-
                 </div>
-                <Link href={pathLinkToContent}
+                <Link  prefetch={true} href={pathLinkToContent}
                     className="block text-center bkPrimaryColor py-3 mt-[16px] text-white font-bold">
                     عرض
                 </Link>

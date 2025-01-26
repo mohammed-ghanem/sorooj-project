@@ -143,7 +143,7 @@ const MyFavorites = () => {
     return (
         <section>
             <div>
-                <Banners src={banner } parentTitle={`الرئيسية`} textPath={translate ? translate.pages.userProfile.title : ""} />
+                <Banners src={banner} parentTitle={`الرئيسية`} textPath={translate ? translate.pages.userProfile.title : ""} />
             </div>
             <div className="relative">
                 <FlowerImg />
@@ -161,6 +161,12 @@ const MyFavorites = () => {
 
                             {translate ? translate.pages.userProfile.myFavorites : ""}
                         </h2>
+
+                        {favorites.length === 0 && (
+                            <div className="mainColor text-center font-bold">
+                                {translate ? translate.pages.userProfile.noFavorites : ""}
+                            </div>
+                        )}
                         {favorites.map((favorite: any) => {
                             if (favorite.type === "books" && favorite.book) {
                                 return (
@@ -213,15 +219,11 @@ const MyFavorites = () => {
                                                 href={`/${lang}/${favorite.type}/${favorite.course.slug}`}
                                                 className="bkMainColor py-1 px-5 text-white text-xs rounded-[5px] font-bold"
                                             >
-                                                 {translate ? translate.pages.userProfile.view : ""}
+                                                {translate ? translate.pages.userProfile.view : ""}
                                             </Link>
                                         </div>
                                     </div>
                                 );
-                            } else {
-                                <div>
-                                     {translate ? translate.pages.userProfile.noFavorites : ""}
-                                </div>;
                             }
                         })}
                         {/* start Pagination Controls */}
