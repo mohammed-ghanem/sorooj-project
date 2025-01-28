@@ -10,6 +10,7 @@ type Category = {
   id: number;
   name: string;
   subcategories?: Category[];
+  books_count:number
 };
 
 const CategoryItem = ({
@@ -108,6 +109,9 @@ const BooksCategoriesBox = ({
             onClick={() => onCategorySelect(category.id)} // Pass correct ID
           >
             {category.name}
+            <span className="mx-2 primaryColor">
+            ( <span className="text-white">{category.books_count}</span> )
+          </span>
           </div>
           {/* Render Subcategories if available */}
           {category.subcategories && category.subcategories.length > 0 && (

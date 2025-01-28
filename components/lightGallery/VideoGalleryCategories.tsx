@@ -10,6 +10,7 @@ type Category = {
   id: number;
   name: string;
   subcategories?: Category[];
+  videos_count:number
 };
 
 const CategoryItem = ({
@@ -109,6 +110,9 @@ const VideoGalleryCategories = ({
           // onClick={() => onCategorySelect(category.id)} // Pass correct ID
         >
           {category.name}
+          <span className="mx-2 primaryColor">
+            ( <span className="text-white">{category.videos_count}</span> )
+          </span>
         </a>
         {/* Render Subcategories if available */}
         {category.subcategories && category.subcategories.length > 0 && (

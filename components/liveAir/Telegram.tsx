@@ -56,7 +56,7 @@ const Telegram = () => {
     if (!telegramLiveDetails) {
         return <div className="text-center mainColor font-bold">لا يوجد بث مباشر على قناة تليجرام الان اعد المحاولة قريبا</div>
 
-    }
+    }  
     return (
         <section className="container my-8 mx-auto w-[95%] lg:w-[80%]"
             style={{ direction: "rtl" }}>

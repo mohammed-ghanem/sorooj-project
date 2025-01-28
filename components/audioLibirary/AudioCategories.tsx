@@ -9,6 +9,7 @@ type Category = {
   id: number;
   name: string;
   subcategories?: Category[];
+  audios_count:number
 };
 
 const CategoryItem = ({
@@ -106,6 +107,9 @@ const AudioCategories = ({
           onClick={() => onCategorySelect(category.id)} // Pass correct ID
         >
           {category.name}
+          <span className="mx-2 primaryColor">
+            ( <span className="text-white">{category.audios_count}</span> )
+          </span>
         </div>
         {/* Render Subcategories if available */}
         {category.subcategories && category.subcategories.length > 0 && (

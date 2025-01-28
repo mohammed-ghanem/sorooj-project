@@ -26,7 +26,8 @@ type Category = {
     description: string;
     youtube_link: string;
     publish_date: string;
-    category: any
+    category: any;
+    videos_count:number
 };
 
 const SingleVideosCategories = () => {

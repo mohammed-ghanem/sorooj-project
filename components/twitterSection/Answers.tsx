@@ -48,7 +48,7 @@ const Answers = () => {
             <Image className='w-full' src={noQues} width={100} height={100} alt='no question' />
             <p className='font-bold mt-5'>لا توجد اسئلة الان !!</p>
         </div>;
-    }
+    } 
 
     // Generate Collapse items dynamically from fetched questions
     const items = questions.map((question) => ({

@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
-const VideoCourseTabs = ({ courseVideos }: any) => {
+const VideoCourseTabs = ({ courseVideos }: any) => { 
 
   const [activeTab, setActiveTab] = useState(courseVideos[0].id);
   return (
@@ -28,8 +28,8 @@ const VideoCourseTabs = ({ courseVideos }: any) => {
                   alt={courseVideos.name}
                 />
                 <div className='text-start mr-4 hidden xl:block'>
-                  <p className='text-sm'>{courseVideos.name}</p>
-                  <p className='text-sm'>{courseVideos.publish_date}</p>
+                  <p className='text-xs'>{courseVideos.name}</p>
+                  <p className='text-xs'>{courseVideos.publish_date}</p>
                 </div>
               </div>
             </button>

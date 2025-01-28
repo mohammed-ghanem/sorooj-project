@@ -12,6 +12,7 @@ import LangUseParams from '../translate/LangUseParams';
 import { useParams } from 'next/navigation';
 import axios from 'axios';
 import SuggestBlogs from '../blogDescriptionTabs/SuggestBlogs';
+import VideoBlogTab from '../videoBlogTab/VideoBlogTab';
 interface BlogDetails {
     id: any;
     blog_name: string;
@@ -28,11 +29,20 @@ interface BlogDetails {
 interface CategoryDetails {
     name: string
 }
+interface BlogVideos {
+    name: string,
+    video_url: string,
+    course_id: number,
+    publish_date: string
+}
+
 const BlogContent = () => {
     const [blogDetails, setBlogDetails] = useState<BlogDetails | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [categoryDetails, setCategoryDetails] = useState<CategoryDetails | null>(null);
+    const [blogVideos, setBlogVideos] = useState<BlogVideos[]>([]);
+
 
     // lang param (ar Or en)
     const lang = LangUseParams();
@@ -56,6 +66,7 @@ const BlogContent = () => {
                 const blogData = response.data.data.Blogs
                 setBlogDetails(blogData);
                 setCategoryDetails(blogData.category);
+                setBlogVideos(blogData.videos || []);
 
                 // Increment view count
                 incrementViewCount(blogData.slug, blogData.view_count);
@@ -238,11 +249,19 @@ const BlogContent = () => {
                         </div>
                     </div>
                 </div>
-                <hr className='h-1' />
-                {/* start description blog with suggest blogs */}
-                <div className='descriptionCourse w-[95%] md:w-[80%] mx-auto mt-2 mb-24 md:mt-8 grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-8'>
-                    <div className='col-span-2'>
-                        {
+
+                {/* blog videos */}
+                <div>
+                    {blogVideos.length > 0 && blogVideos[0].video_url !== null ? (
+                        <div>
+                            <hr className='h-1' />
+                            <div className='my-5'>
+                                <VideoBlogTab blogVideos={blogVideos} />
+                            </div>
+                        </div>
+                    ) : null}
+                </div>
+                {/* {
                             blogDetails.videos[0].video_url
                                 ?
                                 <div className='mb-5'>
@@ -255,7 +274,11 @@ const BlogContent = () => {
                                 </div>
                                 :
                                 <div></div>
-                        }
+                        } */}
+                <hr className='h-1' />
+                {/* start description blog with suggest blogs */}
+                <div className='descriptionCourse w-[95%] md:w-[80%] mx-auto mt-2 mb-24 md:mt-8 grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-8'>
+                    <div className='col-span-2'>
                         <BlogDescriptionTabs blogDetails={blogDetails} />
                     </div>
                     {/* blog suggestion */}

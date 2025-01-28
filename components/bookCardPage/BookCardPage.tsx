@@ -32,7 +32,8 @@ const BookCardPage = () => {
                         params: {
                             lang,
                             category_id: selectedCategoryId || undefined, // Use category_id
-                            page: currentPage // Add current page to params
+                            page: currentPage, // Add current page to params
+                            limit: 10, // Limit to 10 books per page
                         },
                         headers: {
                             "Content-Type": "application/json",

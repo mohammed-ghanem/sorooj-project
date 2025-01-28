@@ -27,7 +27,8 @@ const BlogPage = () => {
             params: {
               lang,
               category_id: selectedCategoryId || undefined, // Use category_id
-              page: currentPage // Add current page to params
+              page: currentPage, // Add current page to params
+              limit: 9, // Limit to 9 blogs per page
             },
             headers: {
               "Content-Type": "application/json",

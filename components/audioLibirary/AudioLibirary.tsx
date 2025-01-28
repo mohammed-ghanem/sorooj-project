@@ -30,7 +30,8 @@ const AudioLibirary = () => {
                         params: {
                             lang,
                             category_id: selectedCategoryId || undefined, // Use category_id
-                            page: currentPage // Add current page to params
+                            page: currentPage, // Add current page to params
+                            limit: 12, // Limit to 12 audios per page
                         },
                         headers: {
                             "Content-Type": "application/json",

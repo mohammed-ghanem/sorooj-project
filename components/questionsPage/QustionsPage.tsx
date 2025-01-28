@@ -8,6 +8,8 @@ import NewFatwaBtn from "./NewFatwaBtn";
 import LangUseParams from "@/components/translate/LangUseParams";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Image from 'next/image';
+import noQues from "@/public/assets/images/noques.svg"
 
 const QustionsPage = () => {
     const [questions, setQuestions] = useState([]);
@@ -27,6 +29,7 @@ const QustionsPage = () => {
                         params: {
                             lang,
                             page: currentPage, // Add current page to params
+                            limit: 10
                         },
                         headers: {
                             "Content-Type": "application/json",
@@ -135,7 +138,8 @@ const QustionsPage = () => {
                             allQuestions
                             :
                             <div className="text-center text-gray-500 font-bold">
-                                لا يوجد اسئلة متاحة
+                                <Image className='mx-auto' src={noQues} width={500} height={500} alt='no question' />
+                                <p>لا يوجد اسئلة متاحة</p>
                             </div>
                     }
                     {/* start Pagination Controls */}

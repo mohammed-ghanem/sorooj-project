@@ -98,10 +98,10 @@ const CoursesContent = () => {
             },
           }
         );
-      // Optimistically update the view count locally
-      setCourseDetails((prev) =>
-        prev ? { ...prev, view_count: currentViewCount + 1 } : prev
-      );
+        // Optimistically update the view count locally
+        setCourseDetails((prev) =>
+          prev ? { ...prev, view_count: currentViewCount + 1 } : prev
+        );
       } catch (err: any) {
         console.error("Failed to increment view count:", err.response?.data?.message || err.message);
       }
@@ -252,11 +252,20 @@ const CoursesContent = () => {
             </div>
           </div>
         </div>
-        <hr className='h-1' />
         {/* start all videos course */}
-        <div className='videosCourse mt-2 md:mt-8'>
-          <VideoCourseTab courseVideos={courseVideos} />
+        <div>
+          {courseVideos.length > 0 && courseVideos[0].video_url !== null ? (
+            <div>
+              <hr className='h-1' />
+              <div className='my-5'>
+                <VideoCourseTab courseVideos={courseVideos} />
+              </div>
+            </div>
+          ) : null}
         </div>
+        {/* <div className='videosCourse mt-2 md:mt-8'>
+          <VideoCourseTab courseVideos={courseVideos} />
+        </div> */}
         {/* end all videos course */}
         <hr className='h-1 mt-8' />
         {/* start description course with suggest courses */}
