@@ -113,7 +113,7 @@ const VideoCourseTabs = ({ courseVideos, checkSubscriber }: any) => {
                     className="w-full h-80 object-cover"
                     width={560}
                     height={315}
-                    src={`https://img.youtube.com/vi/${video.video_url}/hqdefault.jpg`}
+                    src={`https://img.youtube.com/vi/${video.video_url}/maxresdefault.jpg`}
                     alt={video.name}
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-xl font-bold">
