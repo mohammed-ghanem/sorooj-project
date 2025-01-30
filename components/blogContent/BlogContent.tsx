@@ -25,6 +25,7 @@ interface BlogDetails {
     videos: any;
     video_url: any;
     attachments: any;
+    audio_file: any
 }
 interface CategoryDetails {
     name: string
@@ -36,12 +37,14 @@ interface BlogVideos {
     publish_date: string
 }
 
+
 const BlogContent = () => {
     const [blogDetails, setBlogDetails] = useState<BlogDetails | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [categoryDetails, setCategoryDetails] = useState<CategoryDetails | null>(null);
     const [blogVideos, setBlogVideos] = useState<BlogVideos[]>([]);
+
 
 
     // lang param (ar Or en)
@@ -249,6 +252,23 @@ const BlogContent = () => {
                         </div>
                     </div>
                 </div>
+                {/* blog audio file */}
+
+                {
+                    <div className='my-5'>
+                        {blogDetails.audio_file
+                            ?
+                            <div>
+                                <hr className='h-1 mb-5' />
+                                <audio className='mx-auto w-[95%] md:w-[70%]' controls>
+                                    <source src={blogDetails.audio_file} />
+                                </audio>
+                            </div>
+                            :
+                            ""}
+                    </div>
+
+                }
 
                 {/* blog videos */}
                 <div>

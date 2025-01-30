@@ -231,7 +231,7 @@ const AudioLibraryContent = () => {
                                 :
                                 <div></div>
                         }
-                        {
+                        { 
                             audioDetails.audio_file
                                 ?
                                 <audio controls>

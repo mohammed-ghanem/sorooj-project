@@ -8,7 +8,8 @@ import Swal from "sweetalert2";
 import Link from "next/link";
 
 
-const SubscribeCourse = ({ courseDetails }: any) => {
+
+const SubscribeCourse = ({ courseDetails   }: any) => {
     const token = Cookies.get('access_token');
     const { slug } = useParams();
     const course_id = courseDetails.id
@@ -39,7 +40,7 @@ const SubscribeCourse = ({ courseDetails }: any) => {
         if (token) {
             subscribeCourseContent();
         }
-    }, [slug, token]);
+    }, [ slug, token]);
     //////////////////////////////////////
     const handleSubscribeBtn = async () => {
         if (!token) {
@@ -68,12 +69,19 @@ const SubscribeCourse = ({ courseDetails }: any) => {
                     icon: 'success',
                     title: 'تم الإرسال',
                     text: response.data.message || 'تم الاشتراك بنجاح!',
-                });
+                    confirmButtonText: `تم`,
+                    confirmButtonColor: '#9F854E',
+                })
             }
             Swal.fire({
                 icon: 'success',
                 title: 'تم الإرسال',
                 text: response.data.message || 'تم الاشتراك  بنجاح!',
+                confirmButtonText: `تم`,
+                confirmButtonColor: '#9F854E',
+                didClose() {
+                    window.location.reload();
+                },
             });
         } catch (error: any) {
             console.error('subscrib couese Error:', error.response?.data || error.message);

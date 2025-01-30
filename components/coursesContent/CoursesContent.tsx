@@ -52,6 +52,8 @@ const CoursesContent = () => {
   const { slug } = useParams();
   const token = Cookies.get("access_token");
 
+  const [checkSubscriber, setCheckSubscriber] = useState<boolean>()
+
 
   useEffect(() => {
 
@@ -74,6 +76,9 @@ const CoursesContent = () => {
         setCourseDetails(courseData);
         setCategoryDetails(courseData.category);
         setCourseVideos(courseData.videos || []);
+
+        setCheckSubscriber(courseData.is_subscribed)
+        console.log(checkSubscriber)
 
         // Increment view count
         incrementViewCount(courseData.slug, courseData.view_count);
@@ -108,7 +113,7 @@ const CoursesContent = () => {
     };
     fetchCourses();
 
-  }, [lang, slug, token]);
+  }, [lang, slug, token, checkSubscriber]);
 
 
   if (loading) {
@@ -121,6 +126,7 @@ const CoursesContent = () => {
     return <div>No course details found.</div>
   }
   ///////////////////////////////////////////////////////////////
+  
   return (
     <section>
       <div>
@@ -237,7 +243,7 @@ const CoursesContent = () => {
 
             <div className='mt-5 grid grid-cols-1 md:grid-cols-3 gap-4 items-center'>
               <div className='col-span-2'>
-                <SubscribeCourse courseDetails={courseDetails} />
+                <SubscribeCourse  courseDetails={courseDetails} />
               </div>
             </div>
 
@@ -258,7 +264,7 @@ const CoursesContent = () => {
             <div>
               <hr className='h-1' />
               <div className='my-5'>
-                <VideoCourseTab courseVideos={courseVideos} />
+                <VideoCourseTab courseVideos={courseVideos} checkSubscriber={checkSubscriber} />
               </div>
             </div>
           ) : null}
