@@ -110,8 +110,8 @@ const VideoCourseTabs = ({ courseVideos, checkSubscriber }: any) => {
                 // Show the thumbnail and alert on click if user is not logged in
                 <div className="relative cursor-pointer" onClick={handleVideoClick}>
                   <Image
-                    className="w-full h-80 object-cover"
-                    width={560}
+                    className="w-full h-96 object-cover"
+                    width={520}
                     height={315}
                     src={`https://img.youtube.com/vi/${video.video_url}/maxresdefault.jpg`}
                     alt={video.name}
