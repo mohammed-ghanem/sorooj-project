@@ -12,7 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         { url: "https://www.sorooj.org/ar/questions", lastModified: new Date() },
         { url: "https://www.sorooj.org/ar/video-library", lastModified: new Date() },
         { url: "https://www.sorooj.org/ar/audio-library", lastModified: new Date() },
-        { url: "https://www.sorooj.org/ar/liveair", lastModified: new Date() },
+        { url: "https://www.sorooj.org/ar/live-air", lastModified: new Date() },
         { url: "https://www.sorooj.org/ar/contact-us", lastModified: new Date() },
         { url: "https://www.sorooj.org/ar/privacy-policy", lastModified: new Date() },
         { url: "https://www.sorooj.org/ar/terms", lastModified: new Date() },
