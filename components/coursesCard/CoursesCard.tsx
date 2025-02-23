@@ -59,10 +59,10 @@ const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePubl
 
 
                 </div>
-                <Link prefetch={true} href={pathLinkToContent}
+                <a href={pathLinkToContent}
                     className="block text-center bkPrimaryColor py-3 mt-[16px] text-white font-bold">
                     بدء
-                </Link>
+                </a>
             </div>
         </div>
     )

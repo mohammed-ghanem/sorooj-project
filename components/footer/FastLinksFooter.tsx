@@ -67,7 +67,7 @@ const FastLinksFooter = () => {
 
                             <div key={index} className='col-span-1 mainColor flex items-center mt-2 '>
                                 <FontAwesomeIcon icon={faChevronLeft} className='primaryColor mr-2 text-sm ml-2' />
-                                <a
+                                <Link
                                     key={index}
                                     href={link.href}
                                     target="_blank"
@@ -75,7 +75,7 @@ const FastLinksFooter = () => {
                                     className="mainColor text-[13px] font-bold"
                                 >
                                     {link.name}
-                                </a>
+                                </Link>
                             </div>
 
 

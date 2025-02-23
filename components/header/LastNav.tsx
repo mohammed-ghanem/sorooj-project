@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import TranslateHook from '../translate/TranslateHook';
 import LangUseParams from '../translate/LangUseParams';
+import Link from 'next/link';
+
 import { Spin } from 'antd';
 
 const LastNav = () => {
@@ -58,7 +60,7 @@ const LastNav = () => {
                     <div className="hidden lg:flex m-auto">
                         {navLinks.map((link, index) => (
                             link.external ? (
-                                <a 
+                                <Link
                                     key={index} 
                                     href={link.href} 
                                     target="_blank" 
@@ -66,7 +68,7 @@ const LastNav = () => {
                                     className="text-white ml-4 text-[15px] leading-5"
                                 >
                                     {link.name}
-                                </a>
+                                </Link>
                             ) : (
                                 <button
                                     key={index}
