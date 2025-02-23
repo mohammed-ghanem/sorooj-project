@@ -48,7 +48,7 @@ const LastNav = () => {
             {/* Loading Spinner */}
             {loading && (
                 <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
-                    <Spin size="large" className="custom-spinner" />
+                    <Spin size="large" className="custom_spinner" />
                 </div>
             )}
 

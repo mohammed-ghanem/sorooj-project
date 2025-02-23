@@ -12,6 +12,7 @@ interface CoursesCardProps {
     descriptionCourse: string;
     likeBtn?: any;
     pathLinkToContent: any;
+    onClick?: () => void; // Add this line
 
 }
 
