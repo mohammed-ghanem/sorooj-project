@@ -2,12 +2,12 @@
 import { useEffect, useState } from 'react';
 import Banners from '../banners/Banners'
 import aboutImg from '@/public/assets/images/default.webp'
-import cardImg from '@/public/assets/images/dee.svg'
+import cardImg from '@/public/assets/images/dee.webp'
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
-import aboutFrame from "@/public/assets/images/aboutFrame.png"
-import target from "@/public/assets/images/target.png"
+import aboutFrame from "@/public/assets/images/aboutFrame.webp"
+import target from "@/public/assets/images/target.webp"
 import earth from "@/public/assets/images/earth.png"
 import title from "@/public/assets/images/title.png"
 import SoroojPath from './SoroojPath';
