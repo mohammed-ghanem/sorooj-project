@@ -22,16 +22,6 @@ html {
 body {
     position: relative;
 }
-.custom_spinner .ant-spin-dot{
-    color: #fff!important;
-}
-.custom_spinner .ant-spin-dot-spin{
-    font-size: 45px!important;
-}
-.custom_spinner .ant-spin-dot-item{
-    width: 20px!important;
-    height: 20px!important;
-}
 .bkBox {
  background: #F5F3ED; 
 }
