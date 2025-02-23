@@ -281,20 +281,7 @@ const BlogContent = () => {
                         </div>
                     ) : null}
                 </div>
-                {/* {
-                            blogDetails.videos[0].video_url
-                                ?
-                                <div className='mb-5'>
-                                    <iframe className='w-full h-80'
-                                        src={`https://www.youtube.com/embed/${blogDetails.videos[0].video_url}?enablejsapi=1`}
-                                        title={blogDetails.videos[0].name}
-                                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope;"
-                                        allowFullScreen
-                                    />
-                                </div>
-                                :
-                                <div></div>
-                        } */}
+               
                 <hr className='h-1' />
                 {/* start description blog with suggest blogs */}
                 <div className='descriptionCourse w-[95%] md:w-[80%] mx-auto mt-2 mb-24 md:mt-8 grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-8'>

@@ -25,13 +25,10 @@ export default async function Home({ params }: Props) {
   const { lang } = params;
 
   const dict = await getDictionary(lang);
-  // Fetch the courses data
-  //  const courses = await fetchCoursesHome(); // Fetch and resolve the courses data
+  
   return (
     <div>
       <main className="w-full">
-        <h1 className=" hidden">{dict.pages.homePage.title}</h1>
-
         <Slider />
         <Statistics />
         <CoursesTitle />
