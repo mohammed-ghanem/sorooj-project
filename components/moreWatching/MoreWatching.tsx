@@ -6,12 +6,16 @@ import { faEye, faCalendar, faBookOpenReader, faUser, faBookOpen, faSpinner } fr
 import Image from 'next/image';
 import Link from 'next/link';
 import LangUseParams from '../translate/LangUseParams';
+import { useRouter } from 'next/navigation';
+import { Spin } from 'antd';
 
 const MoreWatching = () => {
     const [mostViewed, setMostViewed] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [overlayLoading, setOverlayLoading] = useState(false);
     const lang = LangUseParams();
+    const router = useRouter();
 
     const fetchMostViewed = async () => {
         try {
@@ -29,10 +33,16 @@ const MoreWatching = () => {
         fetchMostViewed();
     }, []);
 
-    if (isLoading) {
-        return <div className="text-center"><FontAwesomeIcon className="mainColor text-2xl my-4" icon={faSpinner} spin /></div>;
-    }
+    const handleNavigation = (path: string) => {
+        setOverlayLoading(true);
+        router.push(path);
+    };
 
+    if (isLoading) {
+        return <div className="text-center">
+            {/* <Spin size="large" /> */}
+        </div>;
+    }
 
     if (error) {
         return <div className="text-center text-red-500">{error}</div>;
@@ -42,13 +52,18 @@ const MoreWatching = () => {
         <section className="container mx-auto w-[80%] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 md:gap-3"
             style={{ "direction": "rtl" }}
         >
+            {overlayLoading && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+                    <Spin size="large" className="custom_spinner" />
+                </div>
+            )}
             {mostViewed.map((item) => (
                 <div key={item.id} className="bkColor rounded-[15px] overflow-hidden relative mb-4">
-                    <div className="">
+                    <div onClick={() => handleNavigation(`/${lang}/${item.type}/${item.slug}`)}>
                         <Image
                             className="w-full h-44"
                             src={item.image} // Fallback image
-                           // alt={item.title}
+                            // alt={item.title}
                             alt={"moreWatchingImg"}
                             width={300}
                             height={200}
