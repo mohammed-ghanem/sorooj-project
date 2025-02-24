@@ -12,8 +12,6 @@ interface CoursesCardProps {
     descriptionCourse: string;
     likeBtn?: any;
     pathLinkToContent: any;
-    onClick?: () => void; // Add this line
-
 }
 
 const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePublish, courseTitle, doctorName, descriptionCourse, likeBtn, pathLinkToContent }) => {
@@ -59,10 +57,10 @@ const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePubl
 
 
                 </div>
-                <a href={pathLinkToContent}
+                <Link href={pathLinkToContent}
                     className="block text-center bkPrimaryColor py-3 mt-[16px] text-white font-bold">
                     بدء
-                </a>
+                </Link>
             </div>
         </div>
     )

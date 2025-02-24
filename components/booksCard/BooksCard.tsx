@@ -55,11 +55,11 @@ const BooksCard: React.FC<BooksCardProps> = ({
                                 <FontAwesomeIcon icon={faBookOpen} className="ml-1 primaryColor pt-1" />
                                 <span className=" opacity-[0.8]">{slicedDes}</span>
                             </p>
-                            <a 
+                            <Link 
                             href={pathLinkToContent}
                             className='mr-auto mt-2 block w-[fit-content] px-[10px] py-[6px] rounded-[4px] bkMainColor text-[#fff] font-bold text-[14px]'>
                                 المزيد
-                            </a>
+                            </Link>
                         </div>
                         {likeBtn
                             &&
