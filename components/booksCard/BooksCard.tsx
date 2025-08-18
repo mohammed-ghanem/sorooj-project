@@ -87,7 +87,7 @@ const BooksCard: React.FC<BooksCardProps> = ({
                             {likeBtn
                                 &&
                                 <span className=" absolute left-[14px] top-[7px] z-30 bg-[#fff] pt-[8px] px-[8px] pb-[6px] rounded-[30px]">
-                                    {likeBtn}
+                                    {likeBtn} 
                                 </span>
                             }
                         </div>
