@@ -22,11 +22,11 @@ const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePubl
     const [loading, setLoading] = useState(false);
     const router = useRouter();
 
-    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault(); // Prevent default navigation to handle loading manually
-        setLoading(true);
-        router.push(pathLinkToContent);
-    };
+    // const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    //     e.preventDefault(); // Prevent default navigation to handle loading manually
+    //     setLoading(true);
+    //     router.push(pathLinkToContent);
+    // };
 
     const slicedTitle = courseTitle.length > 30 ? courseTitle.slice(0, 30) + '...' : courseTitle;
     const slicedDescription = descriptionCourse.length > 38 ? descriptionCourse.slice(0, 38) + '...' : descriptionCourse;
@@ -78,7 +78,8 @@ const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePubl
                     </div>
 
                     {/* Link with Loading Effect */}
-                    <Link href={pathLinkToContent} onClick={handleClick}
+                    <Link href={pathLinkToContent}
+                        //onClick={handleClick}
                         className="block text-center bkPrimaryColor py-3 mt-[16px] text-white font-bold">
                         بدء
                     </Link>

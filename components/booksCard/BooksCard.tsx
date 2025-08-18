@@ -24,11 +24,11 @@ const BooksCard: React.FC<BooksCardProps> = ({
     const [loading, setLoading] = useState(false);
     const router = useRouter();
 
-    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault(); // Prevent default navigation to handle loading manually
-        setLoading(true);
-        router.push(pathLinkToContent);
-    };
+    // const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    //     e.preventDefault(); // Prevent default navigation to handle loading manually
+    //     setLoading(true);
+    //     router.push(pathLinkToContent);
+    // };
 
 
     const slicedTitle = bookTitle.length > 38 ? bookTitle.slice(0, 38) + '...' : bookTitle;
@@ -78,7 +78,8 @@ const BooksCard: React.FC<BooksCardProps> = ({
                                     <span className=" opacity-[0.8]">{slicedDes}</span>
                                 </p>
                                 <Link
-                                    href={pathLinkToContent} onClick={handleClick}
+                                    href={pathLinkToContent}
+                                    //onClick={handleClick}
                                     className='mr-auto mt-2 block w-[fit-content] px-[10px] py-[6px] rounded-[4px] bkMainColor text-[#fff] font-bold text-[14px]'>
                                     المزيد
                                 </Link>
