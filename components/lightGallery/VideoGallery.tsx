@@ -17,6 +17,9 @@ import VideoGalleryCategories from "./VideoGalleryCategories";
 import { Suspense, useEffect, useState } from "react";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
+import fixLightGalleryYouTube from "@/utils/utils/fixLightGalleryYouTube";
+
+
 
 const VideoGallery = () => {
   const searchParams = useSearchParams();
@@ -25,6 +28,17 @@ const VideoGallery = () => {
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null); // Selected category
   const [totalPages, setTotalPages] = useState<number>(1); // Total pages
   const currentPage = parseInt(searchParams.get("page") || "1", 30);
+  
+    useEffect(() => {
+      fixLightGalleryYouTube();
+
+      // cleanup optional: disconnect the MutationObserver when component unmounts
+      return () => {
+        const obs = (window as any).__fixLightGalleryYouTubeObserver;
+        if (obs && typeof obs.disconnect === "function") obs.disconnect();
+      };
+    }, []);
+
 
   useEffect(() => {
     const fetchVideos = async () => {
