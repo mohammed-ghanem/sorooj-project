@@ -17,7 +17,7 @@ import VideoGalleryCategories from "./VideoGalleryCategories";
 import { Suspense, useEffect, useState } from "react";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
-import fixLightGalleryYouTube from "@/utils/utils/fixLightGalleryYouTube";
+import fixLightGalleryYouTube from "@/utils/fixLightGalleryYouTube";
 
 
 
@@ -116,7 +116,9 @@ const VideoGallery = () => {
                 <a
                   key={video.id}
                   className="gallery-item bkBox rounded-[8px] overflow-hidden [box-shadow:1px_1px_7px_#ddd] cursor-pointer"
-                  data-src={`https://www.youtube.com/embed/${video.youtube_link}?enablejsapi=1`}
+                  // data-src={`https://www.youtube.com/embed/${video.youtube_link}?enablejsapi=1`}
+                  data-src={`https://www.youtube-nocookie.com/embed/${video.youtube_link}?enablejsapi=1`}
+
                   data-poster={`https://img.youtube.com/vi/${video.youtube_link}/maxresdefault.jpg`}
                   data-sub-html={video.description}
                   referrerPolicy="strict-origin-when-cross-origin"
