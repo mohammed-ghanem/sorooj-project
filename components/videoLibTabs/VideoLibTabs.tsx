@@ -97,6 +97,8 @@ const VideoLibTabs = () => {
                   title={tab.name}
                   allow="accelerometer; clipboard-write; encrypted-media; gyroscope;"
                   allowFullScreen
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  loading="lazy"
                 />
               </div>
             )

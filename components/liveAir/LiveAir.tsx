@@ -67,6 +67,9 @@ const LiveAir = () => {
                             title="answerVideo"
                             allow="accelerometer; clipboard-write; encrypted-media; gyroscope;"
                             allowFullScreen
+                            referrerPolicy="strict-origin-when-cross-origin"
+                            loading="lazy"
+                            
                         />
                         :
                         <div className="mainColor text-center font-bold">لا يوجد بث مباشر على قناة اليوتيوب الان اعد المحاولة قريبا</div>
