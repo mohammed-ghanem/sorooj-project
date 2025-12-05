@@ -105,6 +105,8 @@ const VideoCourseTabs = ({ courseVideos, checkSubscriber }: any) => {
                   title={video.name}
                   allow="accelerometer; clipboard-write; encrypted-media; gyroscope;"
                   allowFullScreen
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  loading="lazy"
                 />
               ) : (
                 // Show the thumbnail and alert on click if user is not logged in
