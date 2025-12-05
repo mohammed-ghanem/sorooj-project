@@ -18,6 +18,8 @@ import fullscreen from 'lightgallery/plugins/fullscreen'
 import autoplay from 'lightgallery/plugins/autoplay';
 import "./style.css"
 import { useSearchParams } from "next/navigation";
+import fixLightGalleryYouTube from "@/utils/fixLightGalleryYouTube";
+
 
 type Category = {
     id: number;
@@ -38,6 +40,17 @@ const SingleVideosCategories = () => {
     const searchParams = useSearchParams();
     const currentPage = parseInt(searchParams.get("page") || "1", 30);
     const { id } = useParams();
+
+
+      useEffect(() => {
+          fixLightGalleryYouTube();
+    
+          // cleanup optional: disconnect the MutationObserver when component unmounts
+          return () => {
+            const obs = (window as any).__fixLightGalleryYouTubeObserver;
+            if (obs && typeof obs.disconnect === "function") obs.disconnect();
+          };
+        }, []);
 
     useEffect(() => {
         const fetchCategory = async () => {
@@ -114,7 +127,7 @@ const SingleVideosCategories = () => {
         <a
             key={box.id}
             className="gallery-item bkBox rounded-[8px] overflow-hidden [box-shadow:1px_1px_7px_#ddd] cursor-pointer"
-            data-src={`https://www.youtube.com/embed/${box.youtube_link}?enablejsapi=1`}
+            data-src={`https://www.youtube-nocookie.com/embed/${box.youtube_link}?enablejsapi=1`}
             data-poster={`https://img.youtube.com/vi/${box.youtube_link}/maxresdefault.jpg`}
             data-sub-html={box.description}
             referrerPolicy="strict-origin-when-cross-origin"
