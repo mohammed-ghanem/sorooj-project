@@ -117,6 +117,7 @@ const SingleVideosCategories = () => {
             data-src={`https://www.youtube.com/embed/${box.youtube_link}?enablejsapi=1`}
             data-poster={`https://img.youtube.com/vi/${box.youtube_link}/maxresdefault.jpg`}
             data-sub-html={box.description}
+            referrerPolicy="strict-origin-when-cross-origin"
         >
             <div className="relative overflow-hidden">
                 <div className="absolute inset-0 bg-black bg-opacity-30 z-30">
