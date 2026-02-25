@@ -9,7 +9,6 @@ import defImage from "@/public/assets/images/default.webp"; // Default image
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleChevronRight } from '@fortawesome/free-solid-svg-icons/faCircleChevronRight';
 import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons/faCircleChevronLeft';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 const DefaultImage = {
   image: defImage,
