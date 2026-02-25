@@ -3,14 +3,11 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { fetchVideosHome, VideoItem } from '@/utils/fetchVideosHome'; // Adjust the path to your API file
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import noQues from "@/public/assets/images/noques.svg"
 
 const VideoLibTabs = () => {
   const [homeVideoTabs, setHomeVideoTabs] = useState<VideoItem[]>([]);
   const [activeTab, setActiveTab] = useState<number | null>(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
 
@@ -26,21 +23,13 @@ const VideoLibTabs = () => {
         }
       } catch (err: any) {
         setError(err.message || 'Failed to fetch videos');
-      } finally {
-        setLoading(false);
       }
     };
 
     loadAllVideos();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="text-center">
-        <FontAwesomeIcon className="mainColor text-2xl my-4" icon={faSpinner} spin />
-      </div>
-    );
-  }
+ 
   if (error) return <div>Error: {error}</div>;
   if (homeVideoTabs.length === 0) {
     return <div className="text-center font-cairo mainColor text-lg">

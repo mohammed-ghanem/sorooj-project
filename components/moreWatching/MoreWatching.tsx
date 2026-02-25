@@ -11,7 +11,6 @@ import { Spin } from 'antd';
 
 const MoreWatching = () => {
     const [mostViewed, setMostViewed] = useState<any[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [overlayLoading, setOverlayLoading] = useState(false);
     const lang = LangUseParams();
@@ -19,14 +18,12 @@ const MoreWatching = () => {
 
     const fetchMostViewed = async () => {
         try {
-            setIsLoading(true);
+           
             const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/home/most-viewed`);
             setMostViewed(res.data.data.most_viewed || []); // Adjust based on your API response structure
         } catch (err: any) {
             setError(err.message || 'Failed to fetch data');
-        } finally {
-            setIsLoading(false);
-        }
+        } 
     };
 
     useEffect(() => {
@@ -38,11 +35,7 @@ const MoreWatching = () => {
         router.push(path);
     };
 
-    if (isLoading) {
-        return <div className="text-center">
-            {/* <Spin size="large" /> */}
-        </div>;
-    }
+   
 
     if (error) {
         return <div className="text-center text-red-500">{error}</div>;

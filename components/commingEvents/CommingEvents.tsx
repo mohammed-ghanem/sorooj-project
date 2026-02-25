@@ -43,19 +43,17 @@ const CommingEvents: React.FC = () => {
                     }
                 );
                 setEvents(res.data.data || []); // Assuming API response has a "events" field
-                setLoading(false);
+                
             } catch (error) {
                 console.error("Error fetching events:", error);
-                setLoading(false);
+                
             }
         };
 
         fetchEvents();
     }, []);
 
-    if (loading) {
-        return <div className="text-center"><FontAwesomeIcon className="mainColor" icon={faSpinner} spin /></div>;
-    }
+  
     if (!events.length) {
         return <div className="text-center my-20" style={{ "direction": "rtl" }}>
             <div className=' container mx-auto bkBox my-20 w-[95%] lg:w-[80%]  [box-shadow:1px_1px_7px_#ddd] rounded-[10px]'>
