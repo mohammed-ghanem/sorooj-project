@@ -42,9 +42,13 @@ const NewCourseHome = () => {
     router.push(path);
   };
 
- 
+  if (loading) {
+    return <div className="text-center">
+      {/* <Spin size="large" /> */}
+    </div>;
+  }
 
-
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <div className="relative parentDiv" style={{ direction: "rtl" }}>

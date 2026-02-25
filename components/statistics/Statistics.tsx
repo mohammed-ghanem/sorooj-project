@@ -1,6 +1,6 @@
 'use client'
 import { faYoutube } from "@fortawesome/free-brands-svg-icons"
-import { faBookOpen, faCircleQuestion, faSwatchbook, faUserGroup } from "@fortawesome/free-solid-svg-icons"
+import { faBookOpen, faCircleQuestion, faSpinner, faSwatchbook, faUserGroup } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { FC, useEffect, useState } from "react";
 
@@ -25,6 +25,7 @@ const Statistics: FC<CountUpProps> = ({ start = 0, end, duration = 8, decimals =
   const [userCount, setUserCount] = useState<any>();
   const [questionCount, setQuestionCount] = useState<any>();
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
 
     //console.log("fetch time")
@@ -48,12 +49,21 @@ const Statistics: FC<CountUpProps> = ({ start = 0, end, duration = 8, decimals =
 
       } catch (err: any) {
         setError(err.response?.data?.message || err.message);
+      } finally {
+        setLoading(false);
       }
     };
     fetchCourses();
 
   }, []);
 
+
+  if (loading) {
+    return <div className="text-center"><FontAwesomeIcon className="mainColor text-2xl my-4" icon={faSpinner} spin /></div>;
+  }
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
   return (
     <div className='bkColor mt-8 mb-8'>
       <div className="container mx-auto py-6">
