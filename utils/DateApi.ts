@@ -1,19 +1,18 @@
-// utils/DateApi.ts
 
-export interface Hijri {
+interface Hijri {
   day: string;
   weekday: { ar: string };
   month: { ar: string };
   year: string;
 }
 
-export interface Gregorian {
+interface Gregorian {
   day: string;
   month: { en: string };
   year: string;
 }
 
-export interface DataResponse {
+interface DataResponse {
   data: {
     hijri: Hijri;
     gregorian?: Gregorian;
@@ -22,10 +21,19 @@ export interface DataResponse {
 
 export async function getTimeDate(): Promise<DataResponse | null> {
   try {
+    const today = new Date();
+
+    const formattedDate = `${today
+      .getDate()
+      .toString()
+      .padStart(2, "0")}-${(today.getMonth() + 1)
+      .toString()
+      .padStart(2, "0")}-${today.getFullYear()}`;
+
     const res = await fetch(
-      "https://api.aladhan.com/v1/gToH?date=today",
+      `https://api.aladhan.com/v1/gToH?date=${formattedDate}`,
       {
-        cache: "no-store", // منع الكاش نهائيًا
+        next: { revalidate: 3600 }, // تحديث كل ساعة بدل الضغط كل مرة
       }
     );
 
@@ -35,9 +43,7 @@ export async function getTimeDate(): Promise<DataResponse | null> {
 
     const data = await res.json();
 
-    if (!data?.data?.hijri) {
-      return null;
-    }
+    if (!data?.data?.hijri) return null;
 
     return data;
   } catch (error) {
@@ -45,7 +51,6 @@ export async function getTimeDate(): Promise<DataResponse | null> {
     return null;
   }
 }
-
 
 
 

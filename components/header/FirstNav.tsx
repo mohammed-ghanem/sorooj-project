@@ -59,7 +59,7 @@ const FirstNav = async () => {
 
   return (
     <div className="bkColor py-1">
-      <div className="container mx-auto grid md:grid-cols-2 gap-2 sm:grid-cols-1">
+      <div className="container mx-auto grid md:grid-cols-2 gap-2 sm:grid-cols-1 items-center">
         <div className="text-center text-sm primaryColor">
           <span>{formattedHijriDate}</span>
           <span> الموافق </span>
