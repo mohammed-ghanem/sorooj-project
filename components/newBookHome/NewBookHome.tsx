@@ -13,8 +13,7 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import 'swiper/css';
 import './style.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+
 import BooksCard from '../booksCard/BooksCard';
 import { useRouter } from 'next/navigation';
 import { Spin } from 'antd';
@@ -48,10 +47,6 @@ const NewBookHome = () => {
     router.push(path);
   };
 
-  if (loading) {
-    return <div className="text-center"><FontAwesomeIcon className="mainColor text-2xl my-4" icon={faSpinner} spin /></div>;
-  }
-  if (error) return <div>Error: {error}</div>;
 
   return (
     <div className="parentDiv relative" style={{ "direction": "rtl" }}>

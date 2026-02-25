@@ -57,13 +57,6 @@ const Statistics: FC<CountUpProps> = ({ start = 0, end, duration = 8, decimals =
 
   }, []);
 
-
-  if (loading) {
-    return <div className="text-center"><FontAwesomeIcon className="mainColor text-2xl my-4" icon={faSpinner} spin /></div>;
-  }
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
   return (
     <div className='bkColor mt-8 mb-8'>
       <div className="container mx-auto py-6">
