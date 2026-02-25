@@ -13,7 +13,7 @@ const FirstNav = async () => {
             <div className="py-3">
                 <div className="container mx-auto justify-center row grid md:grid-cols-2 gap-2 sm:grid-cols-1">
                     <div className="text-center">
-                        <span>Error fetching date information</span>
+                        <span></span>
                     </div>
                     <div className="text-center">
                         <SocialMedia />
