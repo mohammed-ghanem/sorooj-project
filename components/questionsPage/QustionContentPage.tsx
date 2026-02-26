@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Banners from "../banners/Banners"
 import defImage from "@/public/assets/images/default.webp"; // Default image
 import NewFatwaBtn from "./NewFatwaBtn";
-import { faCircleQuestion, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import LangUseParams from "../translate/LangUseParams";
 import { useParams } from "next/navigation";
@@ -55,13 +55,6 @@ const QustionContentPage = () => {
 
     }, [lang, slug]);
 
-
-    if (loading) {
-        return <div className="text-center"><FontAwesomeIcon className="mainColor text-2xl my-4" icon={faSpinner} spin /></div>;
-    }
-    if (error) {
-        return <div>Error: {error}</div>;
-    }
     if (!answerDetails) {
         return <div>No answer content details found.</div>
     }

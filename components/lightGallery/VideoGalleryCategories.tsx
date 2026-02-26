@@ -1,6 +1,6 @@
 "use client";
 
-import { faChevronUp, faChevronDown, faFilter, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faChevronUp, faChevronDown, faFilter } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
 import LangUseParams from "../translate/LangUseParams";
@@ -89,10 +89,7 @@ const VideoGalleryCategories = ({
     fetchCategories();
   }, []);
 
-  if (loading) return
-  <p className="text-center">
-    <FontAwesomeIcon className="mainColor" icon={faSpinner} spin />
-  </p>;
+
 
   const renderCategoryTree = (category: Category, level = 0) => {
     // Define color classes based on the level

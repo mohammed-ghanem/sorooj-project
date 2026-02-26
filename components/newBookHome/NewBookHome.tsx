@@ -13,19 +13,14 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import 'swiper/css';
 import './style.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import BooksCard from '../booksCard/BooksCard';
 import { useRouter } from 'next/navigation';
-import { Spin } from 'antd';
 
 
 const NewBookHome = () => {
   const [books, setBooks] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const lang = LangUseParams();
-  const [overlayLoading, setOverlayLoading] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -33,10 +28,10 @@ const NewBookHome = () => {
       try {
         const booksData = await fetchBooksHome(); // Reuse the exported function
         setBooks(booksData);
-        setLoading(false);
+       
       } catch (err: any) {
         setError(err.message);
-        setLoading(false);
+        
       }
     };
 
@@ -44,22 +39,16 @@ const NewBookHome = () => {
   }, []);
 
   const handleNavigation = (path: string) => {
-    setOverlayLoading(true);
+   
     router.push(path);
   };
 
-  if (loading) {
-    return <div className="text-center"><FontAwesomeIcon className="mainColor text-2xl my-4" icon={faSpinner} spin /></div>;
-  }
+ 
   if (error) return <div>Error: {error}</div>;
 
   return (
     <div className="parentDiv relative" style={{ "direction": "rtl" }}>
-      {overlayLoading && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <Spin size="large" className="custom_spinner" />
-        </div>
-      )}
+     
       <Swiper
         className="mx-auto container"
         style={{ width: "80%" }}

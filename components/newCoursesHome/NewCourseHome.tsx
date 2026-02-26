@@ -6,7 +6,6 @@ import LangUseParams from '../translate/LangUseParams';
 import { fetchCoursesHome } from '@/utils/fetchCoursesHome';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Spin } from 'antd';
 import { useRouter } from 'next/navigation';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -19,7 +18,6 @@ const NewCourseHome = () => {
   const [courses, setCourses] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [overlayLoading, setOverlayLoading] = useState(false);
   const lang = LangUseParams();
   const router = useRouter();
 
@@ -30,33 +28,22 @@ const NewCourseHome = () => {
         setCourses(coursesData);
       } catch (err: any) {
         setError(err.message);
-      } finally {
-        setLoading(false);
-      }
+      } 
     };
     loadCourses();
   }, []);
 
   const handleNavigation = (path: string) => {
-    setOverlayLoading(true);
     router.push(path);
   };
 
-  if (loading) {
-    return <div className="text-center">
-      {/* <Spin size="large" /> */}
-    </div>;
-  }
+ 
 
   if (error) return <div>Error: {error}</div>;
 
   return (
     <div className="relative parentDiv" style={{ direction: "rtl" }}>
-      {overlayLoading && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <Spin size="large" className="custom_spinner"/>
-        </div>
-      )}
+      
       <Swiper
         className="mx-auto container"
         style={{ width: "80%" }}

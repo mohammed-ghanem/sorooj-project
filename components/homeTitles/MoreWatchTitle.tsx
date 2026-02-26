@@ -1,9 +1,7 @@
 "use client"
-import LangUseParams from '../translate/LangUseParams';
 import TranslateHook from '../translate/TranslateHook';
 
 const MoreWatchTitle = () => {
-    const lang = LangUseParams();
     const translate = TranslateHook();
     return (
         <div className='container mx-auto w-[95%] lg:w-[80%] flex justify-between items-center mt-16'>

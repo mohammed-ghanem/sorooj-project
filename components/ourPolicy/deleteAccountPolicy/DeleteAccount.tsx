@@ -1,8 +1,6 @@
 "use client"
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import parse from "html-react-parser";
 
 const DeleteAccount = () => {
@@ -30,13 +28,7 @@ const DeleteAccount = () => {
     fetchDeleteAccount();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="text-center my-5">
-        <FontAwesomeIcon className="mainColor text-2xl" icon={faSpinner} spin />
-      </div>
-    );
-  }
+  
 
   if (error) {
     return <div className="text-center my-5 text-red-500">{error}</div>;

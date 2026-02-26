@@ -1,7 +1,7 @@
 "use client";
 import Banners from "../banners/Banners";
 import defImage from "@/public/assets/images/default.webp"; // Default image
-import { faCircleQuestion, faLessThan, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faCircleQuestion, faLessThan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import NewFatwaBtn from "./NewFatwaBtn";
@@ -73,17 +73,7 @@ const QustionsPage = () => {
         return pages;
     };
 
-    if (loading) {
-        return (
-            <div className="text-center">
-                <FontAwesomeIcon className="mainColor text-2xl my-4" icon={faSpinner} spin />
-            </div>
-        );
-    }
-
-    if (error) {
-        return <div>Error: {error}</div>;
-    }
+  
 
 
     const allQuestions = questions.map((question: any) => (

@@ -67,9 +67,6 @@ const CommingEvents: React.FC = () => {
                         </div>
                         <p className="bkMainColor text-white my-5 py-2 px-4 w-[fit-content] m-auto rounded-[6px] font-bold">انتظرونا فى احداث قادمة قريبا</p>
                     </div>
-                    {/* <div className='relative py-1 lg:py-12 col-span-2 lg:col-span-1'>
-                        <Image src={comming} className='w-[80%] mx-auto h-[350px] [box-shadow:1px_1px_10px_#424C61] rounded-[10px]' alt='target' />
-                    </div> */}
 
                     <div className="absolute right-0 bottom-0">
                         <Image src={fatwaFlower} alt="flower" />

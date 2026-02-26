@@ -103,12 +103,6 @@ const SubscribeCourse = ({ courseDetails   }: any) => {
                         اشترك فى الدورة مجانا
                     </span>}
             </div>
-            {/* <div className='col-span-2'>
-                <button onClick={handleSubscribeBtn}
-                    className={`bkMainColor text-white px-[20px] py-[10px] rounded-[6px]`}>
-                    {is_subscribed ? 'الغاء الاشتراك' : 'اشترك فى الدورة مجانا'}
-                </button>
-            </div> */}
             <div className="col-span-2">
                 {is_subscribed
                     ?

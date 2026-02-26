@@ -91,12 +91,12 @@ const CourseAddWishList = ({ courseDetails }: any) => {
       {is_favorite ? (
         <div className="flex items-center">
           <HeartFilled className="" style={{ "color": "#424C61" }} />
-          {/* <span className="textFav text-sm font-bold mr-2">حذف من المفضلة</span> */}
+          
         </div>
       ) : (
         <div className="flex items-center">
           <HeartOutlined />
-          {/* <span className="textFav text-xs font-bold mr-2">اضف الى المفضلة</span> */}
+         
         </div>
       )}
     </button>
