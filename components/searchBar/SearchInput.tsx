@@ -21,7 +21,8 @@ const SearchInput = () => {
         <div className="w-[95%] mx-auto">
             <div className="md:w-full relative flex items-center border-2 rounded-md border-regal-blue p-2 text-sm">
                 <input
-                    className="block w-full text-gray-900 bg-transparent dark:placeholder-gray-400 dark:text-white outline-0 p-1"
+                    className="block w-full text-gray-900 bg-transparent dark:placeholder-gray-400 dark:text-white
+                    :focus-visible:outline-none outline-0 p-1"
                     type="text"
                     placeholder="البحث"
                     value={searchQuery}
