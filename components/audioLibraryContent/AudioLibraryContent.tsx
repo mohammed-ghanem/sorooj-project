@@ -64,12 +64,11 @@ const AudioLibraryContent = () => {
     }, [lang, slug]);
 
 
-    if (loading) {
-        return <div className="text-center"><FontAwesomeIcon className="mainColor text-2xl my-4" icon={faSpinner} spin /></div>;
-    }
+   
     if (error) {
         return <div>Error: {error}</div>;
     }
+    
     if (!audioDetails) {
         return <div>No audio details found.</div>
     }

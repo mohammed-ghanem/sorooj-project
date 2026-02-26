@@ -2,9 +2,7 @@ import Image from "next/image"
 import { faEye, faCalendar, faBookOpenReader, faBookOpen } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link";
-import { Spin } from "antd";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 interface BlogCardProps {
     imgSrc: any;
     watchNumber: string;
@@ -19,12 +17,11 @@ interface BlogCardProps {
 
 const BlogCardBox: React.FC<BlogCardProps> = ({ imgSrc, watchNumber, datePublish, blogTitle, doctorName, descriptionBlog, likeBtn, pathLinkToContent }) => {
 
-    const [loading, setLoading] = useState(false);
     const router = useRouter();
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault(); // Prevent default navigation to handle loading manually
-        setLoading(true);
+       
         router.push(pathLinkToContent);
     };
 
@@ -32,12 +29,7 @@ const BlogCardBox: React.FC<BlogCardProps> = ({ imgSrc, watchNumber, datePublish
     return (
 
         <>
-            {/* Fullscreen Loading Overlay */}
-            {loading && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                    <Spin size="large" className="custom_spinner" />
-                </div>
-            )}
+          
             {/* Blog Card */}
             <div className=" bkColor rounded-[15px] overflow-hidden relative">
                 <div className="h-full">

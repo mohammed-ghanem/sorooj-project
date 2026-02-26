@@ -2,9 +2,7 @@ import { faBookOpen, faBookOpenReader, faCalendar, faEye, faUser } from '@fortaw
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from "next/image"
 import Link from 'next/link';
-import { useState } from "react";
-import { Spin } from "antd";
-import { useRouter } from "next/navigation";
+
 
 interface BooksCardProps {
     imgSrc: any;
@@ -21,27 +19,12 @@ interface BooksCardProps {
 const BooksCard: React.FC<BooksCardProps> = ({
     pathLinkToContent, imgSrc, bookTitle, watchNumber, datePublish, doctorName, descriptionBook, likeBtn
 }) => {
-    const [loading, setLoading] = useState(false);
-    const router = useRouter();
-
-    // const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    //     e.preventDefault(); // Prevent default navigation to handle loading manually
-    //     setLoading(true);
-    //     router.push(pathLinkToContent);
-    // };
-
 
     const slicedTitle = bookTitle.length > 38 ? bookTitle.slice(0, 38) + '...' : bookTitle;
     const slicedDes = descriptionBook.length > 30 ? descriptionBook.slice(0, 30) + '...' : descriptionBook;
     return (
         <>
 
-            {/* Fullscreen Loading Overlay */}
-            {loading && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                    <Spin size="large" className="custom_spinner" />
-                </div>
-            )}
             {/* book Card */}
             <div className='bkPrimaryColor [box-shadow:1px_1px_7px_#ddd] p-[10px] rounded-tl-[15px] rounded-br-[15px] rounded-tr-none rounded-bl-none'>
                 <div className='bg-white rounded-tl-[15px] rounded-br-[15px] rounded-tr-none rounded-bl-none border-[1px] border-[solid] border-[#fff]
@@ -87,7 +70,7 @@ const BooksCard: React.FC<BooksCardProps> = ({
                             {likeBtn
                                 &&
                                 <span className=" absolute left-[14px] top-[7px] z-30 bg-[#fff] pt-[8px] px-[8px] pb-[6px] rounded-[30px]">
-                                    {likeBtn} 
+                                    {likeBtn}
                                 </span>
                             }
                         </div>
