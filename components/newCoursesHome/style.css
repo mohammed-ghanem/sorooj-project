@@ -58,3 +58,12 @@
     height: 13px!important;
   }
  
+.swiper-button-prev svg {
+    width: 20px!important;
+    height: 20px!important;
+  }
+  
+  .swiper-button-next svg {
+    width: 20px!important;
+    height: 20px!important;
+}
