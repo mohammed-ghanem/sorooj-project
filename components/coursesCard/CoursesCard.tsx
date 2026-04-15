@@ -27,8 +27,9 @@ const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePubl
             {/* Course Card */}
             <div className="bkColor rounded-[15px] overflow-hidden relative">
                 <div className="newCourses">
-                    <Image className="w-full max-w-full h-[170px]!" src={imgSrc} alt={`${courseTitle.slice(0, 20)} ...`}
-                         width={100} height={100} style={{ height: '170px' }} objectFit="cover" objectPosition="center" loading="lazy"/>
+                    <Image className="w-full max-w-full h-[170px]!" src={imgSrc} 
+                    alt={`${courseTitle.slice(0, 20)} ...`}
+                         width={100} height={100} style={{ height: '170px' }} loading="lazy"/>
                     <div className="px-3">
                         <div className="cardDetails grid grid-cols-2 gap-2 mt-3 font-bold">
                             <p className="text-[10px] mainColor opacity-[0.8] flex items-center">
