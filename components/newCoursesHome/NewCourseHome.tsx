@@ -12,11 +12,10 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
-import './style.css';
+import './style.css'; 
  
 const NewCourseHome = () => {
   const [courses, setCourses] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const lang = LangUseParams();
   const router = useRouter();
