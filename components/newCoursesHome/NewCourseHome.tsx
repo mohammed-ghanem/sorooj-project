@@ -18,7 +18,7 @@ const NewCourseHome = () => {
   const [courses, setCourses] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
   const lang = LangUseParams();
-  const router = useRouter();
+  const router = useRouter(); 
 
   useEffect(() => {
     const loadCourses = async () => {
