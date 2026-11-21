@@ -209,5 +209,22 @@
         "google": "تسجيل بأستخدام جوجل",
         "facebook": "تسجيل بأستخدام فيسبوك",
         "or": "او"
+    },
+    "banners": {
+        "courseDetails": "تفاصيل الدورة",
+        "bookDetails": "تفاصيل الكتاب",
+        "blogDetails": "تفاصيل المدونة",
+        "audioDetails": "تفاصيل الصوتى",
+        "answer": "الاجابة"
+    },
+    "common": {
+        "start": "بدء",
+        "view": "عرض",
+        "views": "مشاهدة",
+        "all": "الكل",
+        "categoriesTitle": "تصنيف الاقسام",
+        "prev": "السابق",
+        "next": "التالي",
+        "noCoursesInCategory": "لا توجد دورات متاحة فى هذا القسم"
     }
 } 

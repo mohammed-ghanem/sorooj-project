@@ -7,6 +7,7 @@ import AudioCategories from './AudioCategories';
 import { faClock, faMicrophoneLines, faPenNib, faPenToSquare, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from "react";
 import LangUseParams from "../translate/LangUseParams";
+import TranslateHook from "../translate/TranslateHook";
 import axios from "axios";
 import { Spin } from 'antd';
 import { useRouter } from 'next/navigation';
@@ -18,6 +19,7 @@ const AudioLibirary = () => {
     const [error, setError] = useState<string | null>(null);
     const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
     const [currentPage, setCurrentPage] = useState(1);
+    const translate = TranslateHook();
     const [totalPages, setTotalPages] = useState(1);
     const lang = LangUseParams();
     const router = useRouter();
@@ -87,7 +89,11 @@ const AudioLibirary = () => {
     return (
         <div>
            
-            <Banners src={defImage} parentTitle={`الرئيسية`} textPath="المكتبة الصوتية" />
+            <Banners
+                src={defImage}
+                parentTitle={translate?.navigation?.home || "الرئيسية"}
+                textPath={translate?.navigation?.audiolibirary || "المكتبة الصوتية"}
+            />
             <div className='container my-10 mx-auto w-[80%] grid grid-cols-1 lg:grid-cols-4 gap-4' style={{ direction: "rtl" }}>
                 <div>
                     <AudioCategories onCategorySelect={setSelectedCategoryId} />

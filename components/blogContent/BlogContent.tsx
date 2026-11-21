@@ -9,6 +9,7 @@ import Image from 'next/image';
 import BlogDescriptionTabs from '../blogDescriptionTabs/BlogDescriptionTabs';
 import { useEffect, useState } from 'react';
 import LangUseParams from '../translate/LangUseParams';
+import TranslateHook from '../translate/TranslateHook';
 import { useParams } from 'next/navigation';
 import axios from 'axios';
 import SuggestBlogs from '../blogDescriptionTabs/SuggestBlogs';
@@ -49,6 +50,7 @@ const BlogContent = () => {
 
     // lang param (ar Or en)
     const lang = LangUseParams();
+    const translate = TranslateHook();
     const { slug } = useParams();
 
     useEffect(() => {
@@ -114,7 +116,11 @@ const BlogContent = () => {
     return (
         <div>
             <div>
-                <Banners src={defImage} parentTitle={`المدونة`} textPath="تفاصيل المدونة" />
+                <Banners
+                    src={defImage}
+                    parentTitle={translate?.navigation?.blog || "المدونة"}
+                    textPath={translate?.banners?.blogDetails || "تفاصيل المدونة"}
+                />
             </div>
             <div className='container mx-auto'
                 style={{ direction: "rtl" }}

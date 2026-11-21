@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import NewFatwaBtn from "./NewFatwaBtn";
 import LangUseParams from "@/components/translate/LangUseParams";
+import TranslateHook from "@/components/translate/TranslateHook";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Image from 'next/image';
@@ -18,6 +19,7 @@ const QustionsPage = () => {
     const [currentPage, setCurrentPage] = useState(1); // Track current page
     const [totalPages, setTotalPages] = useState(1); // Track total pages
     const lang = LangUseParams();
+    const translate = TranslateHook();
 
     useEffect(() => {
         const fetchQuestions = async () => {
@@ -98,7 +100,11 @@ const QustionsPage = () => {
     return (
         <div>
             <div>
-                <Banners src={defImage} parentTitle={`الرئيسية`} textPath="سؤال وجواب" />
+                <Banners
+                    src={defImage}
+                    parentTitle={translate?.navigation?.home || "الرئيسية"}
+                    textPath={translate?.navigation?.questions || "سؤال وجواب"}
+                />
             </div>
             <div className="my-14 container mx-auto w-[95%] md:w-[80%] grid grid-cols-1 lg:grid-cols-5 gap-10"
                 style={{ direction: "rtl" }}

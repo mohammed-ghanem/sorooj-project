@@ -7,6 +7,7 @@ import NewFatwaBtn from "./NewFatwaBtn";
 import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import LangUseParams from "../translate/LangUseParams";
+import TranslateHook from "../translate/TranslateHook";
 import { useParams } from "next/navigation";
 import axios from "axios";
 import parse from "html-react-parser";
@@ -26,6 +27,7 @@ const QustionContentPage = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const lang = LangUseParams();
+    const translate = TranslateHook();
     const { slug } = useParams(); 
 
     useEffect(() => {
@@ -63,7 +65,11 @@ const QustionContentPage = () => {
     return (
         <div>
             <div>
-                <Banners src={defImage} parentTitle={`سؤال وجواب`} textPath="الاجابة" />
+                <Banners
+                    src={defImage}
+                    parentTitle={translate?.navigation?.questions || "سؤال وجواب"}
+                    textPath={translate?.banners?.answer || "الاجابة"}
+                />
             </div>
             <div className="answersContent container w-[95%] md:w-[80%] mx-auto my-16 grid grid-cols-12 gap-10"
              style={{ direction: "rtl" }}>

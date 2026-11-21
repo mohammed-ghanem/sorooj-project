@@ -5,6 +5,7 @@ import soroojImg from "@/public/assets/images/default.webp"; // Default image
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie"; // Import the js-cookie library
 import LangUseParams from "@/components/translate/LangUseParams";
+import TranslateHook from "@/components/translate/TranslateHook";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
@@ -18,6 +19,7 @@ const BookCardPage = () => {
     const [error, setError] = useState<string | null>(null);
     const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null); // Store category ID
     const [currentPage, setCurrentPage] = useState(1); // Track current page
+    const translate = TranslateHook();
     const [totalPages, setTotalPages] = useState(1); // Track total pages
     const token = Cookies.get("access_token");
     const lang = LangUseParams();
@@ -108,7 +110,11 @@ const BookCardPage = () => {
     return (
         <div>
             <div>
-                <Banners src={soroojImg} parentTitle={`الرئيسية`} textPath="الكتب والابحاث" />
+                <Banners
+                    src={soroojImg}
+                    parentTitle={translate?.navigation?.home || "الرئيسية"}
+                    textPath={translate?.navigation?.books || "الكتب والابحاث"}
+                />
             </div>
             <div className="bookContainer container mx-auto my-20 grid grid-cols-1 lg:grid-cols-4 gap-0 lg:gap-10 w-[95%] lg:w-[80%]"
              style={{ direction: "rtl" }}

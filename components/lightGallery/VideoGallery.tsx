@@ -18,6 +18,7 @@ import { Suspense, useEffect, useState } from "react";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import fixLightGalleryYouTube from "@/utils/fixLightGalleryYouTube";
+import TranslateHook from "../translate/TranslateHook";
 
 
 
@@ -28,6 +29,7 @@ const VideoGallery = () => {
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null); // Selected category
   const [totalPages, setTotalPages] = useState<number>(1); // Total pages
   const currentPage = parseInt(searchParams.get("page") || "1", 30);
+  const translate = TranslateHook();
   
     useEffect(() => {
       fixLightGalleryYouTube();
@@ -97,7 +99,11 @@ const VideoGallery = () => {
 
   return (
     <div>
-      <Banners src={defImage} parentTitle={`الرئيسية`} textPath="المكتبة المرئية" />
+      <Banners
+        src={defImage}
+        parentTitle={translate?.navigation?.home || "الرئيسية"}
+        textPath={translate?.navigation?.videolibirary || "المكتبة المرئية"}
+      />
       <div className="container my-10 mx-auto w-[80%] grid grid-cols-1 lg:grid-cols-4 gap-4"
         style={{ direction: "rtl" }}>
         <div>

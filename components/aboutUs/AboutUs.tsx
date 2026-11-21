@@ -14,6 +14,7 @@ import SoroojPath from './SoroojPath';
 import axios from 'axios';
 import parse from "html-react-parser";
 import Mangement from './Mangement';
+import TranslateHook from '../translate/TranslateHook';
 
 type StaticPageData = {
     [x: string]: any;
@@ -32,6 +33,7 @@ const AboutUs: React.FC = () => {
     const [mission, setMission] = useState<string[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
+    const translate = TranslateHook();
 
     const fetchData = async (endpoint: string, setter: (data: StaticPageData) => void) => {
         try {
@@ -86,7 +88,11 @@ const AboutUs: React.FC = () => {
 
     return (
         <div>
-            <Banners src={aboutImg} parentTitle={`الرئيسية`} textPath={"عن المركز"} />
+            <Banners
+                src={aboutImg}
+                parentTitle={translate?.navigation?.home || "الرئيسية"}
+                textPath={translate?.navigation?.about || "عن المركز"}
+            />
             <div className="mt-20" style={{ direction: "rtl" }}>
                 <section className='container mx-auto aboutText'>
                     <div className='grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-10 w-[95%] lg:w-[80%] mx-auto'>

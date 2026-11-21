@@ -3,6 +3,7 @@ import { faEye, faCalendar, faBookOpenReader, faBookOpen } from "@fortawesome/fr
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import TranslateHook from "../translate/TranslateHook";
 interface BlogCardProps {
     imgSrc: any;
     watchNumber: string;
@@ -16,7 +17,7 @@ interface BlogCardProps {
 }
 
 const BlogCardBox: React.FC<BlogCardProps> = ({ imgSrc, watchNumber, datePublish, blogTitle, doctorName, descriptionBlog, likeBtn, pathLinkToContent }) => {
-
+    const translate = TranslateHook();
     const router = useRouter();
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -64,7 +65,7 @@ const BlogCardBox: React.FC<BlogCardProps> = ({ imgSrc, watchNumber, datePublish
                     </div>
                     <Link href={pathLinkToContent} onClick={handleClick}
                         className="block text-center bkPrimaryColor py-3 mt-[16px] text-white font-bold">
-                        عرض
+                        {translate?.common?.view || "عرض"}
                     </Link>
                 </div>
             </div>

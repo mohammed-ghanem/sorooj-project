@@ -4,6 +4,7 @@ import Banners from '../banners/Banners'
 import BlogCardBox from "./BlogCardBox";
 import { useEffect, useState } from "react";
 import LangUseParams from "../translate/LangUseParams";
+import TranslateHook from "../translate/TranslateHook";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
@@ -17,6 +18,7 @@ const BlogPage = () => {
   const [currentPage, setCurrentPage] = useState(1); // Track current page
   const [totalPages, setTotalPages] = useState(1); // Track total pages
   const lang = LangUseParams();
+  const translate = TranslateHook();
   useEffect(() => {
     const fetchBlog = async () => {
       setLoading(true);
@@ -98,7 +100,11 @@ const BlogPage = () => {
   return (
     <div>
       <div>
-        <Banners src={soroojImg} parentTitle={`الرئيسية`} textPath="المدونة" />
+        <Banners
+          src={soroojImg}
+          parentTitle={translate?.navigation?.home || "الرئيسية"}
+          textPath={translate?.navigation?.blog || "المدونة"}
+        />
       </div>
       <div className="container mx-auto my-20 grid grid-cols-1 lg:grid-cols-4 gap-0 lg:gap-10 w-[95%] lg:w-[80%]"
         style={{ direction: "rtl" }}

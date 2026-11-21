@@ -77,7 +77,11 @@ const AudioLibraryContent = () => {
     return (
         <section>
             <div>
-                <Banners src={defImage} parentTitle={`الصوتية`} textPath={"تفاصيل الصوتى"} />
+                <Banners
+                    src={defImage}
+                    parentTitle={translate?.navigation?.audiolibirary || "المكتبة الصوتية"}
+                    textPath={translate?.banners?.audioDetails || "تفاصيل الصوتى"}
+                />
             </div>
             <div className='container mx-auto'
                 style={{ direction: "rtl" }}

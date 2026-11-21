@@ -3,6 +3,7 @@ import Image from "next/image";
 import { faEye, faCalendar, faBookOpenReader, faUser, faBookOpen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import TranslateHook from "../translate/TranslateHook";
 
 interface CoursesCardProps {
     imgSrc: any;
@@ -16,7 +17,7 @@ interface CoursesCardProps {
 }
 
 const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePublish, courseTitle, doctorName, descriptionCourse, likeBtn, pathLinkToContent }) => {
-
+    const translate = TranslateHook();
 
     const slicedTitle = courseTitle.length > 30 ? courseTitle.slice(0, 30) + '...' : courseTitle;
     const slicedDescription = descriptionCourse.length > 38 ? descriptionCourse.slice(0, 38) + '...' : descriptionCourse;
@@ -25,12 +26,12 @@ const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePubl
     return (
         <>
             {/* Course Card */}
-            <div className="bkColor rounded-[15px] overflow-hidden relative">
-                <div className="newCourses">
-                    <Image className="w-full max-w-full h-[170px]!" src={imgSrc} 
+            <div className="bkColor rounded-[15px] overflow-hidden relative h-full flex flex-col">
+                <div className="newCourses h-full flex flex-col">
+                    <Image className="w-full max-w-full h-[170px]! shrink-0" src={imgSrc} 
                     alt={`${courseTitle.slice(0, 20)} ...`}
                          width={100} height={100} style={{ height: '170px' }} loading="lazy"/>
-                    <div className="px-3">
+                    <div className="px-3 pb-4 flex-1 flex flex-col">
                         <div className="cardDetails grid grid-cols-2 gap-2 mt-3 font-bold">
                             <p className="text-[10px] mainColor opacity-[0.8] flex items-center">
                                 <FontAwesomeIcon icon={faEye} className="ml-1 primaryColor" />
@@ -49,8 +50,8 @@ const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePubl
                             <FontAwesomeIcon icon={faUser} className="ml-1 primaryColor" />
                             <span className="text-[12px] mainColor">{slicedDoctor}</span>
                         </h3>
-                        <p className="text-[12px] mainColor flex items-center mt-2">
-                            <FontAwesomeIcon icon={faBookOpen} className="ml-1 primaryColor" />
+                        <p className="text-[12px] mainColor flex items-start mt-2">
+                            <FontAwesomeIcon icon={faBookOpen} className="ml-1 primaryColor mt-[2px] shrink-0" />
                             <span className="opacity-[0.8]">{slicedDescription}</span>
                         </p>
 
@@ -61,11 +62,10 @@ const CoursesCard: React.FC<CoursesCardProps> = ({ imgSrc, watchNumber, datePubl
                         )}
                     </div>
 
-                    {/* Link with Loading Effect */}
+                    {/* Link pinned to bottom of card */}
                     <Link href={pathLinkToContent}
-                        //onClick={handleClick}
-                        className="block text-center bkPrimaryColor py-3 mt-[16px] text-white font-bold">
-                        بدء
+                        className="block text-center bkPrimaryColor py-3 mt-auto shrink-0 text-white font-bold">
+                        {translate?.common?.start || "بدء"}
                     </Link>
                 </div>
             </div>

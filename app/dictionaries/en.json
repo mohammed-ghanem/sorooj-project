@@ -214,5 +214,22 @@
         "google": "LogIn With Google",
         "facebook": "LogIn With Facebook",
         "or": "OR" 
+    },
+    "banners": {
+        "courseDetails": "Course Details",
+        "bookDetails": "Book Details",
+        "blogDetails": "Blog Details",
+        "audioDetails": "Audio Details",
+        "answer": "Answer"
+    },
+    "common": {
+        "start": "Start",
+        "view": "View",
+        "views": "views",
+        "all": "All",
+        "categoriesTitle": "Categories",
+        "prev": "Previous",
+        "next": "Next",
+        "noCoursesInCategory": "No courses available in this category"
     }
 }

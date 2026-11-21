@@ -6,6 +6,7 @@ import Banners from "@/components/banners/Banners";
 import CoursesCard from "@/components/coursesCard/CoursesCard";
 import CoursesCategoriesBox from "@/components/coursesCategoryBox/CoursesCategoriesBox";
 import LangUseParams from "@/components/translate/LangUseParams";
+import TranslateHook from "@/components/translate/TranslateHook";
 import soroojImg from "@/public/assets/images/default.webp"; // Default image
 import Cookies from "js-cookie"; // Import the js-cookie library
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -22,6 +23,7 @@ const CoursesCardPage = () => {
     const token = Cookies.get("access_token");
 
     const lang = LangUseParams();
+    const translate = TranslateHook();
 
     useEffect(() => {
         const fetchCourses = async () => {
@@ -93,7 +95,7 @@ const CoursesCardPage = () => {
             <CoursesCard
                 key={course.id}
                 imgSrc={course.image}
-                watchNumber={`${course.view_count} مشاهدة`}
+                watchNumber={`${course.view_count} ${translate?.common?.views || "مشاهدة"}`}
                 datePublish={course.publish_date}
                 courseTitle={course.course_name}
                 doctorName={course.author_name}
@@ -107,7 +109,11 @@ const CoursesCardPage = () => {
     return (
         <div>
             <div>
-                <Banners src={soroojImg} parentTitle={`الرئيسية`} textPath="الدورات المجانية" />
+                <Banners
+                    src={soroojImg}
+                    parentTitle={translate?.navigation?.home || "الرئيسية"}
+                    textPath={translate?.navigation?.courses || "الدورات المجانية"}
+                />
             </div>
             <div className="coursesContainer container mx-auto my-20 grid grid-cols-1 lg:grid-cols-4 gap-0 lg:gap-10 w-[95%] lg:w-[80%]"
                 style={{ direction: "rtl" }}
@@ -124,7 +130,9 @@ const CoursesCardPage = () => {
                         </div>
 
                     ) : (
-                        <div className="text-center text-gray-500 font-bold">لا توجد دورات متاحة فى هذا القسم</div>
+                        <div className="text-center text-gray-500 font-bold">
+                            {translate?.common?.noCoursesInCategory || "لا توجد دورات متاحة فى هذا القسم"}
+                        </div>
                     )}
                     {/* start Pagination Controls */}
                     {courses.length > 0 ? (
@@ -134,7 +142,7 @@ const CoursesCardPage = () => {
                                 disabled={currentPage === 1}
                                 className="px-4 py-2 bg-gray-200 mainColor rounded disabled:opacity-50"
                             >
-                                السابق
+                                {translate?.common?.prev || "السابق"}
                             </button>
                             {/* Render numbered pages */}
                             {renderPageNumbers()}
@@ -143,7 +151,7 @@ const CoursesCardPage = () => {
                                 disabled={currentPage === totalPages}
                                 className="px-4 py-2 bg-gray-200 mainColor rounded disabled:opacity-50"
                             >
-                                التالي
+                                {translate?.common?.next || "التالي"}
                             </button>
                         </div>
                     ) :

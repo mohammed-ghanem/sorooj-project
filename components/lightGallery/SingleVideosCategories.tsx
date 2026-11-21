@@ -19,6 +19,7 @@ import autoplay from 'lightgallery/plugins/autoplay';
 import "./style.css"
 import { useSearchParams } from "next/navigation";
 import fixLightGalleryYouTube from "@/utils/fixLightGalleryYouTube";
+import TranslateHook from "@/components/translate/TranslateHook";
 
 
 type Category = {
@@ -40,6 +41,7 @@ const SingleVideosCategories = () => {
     const searchParams = useSearchParams();
     const currentPage = parseInt(searchParams.get("page") || "1", 30);
     const { id } = useParams();
+    const translate = TranslateHook();
 
 
       useEffect(() => {
@@ -180,7 +182,11 @@ const SingleVideosCategories = () => {
     return (
         <div>
             <div>
-                <Banners src={defImage} parentTitle={`المرئية`} textPath={`${categoryName}`} />
+                <Banners
+                    src={defImage}
+                    parentTitle={translate?.navigation?.videolibirary || "المكتبة المرئية"}
+                    textPath={`${categoryName}`}
+                />
             </div>
             <div className='container my-10 mx-auto w-[80%] grid grid-cols-1 lg:grid-cols-4 gap-4'
                 style={{ direction: "rtl" }}>

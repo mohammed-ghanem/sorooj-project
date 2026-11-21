@@ -1,6 +1,7 @@
 'use client';
 
 import LangUseParams from "../translate/LangUseParams";
+import TranslateHook from "../translate/TranslateHook";
 import axios from 'axios';
 import 'react-phone-input-2/lib/style.css';
 import './style.css';
@@ -13,6 +14,7 @@ import soroojImg from "@/public/assets/images/default.webp"; // Default image
 
 const ContactUs = () => {
     const lang = LangUseParams(); // Access dynamic [lang] parameter
+    const translate = TranslateHook();
 
     // State to manage form data and errors
     const [form, setForm] = useState({
@@ -87,7 +89,11 @@ const ContactUs = () => {
     return (
         <div className="relative grdianBK" style={{ direction: "rtl" }}>
             <div>
-                <Banners src={soroojImg} parentTitle={`الرئيسية`} textPath="تواصل معنا" />
+                <Banners
+                    src={soroojImg}
+                    parentTitle={translate?.navigation?.home || "الرئيسية"}
+                    textPath={translate?.navigation?.contact || "اتصل بنا"}
+                />
             </div>
             <div className="container mx-auto items-center">
                 <div className="my-10" style={{ direction: "ltr" }}>

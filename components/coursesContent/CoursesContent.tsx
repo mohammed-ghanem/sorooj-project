@@ -130,7 +130,11 @@ const CoursesContent = () => {
   return (
     <section>
       <div>
-        <Banners src={defImage} parentTitle={`الدروات`} textPath="تفاصيل الدورة" />
+        <Banners
+          src={defImage}
+          parentTitle={translate?.navigation?.courses || "الدورات المجانية"}
+          textPath={translate?.banners?.courseDetails || translate?.pages?.coursesContentPage?.bannerPathText || "تفاصيل الدورة"}
+        />
       </div>
       <div className='container mx-auto' style={{ direction: "rtl" }}>
         <div className='courseDetails my-4 md:my-14 w-[95%] md:w-[80%] mx-auto flex flex-col-reverse lg:grid grid-cols-3 gap-4 items-center'>
