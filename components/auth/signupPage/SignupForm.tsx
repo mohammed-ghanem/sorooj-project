@@ -17,6 +17,8 @@ import SocialLogin from '@/components/socialLogin/SocialLogin'
 import TranslateHook from '../../translate/TranslateHook';
 import LangUseParams from "@/components/translate/LangUseParams"
 import FlowerImg from '@/components/flowerImg/FlowerImg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 
 axiosWithCredentials;
 axiosDefaultConfig;
@@ -69,6 +71,8 @@ const SignupForm = () => {
     const lang = LangUseParams() // Access dynamic [lang] parameter
     const translate = TranslateHook();
     const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({})
+    const [showPassword, setShowPassword] = useState(false)
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false)
     const router = useRouter() // Use Next.js router for navigation
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -297,14 +301,24 @@ const SignupForm = () => {
                             }>
                                 {translate ? translate.pages.signup.password : ""}
                             </label>
-                            <input
-                                type="password"
-                                name="password"
-                                value={form.password}
-                                onChange={handleChange}
-                                required
-                                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm outline-none"
-                            />
+                            <div className="relative mt-1">
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    name="password"
+                                    value={form.password}
+                                    onChange={handleChange}
+                                    required
+                                    className="block w-full p-2 pe-10 border border-gray-300 rounded-md shadow-sm outline-none"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPassword((prev) => !prev)}
+                                    className="absolute inset-y-0 end-0 px-3 flex items-center text-gray-500"
+                                    aria-label={showPassword ? "Hide password" : "Show password"}
+                                >
+                                    <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                                </button>
+                            </div>
                             {errors.password && <p className="text-red-500">{errors.password}</p>}
                         </div>
                         <div className="mb-4">
@@ -313,14 +327,24 @@ const SignupForm = () => {
                             }>
                                 {translate ? translate.pages.signup.confirmPassword : ""}
                             </label>
-                            <input
-                                type="password"
-                                name="password_confirmation"
-                                value={form.password_confirmation}
-                                onChange={handleChange}
-                                required
-                                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm outline-none"
-                            />
+                            <div className="relative mt-1">
+                                <input
+                                    type={showConfirmPassword ? "text" : "password"}
+                                    name="password_confirmation"
+                                    value={form.password_confirmation}
+                                    onChange={handleChange}
+                                    required
+                                    className="block w-full p-2 pe-10 border border-gray-300 rounded-md shadow-sm outline-none"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => setShowConfirmPassword((prev) => !prev)}
+                                    className="absolute inset-y-0 end-0 px-3 flex items-center text-gray-500"
+                                    aria-label={showConfirmPassword ? "Hide password" : "Show password"}
+                                >
+                                    <FontAwesomeIcon icon={showConfirmPassword ? faEyeSlash : faEye} />
+                                </button>
+                            </div>
                             {errors.password_confirmation && <p className="text-red-500">{errors.password_confirmation}</p>}
                         </div>
                         <div>

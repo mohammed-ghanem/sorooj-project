@@ -13,6 +13,8 @@ import SocialLogin from '@/components/socialLogin/SocialLogin'
 import TranslateHook from '../../translate/TranslateHook';
 import LangUseParams from "@/components/translate/LangUseParams"
 import FlowerImg from '@/components/flowerImg/FlowerImg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 
 
 axiosWithCredentials;
@@ -35,6 +37,7 @@ const SignInForm = () => {
         password: ''
     });
     const [errors, setErrors] = useState<string | null>(null);
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -175,14 +178,24 @@ const SignInForm = () => {
 
                                 {translate ? translate.pages.signin.passwordName : ""}
                             </label>
-                            <input
-                                type="password"
-                                name="password"
-                                value={form.password}
-                                onChange={handleChange}
-                                required
-                                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm outline-none"
-                            />
+                            <div className="relative mt-1">
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    name="password"
+                                    value={form.password}
+                                    onChange={handleChange}
+                                    required
+                                    className="block w-full p-2 pe-10 border border-gray-300 rounded-md shadow-sm outline-none"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPassword((prev) => !prev)}
+                                    className="absolute inset-y-0 end-0 px-3 flex items-center text-gray-500"
+                                    aria-label={showPassword ? "Hide password" : "Show password"}
+                                >
+                                    <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                                </button>
+                            </div>
                             {errors && <p className="text-red-500">{errors}</p>}
                         </div>
                         <Link href={`/${lang}/auth/forget-password`} className="border-b border-regal-blue">
