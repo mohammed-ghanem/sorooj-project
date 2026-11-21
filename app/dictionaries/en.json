@@ -138,7 +138,8 @@
             "resendOtptitleSwal" : "Resending verification code ...",
             "notAuthenticated" : "User is not authenticated",
             "newOptSent" : "A new verify code has been sent to your email , success !!",
-            "faildOtp" : "Error ,Unable to resend verify code. Please try again later."
+            "faildOtp" : "Error ,Unable to resend verify code. Please try again later.",
+            "checkSpam" : "If you didn't receive the code, please check your Spam folder."
         },
         "EmailForOtp": {
             "title" : "To Verify Your Account",

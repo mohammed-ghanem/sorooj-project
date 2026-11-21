@@ -234,7 +234,10 @@ const VerifyCode = () => {
               ))}
             </div>
             {error && <p className="text-red-500">{error}</p>}
-            <button type="submit" className="w-full bkPrimaryColor text-white font-light py-3 px-4 mt-5 rounded-lg">
+            <p className="text-red-600 text-sm text-center mt-4 mb-2">
+              {translate?.pages?.verifyCode?.checkSpam || "إذا لم يصلك الكود، تأكد من مجلد البريد المزعج (Spam)."}
+            </p>
+            <button type="submit" className="w-full bkPrimaryColor text-white font-light py-3 px-4 rounded-lg">
               {translate ? translate.pages.verifyCode.verifyButton : ""}
             </button>
           </form>
