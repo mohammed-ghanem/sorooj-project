@@ -286,6 +286,7 @@ const SignupForm = () => {
                                 country={'kw'}
                                 value={form.mobile}
                                 onChange={handlePhoneChange}
+                                excludeCountries={['il']}
                                 inputClass="mt-1 block w-full pl-[52px] pr-[0] py-[20px] border border-gray-300 rounded-md shadow-sm"
                                 inputProps={{
                                     name: 'phone',
