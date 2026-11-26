@@ -33,7 +33,13 @@ const AboutUs: React.FC = () => {
     const [mission, setMission] = useState<string[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
+    const [videoOrigin, setVideoOrigin] = useState<string>("");
     const translate = TranslateHook();
+
+    useEffect(() => {
+        // Needed for YouTube embed on production (same approach as video-library)
+        setVideoOrigin(encodeURIComponent(window.location.origin));
+    }, []);
 
     const fetchData = async (endpoint: string, setter: (data: StaticPageData) => void) => {
         try {
@@ -121,14 +127,15 @@ const AboutUs: React.FC = () => {
                                     </div>
                                 </div>
                             )}
-                            {/* YouTube Video */}
-                            {isPlaying && (
+                            {/* YouTube Video — same fix as video-library (Error 153 on production) */}
+                            {isPlaying && about.data.video && (
                                 <iframe
                                     className="w-full aspect-video"
-                                    src={`https://www.youtube.com/embed/${about.data.video}?autoplay=1`} // Replace `your-video-id` with the actual YouTube video ID
+                                    src={`https://www.youtube-nocookie.com/embed/${about.data.video}?autoplay=1&enablejsapi=1&rel=0${videoOrigin ? `&origin=${videoOrigin}` : ""}`}
                                     title="YouTube video"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowFullScreen
+                                    referrerPolicy="strict-origin-when-cross-origin"
                                 ></iframe>
                             )}
                         </div>
