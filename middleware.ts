@@ -2,12 +2,47 @@ import { NextResponse, type NextRequest } from "next/server";
 import { defaultLocale } from "./constants/locales";
 import { i18n } from "./i18n-config";
 
+/**
+ * تم إخفاء المسارات التالية بناءً على طلب العميل (بدون حذف صفحات الـ app router):
+ * video-library / audio-library / live-air / blogs + الصفحات الفرعية
+ * أي زيارة يدوية تُعاد كتابتها لمسار غير موجود فتظهر 404.
+ * للاستعادة لاحقاً: احذف هذا الشرط/القائمة، واحذف notFound() من layout الخاصة بكل مسار،
+ * وأعد تفعيل اللينكات في LastNav / FastLinksFooter والصفحة الرئيسية والـ sitemap.
+ */
+const HIDDEN_ROUTE_SEGMENTS = [
+  "video-library",
+  "audio-library",
+  "live-air",
+  "blogs",
+];
+
+function isHiddenRoute(pathname: string): boolean {
+  const parts = pathname.split("/").filter(Boolean);
+  if (parts.length === 0) return false;
+
+  // /ar/video-library/... or /en/blogs/slug
+  if (
+    i18n.locales.includes(parts[0] as (typeof i18n.locales)[number]) &&
+    parts.length >= 2 &&
+    HIDDEN_ROUTE_SEGMENTS.includes(parts[1])
+  ) {
+    return true;
+  }
+
+  // /video-library/... (before locale rewrite)
+  if (HIDDEN_ROUTE_SEGMENTS.includes(parts[0])) {
+    return true;
+  }
+
+  return false;
+}
+
 export function middleware(request: NextRequest) {
   const { pathname, searchParams } = request.nextUrl;
   const token = request.cookies.get('access_token');
 
   // 1. Language handling middleware logic
-  const staticRoutes = ['/sitemap.xml', '/robots.txt', '/favicon.ico'];
+    const staticRoutes = ['/sitemap.xml', '/robots.txt', '/favicon.ico'];
   if (staticRoutes.includes(pathname)) {
     return NextResponse.next(); // Allow request to proceed without rewrites or redirects
   }
@@ -16,6 +51,12 @@ export function middleware(request: NextRequest) {
   const localeInPath = i18n.locales.find((locale) =>
     pathname.startsWith(`/${locale}`)
   );
+
+  // تم إخفاؤها بناءً على طلب العميل — الملفات موجودة والزيارة اليدوية ترجع 404
+  if (isHiddenRoute(pathname)) {
+    const locale = localeInPath || defaultLocale;
+    return NextResponse.rewrite(new URL(`/${locale}/__hidden__`, request.url));
+  }
 
   // Handle case when no locale is in the URL
   if (!localeInPath) {

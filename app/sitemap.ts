@@ -8,11 +8,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         { url: "https://www.sorooj.org/ar/about", lastModified: new Date() },
         { url: "https://www.sorooj.org/ar/courses", lastModified: new Date() },
         { url: "https://www.sorooj.org/ar/books", lastModified: new Date() },
-        { url: "https://www.sorooj.org/ar/blogs", lastModified: new Date() },
+        // تم إخفاؤها من الـ sitemap بناءً على طلب العميل (المسارات ترجع 404 بدون حذف الصفحات)
+        // { url: "https://www.sorooj.org/ar/blogs", lastModified: new Date() },
         { url: "https://www.sorooj.org/ar/questions", lastModified: new Date() },
-        { url: "https://www.sorooj.org/ar/video-library", lastModified: new Date() },
-        { url: "https://www.sorooj.org/ar/audio-library", lastModified: new Date() },
-        { url: "https://www.sorooj.org/ar/live-air", lastModified: new Date() },
+        // { url: "https://www.sorooj.org/ar/video-library", lastModified: new Date() },
+        // { url: "https://www.sorooj.org/ar/audio-library", lastModified: new Date() },
+        // { url: "https://www.sorooj.org/ar/live-air", lastModified: new Date() },
         { url: "https://www.sorooj.org/ar/contact-us", lastModified: new Date() },
         { url: "https://www.sorooj.org/ar/privacy-policy", lastModified: new Date() },
         { url: "https://www.sorooj.org/ar/terms", lastModified: new Date() },
@@ -41,14 +42,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: new Date(item.created_at), // Use the last modified date from the API
     }));
     //************************************************** */
-    // Fetch dynamic blogs data
-    const blogsResponse = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/blogs`);
-    const blogsData = blogsResponse.data.data
-    // Map dynamic data to sitemap format
-    const blogsUrls = blogsData.map((item: { slug: string; created_at: string }) => ({
-        url: `https://www.sorooj.org/ar/blogs/${item.slug}`,
-        lastModified: new Date(item.created_at), // Use the last modified date from the API
-    }));
+    // تم إخفاء روابط المدونة الديناميكية بناءً على طلب العميل
+    // const blogsResponse = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/blogs`);
+    // const blogsData = blogsResponse.data.data
+    // const blogsUrls = blogsData.map((item: { slug: string; created_at: string }) => ({
+    //     url: `https://www.sorooj.org/ar/blogs/${item.slug}`,
+    //     lastModified: new Date(item.created_at),
+    // }));
     //************************************************** */
     // Fetch dynamic questions data
     const questionsResponse = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/fatwa/get-questions`);
@@ -59,17 +59,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: new Date(item.created_at), // Use the last modified date from the API
     }));
      //************************************************** */
-    // Fetch dynamic blogs data
-    const audiosResponse = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/audios`);
-    const audiosData = audiosResponse.data.data
-    // Map dynamic data to sitemap format
-    const audioUrls = audiosData.map((item: { slug: string; publish_date: string }) => ({
-        url: `https://www.sorooj.org/ar/audio-library/${item.slug}`,
-        lastModified: new Date(item.publish_date), // Use the last modified date from the API
-    }));
-    
+    // تم إخفاء روابط المكتبة الصوتية الديناميكية بناءً على طلب العميل
+    // const audiosResponse = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/client-api/v1/audios`);
+    // const audiosData = audiosResponse.data.data
+    // const audioUrls = audiosData.map((item: { slug: string; publish_date: string }) => ({
+    //     url: `https://www.sorooj.org/ar/audio-library/${item.slug}`,
+    //     lastModified: new Date(item.publish_date),
+    // }));
 
-
-
-    return [...staticUrls, ...coursesUrls, ...booksUrls, ...blogsUrls, ...questionsUrls , ...audioUrls];
+    return [...staticUrls, ...coursesUrls, ...booksUrls, ...questionsUrls];
 }

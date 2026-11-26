@@ -107,12 +107,12 @@ const Statistics: FC<StatisticsProps> = ({
     <div className="bkColor mt-8 mb-8">
       <div className="container mx-auto py-6">
         <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {renderCard(
+          {/* {renderCard(
             faBookOpen,
             courseCount,
             translate?.pages.homePage.statistics.FreeCourses ||
-              "الدورات المجانية"
-          )}
+              "الدورات المتاحة"
+          )} */}
           {renderCard(
             faSwatchbook,
             bookCount,

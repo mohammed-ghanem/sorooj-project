@@ -7,7 +7,7 @@ import TranslateHook from '../translate/TranslateHook';
 import LangUseParams from '../translate/LangUseParams';
 import Link from 'next/link';
 
-import { Spin } from 'antd';
+
 
 const LastNav = () => {
     const lang = LangUseParams();
@@ -34,13 +34,14 @@ const LastNav = () => {
     const navLinks = [
         { name: translate?.navigation?.home || "الرئيسية", href: `/${lang}` },
         { name: translate?.navigation?.about || "عن المركز", href: `/${lang}/about` },
-        { name: translate?.navigation?.courses || "الدورات المجانية", href: `/${lang}/courses` },
+        { name: translate?.navigation?.courses || "الدورات المتاحة",  href: "https://academy.sorooj.org/single-learning-pathes", external: true },
         { name: translate?.navigation?.books || "الكتب والابحاث", href: `/${lang}/books` },
         { name: translate?.navigation?.questions || "سؤال وجواب", href: `/${lang}/questions` },
-        { name: translate?.navigation?.videolibirary || "المكتبة المرئية", href: `/${lang}/video-library` },
-        { name: translate?.navigation?.audiolibirary || "المكتبة الصوتية", href: `/${lang}/audio-library` },
-        { name: translate?.navigation?.liveair || "البث المباشر", href: `/${lang}/live-air` },
-        { name: translate?.navigation?.blog || "المدونة", href: `/${lang}/blogs` },
+        // تم إخفاء اللينكات التالية بناءً على طلب العميل (المسارات ترجع 404 بدون حذف الصفحات)
+        // { name: translate?.navigation?.videolibirary || "المكتبة المرئية", href: `/${lang}/video-library` },
+        // { name: translate?.navigation?.audiolibirary || "المكتبة الصوتية", href: `/${lang}/audio-library` },
+        // { name: translate?.navigation?.liveair || "البث المباشر", href: `/${lang}/live-air` },
+        // { name: translate?.navigation?.blog || "المدونة", href: `/${lang}/blogs` },
         { name: translate?.navigation?.contact || "اتصل بنا", href: `/${lang}/contact-us` },
         { name: translate?.navigation?.academy || "اكاديمية سرج", href: "https://academy.sorooj.org", external: true },
     ];

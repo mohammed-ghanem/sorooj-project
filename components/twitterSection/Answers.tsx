@@ -36,7 +36,12 @@ const Answers = () => {
 
     if (questions.length === 0) {
         return <div className="text-center font-cairo mainColor text-lg">
-            <Image className='w-full' src={noQues} width={100} height={100} alt='no question' />
+            <Image 
+            className='m-auto'
+             src={noQues} 
+             width={600} 
+             height={600}
+              alt='no question' />
             <p className='font-bold mt-5'>لا توجد اسئلة الان !!</p>
         </div>;
     } 

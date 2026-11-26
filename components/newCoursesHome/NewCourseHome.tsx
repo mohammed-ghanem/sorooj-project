@@ -7,6 +7,8 @@ import { fetchCoursesHome } from '@/utils/fetchCoursesHome';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useRouter } from 'next/navigation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -42,14 +44,22 @@ const NewCourseHome = () => {
 
   return (
     <div className="relative parentDiv" style={{ direction: "rtl" }}>
-      
+      <button type="button" className="courseHome-next custom-swiper-nav" aria-label="next">
+        <FontAwesomeIcon icon={faChevronLeft} />
+      </button>
+      <button type="button" className="courseHome-prev custom-swiper-nav" aria-label="prev">
+        <FontAwesomeIcon icon={faChevronRight} />
+      </button>
       <Swiper
         className="mx-auto container"
         style={{ width: "80%" }}
         modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
         spaceBetween={10}
         slidesPerView={4}
-        navigation
+        navigation={{
+          nextEl: ".courseHome-next",
+          prevEl: ".courseHome-prev",
+        }}
         pagination={{ clickable: true }}
         autoplay={{
           delay: 5000,

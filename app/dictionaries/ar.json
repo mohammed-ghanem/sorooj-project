@@ -2,7 +2,7 @@
     "navigation" : {
         "home": "الرئيسية",
         "about": "عن المركز",
-        "courses" : "الدورات المجانية",
+        "courses" : "الدورات المتاحة",
         "books" : "الكتب والابحاث",
         "questions" : "سؤال وجواب" , 
         "contact" : "اتصل بنا",
@@ -18,14 +18,14 @@
     "pages" : { 
         "homePage" : {
             "statistics" : {
-                "FreeCourses": "الدورات المجانية",
+                "FreeCourses": "الدورات المتاحة",
                 "Books" : "الكتب والابحاث",
                 "VideoLibirary" : "المكتبة المرئية",
                 "AnswerQuestion"  : "سؤال وجواب",
                 "Subscribers"  : "المشتركين"
             },
             "titles" : {
-                "EducationalCourses" :  "الدورات المجانية",
+                "EducationalCourses" :  "الدورات المتاحة",
                 "Books" : "الكتب والابحاث",
                 "VideoLibirary" : "المكتبة المرئية",
                 "AnswerQuestion"  : "سؤال وجواب",

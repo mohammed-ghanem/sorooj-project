@@ -15,6 +15,8 @@ import 'swiper/css';
 import './style.css'
 import BooksCard from '../booksCard/BooksCard';
 import { useRouter } from 'next/navigation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 
 const NewBookHome = () => {
@@ -48,14 +50,22 @@ const NewBookHome = () => {
 
   return (
     <div className="parentDiv relative" style={{ "direction": "rtl" }}>
-     
+      <button type="button" className="bookHome-next custom-swiper-nav" aria-label="next">
+        <FontAwesomeIcon icon={faChevronLeft} />
+      </button>
+      <button type="button" className="bookHome-prev custom-swiper-nav" aria-label="prev">
+        <FontAwesomeIcon icon={faChevronRight} />
+      </button>
       <Swiper
         className="mx-auto container"
         style={{ width: "80%" }}
         modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
         spaceBetween={10} // Set space between slides
         slidesPerView={3} // Adjust the number of slides visible at once
-        navigation
+        navigation={{
+          nextEl: ".bookHome-next",
+          prevEl: ".bookHome-prev",
+        }}
         pagination={{ clickable: true }}
         autoplay={{
           delay: 5000,
